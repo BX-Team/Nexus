@@ -1,0 +1,7 @@
+name: Nexus
+version: '${version}'
+main: gq.bxteam.nexus.Nexus
+api-version: '1.16'
+authors: [ NONPLAYT, Xenolit ]
+description: Nexus gives you ability to personalize your Minecraft server with useful features
+website: https://nexus.bxteam.gq
