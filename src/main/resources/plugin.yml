@@ -1,8 +1,21 @@
 name: Nexus
 version: '${version}'
 main: gq.bxteam.nexus.Nexus
-loader: gq.bxteam.nexus.NexusLoader
-api-version: '1.19'
+api-version: '1.16'
 authors: [ NONPLAYT, Xenolit ]
 description: Nexus gives you ability to personalize your Minecraft server with useful features
 website: https://nexus.bxteam.gq
+commands:
+  gamemode:
+    aliases:
+      - gm
+      - gms
+      - gmc
+      - gma
+      - gmsp
+    permission: nexus.gamemode
+  nexus:
+    aliases:
+      - ns
+      - nx
+    permission: nexus.user

@@ -10,12 +10,19 @@ repositories {
     mavenCentral()
     maven {
         name = "papermc-repo"
-        url = uri("https://repo.papermc.io/repository/maven-public/")
+        url = "https://repo.papermc.io/repository/maven-public/"
+    }
+    maven {
+        name = "sonatype"
+        url = "https://oss.sonatype.org/content/groups/public"
     }
 }
 
 dependencies {
-    compileOnly("io.papermc.paper:paper-api:${project.paper_api}")
+    compileOnly("io.papermc.paper:paper-api:${project.paper_api}") // Paper API
+
+    // Dependencies
+    compileOnly("com.tchristofferson:ConfigUpdater:${project.config_updater}")
 }
 
 def targetJavaVersion = 17
@@ -38,7 +45,7 @@ processResources {
     def props = [version: version]
     inputs.properties props
     filteringCharset 'UTF-8'
-    filesMatching('paper-plugin.yml') {
+    filesMatching('plugin.yml') {
         expand props
     }
 }

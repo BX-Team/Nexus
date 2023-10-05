@@ -1,0 +1,26 @@
+# ███╗░░██╗███████╗██╗░░██╗██╗░░░██╗░██████╗
+# ████╗░██║██╔════╝╚██╗██╔╝██║░░░██║██╔════╝
+# ██╔██╗██║█████╗░░░╚███╔╝░██║░░░██║╚█████╗░
+# ██║╚████║██╔══╝░░░██╔██╗░██║░░░██║░╚═══██╗
+# ██║░╚███║███████╗██╔╝╚██╗╚██████╔╝██████╔╝
+# ╚═╝░░╚══╝╚══════╝╚═╝░░╚═╝░╚═════╝░╚═════╝░
+
+# Discord server: https://discord.gg/p7cxhw7E2M
+# Modrinth: https://modrinth.com/plugin/nexuss
+
+messages:
+  # Prefix is used in every plugin message
+  prefix: "&7[&6Nexus&7] "
+  # Default errors messages
+  error:
+    no-permission: "&cYou don't have permission to execute this command!"
+    not-player: "&cThis command can only be run by a player!"
+  gamemode:
+    usage: "&aUsage: &7/gamemode <mode> [player]"
+    success: "&aSet game mode to &7%g"
+    error: "&cYou need to specify a valid player/mode."
+    other:
+      success: "&aSet &7%t &agame mode to &7%g"
+  nexus:
+    version: "&aCurrent installed version is &6%v"
+    reload: "&aSuccessfully reloaded plugin configuration"
