@@ -16,13 +16,18 @@ repositories {
         name = "sonatype"
         url = "https://oss.sonatype.org/content/groups/public"
     }
+    maven {
+        name = "jitpack"
+        url = "https://jitpack.io"
+    }
 }
 
 dependencies {
     compileOnly("io.papermc.paper:paper-api:${project.paper_api}") // Paper API
 
     // Dependencies
-    compileOnly("com.tchristofferson:ConfigUpdater:${project.config_updater}")
+    implementation("com.github.Hekates:Languify:${project.languify}")
+    implementation("com.tchristofferson:ConfigUpdater:${project.config_updater}")
 }
 
 def targetJavaVersion = 17
