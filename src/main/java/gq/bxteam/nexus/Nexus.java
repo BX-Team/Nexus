@@ -4,14 +4,13 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import gq.bxteam.nexus.commands.list.*;
 import gq.bxteam.nexus.utils.Metrics;
+import gq.bxteam.nexus.utils.locale.LocaleConfig;
 import gq.bxteam.nexus.utils.locale.LocaleReader;
 import gq.bxteam.nexus.utils.logger.Logger;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -40,6 +39,7 @@ public final class Nexus extends JavaPlugin {
 
         // Save config.yml and load language file
         this.saveDefaultConfig();
+        LocaleConfig.saveLanguages();
         this.langFile = getLangFile();
         localeReader = new LocaleReader(langFile);
 

@@ -20,11 +20,13 @@ commands:
     aliases:
       - ns
       - nx
-    permission: nexus.user
+    permission: nexus.command.nexus
 permissions:
   nexus.command.gamemode:
     default: op
   nexus.command.heal:
+    default: op
+  nexus.admin:
     default: op
   nexus.user:
     default: true

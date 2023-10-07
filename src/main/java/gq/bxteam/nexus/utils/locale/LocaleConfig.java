@@ -25,4 +25,13 @@ public class LocaleConfig {
 
         return langFile;
     }
+
+    public static void saveLanguages() {
+        File langDir = new File(Nexus.getInstance().getDataFolder() + File.separator + languagesPath);
+        if (!langDir.exists()) {
+            langDir.mkdir();
+            // Saves all default language files
+            Nexus.getInstance().saveResource(languagesPath + "en_GB.yml", false);
+        }
+    }
 }
