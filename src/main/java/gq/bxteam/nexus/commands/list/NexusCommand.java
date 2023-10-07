@@ -42,7 +42,11 @@ public class NexusCommand extends CommandBase implements CommandExecutor, TabCom
     @Override
     public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
         if (args.length == 1) {
-            return Arrays.asList("reload", "version");
+            if (sender.hasPermission("nexus.admin")) {
+                return Arrays.asList("reload", "version");
+            } else {
+                return List.of("version");
+            }
         }
 
         return new ArrayList<>();
