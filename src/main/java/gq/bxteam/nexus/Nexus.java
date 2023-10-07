@@ -63,6 +63,7 @@ public final class Nexus extends JavaPlugin {
     @SuppressWarnings("DataFlowIssue")
     private void registerCommands() {
         getCommand("gamemode").setExecutor(new GamemodeCommand());
+        getCommand("god").setExecutor(new GodCommand());
         getCommand("heal").setExecutor(new HealCommand());
         getCommand("nexus").setExecutor(new NexusCommand());
     }

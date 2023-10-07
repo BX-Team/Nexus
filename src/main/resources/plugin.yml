@@ -14,6 +14,8 @@ commands:
       - gma
       - gmsp
     permission: nexus.command.gamemode
+  god:
+    permission: nexus.command.god
   heal:
     permission: nexus.command.heal
   nexus:
