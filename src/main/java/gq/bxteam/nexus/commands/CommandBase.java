@@ -42,7 +42,7 @@ public abstract class CommandBase implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!cmd.getName().equalsIgnoreCase(command)) return false;
         if (!Objects.equals(permission, "") && !sender.hasPermission(permission)) {
-            sender.sendMessage(Nexus.getInstance().getConfig().getString("messages.error.no-permission"));
+            sender.sendMessage(Nexus.getInstance().localeReader.getString("no-permission"));
             return true;
         }
         execute(sender, label, args);

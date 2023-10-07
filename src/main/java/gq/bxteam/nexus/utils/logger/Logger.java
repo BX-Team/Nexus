@@ -11,12 +11,9 @@ public class Logger {
 
         String prefix = "";
         switch (level) {
-            case ERROR:
-                prefix = "&8[&c&lERROR&r&8]";
-            case WARNING:
-                prefix = "&8[&6&lWARNING&r&8]";
-            case INFO:
-                prefix = "&8[&e&lINFO&r&8]";
+            case ERROR -> prefix = "&8[&c&lERROR&r&8]";
+            case WARNING -> prefix = "&8[&6&lWARNING&r&8]";
+            case INFO -> prefix = "&8[&e&lINFO&r&8]";
         }
 
         Bukkit.getConsoleSender().sendMessage(TextUtils.applyColor("&7[&6Nexus&7] " + prefix + " &f" + message));
@@ -28,10 +25,6 @@ public class Logger {
                 player.sendMessage(ChatColor.GOLD + message);
             }
         }
-    }
-
-    public static void log(String message, LogLevel level) {
-        log(message, level, false);
     }
 
     public enum LogLevel { ERROR, WARNING, INFO }
