@@ -13,9 +13,18 @@ commands:
       - gmc
       - gma
       - gmsp
-    permission: nexus.gamemode
+    permission: nexus.command.gamemode
+  heal:
+    permission: nexus.command.heal
   nexus:
     aliases:
       - ns
       - nx
     permission: nexus.user
+permissions:
+  nexus.command.gamemode:
+    default: op
+  nexus.command.heal:
+    default: op
+  nexus.user:
+    default: true

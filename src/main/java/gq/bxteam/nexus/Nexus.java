@@ -2,24 +2,28 @@ package gq.bxteam.nexus;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import gq.bxteam.nexus.commands.list.GamemodeCommand;
-import gq.bxteam.nexus.commands.list.NexusCommand;
+import gq.bxteam.nexus.commands.list.*;
 import gq.bxteam.nexus.utils.Metrics;
+import gq.bxteam.nexus.utils.locale.LocaleReader;
 import gq.bxteam.nexus.utils.logger.Logger;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.ArrayList;
 import java.util.Optional;
-import java.util.UUID;
+
+import static gq.bxteam.nexus.utils.locale.LocaleConfig.getLangFile;
 
 public final class Nexus extends JavaPlugin {
-    public static ArrayList<UUID> chEnabled = new ArrayList<>();
     public static Nexus instance;
+    public File langFile;
+    public LocaleReader localeReader;
 
     public static Nexus getInstance() {
         return Nexus.instance;
@@ -32,10 +36,12 @@ public final class Nexus extends JavaPlugin {
         // Metrics
         new Metrics(Nexus.getInstance(), 19684);
 
-        // TODO: Update Checker
+        // TODO: Update Checker (on release)
 
-        // Save config.yml
+        // Save config.yml and load language file
         this.saveDefaultConfig();
+        this.langFile = getLangFile();
+        localeReader = new LocaleReader(langFile);
 
         // Register commands
         registerCommands();
@@ -48,9 +54,16 @@ public final class Nexus extends JavaPlugin {
         Bukkit.getScheduler().cancelTasks(Nexus.getInstance());
     }
 
+    public void reload() {
+        this.reloadConfig();
+        this.langFile = getLangFile();
+        localeReader = new LocaleReader(langFile);
+    }
+
     @SuppressWarnings("DataFlowIssue")
     private void registerCommands() {
         getCommand("gamemode").setExecutor(new GamemodeCommand());
+        getCommand("heal").setExecutor(new HealCommand());
         getCommand("nexus").setExecutor(new NexusCommand());
     }
 

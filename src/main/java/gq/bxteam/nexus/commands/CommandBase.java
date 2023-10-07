@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 
-public abstract class IBase implements CommandExecutor {
+public abstract class CommandBase implements CommandExecutor {
     private final String command;
     private final String permission;
     private final String description;
@@ -17,7 +17,7 @@ public abstract class IBase implements CommandExecutor {
     private final String aliases;
 
     public static HashMap<String, ArrayList<String>> commands = new HashMap<>();
-    protected IBase(String command, String description, String usage, String aliases, String permission) {
+    protected CommandBase(String command, String description, String usage, String aliases, String permission) {
         this.command = command;
         this.description = description;
         this.usage = usage;

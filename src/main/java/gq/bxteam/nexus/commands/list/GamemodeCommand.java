@@ -1,14 +1,11 @@
 package gq.bxteam.nexus.commands.list;
 
 import gq.bxteam.nexus.Nexus;
-import gq.bxteam.nexus.commands.IBase;
+import gq.bxteam.nexus.commands.CommandBase;
 import gq.bxteam.nexus.utils.TextUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.TabCompleter;
+import org.bukkit.command.*;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
@@ -16,23 +13,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("DuplicatedCode")
-public class GamemodeCommand extends IBase implements CommandExecutor, TabCompleter {
+public class GamemodeCommand extends CommandBase implements CommandExecutor, TabCompleter {
     public GamemodeCommand() {
-        super("gamemode", "Changes the player gamemode.", "/gamemode <gamemode> [player]", "/gm <gamemode> [player]\n/gms\n/gmc\n/gma\n/gmsp", "nexus.gamemode");
+        super("gamemode", "Changes the player gamemode.", "/gamemode <gamemode> [player]", "/gm <gamemode> [player]\n/gms\n/gmc\n/gma\n/gmsp", "nexus.command.gamemode");
     }
 
     @Override
     protected void execute(CommandSender sender, String label, String[] args) {
         if (args.length == 0) {
             if (!(sender instanceof Player)) {
-                sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().getConfigString("messages.error.not-player")));
+                sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("not-player")));
                 return;
             }
 
             Player player = (Player) (sender);
 
-            if (!player.hasPermission("nexus.gamemode")) {
-                player.sendMessage(TextUtils.applyColor(Nexus.getInstance().getConfigString("messages.error.no-permission")));
+            if (!player.hasPermission("nexus.command.gamemode")) {
+                player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("no-permission")));
             }
 
             GameMode gamemode;
@@ -45,22 +42,22 @@ public class GamemodeCommand extends IBase implements CommandExecutor, TabComple
             } else if (label.equalsIgnoreCase("gmsp")) {
                 gamemode = GameMode.SPECTATOR;
             } else {
-                sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().getConfigString("messages.prefix") + Nexus.getInstance().getConfigString("messages.gamemode.error")));
+                sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("gamemode-error")));
                 return;
             }
 
             player.setGameMode(gamemode);
-            player.sendMessage(TextUtils.applyColor(Nexus.getInstance().getConfigString("messages.prefix") + Nexus.getInstance().getConfigString("messages.gamemode.success").replace("%g", gamemode.toString().toLowerCase())));
+            player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("gamemode-success").replace("%g", gamemode.toString().toLowerCase())));
         } else if (args.length == 1) {
             if (!(sender instanceof Player)) {
-                sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().getConfigString("messages.error.not-player")));
+                sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("not-player")));
                 return;
             }
 
             Player player = (Player) (sender);
 
-            if (!player.hasPermission("nexus.gamemode")) {
-                player.sendMessage(TextUtils.applyColor(Nexus.getInstance().getConfigString("messages.error.no-permission")));
+            if (!player.hasPermission("nexus.command.gamemode")) {
+                player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("no-permission")));
             }
 
             GameMode gamemode;
@@ -89,15 +86,15 @@ public class GamemodeCommand extends IBase implements CommandExecutor, TabComple
             } else if (args[0].equalsIgnoreCase("sp")) {
                 gamemode = GameMode.SPECTATOR;
             } else {
-                sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().getConfigString("messages.prefix") + Nexus.getInstance().getConfigString("messages.gamemode.error")));
+                sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("gamemode-error")));
                 return;
             }
 
             player.setGameMode(gamemode);
-            player.sendMessage(TextUtils.applyColor(Nexus.getInstance().getConfigString("messages.prefix") + Nexus.getInstance().getConfigString("messages.gamemode.success").replace("%g", gamemode.toString().toLowerCase())));
+            player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("gamemode-success").replace("%g", gamemode.toString().toLowerCase())));
         } else if (args.length == 2) {
-            if (!sender.hasPermission("nexus.gamemode.other")) {
-                sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().getConfigString("messages.error.no-permission")));
+            if (!sender.hasPermission("nexus.command.gamemode.other")) {
+                sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("no-permission")));
                 return;
             }
 
@@ -128,15 +125,20 @@ public class GamemodeCommand extends IBase implements CommandExecutor, TabComple
             } else if (args[0].equalsIgnoreCase("sp")) {
                 gameMode = GameMode.SPECTATOR;
             } else {
-                sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().getConfigString("messages.prefix") + Nexus.getInstance().getConfigString("messages.gamemode.error")));
+                sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("gamemode-error")));
+                return;
+            }
+
+            if (target == null) {
+                sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("invalid-player")));
                 return;
             }
 
             target.setGameMode(gameMode);
-            sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().getConfigString("messages.prefix") + Nexus.getInstance().getConfigString("messages.gamemode.other.success").replace("%t", target.getName()))
+            sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("gamemode-other-success").replace("%t", target.getName()))
                     .replace("%g", gameMode.toString().toLowerCase()));
         } else {
-            sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().getConfigString("messages.prefix") + Nexus.getInstance().getConfigString("messages.gamemode.usage")));
+            sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("gamemode-usage")));
         }
     }
 
@@ -144,7 +146,7 @@ public class GamemodeCommand extends IBase implements CommandExecutor, TabComple
     public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
         Player playert = (Player) (sender);
         ArrayList<String> list = new ArrayList<String>();
-        if (args.length == 1 && playert.hasPermission("nexus.gamemode")) {
+        if (args.length == 1 && playert.hasPermission("nexus.command.gamemode")) {
             list.add("0");
             list.add("1");
             list.add("2");
@@ -157,7 +159,7 @@ public class GamemodeCommand extends IBase implements CommandExecutor, TabComple
             list.add("c");
             list.add("a");
             list.add("sp");
-        } else if (args.length == 2 && playert.hasPermission("nexus.gamemode.other")) {
+        } else if (args.length == 2 && playert.hasPermission("nexus.command.gamemode.other")) {
             for (Player player : Bukkit.getOnlinePlayers()) {
                 list.add(player.getName());
             }
