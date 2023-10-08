@@ -62,10 +62,15 @@ public final class Nexus extends JavaPlugin {
 
     @SuppressWarnings("DataFlowIssue")
     private void registerCommands() {
+        getCommand("anvil").setExecutor(new AnvilCommand());
+        getCommand("enderchest").setExecutor(new EnderChestCommand());
         getCommand("gamemode").setExecutor(new GamemodeCommand());
         getCommand("god").setExecutor(new GodCommand());
         getCommand("heal").setExecutor(new HealCommand());
+        getCommand("invsee").setExecutor(new InvSeeCommand());
         getCommand("nexus").setExecutor(new NexusCommand());
+        getCommand("ping").setExecutor(new PingCommand());
+        getCommand("workbench").setExecutor(new WorkbenchCommand());
     }
 
     @SuppressWarnings("deprecation")

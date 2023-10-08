@@ -6,6 +6,12 @@ authors: [ NONPLAYT, Xenolit ]
 description: Nexus gives you ability to personalize your Minecraft server with useful features
 website: https://nexus.bxteam.gq
 commands:
+  anvil:
+    permission: nexus.command.anvil
+  enderchest:
+    aliases:
+      - ec
+    permission: nexus.command.enderchest
   gamemode:
     aliases:
       - gm
@@ -18,17 +24,38 @@ commands:
     permission: nexus.command.god
   heal:
     permission: nexus.command.heal
+  invsee:
+    aliases:
+      - inv
+      - inventory
+    permission: nexus.command.invsee
   nexus:
     aliases:
       - ns
       - nx
     permission: nexus.command.nexus
+  ping:
+    permission: nexus.command.ping
+  workbench:
+    aliases:
+      - wb
+    permission: nexus.command.workbench
 permissions:
+  nexus.admin:
+    default: op
+  nexus.command.anvil:
+    default: op
+  nexus.command.enderchest:
+    default: op
   nexus.command.gamemode:
+    default: op
+  nexus.command.god:
     default: op
   nexus.command.heal:
     default: op
-  nexus.admin:
+  nexus.command.invsee:
     default: op
-  nexus.user:
-    default: true
+  nexus.command.nexus:
+    default: op
+  nexus.command.workbench:
+    default: op

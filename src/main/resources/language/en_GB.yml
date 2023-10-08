@@ -13,6 +13,13 @@ no-permission: "&cYou don't have permission to execute this command!"
 not-player: "&cThis command can only be run by a player!"
 invalid-player: "&cThis player is not valid"
 
+# /anvil command
+anvil-usage: "&aUsage: &7/anvil [player]"
+anvil-success: "&aYou have opened an anvil for player &6%t"
+
+# /enderchest command
+enderchest-usage: "&aUsage: &7/enderchest [player]"
+
 # /gamemode command
 gamemode-usage: "&aUsage: &7/gamemode <mode> [player]"
 gamemode-success: "&aSet game mode to &7%g"
@@ -34,6 +41,18 @@ heal-other-success: "&6%p &ahas healed you"
 heal-target-success: "&aYou have healed &6%t"
 heal-other-error: "&cPlayer &6%t &cis already healed!"
 
+# /invsee command
+invsee-usage: "&aUsage: &7/invsee <player>"
+
 # /nexus command
 nexus-version: "&aCurrent installed version is &6%v"
 nexus-reload: "&aSuccessfully reloaded plugin configuration!"
+
+# /ping command
+ping-usage: "&aUsage: &7/ping [player]"
+ping-success: "&aYour ping is &6%p"
+ping-other-success: "&a%t's ping is &6%p"
+
+# /workbench command
+workbench-usage: "&aUsage: &7/workbench [player]"
+workbench-success: "&aYou have opened a workbench for player &6%t"
