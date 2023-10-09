@@ -44,6 +44,10 @@ heal-other-error: "&cPlayer &6%t &cis already healed!"
 # /invsee command
 invsee-usage: "&aUsage: &7/invsee <player>"
 
+# /loom command
+loom-usage: "&aUsage: &7/loom [player]"
+loom-success: "&aYou have opened a loom for player &6%t"
+
 # /nexus command
 nexus-version: "&aCurrent installed version is &6%v"
 nexus-reload: "&aSuccessfully reloaded plugin configuration!"

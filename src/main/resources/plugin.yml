@@ -29,6 +29,8 @@ commands:
       - inv
       - inventory
     permission: nexus.command.invsee
+  loom:
+    permission: nexus.command.loom
   nexus:
     aliases:
       - ns
@@ -54,6 +56,8 @@ permissions:
   nexus.command.heal:
     default: op
   nexus.command.invsee:
+    default: op
+  nexus.command.loom:
     default: op
   nexus.command.nexus:
     default: op
