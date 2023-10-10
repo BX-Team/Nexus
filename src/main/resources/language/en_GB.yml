@@ -41,6 +41,10 @@ god-other-disabled: "&cYou have disabled god mode for &6%t"
 grindstone-usage: "&aUsage: &7/grindstone [player]"
 grindstone-success: "&aYou have opened a grindstone for player &6%t"
 
+# /hat command
+hat-success: "&aEnjoy your new hat!" # not working (null output)
+hat-error: "&aTake an item in your main hand!"
+
 # /heal command
 heal-usage: "&aUsage: &7/heal [player]"
 heal-success: "&aYou have been healed"
@@ -50,7 +54,7 @@ heal-target-success: "&aYou have healed &6%t"
 heal-other-error: "&cPlayer &6%t &cis already healed!"
 
 # /invsee command
-invsee-usage: "&aUsage: &7/invsee <player>"
+invsee-usage: "&aUsage: &7/invsee [player]"
 
 # /loom command
 loom-usage: "&aUsage: &7/loom [player]"

@@ -16,7 +16,7 @@ import java.util.List;
 
 public class WorkbenchCommand extends CommandBase implements CommandExecutor, TabCompleter {
     public WorkbenchCommand() {
-        super("workbench", "Opens a workbench", "/workbench [player]", "/wb", "nexus.command.workbench");
+        super("workbench", "Opens a workbench", "/workbench [player]", "/wb" + "\n" +  "/craft",  "nexus.command.workbench");
     }
 
     @Override

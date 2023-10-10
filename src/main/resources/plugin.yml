@@ -2,7 +2,7 @@ name: Nexus
 version: '${version}'
 main: gq.bxteam.nexus.Nexus
 api-version: '1.16'
-authors: [ NONPLAYT, Xenolit ]
+authors: [ NONPLAYT, XENOLIT ]
 description: Nexus gives you ability to personalize your Minecraft server with useful features
 website: https://nexus.bxteam.gq
 commands:
@@ -26,6 +26,8 @@ commands:
     permission: nexus.command.god
   grindstone:
     permission: nexus.command.grindstone
+  hat:
+    permission: nexus.command.hat
   heal:
     permission: nexus.command.heal
   invsee:
@@ -45,6 +47,7 @@ commands:
   workbench:
     aliases:
       - wb
+      - craft
     permission: nexus.command.workbench
 permissions:
   nexus.admin:

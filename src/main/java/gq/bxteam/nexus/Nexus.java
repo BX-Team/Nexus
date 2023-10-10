@@ -68,6 +68,7 @@ public final class Nexus extends JavaPlugin {
         getCommand("gamemode").setExecutor(new GamemodeCommand());
         getCommand("god").setExecutor(new GodCommand());
         getCommand("grindstone").setExecutor(new GrindstoneCommand());
+        getCommand("hat").setExecutor(new HatCommand());
         getCommand("heal").setExecutor(new HealCommand());
         getCommand("invsee").setExecutor(new InvSeeCommand());
         getCommand("loom").setExecutor(new LoomCommand());

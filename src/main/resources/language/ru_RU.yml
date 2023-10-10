@@ -1,0 +1,74 @@
+#  ------------------------------
+# |    Nexus Messages Config    |
+# |     ru_RU, by XENOLIT      |
+#  ------------------------------
+# Если вам нужен другой язык, вы можете всегода поменять его в config.yml
+# Вы можете поменять все соощбения в этом файле, но не можете поменять аргументы
+# Nexus поддерживает цвета HEX, и вы можете комбинировать их со стандартными кодами Minecraft
+
+prefix: "&7[&6Nexus&7] "
+
+# Error messages
+no-permission: "&cУ вас нет прав на использование этой команды!"
+not-player: "&cЭта команда может быть использована только игроком!"
+invalid-player: "&cТакого игрока не существует"
+
+# /anvil command
+anvil-usage: "&aИспользование: &7/anvil [игрок]"
+anvil-success: "&aВы открыли наковальню для игрока &6%t"
+
+# /cartography command
+cartography-usage: "&aИспользование: &7/cartography [игрок]"
+cartography-success: "&aВы открыли картографической стол для игрока &6%t"
+
+# /enderchest command
+enderchest-usage: "&aИспользование: &7/enderchest [игрок]"
+
+# /gamemode command
+gamemode-usage: "&Использование: &7/gamemode <режим> [игрок]"
+gamemode-success: "&aРежим изменен на &7%g"
+gamemode-error: "&cДолжен быть указан существующий игрок/режим."
+gamemode-other-success: "&aРежим &7%t &aизменен на &7%g"
+
+# /god command
+god-usage: "&aИспользование: &7/god [игрок]"
+god-enabled: "&aТеперь вы в режиме бога"
+god-disabled: "&cВы вышли из режима бога"
+god-other-enabled: "&aВы включили режим бога для &6%t"
+god-other-disabled: "&cВы выключили режим бога для &6%t"
+
+# /grindstone command
+grindstone-usage: "&aИспользование: &7/grindstone [игрок]"
+grindstone-success: "&aВы открыли точило для &6%t"
+
+# /hat command
+hat-success: "&aШапка была установлена!"
+hat-error: "&aВозьмите предмет для шапки в основную руку!"
+
+# /heal command
+heal-usage: "&aИспользование: &7/heal [игрок]"
+heal-success: "&aВы были исцелены"
+heal-error: "&cВы уже исцелены!"
+heal-other-success: "&6%p &aисцелил вас"
+heal-target-success: "&aВы исцелили &6%t"
+heal-other-error: "&6%t &cуже исцелен!"
+
+# /invsee command
+invsee-usage: "&aИспользование: &7/invsee [игрок]"
+
+# /loom command
+loom-usage: "&aИспользование: &7/loom [игрок]"
+loom-success: "&aВы открыли ткацкий станок для &6%t"
+
+# /nexus command
+nexus-version: "&aУстановленная версия плагина &6%v"
+nexus-reload: "&aКонфигурация плагина была успешно перезагружена!"
+
+# /ping command
+ping-usage: "&aИспользование: &7/ping [игрок]"
+ping-success: "&aТвой пинг &6%p"
+ping-other-success: "&aТекущий пинг %t: &6%p"
+
+# /workbench command
+workbench-usage: "&aИспользование: &7/workbench [игрок]"
+workbench-success: "&aВы открыли верстак для игрока &6%t"
