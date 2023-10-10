@@ -17,6 +17,10 @@ invalid-player: "&cThis player is not valid"
 anvil-usage: "&aUsage: &7/anvil [player]"
 anvil-success: "&aYou have opened an anvil for player &6%t"
 
+# /cartography command
+cartography-usage: "&aUsage: &7/cartography [player]"
+cartography-success: "&aYou have opened a cartography table for player &6%t"
+
 # /enderchest command
 enderchest-usage: "&aUsage: &7/enderchest [player]"
 
@@ -32,6 +36,10 @@ god-enabled: "&aYou are now in god mode"
 god-disabled: "&cYou are no longer in god mode"
 god-other-enabled: "&aYou have enabled god mode for &6%t"
 god-other-disabled: "&cYou have disabled god mode for &6%t"
+
+# /grindstone command
+grindstone-usage: "&aUsage: &7/grindstone [player]"
+grindstone-success: "&aYou have opened a grindstone for player &6%t"
 
 # /heal command
 heal-usage: "&aUsage: &7/heal [player]"

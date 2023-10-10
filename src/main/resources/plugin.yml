@@ -8,6 +8,8 @@ website: https://nexus.bxteam.gq
 commands:
   anvil:
     permission: nexus.command.anvil
+  cartography:
+    permission: nexus.command.cartography
   enderchest:
     aliases:
       - ec
@@ -22,6 +24,8 @@ commands:
     permission: nexus.command.gamemode
   god:
     permission: nexus.command.god
+  grindstone:
+    permission: nexus.command.grindstone
   heal:
     permission: nexus.command.heal
   invsee:
@@ -44,22 +48,4 @@ commands:
     permission: nexus.command.workbench
 permissions:
   nexus.admin:
-    default: op
-  nexus.command.anvil:
-    default: op
-  nexus.command.enderchest:
-    default: op
-  nexus.command.gamemode:
-    default: op
-  nexus.command.god:
-    default: op
-  nexus.command.heal:
-    default: op
-  nexus.command.invsee:
-    default: op
-  nexus.command.loom:
-    default: op
-  nexus.command.nexus:
-    default: op
-  nexus.command.workbench:
     default: op
