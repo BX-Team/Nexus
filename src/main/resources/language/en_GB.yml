@@ -70,8 +70,8 @@ nexus-reload: "&aSuccessfully reloaded plugin configuration!"
 
 # /ping command
 ping-usage: "&aUsage: &7/ping [player]"
-ping-success: "&aYour ping is &6%p"
-ping-other-success: "&a%t's ping is &6%p"
+ping-self: "&aYour ping is &6%p"
+ping-other: "&a%t's ping is &6%p"
 
 # /workbench command
 workbench-usage: "&aUsage: &7/workbench [player]"

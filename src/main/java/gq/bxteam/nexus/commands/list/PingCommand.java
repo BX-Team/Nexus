@@ -34,7 +34,7 @@ public class PingCommand extends CommandBase implements CommandExecutor, TabComp
                 return;
             }
 
-            player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("ping-success").replace("%p", String.valueOf(player.getPing()))));
+            player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("ping-self").replace("%p", String.valueOf(player.getPing()))));
         } else if (args.length == 1) {
             if (!sender.hasPermission("nexus.command.ping.other")) {
                 sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("no-permission")));
@@ -48,7 +48,7 @@ public class PingCommand extends CommandBase implements CommandExecutor, TabComp
                 return;
             }
 
-            sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("ping-other-success").replace("%p", String.valueOf(target.getPing())).replace("%t", target.getName())));
+            sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("ping-other").replace("%p", String.valueOf(target.getPing())).replace("%t", target.getName())));
         } else {
             sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("ping-usage")));
         }
