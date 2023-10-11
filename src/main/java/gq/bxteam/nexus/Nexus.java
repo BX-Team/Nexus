@@ -72,6 +72,7 @@ public final class Nexus extends JavaPlugin {
         getCommand("heal").setExecutor(new HealCommand());
         getCommand("invsee").setExecutor(new InvSeeCommand());
         getCommand("loom").setExecutor(new LoomCommand());
+        getCommand("msg").setExecutor(new MsgCommand());
         getCommand("nexus").setExecutor(new NexusCommand());
         getCommand("ping").setExecutor(new PingCommand());
         getCommand("workbench").setExecutor(new WorkbenchCommand());

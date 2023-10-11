@@ -43,7 +43,7 @@ grindstone-success: "&aYou have opened a grindstone for player &6%t"
 
 # /hat command
 hat-success: "&aEnjoy your new hat!" # not working (null output)
-hat-error: "&aTake an item in your main hand!"
+hat-error: "&cTake an item in your main hand!"
 
 # /heal command
 heal-usage: "&aUsage: &7/heal [player]"
@@ -59,6 +59,10 @@ invsee-usage: "&aUsage: &7/invsee [player]"
 # /loom command
 loom-usage: "&aUsage: &7/loom [player]"
 loom-success: "&aYou have opened a loom for player &6%t"
+
+# /msg command
+msg-usage: "&aUsage: &7/msg [player] [message]"
+msg-self: "&cYou can't message yourself!"
 
 # /nexus command
 nexus-version: "&aCurrent installed version is &6%v"

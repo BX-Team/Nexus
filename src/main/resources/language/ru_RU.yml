@@ -43,7 +43,7 @@ grindstone-success: "&aВы открыли точило для &6%t"
 
 # /hat command
 hat-success: "&aШапка была установлена!"
-hat-error: "&aВозьмите предмет для шапки в основную руку!"
+hat-error: "&cВозьмите предмет для шапки в основную руку!"
 
 # /heal command
 heal-usage: "&aИспользование: &7/heal [игрок]"
@@ -59,6 +59,10 @@ invsee-usage: "&aИспользование: &7/invsee [игрок]"
 # /loom command
 loom-usage: "&aИспользование: &7/loom [игрок]"
 loom-success: "&aВы открыли ткацкий станок для &6%t"
+
+# /msg command
+msg-usage: "&aИспользование: &7/msg [игрок] [сообщение]"
+msg-self: "&cВы не можете написать самому себе!"
 
 # /nexus command
 nexus-version: "&aУстановленная версия плагина &6%v"
