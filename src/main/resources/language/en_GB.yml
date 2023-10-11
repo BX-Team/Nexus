@@ -60,9 +60,9 @@ invsee-usage: "&aUsage: &7/invsee [player]"
 loom-usage: "&aUsage: &7/loom [player]"
 loom-success: "&aYou have opened a loom for player &6%t"
 
-# /msg command
-msg-usage: "&aUsage: &7/msg [player] [message]"
-msg-self: "&cYou can't message yourself!"
+# /message command
+message-usage: "&aUsage: &7/msg [player] [message]"
+message-self: "&cYou can't message yourself!"
 
 # /nexus command
 nexus-version: "&aCurrent installed version is &6%v"

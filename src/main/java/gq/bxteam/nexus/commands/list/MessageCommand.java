@@ -4,15 +4,13 @@ import gq.bxteam.nexus.Nexus;
 import gq.bxteam.nexus.commands.CommandBase;
 import gq.bxteam.nexus.utils.TextUtils;
 import org.bukkit.Bukkit;
-import org.bukkit.command.ConsoleCommandSender;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
+import org.bukkit.command.*;
 import org.bukkit.entity.Player;
 
 public class MessageCommand extends CommandBase implements CommandExecutor
 {
     public MessageCommand() {
-        super("msg", "", "/msg [player] [message]", "", "nexus.command.msg");
+        super("message", "", "/message [player] [message]", "/msg\n/m", "nexus.command.message");
     }
 
     @Override
@@ -21,7 +19,7 @@ public class MessageCommand extends CommandBase implements CommandExecutor
 
         if (args.length < 2)
         {
-            sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("msg-usage")));
+            sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("message-usage")));
             return;
         }
 
@@ -31,7 +29,7 @@ public class MessageCommand extends CommandBase implements CommandExecutor
             Player target = Bukkit.getPlayer(args[0]);
             StringBuilder message = new StringBuilder();
 
-            if (!player.hasPermission("nexus.command.msg")) {
+            if (!player.hasPermission("nexus.command.message")) {
                 player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("no-permission")));
                 return;
             }
@@ -44,7 +42,7 @@ public class MessageCommand extends CommandBase implements CommandExecutor
 
             if (target == player)
             {
-                player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("msg-self")));
+                player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("message-self")));
                 return;
             }
 

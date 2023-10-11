@@ -37,7 +37,10 @@ commands:
     permission: nexus.command.invsee
   loom:
     permission: nexus.command.loom
-  msg:
+  message:
+    aliases:
+      - msg
+      - m
     permission: nexus.command.msg
   nexus:
     aliases:
