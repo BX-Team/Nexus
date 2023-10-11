@@ -5,22 +5,13 @@ import gq.bxteam.nexus.commands.CommandBase;
 import gq.bxteam.nexus.utils.TextUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.ConsoleCommandSender;
-import org.bukkit.command.Command;
-import org.bukkit.Material;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.PlayerInventory;
-import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class MsgCommand extends CommandBase implements CommandExecutor
+public class MessageCommand extends CommandBase implements CommandExecutor
 {
-    public MsgCommand() {
+    public MessageCommand() {
         super("msg", "", "/msg [player] [message]", "", "nexus.command.msg");
     }
 
