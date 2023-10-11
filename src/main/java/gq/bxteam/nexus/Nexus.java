@@ -3,6 +3,7 @@ package gq.bxteam.nexus;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import gq.bxteam.nexus.commands.list.*;
+import gq.bxteam.nexus.listeners.*;
 import gq.bxteam.nexus.utils.Metrics;
 import gq.bxteam.nexus.utils.locale.LocaleConfig;
 import gq.bxteam.nexus.utils.locale.LocaleReader;
@@ -43,8 +44,9 @@ public final class Nexus extends JavaPlugin {
         this.langFile = getLangFile();
         localeReader = new LocaleReader(langFile);
 
-        // Register commands
+        // Register commands & listeners
         registerCommands();
+        registerListeners();
 
         Logger.log("Nexus successfully started!", Logger.LogLevel.INFO, false);
     }
@@ -76,6 +78,11 @@ public final class Nexus extends JavaPlugin {
         getCommand("nexus").setExecutor(new NexusCommand());
         getCommand("ping").setExecutor(new PingCommand());
         getCommand("workbench").setExecutor(new WorkbenchCommand());
+    }
+
+    private void registerListeners() {
+        Bukkit.getServer().getPluginManager().registerEvents(new DoorKnockingListener(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new GlassKnockingListener(), this);
     }
 
     @SuppressWarnings("deprecation")

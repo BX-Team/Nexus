@@ -8,6 +8,22 @@
 # Discord server: https://discord.gg/p7cxhw7E2M
 # Modrinth: https://modrinth.com/plugin/nexuss
 
+# Set the locale for all messages.
+# You can see all available locales in the `language` folder.
 language: en_GB
+
+player:
+  glass-knocking:
+    enable: true
+  door-knocking:
+    enable: true
+
+sound:
+  glass-knocking:
+    enable: true
+    type: "BLOCK_GLASS_BREAK:1:1"
+  door-knocking:
+    enable: true
+    type: "BLOCK_WOOD_PLACE:1:1"
 
 version: 0.1
