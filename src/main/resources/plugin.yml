@@ -51,6 +51,8 @@ commands:
     permission: nexus.command.nexus
   ping:
     permission: nexus.command.ping
+  speed:
+    permission: nexus.command.speed
   teleport:
     aliases:
       - tp

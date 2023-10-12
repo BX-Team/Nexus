@@ -51,7 +51,7 @@ grindstone-usage: "&aUsage: &7/grindstone [player]"
 grindstone-success: "&aYou have opened a grindstone for player &6%t"
 
 # /hat command
-hat-success: "&aEnjoy your new hat!" # not working (null output)
+hat-success: "&aEnjoy your new hat!"
 hat-error: "&cTake an item in your main hand!"
 
 # /heal command
@@ -81,6 +81,13 @@ nexus-reload: "&aSuccessfully reloaded plugin configuration!"
 ping-usage: "&aUsage: &7/ping [player]"
 ping-self: "&aYour ping is &6%p"
 ping-other: "&a%t's ping is &6%p"
+
+# /speed command
+speed-usage: "&aUsage: &7/speed <speed>"
+speed-fly-success: "&aYour fly speed has been set to &6%s"
+speed-walk-success: "&aYour walk speed has been set to &6%s"
+speed-exceed-error: "&cSpeed can't be more than 10"
+speed-not-number-error: "&cSpeed must be a number"
 
 # /teleport command
 teleport-usage: "Usage: &7/teleport <player_from> [player_to]"

@@ -82,6 +82,13 @@ ping-usage: "&aИспользование: &7/ping [игрок]"
 ping-success: "&aТвой пинг &6%p"
 ping-other-success: "&aТекущий пинг %t: &6%p"
 
+# /speed command
+speed-usage: "&aИспользование: &7/speed <число>"
+speed-fly-success: "&aВаша скорость полета была изменена на &6%s"
+speed-walk-success: "&aВаша скорость ходьбы была изменена на &6%s"
+speed-exceed-error: "&cСкорость не может быть больше чем 10"
+speed-not-number-error: "&cСкорость должна быть числом"
+
 # /time command
 time-success: "&aВремя изменено на &6%t"
 
