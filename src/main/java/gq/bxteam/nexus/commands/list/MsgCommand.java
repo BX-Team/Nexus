@@ -7,10 +7,11 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.*;
 import org.bukkit.entity.Player;
 
-public class MessageCommand extends CommandBase implements CommandExecutor
+public class MsgCommand extends CommandBase implements CommandExecutor
 {
-    public MessageCommand() {
-        super("message", "", "/message [player] [message]", "/msg\n/m", "nexus.command.message");
+    public MsgCommand()
+    {
+        super("message", "Send private message to player", "/message [player] [message]", "/msg\n/m", "nexus.command.message");
     }
 
     @Override

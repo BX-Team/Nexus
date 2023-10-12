@@ -73,6 +73,22 @@ ping-usage: "&aUsage: &7/ping [player]"
 ping-self: "&aYour ping is &6%p"
 ping-other: "&a%t's ping is &6%p"
 
+# /teleport command
+teleport-usage: "Usage: &7/teleport <player_from> [player_to]"
+teleport-self: "&cYou can't teleport to yourself!"
+teleport-complete-1: "&aYou was teleported to %t"
+teleport-complete-1.1: "&aYou was teleported to %t1 by %t2"
+teleport-complete-1.2: "&a%t1 was teleported to you by %t2"
+teleport-complete-1.3: "&aYou was teleported to %t1"
+teleport-complete-1.4: "&a%t1 was teleported to you"
+teleport-complete-2: "&a%t1 was teleported to %t2"
+teleport-complete-2.1: "&aYou was teleported to %t by Console"
+teleport-complete-2.2: "&a%t was teleported to you by Console"
+teleport-other: "&aYou was teleported to %target%"
+
+# /teleportpos command
+tppos-usage: "Usage &7/tppos xyz"
+
 # /workbench command
 workbench-usage: "&aUsage: &7/workbench [player]"
 workbench-success: "&aYou have opened a workbench for player &6%t"

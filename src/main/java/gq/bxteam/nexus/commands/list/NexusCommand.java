@@ -14,7 +14,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class NexusCommand extends CommandBase implements CommandExecutor, TabCompleter {
-    public NexusCommand() {
+    public NexusCommand()
+    {
         super("nexus", "Default plugin command that reload config and displays version", "/nexus reload/version", "", "nexus.command.nexus");
     }
 

@@ -49,6 +49,14 @@ commands:
     permission: nexus.command.nexus
   ping:
     permission: nexus.command.ping
+  teleport:
+    aliases:
+      - tp
+    permission: nexus.command.teleport
+  teleportpos:
+    aliases:
+      - tppos
+    permission: nexus.command.teleportpos
   workbench:
     aliases:
       - wb

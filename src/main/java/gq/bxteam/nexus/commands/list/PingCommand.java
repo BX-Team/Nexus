@@ -15,7 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PingCommand extends CommandBase implements CommandExecutor, TabCompleter {
-    public PingCommand() {
+    public PingCommand()
+    {
         super("ping", "Shows your current ping", "/ping [player]", "", "nexus.command.ping");
     }
 
