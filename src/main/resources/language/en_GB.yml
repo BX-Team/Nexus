@@ -24,6 +24,15 @@ cartography-success: "&aYou have opened a cartography table for player &6%t"
 # /enderchest command
 enderchest-usage: "&aUsage: &7/enderchest [player]"
 
+# /fly command
+fly-usage: "&aUsage: &7/fly [player]"
+fly-enabled: "&aYou are now flying"
+fly-disabled: "&cYou are no longer flying"
+fly-other-enabled: "&aYou have enabled fly for &6%t"
+fly-other-disabled: "&cYou have disabled fly for &6%t"
+fly-target-enabled: "&6%p &ahas enabled fly for you"
+fly-target-disabled: "&6%p &chas disabled fly for you"
+
 # /gamemode command
 gamemode-usage: "&aUsage: &7/gamemode <mode> [player]"
 gamemode-success: "&aSet game mode to &7%g"
