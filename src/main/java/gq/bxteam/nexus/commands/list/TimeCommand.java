@@ -20,6 +20,11 @@ public class TimeCommand extends CommandBase implements CommandExecutor {
 
         Player player = (Player) (sender);
 
+        if (!player.hasPermission("nexus.command.time")) {
+            player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("no-permission")));
+            return;
+        }
+
         if (label.equalsIgnoreCase("day")) {
             player.getLocation().getWorld().setTime(1000);
             player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("time-success").replace("%t", "day")));

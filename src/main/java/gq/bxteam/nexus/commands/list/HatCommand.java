@@ -25,7 +25,6 @@ public class HatCommand extends CommandBase implements CommandExecutor
 
     @Override
     protected void execute(CommandSender sender, String label, String[] args) {
-
         if (!(sender instanceof Player)) {
             sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("not-player")));
             return;
@@ -35,6 +34,7 @@ public class HatCommand extends CommandBase implements CommandExecutor
 
         if (!player.hasPermission("nexus.command.hat")) {
             player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("no-permission")));
+            return;
         }
 
         PlayerInventory playerInventory = player.getInventory();
@@ -53,6 +53,5 @@ public class HatCommand extends CommandBase implements CommandExecutor
         playerInventory.setHelmet(hand);
         playerInventory.setItemInMainHand(null);
         player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("hat-success")));
-
     }
 }

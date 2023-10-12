@@ -31,6 +31,7 @@ public class GodCommand extends CommandBase implements CommandExecutor, TabCompl
 
             if (!player.hasPermission("nexus.command.god")) {
                 player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("no-permission")));
+                return;
             }
 
             player.setInvulnerable(!player.isInvulnerable());
@@ -42,6 +43,7 @@ public class GodCommand extends CommandBase implements CommandExecutor, TabCompl
         } else if (args.length == 1) {
             if (!sender.hasPermission("nexus.command.god.other")) {
                 sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("no-permission")));
+                return;
             }
 
             Player target = Bukkit.getPlayer(args[0]);
