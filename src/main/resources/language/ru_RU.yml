@@ -1,6 +1,6 @@
 #  ------------------------------
 # |    Nexus Messages Config    |
-# |     ru_RU, by XENOLIT      |
+# |     ru_RU, by XENOLIT       |
 #  ------------------------------
 # Если вам нужен другой язык, вы можете всегода поменять его в config.yml
 # Вы можете поменять все соощбения в этом файле, но не можете поменять аргументы
@@ -72,6 +72,9 @@ nexus-reload: "&aКонфигурация плагина была успешно
 ping-usage: "&aИспользование: &7/ping [игрок]"
 ping-success: "&aТвой пинг &6%p"
 ping-other-success: "&aТекущий пинг %t: &6%p"
+
+# /time command
+time-success: "&aВремя изменено на &6%t"
 
 # /workbench command
 workbench-usage: "&aИспользование: &7/workbench [игрок]"

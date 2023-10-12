@@ -57,6 +57,12 @@ commands:
     aliases:
       - tppos
     permission: nexus.command.teleportpos
+  day:
+    aliases:
+      - night
+      - noon
+      - midnight
+    permission: nexus.command.time
   workbench:
     aliases:
       - wb

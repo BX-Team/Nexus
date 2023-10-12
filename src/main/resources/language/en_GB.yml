@@ -89,6 +89,9 @@ teleport-other: "&aYou was teleported to %target%"
 # /teleportpos command
 tppos-usage: "Usage &7/tppos xyz"
 
+# /time command
+time-success: "&aYou have set the time to &6%t"
+
 # /workbench command
 workbench-usage: "&aUsage: &7/workbench [player]"
 workbench-success: "&aYou have opened a workbench for player &6%t"
