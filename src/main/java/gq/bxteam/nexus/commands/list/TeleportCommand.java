@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 public class TeleportCommand extends CommandBase implements CommandExecutor {
     public TeleportCommand()
     {
-        super("teleport", "", "/teleport [from] [to]", "/tp", "nexus.command.teleport");
+        super("teleport", "", "/teleport <from> <to>", "/tp", "nexus.command.teleport");
     }
 
     @Override

@@ -30,6 +30,7 @@ public class GamemodeCommand extends CommandBase implements CommandExecutor, Tab
 
             if (!player.hasPermission("nexus.command.gamemode")) {
                 player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("no-permission")));
+                return;
             }
 
             GameMode gamemode;
@@ -58,6 +59,7 @@ public class GamemodeCommand extends CommandBase implements CommandExecutor, Tab
 
             if (!player.hasPermission("nexus.command.gamemode")) {
                 player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("no-permission")));
+                return;
             }
 
             GameMode gamemode;

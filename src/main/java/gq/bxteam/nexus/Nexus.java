@@ -67,6 +67,7 @@ public final class Nexus extends JavaPlugin {
         getCommand("anvil").setExecutor(new AnvilCommand());
         getCommand("cartography").setExecutor(new CartographyCommand());
         getCommand("enderchest").setExecutor(new EnderChestCommand());
+        getCommand("fly").setExecutor(new FlyCommand());
         getCommand("gamemode").setExecutor(new GamemodeCommand());
         getCommand("god").setExecutor(new GodCommand());
         getCommand("grindstone").setExecutor(new GrindstoneCommand());
@@ -77,8 +78,10 @@ public final class Nexus extends JavaPlugin {
         getCommand("message").setExecutor(new MsgCommand());
         getCommand("nexus").setExecutor(new NexusCommand());
         getCommand("ping").setExecutor(new PingCommand());
+        getCommand("speed").setExecutor(new SpeedCommand());
         getCommand("teleport").setExecutor(new TeleportCommand());
         getCommand("penis").setExecutor(new penisCommand());
+        getCommand("day").setExecutor(new TimeCommand());
         getCommand("workbench").setExecutor(new WorkbenchCommand());
     }
 

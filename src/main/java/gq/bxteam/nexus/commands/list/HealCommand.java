@@ -32,6 +32,7 @@ public class HealCommand extends CommandBase implements CommandExecutor, TabComp
 
             if (!player.hasPermission("nexus.command.heal")) {
                 player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("no-permission")));
+                return;
             }
 
             if (player.getHealth() != player.getMaxHealth() || player.getFoodLevel() != 20) {

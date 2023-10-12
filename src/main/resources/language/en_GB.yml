@@ -24,6 +24,15 @@ cartography-success: "&aYou have opened a cartography table for player &6%t"
 # /enderchest command
 enderchest-usage: "&aUsage: &7/enderchest [player]"
 
+# /fly command
+fly-usage: "&aUsage: &7/fly [player]"
+fly-enabled: "&aYou are now flying"
+fly-disabled: "&cYou are no longer flying"
+fly-other-enabled: "&aYou have enabled fly for &6%t"
+fly-other-disabled: "&cYou have disabled fly for &6%t"
+fly-target-enabled: "&6%p &ahas enabled fly for you"
+fly-target-disabled: "&6%p &chas disabled fly for you"
+
 # /gamemode command
 gamemode-usage: "&aUsage: &7/gamemode <mode> [player]"
 gamemode-success: "&aSet game mode to &7%g"
@@ -42,7 +51,7 @@ grindstone-usage: "&aUsage: &7/grindstone [player]"
 grindstone-success: "&aYou have opened a grindstone for player &6%t"
 
 # /hat command
-hat-success: "&aEnjoy your new hat!" # not working (null output)
+hat-success: "&aEnjoy your new hat!"
 hat-error: "&cTake an item in your main hand!"
 
 # /heal command
@@ -73,6 +82,13 @@ ping-usage: "&aUsage: &7/ping [player]"
 ping-self: "&aYour ping is &6%p"
 ping-other: "&a%t's ping is &6%p"
 
+# /speed command
+speed-usage: "&aUsage: &7/speed <speed>"
+speed-fly-success: "&aYour fly speed has been set to &6%s"
+speed-walk-success: "&aYour walk speed has been set to &6%s"
+speed-exceed-error: "&cSpeed can't be more than 10"
+speed-not-number-error: "&cSpeed must be a number"
+
 # /teleport command
 teleport-usage: "Usage: &7/teleport <player_from> [player_to]"
 teleport-self: "&cYou can't teleport to yourself!"
@@ -91,6 +107,9 @@ tppos-usage: "Usage &7/tppos xyz"
 tppos-complete-1: "&aYou was teleported to %t1"
 tppos-complete-2.1: "&aYou teleported %t1 to %t2"
 tppos-complete-2.2: "&a%t1 teleported you to %t2"
+
+# /time command
+time-success: "&aYou have set the time to &6%t"
 
 # /workbench command
 workbench-usage: "&aUsage: &7/workbench [player]"

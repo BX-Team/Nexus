@@ -14,6 +14,8 @@ commands:
     aliases:
       - ec
     permission: nexus.command.enderchest
+  fly:
+    permission: nexus.command.fly
   gamemode:
     aliases:
       - gm
@@ -49,10 +51,22 @@ commands:
     permission: nexus.command.nexus
   ping:
     permission: nexus.command.ping
+  speed:
+    permission: nexus.command.speed
   teleport:
     aliases:
       - tp
     permission: nexus.command.teleport
+  teleportpos:
+    aliases:
+      - tppos
+    permission: nexus.command.teleportpos
+  day:
+    aliases:
+      - night
+      - noon
+      - midnight
+    permission: nexus.command.time
   penis:
     permission: nexus.command.penis
   workbench:

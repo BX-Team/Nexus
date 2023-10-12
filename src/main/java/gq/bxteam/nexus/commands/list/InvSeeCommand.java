@@ -32,6 +32,7 @@ public class InvSeeCommand extends CommandBase implements CommandExecutor, TabCo
 
             if (!sender.hasPermission("nexus.command.invsee")) {
                 sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("no-permission")));
+                return;
             }
 
             if (target != null) {
