@@ -11,7 +11,7 @@ public class MsgCommand extends CommandBase implements CommandExecutor
 {
     public MsgCommand()
     {
-        super("message", "Send private message to player", "/message [player] [message]", "/msg\n/m", "nexus.command.message");
+        super("message", "Send private message to player", "/message <player> <message>", "/msg\n/m", "nexus.command.message");
     }
 
     @Override
