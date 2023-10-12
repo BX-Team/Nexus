@@ -88,6 +88,9 @@ teleport-other: "&aYou was teleported to %target%"
 
 # /teleportpos command
 tppos-usage: "Usage &7/tppos xyz"
+tppos-complete-1: "&aYou was teleported to %t1"
+tppos-complete-2.1: "&aYou teleported %t1 to %t2"
+tppos-complete-2.2: "&a%t1 teleported you to %t2"
 
 # /workbench command
 workbench-usage: "&aUsage: &7/workbench [player]"

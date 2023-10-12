@@ -53,10 +53,8 @@ commands:
     aliases:
       - tp
     permission: nexus.command.teleport
-  teleportpos:
-    aliases:
-      - tppos
-    permission: nexus.command.teleportpos
+  penis:
+    permission: nexus.command.penis
   workbench:
     aliases:
       - wb
@@ -64,4 +62,6 @@ commands:
     permission: nexus.command.workbench
 permissions:
   nexus.admin:
+    default: op
+  nexus.command.penis:
     default: op
