@@ -21,6 +21,6 @@ public class GlassKnockingListener implements Listener {
                 || block == null
                 || !(block.getType().toString().contains("GLASS"))) return;
 
-        SoundUtil.playSound(block.getLocation(), "door-knocking");
+        SoundUtil.playSound(block.getLocation(), "glass-knocking");
     }
 }
