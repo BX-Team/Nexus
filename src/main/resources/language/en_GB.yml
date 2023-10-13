@@ -102,6 +102,9 @@ speed-walk-success: "&aYour walk speed has been set to &6%s"
 speed-exceed-error: "&cSpeed can't be more than 10"
 speed-not-number-error: "&cSpeed must be a number"
 
+# /time command
+time-success: "&aYou have set the time to &6%t"
+
 # /teleport command
 teleport-usage: "&aUsage: &7/teleport [player_from] <player_to>"
 teleport-self: "&cYou can't teleport to yourself!"
@@ -122,8 +125,21 @@ tppos-complete-2.1: "&aYou teleported &6%t1 &ato &6%t2"
 tppos-complete-2.2: "&6%t1 &ateleported you to &6%t2"
 tppos-complete-2.3: "&6Console &ateleported you to &6%t2"
 
-# /time command
-time-success: "&aYou have set the time to &6%t"
+# /whois command
+whois-usage: "&aUsage: &7/whois <player>"
+whois-online:
+  - "&ePlayer: &6<player>"
+  - "&eUUID: &6<uuid>"
+  - "&eIP: &6<ip>"
+  - "&ePing: &6<ping>"
+  - "&eLevel: &6<level>"
+  - "&eHealth: &6<health>"
+  - "&eFood: &6<food>"
+  - "&eGamemode: &6<gamemode>"
+whois-offline:
+  - "&ePlayer: &6<player>"
+  - "&eUUID: &6<uuid>"
+  - "&eLast online: &6<last_online>"
 
 # /workbench command
 workbench-usage: "&aUsage: &7/workbench [player]"

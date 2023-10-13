@@ -126,6 +126,22 @@ tppos-complete-2.1: "&aВы телепортировали игрока &6%t1 &a
 tppos-complete-2.2: "&6%t1 &aтелепортировал(-а) вас на координаты &6%t2"
 tppos-complete-2.3: "&6Администратор Console &aтелепортировал(-а) вас на координаты &6%t2"
 
+# /whois command
+whois-usage: "&aUsage: &7/whois <player>"
+whois-online:
+  - "&eИгрок: &6<player>"
+  - "&eUUID: &6<uuid>"
+  - "&eIP: &6<ip>"
+  - "&eПинг: &6<ping>"
+  - "&eУровень: &6<level>"
+  - "&eЗдоровье: &6<health>"
+  - "&eСытность: &6<food>"
+  - "&eРежим игры: &6<gamemode>"
+whois-offline:
+  - "&eИгрок: &6<player>"
+  - "&eUUID: &6<uuid>"
+  - "&eПоследний раз в сети: &6<last_online>"
+
 # /workbench command
 workbench-usage: "&aИспользование: &7/workbench [игрок]"
 workbench-success: "&aВы открыли верстак для игрока &6%t"

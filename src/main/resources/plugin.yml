@@ -71,6 +71,11 @@ commands:
     aliases:
       - tppos
     permission: nexus.command.tpposition
+  whois:
+    aliases:
+      - who
+      - playerinfo
+    permission: nexus.command.whois
   workbench:
     aliases:
       - wb
