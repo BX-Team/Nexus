@@ -92,6 +92,27 @@ speed-not-number-error: "&cСкорость должна быть числом"
 # /time command
 time-success: "&aВремя изменено на &6%t"
 
+# /teleport command
+teleport-usage: "&aИспользование: &7/teleport [от_кого] <к_кому>"
+teleport-self: "&cВы не можете телепортироваться к самому себе!"
+teleport-complete-1: "&aВы были телепортированы к &6%t"
+teleport-complete-1.1: "&aВы были телепортированы к &6%t1 &aигроком &6%t2"
+teleport-complete-1.2: "&6%t1 &aбыл(-а) телепортирован к вам игроком &6%t2"
+teleport-complete-1.3: "&aВы были телепортированы к &6%t1"
+teleport-complete-1.4: "&6%t1 &aбыл(-а) телепортирован к вам"
+teleport-complete-2: "&6%t1 &aбыл(-а) телепортирован(-а) к &6%t2"
+teleport-complete-2.1: "&aВы были телепортированы к &6%t &aадминистратором &6Console"
+teleport-complete-2.2: "&6%t &aбыл(-а) телепортирован(-а) к вам администратором &6Console"
+teleport-complete-2.3: "&aВы телепортировали игрока &6%t1 &aк игроку &6%t2"
+
+
+# /teleportpos command
+tppos-usage: "&aИспользование: &7/tppos [игрок] <X> <Y> <Z>"
+tppos-complete-1: "&aВы были телепортированы на координаты &6%t1"
+tppos-complete-2.1: "&aВы телепортировали игрока &6%t1 &aна координаты &6%t2"
+tppos-complete-2.2: "&6%t1 &aтелепортировал(-а) вас на координаты &6%t2"
+tppos-complete-2.3: "&6Администратор Console &aтелепортировал(-а) вас на координаты &6%t2"
+
 # /workbench command
 workbench-usage: "&aИспользование: &7/workbench [игрок]"
 workbench-success: "&aВы открыли верстак для игрока &6%t"

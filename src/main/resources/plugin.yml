@@ -53,22 +53,20 @@ commands:
     permission: nexus.command.ping
   speed:
     permission: nexus.command.speed
-  teleport:
-    aliases:
-      - tp
-    permission: nexus.command.teleport
-  teleportpos:
-    aliases:
-      - tppos
-    permission: nexus.command.teleportpos
   day:
     aliases:
       - night
       - noon
       - midnight
     permission: nexus.command.time
-  penis:
-    permission: nexus.command.penis
+  tp:
+    aliases:
+      - teleport
+    permission: nexus.command.tp
+  tpposition:
+    aliases:
+      - tppos
+    permission: nexus.command.tpposition
   workbench:
     aliases:
       - wb
@@ -76,6 +74,4 @@ commands:
     permission: nexus.command.workbench
 permissions:
   nexus.admin:
-    default: op
-  nexus.command.penis:
     default: op
