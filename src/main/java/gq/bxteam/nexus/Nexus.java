@@ -84,6 +84,7 @@ public final class Nexus extends JavaPlugin {
         Bukkit.getServer().getPluginManager().registerEvents(new DoorKnockingListener(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new GlassKnockingListener(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new PlayerQuitListener(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new SignEditListener(), this);
     }
 

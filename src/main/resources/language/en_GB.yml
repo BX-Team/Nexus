@@ -20,7 +20,7 @@ join:
     message: "&a&l→&r &e<player> joined the server for the first time!"
   message: "&a&l→&r &e<player> joined the server"
 quit:
-    message: "&c&l←&r &e<player> left the server"
+  message: "&c&l←&r &e<player> left the server"
 
 # /anvil command
 anvil-usage: "&aUsage: &7/anvil [player]"

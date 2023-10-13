@@ -22,6 +22,8 @@ features:
     enable: true
   join-message:
     enable: true
+  quit-message:
+    enable: true
 
 # You can configure sounds that will be played when a player uses commands.
 # Format: "SOUND_NAME:VOLUME:PITCH"
@@ -36,6 +38,9 @@ sound:
     enable: true
     type: "ENTITY_LLAMA_SPIT:0.3:1"
   join:
+    enable: false
+    type: "BLOCK_NOTE_BLOCK_BELL:1:1"
+  quit:
     enable: false
     type: "BLOCK_NOTE_BLOCK_BELL:1:1"
 

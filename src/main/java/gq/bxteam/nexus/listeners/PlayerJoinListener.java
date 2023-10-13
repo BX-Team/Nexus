@@ -38,7 +38,7 @@ public class PlayerJoinListener implements Listener {
         if (Nexus.getInstance().getConfigBoolean("sound.join.enable")) {
             SoundUtil.playSound(player, player, "join");
         }
-        CommandBase.sendGlobalMessage(TextUtils.applyColor(message));
+        CommandBase.sendGlobalMessage(message);
     }
 
     @EventHandler
