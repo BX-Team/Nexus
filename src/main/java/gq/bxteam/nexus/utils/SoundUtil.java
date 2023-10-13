@@ -31,7 +31,7 @@ public class SoundUtil {
         }
     }
 
-    public static void playSound(@Nullable Location location, @NotNull String command) {
+    public static void playSound(@Nullable Player sender, @Nullable Location location, @NotNull String command) {
         if (location == null || location.getWorld() == null) return;
 
         String[] params = getSound(command);

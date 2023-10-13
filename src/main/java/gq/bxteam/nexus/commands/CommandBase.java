@@ -1,9 +1,12 @@
 package gq.bxteam.nexus.commands;
 
+import gq.bxteam.nexus.utils.TextUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import gq.bxteam.nexus.Nexus;
+import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,7 +45,7 @@ public abstract class CommandBase implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!cmd.getName().equalsIgnoreCase(command)) return false;
         if (!Objects.equals(permission, "") && !sender.hasPermission(permission)) {
-            sender.sendMessage(Nexus.getInstance().localeReader.getString("no-permission"));
+            sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getString("no-permission")));
             return true;
         }
         execute(sender, label, args);
@@ -70,5 +73,11 @@ public abstract class CommandBase implements CommandExecutor {
         String aliasses = localCommandInfo.get(2);
         aliasses = aliasses.replace("\\n", "\n");
         return aliasses;
+    }
+
+    public static void sendGlobalMessage(String message) {
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            player.sendMessage(message);
+        }
     }
 }

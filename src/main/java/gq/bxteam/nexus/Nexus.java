@@ -1,7 +1,5 @@
 package gq.bxteam.nexus;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import gq.bxteam.nexus.commands.list.*;
 import gq.bxteam.nexus.listeners.*;
 import gq.bxteam.nexus.utils.Metrics;
@@ -12,11 +10,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.util.Optional;
 
 import static gq.bxteam.nexus.utils.locale.LocaleConfig.getLangFile;
 
@@ -79,6 +72,7 @@ public final class Nexus extends JavaPlugin {
         getCommand("nexus").setExecutor(new NexusCommand());
         getCommand("ping").setExecutor(new PingCommand());
         getCommand("speed").setExecutor(new SpeedCommand());
+        getCommand("spit").setExecutor(new SpitCommand());
         getCommand("tp").setExecutor(new TpCommand());
         getCommand("tpposition").setExecutor(new TpPosCommand());
         getCommand("day").setExecutor(new TimeCommand());
@@ -88,36 +82,8 @@ public final class Nexus extends JavaPlugin {
     private void registerListeners() {
         Bukkit.getServer().getPluginManager().registerEvents(new DoorKnockingListener(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new GlassKnockingListener(), this);
-    }
-
-    @SuppressWarnings("deprecation")
-    public static Optional<String> checkForUpdates() {
-        final String mcVersion = Nexus.getInstance().getServer().getMinecraftVersion();
-        final String pluginName = Nexus.getInstance().getDescription().getName();
-        final String pluginVersion = Nexus.getInstance().getDescription().getVersion();
-        try {
-            final HttpClient client = HttpClient.newHttpClient();
-            final HttpRequest req = HttpRequest.newBuilder()
-                    .uri(URI.create("https://api.modrinth.com/v2/project/4ut4u8Ay/version?featured=true&game_versions=[%22" + mcVersion + "%22]"))
-                    .header("User-Agent",
-                            pluginName + "/" + pluginVersion
-                    )
-                    .GET()
-                    .build();
-            final HttpResponse<String> res = client.send(req, HttpResponse.BodyHandlers.ofString());
-            if (res.statusCode() < 400 && res.statusCode() >= 200 && res.body() != null) {
-                final JsonObject json = JsonParser.parseString(res.body()).getAsJsonArray().get(0).getAsJsonObject();
-                if (json.has("version_number")) {
-                    final String latestVersion = json.get("version_number").getAsString();
-                    if (!latestVersion.equals(pluginVersion))
-                        return Optional.of(latestVersion);
-                }
-            }
-        }
-        catch (final Exception e) {
-            e.printStackTrace();
-        }
-        return Optional.empty();
+        Bukkit.getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new SignEditListener(), this);
     }
 
     public String getConfigString(String path) {

@@ -53,6 +53,8 @@ commands:
     permission: nexus.command.ping
   speed:
     permission: nexus.command.speed
+  spit:
+    permission: nexus.command.spit
   day:
     aliases:
       - night
@@ -74,4 +76,6 @@ commands:
     permission: nexus.command.workbench
 permissions:
   nexus.admin:
+    default: op
+  nexus.bypass.fullserver:
     default: op

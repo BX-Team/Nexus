@@ -12,6 +12,15 @@ prefix: "&7[&6Nexus&7] "
 no-permission: "&cYou don't have permission to execute this command!"
 not-player: "&cThis command can only be run by a player!"
 invalid-player: "&cThis player is not valid"
+server-full: "&cServer is full!"
+
+# Join & quit message
+join:
+  first-time:
+    message: "&a&l→&r &e<player> joined the server for the first time!"
+  message: "&a&l→&r &e<player> joined the server"
+quit:
+    message: "&c&l←&r &e<player> left the server"
 
 # /anvil command
 anvil-usage: "&aUsage: &7/anvil [player]"

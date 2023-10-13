@@ -12,12 +12,19 @@
 # You can see all available locales in the `language` folder.
 language: en_GB
 
-player:
+# You can enable or disable all Nexus features.
+features:
   glass-knocking:
     enable: true
   door-knocking:
     enable: true
+  sign-formatting:
+    enable: true
+  join-message:
+    enable: true
 
+# You can configure sounds that will be played when a player uses commands.
+# Format: "SOUND_NAME:VOLUME:PITCH"
 sound:
   glass-knocking:
     enable: true
@@ -25,5 +32,12 @@ sound:
   door-knocking:
     enable: true
     type: "BLOCK_WOOD_PLACE:1:1"
+  spit:
+    enable: true
+    type: "ENTITY_LLAMA_SPIT:0.3:1"
+  join:
+    enable: false
+    type: "BLOCK_NOTE_BLOCK_BELL:1:1"
 
+# DO NOT CHANGE THIS!
 version: 0.1
