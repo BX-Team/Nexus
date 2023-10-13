@@ -91,6 +91,10 @@ ping-usage: "&aИспользование: &7/ping [игрок]"
 ping-success: "&aТвой пинг &6%p"
 ping-other-success: "&aТекущий пинг %t: &6%p"
 
+# /repair command
+repair-success: "&aПредмет был отремонтирован"
+repair-error: "&cЭтот предмет не может быть отремонтирован"
+
 # /speed command
 speed-usage: "&aИспользование: &7/speed <число>"
 speed-fly-success: "&aВаша скорость полета была изменена на &6%s"

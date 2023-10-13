@@ -91,6 +91,10 @@ ping-usage: "&aUsage: &7/ping [player]"
 ping-self: "&aYour ping is &6%p"
 ping-other: "&a%t's ping is &6%p"
 
+# /repair command
+repair-success: "&aYour item has been repaired"
+repair-error: "&cThis item can't be repaired"
+
 # /speed command
 speed-usage: "&aUsage: &7/speed <speed>"
 speed-fly-success: "&aYour fly speed has been set to &6%s"
