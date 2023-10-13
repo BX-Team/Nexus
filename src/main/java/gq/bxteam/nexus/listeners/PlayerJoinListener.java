@@ -3,8 +3,6 @@ package gq.bxteam.nexus.listeners;
 import gq.bxteam.nexus.Nexus;
 import gq.bxteam.nexus.commands.CommandBase;
 import gq.bxteam.nexus.utils.SoundUtil;
-import gq.bxteam.nexus.utils.TextUtils;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -38,7 +36,7 @@ public class PlayerJoinListener implements Listener {
         if (Nexus.getInstance().getConfigBoolean("sound.join.enable")) {
             SoundUtil.playSound(player, player, "join");
         }
-        CommandBase.sendGlobalMessage(TextUtils.applyColor(message));
+        CommandBase.sendGlobalMessage(message);
     }
 
     @EventHandler

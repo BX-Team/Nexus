@@ -71,6 +71,7 @@ public final class Nexus extends JavaPlugin {
         getCommand("message").setExecutor(new MsgCommand());
         getCommand("nexus").setExecutor(new NexusCommand());
         getCommand("ping").setExecutor(new PingCommand());
+        getCommand("repair").setExecutor(new RepairCommand());
         getCommand("speed").setExecutor(new SpeedCommand());
         getCommand("spit").setExecutor(new SpitCommand());
         getCommand("tp").setExecutor(new TpCommand());
@@ -83,6 +84,7 @@ public final class Nexus extends JavaPlugin {
         Bukkit.getServer().getPluginManager().registerEvents(new DoorKnockingListener(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new GlassKnockingListener(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new PlayerQuitListener(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new SignEditListener(), this);
     }
 
