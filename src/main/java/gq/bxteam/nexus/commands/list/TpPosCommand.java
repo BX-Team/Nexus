@@ -17,13 +17,13 @@ import java.util.List;
 
 public class TpPosCommand extends CommandBase implements CommandExecutor, TabCompleter {
     public TpPosCommand() {
-        super("tpposition", "", "/tpposition xyz", "/tppos", "nexus.command.tpposition");
+        super("tpposition", "", "/tpposition [player] <X> <Y> <Z>", "/tppos", "nexus.command.tpposition");
     }
 
     @Override
     protected void execute(CommandSender sender, String label, String[] args) {
-        if (sender instanceof Player player) {
-            sender.sendMessage(TextUtils.applyColor("test1"));
+        if (sender instanceof Player player)
+        {
 
             if (!player.hasPermission("nexus.command.tpposition")) {
                 player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader
@@ -49,10 +49,10 @@ public class TpPosCommand extends CommandBase implements CommandExecutor, TabCom
 
                             Location teleportLocation = new Location(player.getWorld(), x, y, z);
 
-                            x = Math.floor(x);
-                            y = Math.floor(y);
-                            z = Math.floor(z);
-                            String cords = x + " " + y + " " + z;
+                            int intX = (int) Math.round(x);
+                            int intY = (int) Math.round(y);
+                            int intZ = (int) Math.round(z);
+                            String cords = intX + " " + intY + " " + intZ;
 
                             targetPlayer.teleport(teleportLocation);
                             player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader
@@ -66,10 +66,10 @@ public class TpPosCommand extends CommandBase implements CommandExecutor, TabCom
 
                             Location teleportLocation = new Location(player.getWorld(), x, y, z);
 
-                            x = Math.floor(x);
-                            y = Math.floor(y);
-                            z = Math.floor(z);
-                            String cords = x + " " + y + " " + z;
+                            int intX = (int) Math.round(x);
+                            int intY = (int) Math.round(y);
+                            int intZ = (int) Math.round(z);
+                            String cords = intX + " " + intY + " " + intZ;
 
                             targetPlayer.teleport(teleportLocation);
                             player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader
@@ -85,10 +85,10 @@ public class TpPosCommand extends CommandBase implements CommandExecutor, TabCom
 
                         Location teleportLocation = new Location(player.getWorld(), x, y, z);
 
-                        x = Math.floor(x);
-                        y = Math.floor(y);
-                        z = Math.floor(z);
-                        String cords = x + " " + y + " " + z;
+                        int intX = (int) Math.round(x);
+                        int intY = (int) Math.round(y);
+                        int intZ = (int) Math.round(z);
+                        String cords = intX + " " + intY + " " + intZ;
 
                         player.teleport(teleportLocation);
                         player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader
@@ -120,10 +120,10 @@ public class TpPosCommand extends CommandBase implements CommandExecutor, TabCom
 
                     Location teleportLocation = new Location(target.getWorld(), x, y, z);
 
-                    x = Math.floor(x);
-                    y = Math.floor(y);
-                    z = Math.floor(z);
-                    String cords = x + " " + y + " " + z;
+                    int intX = (int) Math.round(x);
+                    int intY = (int) Math.round(y);
+                    int intZ = (int) Math.round(z);
+                    String cords = intX + " " + intY + " " + intZ;
 
                     target.teleport(teleportLocation);
                     sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader
@@ -163,9 +163,12 @@ public class TpPosCommand extends CommandBase implements CommandExecutor, TabCom
 
         if (args.length == 1) {
             // Предлагаем "~" для первого аргумента
+            completions.add("~");
+            completions.add("~ ~");
             completions.add("~ ~ ~");
         } else if (args.length == 2) {
             // Предлагаем "~" для второго аргумента
+            completions.add("~");
             completions.add("~ ~");
         } else if (args.length == 3) {
             // Предлагаем "~" для третьего аргумента
