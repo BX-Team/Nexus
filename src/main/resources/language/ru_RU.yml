@@ -44,9 +44,9 @@ fly-target-disabled: "&6%p &cвыключил вам режим полета"
 
 # /gamemode command
 gamemode-usage: "&Использование: &7/gamemode <режим> [игрок]"
-gamemode-success: "&aРежим изменен на &7%g"
+gamemode-success: "&aРежим изменен на &6%g"
 gamemode-error: "&cДолжен быть указан существующий игрок/режим."
-gamemode-other-success: "&aРежим &7%t &aизменен на &7%g"
+gamemode-other-success: "&aРежим &6%t &aизменен на &6%g"
 
 # /god command
 god-usage: "&aИспользование: &7/god [игрок]"
