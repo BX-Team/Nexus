@@ -1,16 +1,19 @@
 #------------------------------
 #|    Nexus Messages Config    |
-#|     en_GB, by NONPLAYT      |
+#|     pl_PL, by Crowdin       |
 #------------------------------
 #If you'd like to use a different language, you can change it in the config.yml
 #You can change all messages in this file, but don't change the keys
 #Nexus supports HEX colors, and you can combine it with default Minecraft colors codes
+
 prefix: "&7[&6Nexus&7] "
+
 #Error messages
 no-permission: "&cYou don't have permission to execute this command!"
 not-player: "&cThis command can only be run by a player!"
 invalid-player: "&cThis player is not valid"
 server-full: "&cServer is full!"
+
 #Join & quit message
 join:
   first-time:
@@ -18,14 +21,18 @@ join:
   message: "&a&l→&r &e<player> joined the server"
 quit:
   message: "&c&l←&r &e<player> left the server"
+
 #/anvil command
 anvil-usage: "&aUsage: &7/anvil [player]"
 anvil-success: "&aYou have opened an anvil for player &6%t"
+
 #/cartography command
 cartography-usage: "&aUsage: &7/cartography [player]"
 cartography-success: "&aYou have opened a cartography table for player &6%t"
+
 #/enderchest command
 enderchest-usage: "&aUsage: &7/enderchest [player]"
+
 #/fly command
 fly-usage: "&aUsage: &7/fly [player]"
 fly-enabled: "&aYou are now flying"
@@ -34,23 +41,28 @@ fly-other-enabled: "&aYou have enabled fly for &6%t"
 fly-other-disabled: "&cYou have disabled fly for &6%t"
 fly-target-enabled: "&6%p &ahas enabled fly for you"
 fly-target-disabled: "&6%p &chas disabled fly for you"
+
 #/gamemode command
 gamemode-usage: "&aUsage: &7/gamemode <mode> [player]"
 gamemode-success: "&aSet game mode to &6%g"
 gamemode-error: "&cYou need to specify a valid player/mode."
 gamemode-other-success: "&aSet &6%t &agame mode to &6%g"
+
 #/god command
 god-usage: "&aUsage: &7/god [player]"
 god-enabled: "&aYou are now in god mode"
 god-disabled: "&cYou are no longer in god mode"
 god-other-enabled: "&aYou have enabled god mode for &6%t"
 god-other-disabled: "&cYou have disabled god mode for &6%t"
+
 #/grindstone command
 grindstone-usage: "&aUsage: &7/grindstone [player]"
 grindstone-success: "&aYou have opened a grindstone for player &6%t"
+
 #/hat command
 hat-success: "&aEnjoy your new hat!"
 hat-error: "&cTake an item in your main hand!"
+
 #/heal command
 heal-usage: "&aUsage: &7/heal [player]"
 heal-success: "&aYou have been healed"
@@ -58,32 +70,41 @@ heal-error: "&cYou're already healed!"
 heal-other-success: "&6%p &ahas healed you"
 heal-target-success: "&aYou have healed &6%t"
 heal-other-error: "&cPlayer &6%t &cis already healed!"
+
 #/invsee command
 invsee-usage: "&aUsage: &7/invsee [player]"
+
 #/loom command
 loom-usage: "&aUsage: &7/loom [player]"
 loom-success: "&aYou have opened a loom for player &6%t"
+
 #/message command
 message-usage: "&aUsage: &7/msg [player] [message]"
 message-self: "&cYou can't message yourself!"
+
 #/nexus command
 nexus-version: "&aCurrent installed version is &6%v"
 nexus-reload: "&aSuccessfully reloaded plugin configuration!"
+
 #/ping command
 ping-usage: "&aUsage: &7/ping [player]"
 ping-self: "&aYour ping is &6%p"
 ping-other: "&a%t's ping is &6%p"
+
 #/repair command
 repair-success: "&aYour item has been repaired"
 repair-error: "&cThis item can't be repaired"
+
 #/speed command
 speed-usage: "&aUsage: &7/speed <speed>"
 speed-fly-success: "&aYour fly speed has been set to &6%s"
 speed-walk-success: "&aYour walk speed has been set to &6%s"
 speed-exceed-error: "&cSpeed can't be more than 10"
 speed-not-number-error: "&cSpeed must be a number"
+
 #/time command
 time-success: "&aYou have set the time to &6%t"
+
 #/teleport command
 teleport-usage: "&aUsage: &7/teleport [player_from] <player_to>"
 teleport-self: "&cYou can't teleport to yourself!"
@@ -96,12 +117,14 @@ teleport-complete-2: "&6%t1 &awas teleported to &6%t2"
 teleport-complete-2.1: "&aYou was teleported to &6%t &aby &6Console"
 teleport-complete-2.2: "&6%t &awas teleported to you by &6Console"
 teleport-complete-2.3: "&aYou teleported &6%t1 &ato &6%t2"
+
 #/teleportpos command
 tppos-usage: "&aUsage: &7/tppos [player] <X> <Y> <Z>"
 tppos-complete-1: "&aYou teleported to &6%t1"
 tppos-complete-2.1: "&aYou teleported &6%t1 &ato &6%t2"
 tppos-complete-2.2: "&6%t1 &ateleported you to &6%t2"
 tppos-complete-2.3: "&6Console &ateleported you to &6%t2"
+
 #/whois command
 whois-usage: "&aUsage: &7/whois <player>"
 whois-online:
@@ -117,6 +140,7 @@ whois-offline:
   - "&ePlayer: &6<player>"
   - "&eUUID: &6<uuid>"
   - "&eLast online: &6<last_online>"
+
 #/workbench command
 workbench-usage: "&aUsage: &7/workbench [player]"
 workbench-success: "&aYou have opened a workbench for player &6%t"
