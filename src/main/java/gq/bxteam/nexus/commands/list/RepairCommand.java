@@ -29,7 +29,7 @@ public class RepairCommand extends CommandBase implements CommandExecutor {
             return;
         }
 
-        if (item.getType() == Material.AIR) {
+        if (!(item.getType().getMaxDurability() > 0)) {
             player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("repair-error")));
             return;
         }
