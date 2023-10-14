@@ -28,7 +28,7 @@ jobs:
       - name: Build with Gradle
         uses: gradle/gradle-build-action@v2.9.0
         with:
-          arguments: build
+          arguments: shadowJar
       - name: Upload Nexus
         uses: actions/upload-artifact@v3.1.3
         with:
