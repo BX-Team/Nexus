@@ -1,39 +1,32 @@
-#  ------------------------------
-# |    Nexus Messages Config    |
-# |     ru_RU, by XENOLIT       |
-#  ------------------------------
-# Если вам нужен другой язык, вы можете всегода поменять его в config.yml
-# Вы можете поменять все соощбения в этом файле, но не можете поменять аргументы
-# Nexus поддерживает цвета HEX, и вы можете комбинировать их со стандартными кодами Minecraft
-
+#------------------------------
+#|    Nexus Messages Config    |
+#|     en_GB, by NONPLAYT      |
+#------------------------------
+#If you'd like to use a different language, you can change it in the config.yml
+#You can change all messages in this file, but don't change the keys
+#Nexus supports HEX colors, and you can combine it with default Minecraft colors codes
 prefix: "&7[&6Nexus&7] "
-
-# Error messages
+#Error messages
 no-permission: "&cУ вас нет прав на использование этой команды!"
 not-player: "&cЭта команда может быть использована только игроком!"
 invalid-player: "&cТакого игрока не существует"
 server-full: "&cСервер переполнен!"
-
-# Join & quit message
+#Join & quit message
 join:
   first-time:
     message: "&a&l→&r &e<player> впервые присоединился к серверу!"
   message: "&a&l→&r &e<player> присоединился к серверу"
 quit:
   message: "&c&l←&r &e<player> вышел с сервера"
-
-# /anvil command
+#/anvil command
 anvil-usage: "&aИспользование: &7/anvil [игрок]"
 anvil-success: "&aВы открыли наковальню для игрока &6%t"
-
-# /cartography command
+#/cartography command
 cartography-usage: "&aИспользование: &7/cartography [игрок]"
 cartography-success: "&aВы открыли картографической стол для игрока &6%t"
-
-# /enderchest command
+#/enderchest command
 enderchest-usage: "&aИспользование: &7/enderchest [игрок]"
-
-# /fly command
+#/fly command
 fly-usage: "&aИспользование: &7/fly [игрок]"
 fly-enabled: "&aВы включили режим полета"
 fly-disabled: "&cВы выключили режим полета"
@@ -41,71 +34,57 @@ fly-other-enabled: "&aВы включили режим полета для иг�
 fly-other-disabled: "&cВы выключили режим полета для игрока &6%t"
 fly-target-enabled: "&6%p &aвключил вам режим полета"
 fly-target-disabled: "&6%p &cвыключил вам режим полета"
-
-# /gamemode command
+#/gamemode command
 gamemode-usage: "&Использование: &7/gamemode <режим> [игрок]"
 gamemode-success: "&aРежим изменен на &6%g"
 gamemode-error: "&cДолжен быть указан существующий игрок/режим."
 gamemode-other-success: "&aРежим &6%t &aизменен на &6%g"
-
-# /god command
+#/god command
 god-usage: "&aИспользование: &7/god [игрок]"
 god-enabled: "&aТеперь вы в режиме бога"
 god-disabled: "&cВы вышли из режима бога"
 god-other-enabled: "&aВы включили режим бога для &6%t"
 god-other-disabled: "&cВы выключили режим бога для &6%t"
-
-# /grindstone command
+#/grindstone command
 grindstone-usage: "&aИспользование: &7/grindstone [игрок]"
 grindstone-success: "&aВы открыли точило для &6%t"
-
-# /hat command
+#/hat command
 hat-success: "&aШапка была установлена!"
 hat-error: "&cВозьмите предмет для шапки в основную руку!"
-
-# /heal command
+#/heal command
 heal-usage: "&aИспользование: &7/heal [игрок]"
 heal-success: "&aВы были исцелены"
 heal-error: "&cВы уже исцелены!"
 heal-other-success: "&6%p &aисцелил вас"
 heal-target-success: "&aВы исцелили &6%t"
 heal-other-error: "&6%t &cуже исцелен!"
-
-# /invsee command
+#/invsee command
 invsee-usage: "&aИспользование: &7/invsee [игрок]"
-
-# /loom command
+#/loom command
 loom-usage: "&aИспользование: &7/loom [игрок]"
 loom-success: "&aВы открыли ткацкий станок для &6%t"
-
-# /msg command
-msg-usage: "&aИспользование: &7/msg [игрок] [сообщение]"
-msg-self: "&cВы не можете написать самому себе!"
-
-# /nexus command
+#/message command
+message-usage: "&aUsage: &7/msg [player] [message]"
+message-self: "&cYou can't message yourself!"
+#/nexus command
 nexus-version: "&aУстановленная версия плагина &6%v"
 nexus-reload: "&aКонфигурация плагина была успешно перезагружена!"
-
-# /ping command
+#/ping command
 ping-usage: "&aИспользование: &7/ping [игрок]"
-ping-success: "&aТвой пинг &6%p"
-ping-other-success: "&aТекущий пинг %t: &6%p"
-
-# /repair command
+ping-self: "&aYour ping is &6%p"
+ping-other: "&a%t's ping is &6%p"
+#/repair command
 repair-success: "&aПредмет был отремонтирован"
 repair-error: "&cЭтот предмет не может быть отремонтирован"
-
-# /speed command
+#/speed command
 speed-usage: "&aИспользование: &7/speed <число>"
 speed-fly-success: "&aВаша скорость полета была изменена на &6%s"
 speed-walk-success: "&aВаша скорость ходьбы была изменена на &6%s"
 speed-exceed-error: "&cСкорость не может быть больше чем 10"
 speed-not-number-error: "&cСкорость должна быть числом"
-
-# /time command
+#/time command
 time-success: "&aВремя изменено на &6%t"
-
-# /teleport command
+#/teleport command
 teleport-usage: "&aИспользование: &7/teleport [от_кого] <к_кому>"
 teleport-self: "&cВы не можете телепортироваться к самому себе!"
 teleport-complete-1: "&aВы были телепортированы к &6%t"
@@ -117,16 +96,13 @@ teleport-complete-2: "&6%t1 &aбыл(-а) телепортирован(-а) к &
 teleport-complete-2.1: "&aВы были телепортированы к &6%t &aадминистратором &6Console"
 teleport-complete-2.2: "&6%t &aбыл(-а) телепортирован(-а) к вам администратором &6Console"
 teleport-complete-2.3: "&aВы телепортировали игрока &6%t1 &aк игроку &6%t2"
-
-
-# /teleportpos command
+#/teleportpos command
 tppos-usage: "&aИспользование: &7/tppos [игрок] <X> <Y> <Z>"
 tppos-complete-1: "&aВы были телепортированы на координаты &6%t1"
 tppos-complete-2.1: "&aВы телепортировали игрока &6%t1 &aна координаты &6%t2"
 tppos-complete-2.2: "&6%t1 &aтелепортировал(-а) вас на координаты &6%t2"
 tppos-complete-2.3: "&6Администратор Console &aтелепортировал(-а) вас на координаты &6%t2"
-
-# /whois command
+#/whois command
 whois-usage: "&aUsage: &7/whois <player>"
 whois-online:
   - "&eИгрок: &6<player>"
@@ -141,7 +117,6 @@ whois-offline:
   - "&eИгрок: &6<player>"
   - "&eUUID: &6<uuid>"
   - "&eПоследний раз в сети: &6<last_online>"
-
-# /workbench command
+#/workbench command
 workbench-usage: "&aИспользование: &7/workbench [игрок]"
 workbench-success: "&aВы открыли верстак для игрока &6%t"
