@@ -82,11 +82,11 @@ public final class Nexus extends JavaPlugin {
     }
 
     private void registerListeners() {
+        Bukkit.getServer().getPluginManager().registerEvents(new BookAndSignEditListener(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new DoorKnockingListener(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new GlassKnockingListener(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new PlayerQuitListener(), this);
-        Bukkit.getServer().getPluginManager().registerEvents(new SignEditListener(), this);
     }
 
     public String getConfigString(String path) {

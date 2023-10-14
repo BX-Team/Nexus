@@ -18,6 +18,8 @@ features:
     enable: true
   door-knocking:
     enable: true
+  book-formatting:
+    enable: true
   sign-formatting:
     enable: true
   join-message:

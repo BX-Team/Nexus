@@ -44,9 +44,9 @@ fly-target-disabled: "&6%p &chas disabled fly for you"
 
 # /gamemode command
 gamemode-usage: "&aUsage: &7/gamemode <mode> [player]"
-gamemode-success: "&aSet game mode to &7%g"
+gamemode-success: "&aSet game mode to &6%g"
 gamemode-error: "&cYou need to specify a valid player/mode."
-gamemode-other-success: "&aSet &7%t &agame mode to &7%g"
+gamemode-other-success: "&aSet &6%t &agame mode to &6%g"
 
 # /god command
 god-usage: "&aUsage: &7/god [player]"
