@@ -12,6 +12,7 @@ prefix: "&7[&6Nexus&7] "
 no-permission: "&cYou don't have permission to execute this command!"
 not-player: "&cThis command can only be run by a player!"
 invalid-player: "&cThis player is not valid"
+invalid-item: "&cThis item is not valid"
 server-full: "&cServer is full!"
 
 # Join & quit message
@@ -47,6 +48,11 @@ gamemode-usage: "&aUsage: &7/gamemode <mode> [player]"
 gamemode-success: "&aSet game mode to &6%g"
 gamemode-error: "&cYou need to specify a valid player/mode."
 gamemode-other-success: "&aSet &6%t &agame mode to &6%g"
+
+# /give command
+give-usage: "&aUsage: &7/give <item> [count] [player]"
+give-max: "&aYou can't give more than 64 items"
+
 
 # /god command
 god-usage: "&aUsage: &7/god [player]"

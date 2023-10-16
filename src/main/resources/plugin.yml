@@ -24,6 +24,10 @@ commands:
       - gma
       - gmsp
     permission: nexus.command.gamemode
+  give:
+    aliases:
+      - g
+    permission: nexus.command.gamemode
   god:
     permission: nexus.command.god
   grindstone:
@@ -52,7 +56,7 @@ commands:
   ping:
     permission: nexus.command.ping
   repair:
-        permission: nexus.command.repair
+    permission: nexus.command.repair
   speed:
     permission: nexus.command.speed
   spit:
@@ -75,6 +79,7 @@ commands:
     aliases:
       - who
       - playerinfo
+      - info
     permission: nexus.command.whois
   workbench:
     aliases:
