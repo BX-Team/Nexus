@@ -52,7 +52,7 @@ public class TpPosCommand extends CommandBase implements CommandExecutor, TabCom
                             int intX = (int) Math.round(x);
                             int intY = (int) Math.round(y);
                             int intZ = (int) Math.round(z);
-                            String cords = intX + " " + intY + " " + intZ;
+                            String cords = intX + ", " + intY + ", " + intZ;
 
                             targetPlayer.teleport(teleportLocation);
                             player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader
@@ -69,7 +69,7 @@ public class TpPosCommand extends CommandBase implements CommandExecutor, TabCom
                             int intX = (int) Math.round(x);
                             int intY = (int) Math.round(y);
                             int intZ = (int) Math.round(z);
-                            String cords = intX + " " + intY + " " + intZ;
+                            String cords = intX + ", " + intY + ", " + intZ;
 
                             targetPlayer.teleport(teleportLocation);
                             player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader
@@ -88,7 +88,7 @@ public class TpPosCommand extends CommandBase implements CommandExecutor, TabCom
                         int intX = (int) Math.round(x);
                         int intY = (int) Math.round(y);
                         int intZ = (int) Math.round(z);
-                        String cords = intX + " " + intY + " " + intZ;
+                        String cords = intX + ", " + intY + ", " + intZ;
 
                         player.teleport(teleportLocation);
                         player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader
@@ -123,7 +123,7 @@ public class TpPosCommand extends CommandBase implements CommandExecutor, TabCom
                     int intX = (int) Math.round(x);
                     int intY = (int) Math.round(y);
                     int intZ = (int) Math.round(z);
-                    String cords = intX + " " + intY + " " + intZ;
+                    String cords = intX + ", " + intY + ", " + intZ;
 
                     target.teleport(teleportLocation);
                     sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader

@@ -21,7 +21,7 @@ import java.util.List;
 
 public class WhoisCommand extends CommandBase implements CommandExecutor, TabCompleter {
     public WhoisCommand() {
-        super("whois", "Show information about player", "/whois <player>", "", "nexus.command.whois");
+        super("whois", "Show information about player", "/whois <player>", "/info\n/playerinfo\n/who", "nexus.command.whois");
     }
 
     @Override
