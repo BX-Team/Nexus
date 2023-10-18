@@ -2,6 +2,7 @@ package gq.bxteam.nexus.listeners;
 
 import gq.bxteam.nexus.Nexus;
 import gq.bxteam.nexus.commands.CommandBase;
+import gq.bxteam.nexus.managers.PlayerManager;
 import gq.bxteam.nexus.utils.SoundUtil;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -46,5 +47,8 @@ public class PlayerJoinListener implements Listener {
             event.setJoinMessage(null);
             sendJoinMessage(player);
         }
+
+        PlayerManager playerManager = new PlayerManager(Nexus.getInstance());
+        playerManager.savePlayerData(player, playerManager.getPlayerData(player));
     }
 }

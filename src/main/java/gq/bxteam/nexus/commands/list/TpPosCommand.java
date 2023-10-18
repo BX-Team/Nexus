@@ -54,6 +54,7 @@ public class TpPosCommand extends CommandBase implements CommandExecutor, TabCom
                             int intZ = (int) Math.round(z);
                             String cords = intX + ", " + intY + ", " + intZ;
 
+                            Nexus.getInstance().playerManager.setPlayerPreviousLocation(targetPlayer, targetPlayer.getLocation());
                             targetPlayer.teleport(teleportLocation);
                             player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader
                                     .getString("tppos-complete-2.1").replace("%t1", targetPlayer.getName()).replace("%t2", cords)));
@@ -71,6 +72,7 @@ public class TpPosCommand extends CommandBase implements CommandExecutor, TabCom
                             int intZ = (int) Math.round(z);
                             String cords = intX + ", " + intY + ", " + intZ;
 
+                            Nexus.getInstance().playerManager.setPlayerPreviousLocation(targetPlayer, targetPlayer.getLocation());
                             targetPlayer.teleport(teleportLocation);
                             player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader
                                     .getString("tppos-complete-1").replace("%t2", cords)));
@@ -90,6 +92,7 @@ public class TpPosCommand extends CommandBase implements CommandExecutor, TabCom
                         int intZ = (int) Math.round(z);
                         String cords = intX + ", " + intY + ", " + intZ;
 
+                        Nexus.getInstance().playerManager.setPlayerPreviousLocation(player, player.getLocation());
                         player.teleport(teleportLocation);
                         player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader
                                 .getString("tppos-complete-1").replace("%t1", cords)));
@@ -125,6 +128,7 @@ public class TpPosCommand extends CommandBase implements CommandExecutor, TabCom
                     int intZ = (int) Math.round(z);
                     String cords = intX + ", " + intY + ", " + intZ;
 
+                    Nexus.getInstance().playerManager.setPlayerPreviousLocation(target, target.getLocation());
                     target.teleport(teleportLocation);
                     sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader
                             .getString("tppos-complete-2.1").replace("%t1", target.getName()).replace("%t2", cords)));
@@ -162,19 +166,15 @@ public class TpPosCommand extends CommandBase implements CommandExecutor, TabCom
         ArrayList<String> completions = new ArrayList<>();
 
         if (args.length == 1) {
-            // Предлагаем "~" для первого аргумента
             completions.add("~");
             completions.add("~ ~");
             completions.add("~ ~ ~");
         } else if (args.length == 2) {
-            // Предлагаем "~" для второго аргумента
             completions.add("~");
             completions.add("~ ~");
         } else if (args.length == 3) {
-            // Предлагаем "~" для третьего аргумента
             completions.add("~");
         } else if (args.length == 4) {
-            // Предлагаем ники игроков на сервере
             for (Player player : Bukkit.getOnlinePlayers()) {
                 completions.add(player.getName());
             }
@@ -182,9 +182,4 @@ public class TpPosCommand extends CommandBase implements CommandExecutor, TabCom
 
         return completions;
     }
-
-
-
 }
-
-

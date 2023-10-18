@@ -59,6 +59,8 @@ public class MsgCommand extends CommandBase implements CommandExecutor
 
             String msg_template = TextUtils.applyColor("&7[§6" + sender.getName() + " → " + target.getName() + "§7]§f" + message);
             target.sendMessage(msg_template);
+            Nexus.getInstance().playerManager.setLastRecipient(player, String.valueOf(target));
+            Nexus.getInstance().playerManager.setLastRecipient(target, String.valueOf(player));
         }
 
         else
@@ -86,8 +88,6 @@ public class MsgCommand extends CommandBase implements CommandExecutor
             String msg_template = TextUtils.applyColor("&7[§6Console → " + target.getName() + "§7]§f " + message);
             console.sendMessage(msg_template);
             target.sendMessage(msg_template);
-
-
         }
     }
 }

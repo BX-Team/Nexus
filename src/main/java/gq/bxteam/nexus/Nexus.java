@@ -2,6 +2,7 @@ package gq.bxteam.nexus;
 
 import gq.bxteam.nexus.commands.list.*;
 import gq.bxteam.nexus.listeners.*;
+import gq.bxteam.nexus.managers.PlayerManager;
 import gq.bxteam.nexus.utils.Metrics;
 import gq.bxteam.nexus.utils.locale.LocaleConfig;
 import gq.bxteam.nexus.utils.locale.LocaleReader;
@@ -17,6 +18,7 @@ public final class Nexus extends JavaPlugin {
     public static Nexus instance;
     public File langFile;
     public LocaleReader localeReader;
+    public PlayerManager playerManager;
 
     public static Nexus getInstance() {
         return Nexus.instance;
@@ -25,6 +27,7 @@ public final class Nexus extends JavaPlugin {
     @Override
     public void onEnable() {
         Nexus.instance = this;
+        playerManager = new PlayerManager(this);
 
         // Metrics
         new Metrics(Nexus.getInstance(), 19684);

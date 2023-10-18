@@ -56,6 +56,7 @@ public class TpCommand extends CommandBase implements CommandExecutor {
                         .getString("teleport-complete-1.3").replace("%t1", target.getName())));
                 target.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader
                         .getString("teleport-complete-1.4").replace("%t1", player.getName())));
+                Nexus.getInstance().playerManager.setPlayerPreviousLocation(player, player.getLocation());
                 player.teleport(target.getLocation());
 
             } else if (args.length == 2) {
@@ -92,6 +93,7 @@ public class TpCommand extends CommandBase implements CommandExecutor {
                         .getString("teleport-complete-1.1").replace("%t1", target_from.getName()).replace("%t2", sender.getName())));
                 target_to.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader
                         .getString("teleport-complete-1.2").replace("%t1", target_from.getName()).replace("%t2", sender.getName())));
+                Nexus.getInstance().playerManager.setPlayerPreviousLocation(target_from, target_from.getLocation());
                 target_from.teleport(target_to.getLocation());
 
             }
@@ -124,6 +126,7 @@ public class TpCommand extends CommandBase implements CommandExecutor {
                     .getString("teleport-complete-2.1").replace("%t", target_to.getName())));
             target_to.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader
                     .getString("teleport-complete-2.2").replace("%t", target_from.getName())));
+            Nexus.getInstance().playerManager.setPlayerPreviousLocation(target_from, target_from.getLocation());
             target_from.teleport(target_to.getLocation());
         }
     }
