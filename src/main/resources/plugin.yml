@@ -45,8 +45,10 @@ commands:
     permission: nexus.command.loom
   message:
     aliases:
-      - msg
       - m
+      - msg
+      - r
+      - reply
     permission: nexus.command.msg
   nexus:
     aliases:

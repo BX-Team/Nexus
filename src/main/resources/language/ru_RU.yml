@@ -78,9 +78,11 @@ invsee-usage: "&aИспользование: &7/invsee [игрок]"
 loom-usage: "&aИспользование: &7/loom [игрок]"
 loom-success: "&aВы открыли ткацкий станок для &6%t"
 
-# /msg command
-msg-usage: "&aИспользование: &7/msg [игрок] [сообщение]"
+# /msg & /reply command
+msg-usage: "&aИспользование: &7/msg <игрок> <сообщение>"
 msg-self: "&cВы не можете написать самому себе!"
+reply-usage: "&aИспользование: &7/r <сообщение>"
+reply-empty: "&cВам некому отвечать!"
 
 # /nexus command
 nexus-version: "&aУстановленная версия плагина &6%v"
