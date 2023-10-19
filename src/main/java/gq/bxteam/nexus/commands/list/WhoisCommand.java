@@ -46,7 +46,10 @@ public class WhoisCommand extends CommandBase implements CommandExecutor, TabCom
                             .replace("<level>", String.valueOf(player.getLevel()))
                             .replace("<health>", String.valueOf(player.getHealth()))
                             .replace("<food>", String.valueOf(player.getFoodLevel()))
-                            .replace("<gamemode>", player.getGameMode().toString());
+                            .replace("<gamemode>", player.getGameMode().toString())
+                            .replace("<x>", String.valueOf(player.getLocation().getBlockX()))
+                            .replace("<y>", String.valueOf(player.getLocation().getBlockY()))
+                            .replace("<z>", String.valueOf(player.getLocation().getBlockZ()));
 
                     sender.sendMessage(TextUtils.applyColor(message));
                 }
@@ -75,7 +78,7 @@ public class WhoisCommand extends CommandBase implements CommandExecutor, TabCom
 
     @Override
     public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
-        ArrayList<String> list = new ArrayList<String>();
+        ArrayList<String> list = new ArrayList<>();
 
         if (args.length == 1) {
             for (OfflinePlayer player : Bukkit.getOfflinePlayers()) {

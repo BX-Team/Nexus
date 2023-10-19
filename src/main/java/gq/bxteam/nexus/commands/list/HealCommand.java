@@ -2,6 +2,7 @@ package gq.bxteam.nexus.commands.list;
 
 import gq.bxteam.nexus.Nexus;
 import gq.bxteam.nexus.commands.CommandBase;
+import gq.bxteam.nexus.utils.SoundUtil;
 import gq.bxteam.nexus.utils.TextUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
@@ -39,7 +40,7 @@ public class HealCommand extends CommandBase implements CommandExecutor, TabComp
                 player.setHealth(player.getMaxHealth());
                 player.setFoodLevel(20);
                 player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("heal-success")));
-                player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
+                SoundUtil.playSound(player, player, "heal");
                 return;
             }
             player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("heal-error")));
@@ -59,7 +60,7 @@ public class HealCommand extends CommandBase implements CommandExecutor, TabComp
                 target.setHealth(20.0);
                 target.setFoodLevel(20);
                 target.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("heal-other-success").replace("%p", sender instanceof Player ? sender.getName() : "Console")));
-                target.playSound(target.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
+                SoundUtil.playSound(target, target, "heal");
                 sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("heal-target-success").replace("%t", target.getName())));
                 return;
             }
@@ -71,7 +72,7 @@ public class HealCommand extends CommandBase implements CommandExecutor, TabComp
 
     @Override
     public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
-        ArrayList<String> list = new ArrayList<String>();
+        ArrayList<String> list = new ArrayList<>();
         Player playert = (Player) (sender);
 
         if (args.length == 1 && playert.hasPermission("nexus.command.heal.other")) {
@@ -80,7 +81,7 @@ public class HealCommand extends CommandBase implements CommandExecutor, TabComp
             }
         }
 
-        ArrayList<String> completerList = new ArrayList<String>();
+        ArrayList<String> completerList = new ArrayList<>();
         String currentarg = args[args.length - 1].toLowerCase();
         for (String s : list) {
             String s1 = s.toLowerCase();

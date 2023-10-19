@@ -143,6 +143,7 @@ whois-online:
   - "&eЗдоровье: &6<health>"
   - "&eСытность: &6<food>"
   - "&eРежим игры: &6<gamemode>"
+  - "&eКоординаты: X: &6<x> &eY: &6<y> &eZ: &6<z>"
 whois-offline:
   - "&eИгрок: &6<player>"
   - "&eUUID: &6<uuid>"

@@ -148,6 +148,7 @@ whois-online:
   - "&eHealth: &6<health>"
   - "&eFood: &6<food>"
   - "&eGamemode: &6<gamemode>"
+  - "&eLocation: X: &6<x> &eY: &6<y> &eZ: &6<z>"
 whois-offline:
   - "&ePlayer: &6<player>"
   - "&eUUID: &6<uuid>"
