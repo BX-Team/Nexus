@@ -27,6 +27,14 @@ quit:
 anvil-usage: "&aUsage: &7/anvil [player]"
 anvil-success: "&aYou have opened an anvil for player &6%t"
 
+# /back command
+back-usage: "&aUsage: &7/back [player]"
+back-success: "&aYou have been teleported to your last location"
+back-no-location: "&cYou don't have a last location"
+back-target-success: "&6%s &ateleported you to your last location"
+back-sender-success: "&aYou have teleported &6%t &ato their last location"
+back-other-no-location: "&cPlayer &6%t &cdoesn't have a last location"
+
 # /broadcast command
 broadcast-usage: "&aUsage: &7/broadcast <message>"
 broadcast-syntax: "&7[&6Broadcast&7] &a<message>"

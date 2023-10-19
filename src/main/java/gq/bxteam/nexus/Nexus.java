@@ -61,6 +61,7 @@ public final class Nexus extends JavaPlugin {
     @SuppressWarnings("DataFlowIssue")
     private void registerCommands() {
         getCommand("anvil").setExecutor(new AnvilCommand());
+        getCommand("back").setExecutor(new BackCommand());
         getCommand("broadcast").setExecutor(new BroadcastCommand());
         getCommand("cartography").setExecutor(new CartographyCommand());
         getCommand("enderchest").setExecutor(new EnderChestCommand());

@@ -26,6 +26,14 @@ quit:
 anvil-usage: "&aИспользование: &7/anvil [игрок]"
 anvil-success: "&aВы открыли наковальню для игрока &6%t"
 
+# /back command
+back-usage: "&aИспользование: &7/back [игрок"
+back-success: "&aВы были телепортированы к вашей последней локации"
+back-no-location: "&cУ вас нет последней локации"
+back-target-success: "&6%s &aтелеопртировал вас к вашей последней локации"
+back-sender-success: "&aВы телепортировали &6%t &aк его последней локации"
+back-other-no-location: "&cУ игрока &6%t &cнет последней локации"
+
 # /broadcast command
 broadcast-usage: "&aИспользование: &7/broadcast <сообщение>"
 broadcast-syntax: "&7[&6Оповещение&7] &a<message>"

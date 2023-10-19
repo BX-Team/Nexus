@@ -8,6 +8,8 @@ website: https://nexus.bxteam.gq
 commands:
   anvil:
     permission: nexus.command.anvil
+  back:
+    permission: nexus.command.back
   broadcast:
     aliases:
       - bc
