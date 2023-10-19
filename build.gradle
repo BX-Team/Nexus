@@ -24,6 +24,7 @@ dependencies {
 
     // Dependencies
     implementation("com.tchristofferson:ConfigUpdater:${project.config_updater}")
+    implementation("dev.triumphteam:triumph-gui:${project.triumph_gui}")
 }
 
 def targetJavaVersion = 17
@@ -47,9 +48,8 @@ shadowJar {
     archiveVersion.set(project.version)
     archiveClassifier.set(null)
     archiveAppendix.set(null)
-    dependencies {
-        include(dependency("com.tchristofferson:ConfigUpdater:${project.config_updater}"))
-    }
+    relocate('com.tchristofferson.configupdater', 'gq.bxteam.nexus.configupdater')
+    relocate("dev.triumphteam.gui", "gq.bxteam.nexus.gui")
 }
 
 processResources {
