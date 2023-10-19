@@ -26,6 +26,10 @@ quit:
 anvil-usage: "&aИспользование: &7/anvil [игрок]"
 anvil-success: "&aВы открыли наковальню для игрока &6%t"
 
+# /broadcast command
+broadcast-usage: "&aИспользование: &7/broadcast <сообщение>"
+broadcast-syntax: "&7[&6Оповещение&7] &a<message>"
+
 # /cartography command
 cartography-usage: "&aИспользование: &7/cartography [игрок]"
 cartography-success: "&aВы открыли картографической стол для игрока &6%t"

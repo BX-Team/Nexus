@@ -61,6 +61,7 @@ public final class Nexus extends JavaPlugin {
     @SuppressWarnings("DataFlowIssue")
     private void registerCommands() {
         getCommand("anvil").setExecutor(new AnvilCommand());
+        getCommand("broadcast").setExecutor(new BroadcastCommand());
         getCommand("cartography").setExecutor(new CartographyCommand());
         getCommand("enderchest").setExecutor(new EnderChestCommand());
         getCommand("fly").setExecutor(new FlyCommand());
@@ -91,6 +92,10 @@ public final class Nexus extends JavaPlugin {
         Bukkit.getServer().getPluginManager().registerEvents(new GlassKnockingListener(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new PlayerQuitListener(), this);
+    }
+
+    public void updateConfig() {
+        // use this method to update config.yml when a new version is released
     }
 
     public String getConfigString(String path) {

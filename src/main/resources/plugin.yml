@@ -8,6 +8,10 @@ website: https://nexus.bxteam.gq
 commands:
   anvil:
     permission: nexus.command.anvil
+  broadcast:
+    aliases:
+      - bc
+    permission: nexus.command.broadcast
   cartography:
     permission: nexus.command.cartography
   enderchest:

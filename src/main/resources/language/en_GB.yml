@@ -27,6 +27,10 @@ quit:
 anvil-usage: "&aUsage: &7/anvil [player]"
 anvil-success: "&aYou have opened an anvil for player &6%t"
 
+# /broadcast command
+broadcast-usage: "&aUsage: &7/broadcast <message>"
+broadcast-syntax: "&7[&6Broadcast&7] &a<message>"
+
 # /cartography command
 cartography-usage: "&aUsage: &7/cartography [player]"
 cartography-success: "&aYou have opened a cartography table for player &6%t"
