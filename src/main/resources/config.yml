@@ -42,6 +42,9 @@ sound:
   heal:
     enable: true
     type: "ENTITY_EXPERIENCE_ORB_PICKUP:1:1"
+  warp:
+    enable: true
+    type: "ENTITY_ENDERMAN_TELEPORT:1:1"
   join:
     enable: false
     type: "BLOCK_NOTE_BLOCK_BELL:1:1"

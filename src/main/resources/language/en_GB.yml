@@ -145,6 +145,18 @@ tppos-complete-2.1: "&aYou teleported &6%t1 &ato &6%t2"
 tppos-complete-2.2: "&6%t1 &ateleported you to &6%t2"
 tppos-complete-2.3: "&6Console &ateleported you to &6%t2"
 
+# Warp system
+warp-not-exists: "&cThis warp doesn't exist!"
+set-warp-usage: "&aUsage: &7/setwarp <warp>"
+set-warp-exists: "&cThis warp already exists!"
+set-warp-success: "&aYou have created a warp &6%w"
+del-warp-usage: "&aUsage: &7/delwarp <warp>"
+del-warp-success: "&aYou have deleted a warp &6%w"
+warp-usage: "&aUsage: &7/warp <warp> [player]"
+warp-success: "&aYou have been teleported to &6%w"
+warp-success-sender: "&aYou have teleported &6%t &ato &6%w"
+warp-success-target: "&6%s &ahas teleported you to &6%w"
+
 # /whois command
 whois-usage: "&aUsage: &7/whois <player>"
 whois-online:

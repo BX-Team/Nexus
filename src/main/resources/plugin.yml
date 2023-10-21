@@ -83,6 +83,12 @@ commands:
     aliases:
       - tppos
     permission: nexus.command.tpposition
+  warp:
+    aliases:
+      - setwarp
+      - delwarp
+      - w
+    permission: nexus.command.warp
   whois:
     aliases:
       - who
