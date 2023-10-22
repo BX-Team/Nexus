@@ -79,6 +79,7 @@ public class WarpCommands extends CommandBase implements CommandExecutor, TabCom
                     player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("warp-not-exists")));
                     return;
                 }
+                Nexus.getInstance().playerManager.setPlayerPreviousLocation(player, player.getLocation());
                 player.teleport(Nexus.getInstance().warpManager.getWarp(args[0].toLowerCase()));
                 player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("warp-success").replace("%w", args[0].toLowerCase())));
                 SoundUtil.playSound(player, player, "warp");
@@ -99,6 +100,7 @@ public class WarpCommands extends CommandBase implements CommandExecutor, TabCom
                     sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("warp-not-exists")));
                     return;
                 }
+                Nexus.getInstance().playerManager.setPlayerPreviousLocation(target, target.getLocation());
                 target.teleport(Nexus.getInstance().warpManager.getWarp(args[0].toLowerCase()));
                 sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("warp-success-sender").replace("%w", args[0].toLowerCase()).replace("%t", target.getName())));
                 target.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("warp-success-target").replace("%w", args[0].toLowerCase()).replace("%s", sender.getName())));
