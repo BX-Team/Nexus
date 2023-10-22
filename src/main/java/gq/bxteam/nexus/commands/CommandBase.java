@@ -76,9 +76,10 @@ public abstract class CommandBase implements CommandExecutor {
     }
 
     public static void sendGlobalMessage(String message) {
+        String coloredMessage = TextUtils.applyColor(message);
         for (Player player : Bukkit.getOnlinePlayers()) {
-            player.sendMessage(TextUtils.applyColor(message));
-            Bukkit.getConsoleSender().sendMessage(TextUtils.applyColor(message));
+            player.sendMessage(coloredMessage);
         }
+        Bukkit.getConsoleSender().sendMessage(coloredMessage);
     }
 }

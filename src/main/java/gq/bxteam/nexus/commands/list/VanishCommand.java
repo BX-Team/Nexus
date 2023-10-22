@@ -2,6 +2,8 @@ package gq.bxteam.nexus.commands.list;
 
 import gq.bxteam.nexus.Nexus;
 import gq.bxteam.nexus.commands.CommandBase;
+import gq.bxteam.nexus.listeners.PlayerJoinListener;
+import gq.bxteam.nexus.listeners.PlayerQuitListener;
 import gq.bxteam.nexus.utils.TextUtils;
 import gq.bxteam.nexus.utils.VanishUtils;
 import org.bukkit.Bukkit;
@@ -37,9 +39,17 @@ public class VanishCommand extends CommandBase implements CommandExecutor, TabCo
 
             if (VanishUtils.isPlayerVanished(player)) {
                 VanishUtils.unvanishPlayer(player);
+                if (Nexus.getInstance().getConfigBoolean("features.join-message.enable")) {
+                    PlayerJoinListener playerJoinListener = new PlayerJoinListener();
+                    playerJoinListener.sendJoinMessage(player);
+                }
                 player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("vanish-unvanish")));
             } else {
                 VanishUtils.vanishPlayer(player);
+                if (Nexus.getInstance().getConfigBoolean("features.quit-message.enable")) {
+                    PlayerQuitListener playerQuitListener = new PlayerQuitListener();
+                    playerQuitListener.sendQuitMessage(player);
+                }
                 player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("vanish-vanish")));
             }
         } else if (args.length == 1) {
