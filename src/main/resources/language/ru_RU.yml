@@ -140,6 +140,13 @@ tppos-complete-2.1: "&aВы телепортировали игрока &6%t1 &a
 tppos-complete-2.2: "&6%t1 &aтелепортировал(-а) вас на координаты &6%t2"
 tppos-complete-2.3: "&6Администратор Console &aтелепортировал(-а) вас на координаты &6%t2"
 
+# /vanish command
+vanish-usage: "&aИспользование: &7/vanish [игрок]"
+vanish-unvanish: "&cВы больше не невидимы"
+vanish-vanish: "&aВы невидимы"
+vanish-unvanish-sender: "&cВы убрали невидимость игроку &6%t"
+vanish-vanish-sender: "&aИгрок &6%t &aтеперь невидимый"
+
 # Warp system
 warp-not-exists: "&cТакого варпа не существует!"
 set-warp-usage: "&aИспользование: &7/setwarp <варп>"

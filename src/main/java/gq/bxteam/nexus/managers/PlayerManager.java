@@ -83,4 +83,15 @@ public class PlayerManager {
         FileConfiguration playerData = getPlayerData(player);
         return playerData.getString("lastRecipient");
     }
+
+    public void setVanishedState(Player player, boolean vanished) {
+        FileConfiguration playerData = getPlayerData(player);
+        playerData.set("vanished", vanished);
+        savePlayerData(player, playerData);
+    }
+
+    public boolean getVanishedState(Player player) {
+        FileConfiguration playerData = getPlayerData(player);
+        return playerData.getBoolean("vanished");
+    }
 }

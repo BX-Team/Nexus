@@ -83,6 +83,10 @@ commands:
     aliases:
       - tppos
     permission: nexus.command.tpposition
+  vanish:
+    aliases:
+      - v
+    permission: nexus.command.vanish
   warp:
     aliases:
       - setwarp

@@ -145,6 +145,13 @@ tppos-complete-2.1: "&aYou teleported &6%t1 &ato &6%t2"
 tppos-complete-2.2: "&6%t1 &ateleported you to &6%t2"
 tppos-complete-2.3: "&6Console &ateleported you to &6%t2"
 
+# /vanish command
+vanish-usage: "&aUsage: &7/vanish [player]"
+vanish-unvanish: "&cYou are no longer vanished"
+vanish-vanish: "&aYou are now vanished"
+vanish-unvanish-sender: "&cYou have unvanished &6%t"
+vanish-vanish-sender: "&aYou have vanished &6%t"
+
 # Warp system
 warp-not-exists: "&cThis warp doesn't exist!"
 set-warp-usage: "&aUsage: &7/setwarp <warp>"

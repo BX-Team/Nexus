@@ -85,6 +85,7 @@ public final class Nexus extends JavaPlugin {
         getCommand("day").setExecutor(new TimeCommand());
         getCommand("tp").setExecutor(new TpCommand());
         getCommand("tpposition").setExecutor(new TpPosCommand());
+        getCommand("vanish").setExecutor(new VanishCommand());
         getCommand("warp").setExecutor(new WarpCommands());
         getCommand("whois").setExecutor(new WhoisCommand());
         getCommand("workbench").setExecutor(new WorkbenchCommand());
