@@ -98,6 +98,7 @@ delhome-usage: "&aUsage: &7/delhome <home>"
 delhome-success: "&aYou have deleted a home &6%h"
 home-usage: "&aUsage: &7/home <home>"
 home-success: "&aYou have been teleported to &6%h"
+homes-usage: "&aUsage: &7/homes [player]"
 homes-empty: "&cYou don't have any homes!"
 homes-empty-other: "&cPlayer &6%t &cdoesn't have any homes!"
 

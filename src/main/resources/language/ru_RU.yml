@@ -92,6 +92,7 @@ delhome-usage: "&aИспользование: &7/delhome <дом>"
 delhome-success: "&aВы удалили дом &6%h"
 home-usage: "&aИспользование: &7/home <дом>"
 home-success: "&aВы были телепортированы к дому &6%h"
+homes-usage: "&aИспользование: &7/homes [игрок]"
 homes-empty: "&cУ вас нет домов!"
 homes-empty-other: "&cУ игрока &6%t &cнет домов!"
 

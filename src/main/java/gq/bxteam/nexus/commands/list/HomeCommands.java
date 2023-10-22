@@ -183,6 +183,8 @@ public class HomeCommands extends CommandBase implements CommandExecutor, TabCom
                     }
                     gui.open(player);
                 }
+            } else {
+                sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("homes-usage")));
             }
         }
     }
