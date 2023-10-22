@@ -42,6 +42,12 @@ commands:
     permission: nexus.command.hat
   heal:
     permission: nexus.command.heal
+  home:
+    aliases:
+      - sethome
+      - delhome
+      - homes
+    permission: nexus.command.home
   invsee:
     aliases:
       - inv

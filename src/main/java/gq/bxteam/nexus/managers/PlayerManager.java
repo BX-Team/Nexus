@@ -1,6 +1,7 @@
 package gq.bxteam.nexus.managers;
 
 import org.bukkit.Location;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -10,6 +11,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PlayerManager {
     private final JavaPlugin plugin;
@@ -28,6 +31,11 @@ public class PlayerManager {
         return YamlConfiguration.loadConfiguration(playerFile);
     }
 
+    public FileConfiguration getPlayerData(OfflinePlayer player) {
+        File playerFile = getPlayerFile(player);
+        return YamlConfiguration.loadConfiguration(playerFile);
+    }
+
     public void savePlayerData(Player player, FileConfiguration playerData) {
         File playerFile = getPlayerFile(player);
         try {
@@ -42,7 +50,12 @@ public class PlayerManager {
         return new File(dataFolder, fileName);
     }
 
-    public void setPlayerHome(Player player, String homeName, String location) {
+    private File getPlayerFile(@NotNull OfflinePlayer player) {
+        String fileName = player.getUniqueId() + ".yml";
+        return new File(dataFolder, fileName);
+    }
+
+    public void setPlayerHome(Player player, String homeName, Location location) {
         FileConfiguration playerData = getPlayerData(player);
         ConfigurationSection homesSection = playerData.getConfigurationSection("homes");
         if (homesSection == null) {
@@ -52,13 +65,51 @@ public class PlayerManager {
         savePlayerData(player, playerData);
     }
 
-    public String getPlayerHome(Player player, String homeName) {
+    public void deletePlayerHome(Player player, String homeName) {
         FileConfiguration playerData = getPlayerData(player);
         ConfigurationSection homesSection = playerData.getConfigurationSection("homes");
         if (homesSection != null && homesSection.contains(homeName)) {
-            return homesSection.getString(homeName);
+            homesSection.set(homeName, null);
+            savePlayerData(player, playerData);
+        }
+    }
+
+    public Location getPlayerHome(Player player, String homeName) {
+        FileConfiguration playerData = getPlayerData(player);
+        ConfigurationSection homesSection = playerData.getConfigurationSection("homes");
+        if (homesSection != null && homesSection.contains(homeName)) {
+            return homesSection.getLocation(homeName);
         }
         return null;
+    }
+
+    public List<String> getAllPlayerHomes(Player player) {
+        List<String> homes = new ArrayList<>();
+        FileConfiguration playerData = getPlayerData(player);
+        ConfigurationSection homesSection = playerData.getConfigurationSection("homes");
+        if (homesSection != null) {
+            homes.addAll(homesSection.getKeys(false));
+        }
+        return homes;
+    }
+
+    public Location getPlayerHome(OfflinePlayer player, String homeName) {
+        FileConfiguration playerData = getPlayerData(player);
+        ConfigurationSection homesSection = playerData.getConfigurationSection("homes");
+        if (homesSection != null && homesSection.contains(homeName)) {
+            return homesSection.getLocation(homeName);
+        }
+        return null;
+    }
+
+    public List<String> getAllPlayerHomes(OfflinePlayer player) {
+        List<String> homes = new ArrayList<>();
+        FileConfiguration playerData = getPlayerData(player);
+        ConfigurationSection homesSection = playerData.getConfigurationSection("homes");
+        if (homesSection != null) {
+            homes.addAll(homesSection.getKeys(false));
+        }
+        return homes;
     }
 
     public void setPlayerPreviousLocation(Player player, Location previousLocation) {

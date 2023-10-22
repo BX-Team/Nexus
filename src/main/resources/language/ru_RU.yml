@@ -83,6 +83,18 @@ heal-other-success: "&6%p &aисцелил вас"
 heal-target-success: "&aВы исцелили &6%t"
 heal-other-error: "&6%t &cуже исцелен!"
 
+# Home system
+home-not-exists: "&cДома с таким именем не существует!"
+sethome-usage: "&aИспользование: &7/sethome <дом>"
+sethome-exists: "&cДом с таким именем уже существует!"
+sethome-success: "&aВы создали дом &6%h"
+delhome-usage: "&aИспользование: &7/delhome <дом>"
+delhome-success: "&aВы удалили дом &6%h"
+home-usage: "&aИспользование: &7/home <дом>"
+home-success: "&aВы были телепортированы к дому &6%h"
+homes-empty: "&cУ вас нет домов!"
+homes-empty-other: "&cУ игрока &6%t &cнет домов!"
+
 # /invsee command
 invsee-usage: "&aИспользование: &7/invsee [игрок]"
 

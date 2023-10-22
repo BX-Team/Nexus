@@ -29,7 +29,9 @@ public final class Nexus extends JavaPlugin {
     public void onEnable() {
         Nexus.instance = this;
         playerManager = new PlayerManager(this);
+        Logger.log("PlayerManager initialized!", Logger.LogLevel.INFO, false);
         warpManager = new WarpManager(this);
+        Logger.log("WarpManager initialized!", Logger.LogLevel.INFO, false);
 
         // Metrics
         new Metrics(Nexus.getInstance(), 19684);
@@ -52,6 +54,7 @@ public final class Nexus extends JavaPlugin {
     @Override
     public void onDisable() {
         Bukkit.getScheduler().cancelTasks(Nexus.getInstance());
+        Logger.log("Cancelling all tasks...", Logger.LogLevel.INFO, false);
     }
 
     public void reload() {
@@ -74,6 +77,7 @@ public final class Nexus extends JavaPlugin {
         getCommand("grindstone").setExecutor(new GrindstoneCommand());
         getCommand("hat").setExecutor(new HatCommand());
         getCommand("heal").setExecutor(new HealCommand());
+        getCommand("home").setExecutor(new HomeCommands());
         getCommand("invsee").setExecutor(new InvSeeCommand());
         getCommand("loom").setExecutor(new LoomCommand());
         getCommand("message").setExecutor(new MsgCommand());
