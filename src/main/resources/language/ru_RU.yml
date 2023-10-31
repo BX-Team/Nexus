@@ -134,7 +134,8 @@ speed-exceed-error: "&cСкорость не может быть больше ч
 speed-not-number-error: "&cСкорость должна быть числом"
 
 # /time command
-time-success: "&aВремя изменено на &6%t"
+time-usage: "&aИспользование: &7/day/night/midnight/noon [мир]"
+time-success: "&aВремя изменено на &6%t &aв мире &6%w"
 
 # /teleport command
 teleport-usage: "&aИспользование: &7/teleport [от_кого] <к_кому>"

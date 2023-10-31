@@ -139,7 +139,9 @@ speed-exceed-error: "&cSpeed can't be more than 10"
 speed-not-number-error: "&cSpeed must be a number"
 
 # /time command
-time-success: "&aYou have set the time to &6%t"
+time-usage: "&aUsage: &7/day/night/midnight/noon [world]"
+time-success: "&aYou have set the time to &6%t &ain world &6%w"
+time-invalid: "&cThis world doesn't exists"
 
 # /teleport command
 teleport-usage: "&aUsage: &7/teleport [player_from] <player_to>"
