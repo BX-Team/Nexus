@@ -71,6 +71,10 @@ commands:
     permission: nexus.command.ping
   repair:
     permission: nexus.command.repair
+  smithingtable:
+    aliases:
+      - st
+    permission: nexus.command.smithingtable
   speed:
     permission: nexus.command.speed
   spit:

@@ -122,6 +122,10 @@ ping-other-success: "&aТекущий пинг %t: &6%p"
 repair-success: "&aПредмет был отремонтирован"
 repair-error: "&cЭтот предмет не может быть отремонтирован"
 
+# /smithingtable command
+smithingtable-usage: "&aИспользование: &7/smithingtable [игрок]"
+smithingtable-success: "&aВы открыли стол кузнеца для игрока &6%t"
+
 # /speed command
 speed-usage: "&aИспользование: &7/speed <число>"
 speed-fly-success: "&aВаша скорость полета была изменена на &6%s"

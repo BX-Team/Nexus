@@ -65,7 +65,6 @@ gamemode-other-success: "&aSet &6%t &agame mode to &6%g"
 give-usage: "&aUsage: &7/give <item> [count] [player]"
 give-max: "&aYou can't give more than 64 items"
 
-
 # /god command
 god-usage: "&aUsage: &7/god [player]"
 god-enabled: "&aYou are now in god mode"
@@ -127,6 +126,10 @@ ping-other: "&a%t's ping is &6%p"
 # /repair command
 repair-success: "&aYour item has been repaired"
 repair-error: "&cThis item can't be repaired"
+
+# /smithingtable command
+smithingtable-usage: "&aUsage: &7/smithingtable [player]"
+smithingtable-success: "&aYou have opened a smithing table for player &6%t"
 
 # /speed command
 speed-usage: "&aUsage: &7/speed <speed>"
