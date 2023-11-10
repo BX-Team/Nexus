@@ -2,6 +2,7 @@ package gq.bxteam.nexus.commands.list;
 
 import gq.bxteam.nexus.Nexus;
 import gq.bxteam.nexus.commands.CommandBase;
+import gq.bxteam.nexus.utils.SoundUtil;
 import gq.bxteam.nexus.utils.TextUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -39,6 +40,7 @@ public class BackCommand extends CommandBase implements CommandExecutor, TabComp
             } else {
                 player.teleport(Nexus.getInstance().playerManager.getPlayerPreviousLocation(player));
                 player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("back-success")));
+                SoundUtil.playSound(player, "back");
             }
         } else if (args.length == 1 ) {
             if (!sender.hasPermission("nexus.command.back.other")) {
@@ -59,6 +61,7 @@ public class BackCommand extends CommandBase implements CommandExecutor, TabComp
                 target.teleport(Nexus.getInstance().playerManager.getPlayerPreviousLocation(target));
                 target.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("back-target-success").replace("%s", sender.getName())));
                 sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("back-sender-success").replace("%t", target.getName())));
+                SoundUtil.playSound(target, "back");
             }
         } else {
             sender.sendMessage(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("back-usage"));

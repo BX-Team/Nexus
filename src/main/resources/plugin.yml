@@ -47,7 +47,6 @@ commands:
       - sethome
       - delhome
       - homes
-    permission: nexus.command.home
   invsee:
     aliases:
       - inv
@@ -61,7 +60,6 @@ commands:
       - msg
       - r
       - reply
-    permission: nexus.command.msg
   nexus:
     aliases:
       - ns
@@ -89,6 +87,10 @@ commands:
     aliases:
       - teleport
     permission: nexus.command.tp
+  tphere:
+    aliases:
+      - tpall
+      - tpup
   tpposition:
     aliases:
       - tppos

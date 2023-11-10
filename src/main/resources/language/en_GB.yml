@@ -115,6 +115,11 @@ reply-usage: "&aUsage: &7/r <message>"
 reply-empty: "&cThere are no one to reply!"
 
 # /nexus command
+nexus-help:
+  - "&7[&6Nexus&7] &aAvailable commands:"
+  - "&7/nexus &a- &6Shows plugin information"
+  - "&7/nexus reload &a- &6Reloads plugin configuration"
+  - "&7/nexus version &a- &6Shows current installed version"
 nexus-version: "&aCurrent installed version is &6%v"
 nexus-reload: "&aSuccessfully reloaded plugin configuration!"
 
@@ -155,6 +160,22 @@ teleport-complete-2: "&6%t1 &awas teleported to &6%t2"
 teleport-complete-2.1: "&aYou was teleported to &6%t &aby &6Console"
 teleport-complete-2.2: "&6%t &awas teleported to you by &6Console"
 teleport-complete-2.3: "&aYou teleported &6%t1 &ato &6%t2"
+
+# /tphere command
+tphere-usage: "&aUsage: &7/tphere <player>"
+tphere-self: "&cYou can't teleport to yourself!"
+tphere-success: "&aYou teleported &6%t &ato yourself"
+tphere-success-target: "&aYou teleported to &6%p"
+
+# /tpup command
+tpup-usage: "&aUsage: &7/tpup"
+tpup-success: "&aYou teleported up!"
+
+# /tpall command
+tpall-usage: "&aUsage: &7/tpall"
+tpall-no-players: "&cThere are no players to teleport!"
+tpall-success-target: "&aYou teleported to &6%p"
+tpall-success: "&aYou teleported all players to you"
 
 # /teleportpos command
 tppos-usage: "&aUsage: &7/tppos [player] <X> <Y> <Z>"

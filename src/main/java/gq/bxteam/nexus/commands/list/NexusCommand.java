@@ -3,10 +3,7 @@ package gq.bxteam.nexus.commands.list;
 import gq.bxteam.nexus.Nexus;
 import gq.bxteam.nexus.commands.CommandBase;
 import gq.bxteam.nexus.utils.TextUtils;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.TabCompleter;
+import org.bukkit.command.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -21,21 +18,20 @@ public class NexusCommand extends CommandBase implements CommandExecutor, TabCom
 
     @Override
     protected void execute(CommandSender sender, String label, String[] args) {
-        if (args.length > 0) {
-            switch (args[0].toLowerCase()) {
-                case "version" -> {
-                    sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("nexus-version").replace("%v", Nexus.getInstance().getPluginMeta().getVersion())));
-                    // TODO: Update checker from modrinth (on release)
-                }
-
-                case "reload" -> {
-                    if (sender.hasPermission("nexus.admin")) {
-                        Nexus.getInstance().reload();
-                        sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("nexus-reload")));
-                    } else {
-                        sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("no-permission")));
-                    }
-                }
+        if (args.length == 0) {
+            List<String> helpMessage = Nexus.getInstance().localeReader.getStringList("nexus-help");
+            for (String message : helpMessage) {
+                sender.sendMessage(TextUtils.applyColor(message));
+            }
+        } else if (args[0].equalsIgnoreCase("version")) {
+            sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("nexus-version").replace("%v", Nexus.getInstance().getPluginMeta().getVersion())));
+            // TODO: Update checker from modrinth (on release)
+        } else if (args[0].equalsIgnoreCase("reload")) {
+            if (sender.hasPermission("nexus.admin")) {
+                Nexus.getInstance().reload();
+                sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("nexus-reload")));
+            } else {
+                sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("no-permission")));
             }
         }
     }

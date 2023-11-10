@@ -2,6 +2,7 @@ package gq.bxteam.nexus.commands.list;
 
 import gq.bxteam.nexus.Nexus;
 import gq.bxteam.nexus.commands.CommandBase;
+import gq.bxteam.nexus.utils.SoundUtil;
 import gq.bxteam.nexus.utils.TextUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -56,6 +57,7 @@ public class TpPosCommand extends CommandBase implements CommandExecutor, TabCom
 
                             Nexus.getInstance().playerManager.setPlayerPreviousLocation(targetPlayer, targetPlayer.getLocation());
                             targetPlayer.teleport(teleportLocation);
+                            SoundUtil.playSound(targetPlayer, "tppos");
                             player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader
                                     .getString("tppos-complete-2.1").replace("%t1", targetPlayer.getName()).replace("%t2", cords)));
                             targetPlayer.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader
@@ -74,6 +76,7 @@ public class TpPosCommand extends CommandBase implements CommandExecutor, TabCom
 
                             Nexus.getInstance().playerManager.setPlayerPreviousLocation(targetPlayer, targetPlayer.getLocation());
                             targetPlayer.teleport(teleportLocation);
+                            SoundUtil.playSound(targetPlayer, "tppos");
                             player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader
                                     .getString("tppos-complete-1").replace("%t2", cords)));
                         } else {
@@ -94,6 +97,7 @@ public class TpPosCommand extends CommandBase implements CommandExecutor, TabCom
 
                         Nexus.getInstance().playerManager.setPlayerPreviousLocation(player, player.getLocation());
                         player.teleport(teleportLocation);
+                        SoundUtil.playSound(player, "tppos");
                         player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader
                                 .getString("tppos-complete-1").replace("%t1", cords)));
                     }
@@ -130,6 +134,7 @@ public class TpPosCommand extends CommandBase implements CommandExecutor, TabCom
 
                     Nexus.getInstance().playerManager.setPlayerPreviousLocation(target, target.getLocation());
                     target.teleport(teleportLocation);
+                    SoundUtil.playSound(target, "tppos");
                     sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader
                             .getString("tppos-complete-2.1").replace("%t1", target.getName()).replace("%t2", cords)));
                     target.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader

@@ -136,6 +136,7 @@ speed-not-number-error: "&cСкорость должна быть числом"
 # /time command
 time-usage: "&aИспользование: &7/day/night/midnight/noon [мир]"
 time-success: "&aВремя изменено на &6%t &aв мире &6%w"
+time-invalid: "&cЭтого мира не существует"
 
 # /teleport command
 teleport-usage: "&aИспользование: &7/teleport [от_кого] <к_кому>"
@@ -150,6 +151,21 @@ teleport-complete-2.1: "&aВы были телепортированы к &6%t &
 teleport-complete-2.2: "&6%t &aбыл(-а) телепортирован(-а) к вам администратором &6Console"
 teleport-complete-2.3: "&aВы телепортировали игрока &6%t1 &aк игроку &6%t2"
 
+# /tphere command
+tphere-usage: "&aИспользование: &7/tphere <игрок>"
+tphere-self: "&cВы не можете телепортироваться к самому себе!"
+tphere-success: "&aВы телепортировали игрока &6%t к себе"
+tphere-success-target: "&aВы были телепортированы к &6%p"
+
+# /tpup command
+tpup-usage: "&aИСпользование: &7/tpup"
+tpup-success: "&aВы телепортировались вверх"
+
+# /tpall command
+tpall-usage: "&aИСпользование: &7/tpall"
+tpall-no-players: "&cНет игроков для телепортации!"
+tpall-success-target: "&aВы были телепортированы к &6%p"
+tpall-success: "&aВы телепортировали всех игроков к себе"
 
 # /teleportpos command
 tppos-usage: "&aИспользование: &7/tppos [игрок] <X> <Y> <Z>"

@@ -18,6 +18,7 @@ public class PlayerQuitListener implements Listener {
         }
         CommandBase.sendGlobalMessage(message);
     }
+
     @EventHandler
     public void onPlayerQuit(@NotNull PlayerQuitEvent event) {
         Player player = event.getPlayer();

@@ -54,6 +54,24 @@ sound:
   quit:
     enable: false
     type: "BLOCK_NOTE_BLOCK_BELL:1:1"
+  tphere:
+    enable: true
+    type: "ENTITY_ENDERMAN_TELEPORT:1:1"
+  tpup:
+    enable: true
+    type: "ENTITY_ENDERMAN_TELEPORT:1:1"
+  tpall:
+    enable: true
+    type: "ENTITY_ENDERMAN_TELEPORT:1:1"
+  tp:
+    enable: true
+    type: "ENTITY_ENDERMAN_TELEPORT:1:1"
+  tppos:
+    enable: true
+    type: "ENTITY_ENDERMAN_TELEPORT:1:1"
+  back:
+    enable: true
+    type: "ENTITY_ENDERMAN_TELEPORT:1:1"
 
 # DO NOT CHANGE THIS!
 version: 0.1
