@@ -126,6 +126,13 @@ repair-error: "&cЭтот предмет не может быть отремон
 smithingtable-usage: "&aИспользование: &7/smithingtable [игрок]"
 smithingtable-success: "&aВы открыли стол кузнеца для игрока &6%t"
 
+# /spawn command
+spawn-usage: "&aИспользование: &7/spawn [игрок]"
+spawn-set: "&aВы установили спавн на вашей текущей локации"
+spawn-success: "&aВы были телепортированы к спавну"
+spawn-success-sender: "&aВы телепортировали &6%t &aк спавну"
+spawn-success-target: "&6%s &aтелепортировал вас к спавну"
+
 # /speed command
 speed-usage: "&aИспользование: &7/speed <число>"
 speed-fly-success: "&aВаша скорость полета была изменена на &6%s"

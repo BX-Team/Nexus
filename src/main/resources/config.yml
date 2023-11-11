@@ -52,6 +52,8 @@ commands:
     enable: true
   smithingtable:
     enable: true
+  spawn:
+    enable: true
   speed:
     enable: true
   spit:
@@ -115,6 +117,12 @@ sound:
   quit:
     enable: false
     type: "BLOCK_NOTE_BLOCK_BELL:1:1"
+  setspawn:
+    enable: true
+    type: "ENTITY_EXPERIENCE_ORB_PICKUP:1:1"
+  spawn:
+    enable: true
+    type: "ENTITY_ENDERMAN_TELEPORT:1:1"
   tphere:
     enable: true
     type: "ENTITY_ENDERMAN_TELEPORT:1:1"

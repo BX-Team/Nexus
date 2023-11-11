@@ -89,6 +89,7 @@ public final class Nexus extends JavaPlugin {
         commands.put("ping", new PingCommand());
         commands.put("repair", new RepairCommand());
         commands.put("smithingtable", new SmithingTableCommand());
+        commands.put("spawn", new SpawnCommand());
         commands.put("speed", new SpeedCommand());
         commands.put("spit", new SpitCommand());
         commands.put("day", new TimeCommand());

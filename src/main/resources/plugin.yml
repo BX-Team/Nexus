@@ -73,6 +73,10 @@ commands:
     aliases:
       - st
     permission: nexus.command.smithingtable
+  spawn:
+    aliases:
+      - setspawn
+    permission: nexus.command.spawn
   speed:
     permission: nexus.command.speed
   spit:

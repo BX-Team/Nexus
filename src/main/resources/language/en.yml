@@ -136,6 +136,13 @@ repair-error: "&cThis item can't be repaired"
 smithingtable-usage: "&aUsage: &7/smithingtable [player]"
 smithingtable-success: "&aYou have opened a smithing table for player &6%t"
 
+# /spawn command
+spawn-usage: "&aUsage: &7/spawn [player]"
+spawn-set: "&aYou have set spawn to your current location"
+spawn-success: "&aYou have been teleported to spawn"
+spawn-success-sender: "&aYou have teleported &6%t &ato spawn"
+spawn-success-target: "&6%s &ahas teleported you to spawn"
+
 # /speed command
 speed-usage: "&aUsage: &7/speed <speed>"
 speed-fly-success: "&aYour fly speed has been set to &6%s"
