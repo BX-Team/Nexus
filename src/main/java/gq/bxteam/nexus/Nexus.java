@@ -8,9 +8,12 @@ import gq.bxteam.nexus.utils.locale.LocaleConfig;
 import gq.bxteam.nexus.utils.locale.LocaleReader;
 import gq.bxteam.nexus.utils.logger.Logger;
 import org.bukkit.Bukkit;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 import static gq.bxteam.nexus.utils.locale.LocaleConfig.getLangFile;
 
@@ -65,36 +68,45 @@ public final class Nexus extends JavaPlugin {
 
     @SuppressWarnings("DataFlowIssue")
     private void registerCommands() {
-        getCommand("anvil").setExecutor(new AnvilCommand());
-        getCommand("back").setExecutor(new BackCommand());
-        getCommand("broadcast").setExecutor(new BroadcastCommand());
-        getCommand("cartography").setExecutor(new CartographyCommand());
-        getCommand("enderchest").setExecutor(new EnderChestCommand());
-        getCommand("fly").setExecutor(new FlyCommand());
-        getCommand("gamemode").setExecutor(new GamemodeCommand());
-        getCommand("give").setExecutor(new GiveCommand());
-        getCommand("god").setExecutor(new GodCommand());
-        getCommand("grindstone").setExecutor(new GrindstoneCommand());
-        getCommand("hat").setExecutor(new HatCommand());
-        getCommand("heal").setExecutor(new HealCommand());
-        getCommand("home").setExecutor(new HomeCommands());
-        getCommand("invsee").setExecutor(new InvSeeCommand());
-        getCommand("loom").setExecutor(new LoomCommand());
-        getCommand("message").setExecutor(new MsgCommand());
+        Map<String, CommandExecutor> commands = new HashMap<>();
+        commands.put("anvil", new AnvilCommand());
+        commands.put("back", new BackCommand());
+        commands.put("broadcast", new BroadcastCommand());
+        commands.put("cartography", new CartographyCommand());
+        commands.put("enderchest", new EnderChestCommand());
+        commands.put("fly", new FlyCommand());
+        commands.put("gamemode", new GamemodeCommand());
+        commands.put("give", new GiveCommand());
+        commands.put("god", new GodCommand());
+        commands.put("grindstone", new GrindstoneCommand());
+        commands.put("hat", new HatCommand());
+        commands.put("heal", new HealCommand());
+        commands.put("home", new HomeCommands());
+        commands.put("invsee", new InvSeeCommand());
+        commands.put("loom", new LoomCommand());
+        commands.put("message", new MsgCommand());
         getCommand("nexus").setExecutor(new NexusCommand());
-        getCommand("ping").setExecutor(new PingCommand());
-        getCommand("repair").setExecutor(new RepairCommand());
-        getCommand("smithingtable").setExecutor(new SmithingTableCommand());
-        getCommand("speed").setExecutor(new SpeedCommand());
-        getCommand("spit").setExecutor(new SpitCommand());
-        getCommand("day").setExecutor(new TimeCommand());
-        getCommand("tp").setExecutor(new TpCommand());
-        getCommand("tphere").setExecutor(new TpHereCommand());
-        getCommand("tpposition").setExecutor(new TpPosCommand());
-        getCommand("vanish").setExecutor(new VanishCommand());
-        getCommand("warp").setExecutor(new WarpCommands());
-        getCommand("whois").setExecutor(new WhoisCommand());
-        getCommand("workbench").setExecutor(new WorkbenchCommand());
+        commands.put("ping", new PingCommand());
+        commands.put("repair", new RepairCommand());
+        commands.put("smithingtable", new SmithingTableCommand());
+        commands.put("speed", new SpeedCommand());
+        commands.put("spit", new SpitCommand());
+        commands.put("day", new TimeCommand());
+        commands.put("tp", new TpCommand());
+        commands.put("tphere", new TpHereCommand());
+        commands.put("tpposition", new TpPosCommand());
+        commands.put("vanish", new VanishCommand());
+        commands.put("warp", new WarpCommands());
+        commands.put("whois", new WhoisCommand());
+        commands.put("workbench", new WorkbenchCommand());
+
+        for (Map.Entry<String, CommandExecutor> entry : commands.entrySet()) {
+            String commandName = entry.getKey();
+            CommandExecutor commandExecutor = entry.getValue();
+            if (Nexus.getInstance().getConfigBoolean("commands." + commandName + ".enable")) {
+                getCommand(commandName).setExecutor(commandExecutor);
+            }
+        }
     }
 
     private void registerListeners() {

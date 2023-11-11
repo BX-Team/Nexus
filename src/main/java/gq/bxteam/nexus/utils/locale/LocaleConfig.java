@@ -31,8 +31,8 @@ public class LocaleConfig {
         if (!langDir.exists()) {
             langDir.mkdir();
             // Saves all default language files
-            Nexus.getInstance().saveResource(languagesPath + "en_GB.yml", false);
-            Nexus.getInstance().saveResource(languagesPath + "ru_RU.yml", false);
+            Nexus.getInstance().saveResource(languagesPath + "en.yml", false);
+            Nexus.getInstance().saveResource(languagesPath + "ru.yml", false);
         }
     }
 }

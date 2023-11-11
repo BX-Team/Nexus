@@ -10,7 +10,68 @@
 
 # Set the locale for all messages.
 # You can see all available locales in the `language` folder.
-language: en_GB
+language: en
+
+# You can enable or disable all Nexus commands.
+commands:
+  anvil:
+    enable: true
+  back:
+    enable: true
+  broadcast:
+    enable: true
+  cartography:
+    enable: true
+  enderchest:
+    enable: true
+  fly:
+    enable: true
+  gamemode:
+    enable: true
+  give:
+    enable: true
+  god:
+    enable: true
+  grindstone:
+    enable: true
+  hat:
+    enable: true
+  heal:
+    enable: true
+  home:
+    enable: true
+  invsee:
+    enable: true
+  loom:
+    enable: true
+  message:
+    enable: true
+  ping:
+    enable: true
+  repair:
+    enable: true
+  smithingtable:
+    enable: true
+  speed:
+    enable: true
+  spit:
+    enable: true
+  day:
+    enable: true
+  tp:
+    enable: true
+  tphere:
+    enable: true
+  tpposition:
+    enable: true
+  vanish:
+    enable: true
+  warp:
+    enable: true
+  whois:
+    enable: true
+  workbench:
+    enable: true
 
 # You can enable or disable all Nexus features.
 features:
