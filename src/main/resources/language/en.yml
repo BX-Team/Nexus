@@ -23,6 +23,14 @@ join:
 quit:
   message: "&c&l←&r &e<player> left the server"
 
+# Server messages
+server:
+  motd:
+    messages:
+      - "&aWelcome to our server!"
+      - "&bJoin us and enjoy a unique game experience!"
+      - "&6We have a friendly community - be polite and respect each other!"
+
 # /anvil command
 anvil-usage: "&aUsage: &7/anvil [player]"
 anvil-success: "&aYou have opened an anvil for player &6%t"

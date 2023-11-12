@@ -16,7 +16,7 @@ public class BookAndSignEditListener implements Listener {
         if (event.isCancelled()) return;
         Player player = event.getPlayer();
         String[] lines = event.getLines();
-        if (!Nexus.getInstance().getConfigBoolean("features.sign-formatting.enable") ||
+        if (!Nexus.getInstance().getConfigBoolean("player.sign-formatting.enable") ||
                 !player.hasPermission("nexus.feature.sign-formatting")) return;
 
         for (int i = 0; i < lines.length; i++) {
@@ -28,7 +28,7 @@ public class BookAndSignEditListener implements Listener {
     public void onPlayerBookEdit(@NotNull PlayerEditBookEvent event) {
         if (event.isCancelled()) return;
         Player player = event.getPlayer();
-        if (!Nexus.getInstance().getConfigBoolean("features.book-formatting.enable") ||
+        if (!Nexus.getInstance().getConfigBoolean("player.book-formatting.enable") ||
                 !player.hasPermission("nexus.feature.book-formatting")) return;
 
         BookMeta bookMeta = event.getNewBookMeta();

@@ -75,8 +75,8 @@ commands:
   workbench:
     enable: true
 
-# You can enable or disable all Nexus features.
-features:
+# Player specific features
+player:
   glass-knocking:
     enable: true
   door-knocking:
@@ -89,6 +89,20 @@ features:
     enable: true
   quit-message:
     enable: true
+
+# Server specific features
+server:
+  motd:
+    enable: true
+  online:
+    enable: true
+    count: 89
+  icon:
+    enable: false
+    mode: random # Modes: single or random
+    icons:
+      - "server-icon-1"
+      - "server-icon-2"
 
 # You can configure sounds that will be played when a player uses commands.
 # Format: "SOUND_NAME:VOLUME:PITCH"

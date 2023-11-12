@@ -22,7 +22,7 @@ public class PlayerQuitListener implements Listener {
     @EventHandler
     public void onPlayerQuit(@NotNull PlayerQuitEvent event) {
         Player player = event.getPlayer();
-        if (Nexus.getInstance().getConfigBoolean("features.quit-message.enable")) {
+        if (Nexus.getInstance().getConfigBoolean("player.quit-message.enable")) {
             event.setQuitMessage(null);
             sendQuitMessage(player);
         }

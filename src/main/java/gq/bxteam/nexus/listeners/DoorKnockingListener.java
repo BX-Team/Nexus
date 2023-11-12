@@ -13,7 +13,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 public class DoorKnockingListener implements Listener {
     @EventHandler
     public void onDoorKnockingEvent(PlayerInteractEvent event) {
-        if (!Nexus.getInstance().getConfigBoolean("features.door-knocking.enable")) return;
+        if (!Nexus.getInstance().getConfigBoolean("player.door-knocking.enable")) return;
         if (!event.getAction().equals(Action.LEFT_CLICK_BLOCK)) return;
         Player player = event.getPlayer();
         Block block = event.getClickedBlock();

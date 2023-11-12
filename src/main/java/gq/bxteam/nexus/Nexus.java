@@ -23,6 +23,7 @@ public final class Nexus extends JavaPlugin {
     public LocaleReader localeReader;
     public PlayerManager playerManager;
     public WarpManager warpManager;
+    private static final String iconsPath = "icons" + File.separator;
 
     public static Nexus getInstance() {
         return Nexus.instance;
@@ -32,20 +33,19 @@ public final class Nexus extends JavaPlugin {
     public void onEnable() {
         Nexus.instance = this;
         playerManager = new PlayerManager(this);
-        Logger.log("PlayerManager initialized!", Logger.LogLevel.INFO, false);
         warpManager = new WarpManager(this);
-        Logger.log("WarpManager initialized!", Logger.LogLevel.INFO, false);
 
         // Metrics
         new Metrics(Nexus.getInstance(), 19684);
 
         // TODO: Update Checker (on release)
 
-        // Save config.yml and load language file
+        // Save config.yml and load other files
         this.saveDefaultConfig();
         LocaleConfig.saveLanguages();
         this.langFile = getLangFile();
         localeReader = new LocaleReader(langFile);
+        loadIcons();
 
         // Register commands & listeners
         registerCommands();
@@ -116,6 +116,16 @@ public final class Nexus extends JavaPlugin {
         Bukkit.getServer().getPluginManager().registerEvents(new GlassKnockingListener(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new PlayerQuitListener(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new ServerListPingListener(), this);
+    }
+
+    private void loadIcons() {
+        File iconsDir = new File(Nexus.getInstance().getDataFolder() + File.separator + iconsPath);
+        if (!iconsDir.exists()) {
+            iconsDir.mkdir();
+            Nexus.getInstance().saveResource(iconsPath + "server-icon-1.png", false);
+            Nexus.getInstance().saveResource(iconsPath + "server-icon-2.png", false);
+        }
     }
 
     public void updateConfig() {
@@ -128,5 +138,9 @@ public final class Nexus extends JavaPlugin {
 
     public boolean getConfigBoolean(String path) {
         return Nexus.getInstance().getConfig().getBoolean(path);
+    }
+
+    public int getConfigInt(String path) {
+        return Nexus.getInstance().getConfig().getInt(path);
     }
 }

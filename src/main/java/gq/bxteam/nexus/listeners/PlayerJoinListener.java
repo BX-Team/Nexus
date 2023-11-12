@@ -43,7 +43,7 @@ public class PlayerJoinListener implements Listener {
     @EventHandler
     public void onPlayerJoin(@NotNull PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        if (Nexus.getInstance().getConfigBoolean("features.join-message.enable")) {
+        if (Nexus.getInstance().getConfigBoolean("player.join-message.enable")) {
             event.setJoinMessage(null);
             sendJoinMessage(player);
         }
