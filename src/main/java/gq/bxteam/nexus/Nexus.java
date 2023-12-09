@@ -50,6 +50,10 @@ public final class Nexus extends JavaPlugin {
         // Register commands & listeners
         registerCommands();
         registerListeners();
+        if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+            new PlaceholderAPIListener().register();
+            Logger.log("Loaded &bPlaceholderAPI &rhook!", Logger.LogLevel.INFO, false);
+        }
 
         Logger.log("Nexus successfully started!", Logger.LogLevel.INFO, false);
     }

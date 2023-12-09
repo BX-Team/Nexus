@@ -17,6 +17,9 @@ repositories {
         name = "sonatype"
         url = "https://oss.sonatype.org/content/groups/public"
     }
+    maven {
+        url = "https://repo.extendedclip.com/content/repositories/placeholderapi/"
+    }
 }
 
 dependencies {
@@ -25,6 +28,7 @@ dependencies {
     // Dependencies
     implementation("com.tchristofferson:ConfigUpdater:${project.config_updater}")
     implementation("dev.triumphteam:triumph-gui:${project.triumph_gui}")
+    implementation("me.clip:placeholderapi:${project.placeholder_api}")
 }
 
 def targetJavaVersion = 17
