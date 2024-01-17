@@ -118,3 +118,8 @@ build/
 
 # Never ignore Gradle wrapper jar file
 !gradle/wrapper/gradle-wrapper.jar
+
+# VitePress specified files & directories
+docs/.vitepress/dist
+docs/.vitepress/cache
+node_modules

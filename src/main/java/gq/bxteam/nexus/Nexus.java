@@ -1,6 +1,7 @@
 package gq.bxteam.nexus;
 
 import gq.bxteam.nexus.commands.list.*;
+import gq.bxteam.nexus.integrations.PlaceholderIntegration;
 import gq.bxteam.nexus.listeners.*;
 import gq.bxteam.nexus.managers.*;
 import gq.bxteam.nexus.utils.Metrics;
@@ -51,7 +52,7 @@ public final class Nexus extends JavaPlugin {
         registerCommands();
         registerListeners();
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
-            new PlaceholderAPIListener().register();
+            new PlaceholderIntegration().register();
             Logger.log("Loaded &bPlaceholderAPI &rhook!", Logger.LogLevel.INFO, false);
         }
 

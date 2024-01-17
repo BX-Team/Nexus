@@ -1,11 +1,11 @@
-package gq.bxteam.nexus.listeners;
+package gq.bxteam.nexus.integrations;
 
 import gq.bxteam.nexus.Nexus;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.OfflinePlayer;
 import org.jetbrains.annotations.NotNull;
 
-public class PlaceholderAPIListener extends PlaceholderExpansion {
+public class PlaceholderIntegration extends PlaceholderExpansion {
     @Override
     public @NotNull String getAuthor() {
         return Nexus.getInstance().getDescription().getAuthors().toString();
