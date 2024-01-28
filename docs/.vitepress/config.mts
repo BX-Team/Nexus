@@ -22,7 +22,7 @@ export default defineConfig({
 
     footer: {
       message: "Made by BX Team",
-      copyright: "Copyright © 2023 BX Team",
+      copyright: "Copyright © 2024 BX Team",
     },
 	
     nav: [
