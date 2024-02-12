@@ -52,8 +52,8 @@ shadowJar {
     archiveVersion.set(project.version)
     archiveClassifier.set(null)
     archiveAppendix.set(null)
-    relocate('com.tchristofferson.configupdater', 'gq.bxteam.nexus.configupdater')
-    relocate("dev.triumphteam.gui", "gq.bxteam.nexus.gui")
+    relocate('com.tchristofferson.configupdater', 'space.bxteam.nexus.configupdater')
+    relocate("dev.triumphteam.gui", "space.bxteam.nexus.gui")
 }
 
 processResources {

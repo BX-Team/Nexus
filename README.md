@@ -2,7 +2,7 @@
 [![modrinth](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/compact/available/modrinth_vector.svg)](https://modrinth.com/plugin/nexuss)
 [![paper](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/compact/supported/paper_vector.svg)](https://papermc.io)
 
-[![website](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/compact/documentation/website_vector.svg)](https://nexus.bxteam.gq/)
+[![website](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/compact/documentation/website_vector.svg)](https://nexus.bx-team.space/)
 [![discord-plural](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/compact/social/discord-plural_vector.svg)](https://discord.gg/p7cxhw7E2M)
 
 _Nexus gives you ability to personalize your Minecraft server with useful features. 
@@ -18,7 +18,7 @@ The perfect solution to bring unique experience to your server players._
 - **Multi-language support**: Supports multiple languages that can be easily added.
 
 ## Documentation
-You can find the documentation for Nexus [here](https://nexus.bxteam.gq/docs/getting-started/home).
+You can find the documentation for Nexus [here](https://nexus.bx-team.space/docs/getting-started/home).
 
 ## Support
 If you need any help with Nexus, feel free to join our [Discord server](https://discord.gg/p7cxhw7E2M).
