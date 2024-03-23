@@ -1,125 +1,16 @@
 name: Nexus
 version: '${version}'
-main: gq.bxteam.nexus.Nexus
+main: space.bxteam.nexus.Nexus
 api-version: '1.16'
 authors: [ NONPLAYT, XENOLIT ]
 description: Nexus gives you ability to personalize your Minecraft server with useful features
 website: https://nexus.bxteam.gq
 commands:
-  anvil:
-    permission: nexus.command.anvil
-  back:
-    permission: nexus.command.back
-  broadcast:
-    aliases:
-      - bc
-    permission: nexus.command.broadcast
-  cartography:
-    permission: nexus.command.cartography
-  enderchest:
-    aliases:
-      - ec
-    permission: nexus.command.enderchest
-  fly:
-    permission: nexus.command.fly
-  gamemode:
-    aliases:
-      - gm
-      - gms
-      - gmc
-      - gma
-      - gmsp
-    permission: nexus.command.gamemode
-  give:
-    aliases:
-      - g
-    permission: nexus.command.gamemode
-  god:
-    permission: nexus.command.god
-  grindstone:
-    permission: nexus.command.grindstone
-  hat:
-    permission: nexus.command.hat
-  heal:
-    permission: nexus.command.heal
-  home:
-    aliases:
-      - sethome
-      - delhome
-      - homes
-  invsee:
-    aliases:
-      - inv
-      - inventory
-    permission: nexus.command.invsee
-  loom:
-    permission: nexus.command.loom
-  message:
-    aliases:
-      - m
-      - msg
-      - r
-      - reply
   nexus:
     aliases:
       - ns
       - nx
     permission: nexus.command.nexus
-  ping:
-    permission: nexus.command.ping
-  repair:
-    permission: nexus.command.repair
-  smithingtable:
-    aliases:
-      - st
-    permission: nexus.command.smithingtable
-  spawn:
-    aliases:
-      - setspawn
-    permission: nexus.command.spawn
-  speed:
-    permission: nexus.command.speed
-  spit:
-    permission: nexus.command.spit
-  day:
-    aliases:
-      - night
-      - noon
-      - midnight
-    permission: nexus.command.time
-  tp:
-    aliases:
-      - teleport
-    permission: nexus.command.tp
-  tphere:
-    aliases:
-      - tpall
-      - tpup
-  tpposition:
-    aliases:
-      - tppos
-    permission: nexus.command.tpposition
-  vanish:
-    aliases:
-      - v
-    permission: nexus.command.vanish
-  warp:
-    aliases:
-      - setwarp
-      - delwarp
-      - w
-    permission: nexus.command.warp
-  whois:
-    aliases:
-      - who
-      - playerinfo
-      - info
-    permission: nexus.command.whois
-  workbench:
-    aliases:
-      - wb
-      - craft
-    permission: nexus.command.workbench
 permissions:
   nexus.admin:
     default: op

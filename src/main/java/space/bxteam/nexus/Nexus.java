@@ -1,5 +1,6 @@
 package space.bxteam.nexus;
 
+import org.bukkit.command.*;
 import space.bxteam.nexus.commands.list.*;
 import space.bxteam.nexus.integrations.PlaceholderIntegration;
 import space.bxteam.nexus.listeners.*;
@@ -13,7 +14,9 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
+import java.lang.reflect.Field;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static space.bxteam.nexus.utils.locale.LocaleConfig.getLangFile;
@@ -72,7 +75,7 @@ public final class Nexus extends JavaPlugin {
     }
 
     @SuppressWarnings("DataFlowIssue")
-    private void registerCommands() {
+    public void registerCommands() {
         Map<String, CommandExecutor> commands = new HashMap<>();
         commands.put("anvil", new AnvilCommand());
         commands.put("back", new BackCommand());
@@ -106,12 +109,28 @@ public final class Nexus extends JavaPlugin {
         commands.put("whois", new WhoisCommand());
         commands.put("workbench", new WorkbenchCommand());
 
-        for (Map.Entry<String, CommandExecutor> entry : commands.entrySet()) {
-            String commandName = entry.getKey();
-            CommandExecutor commandExecutor = entry.getValue();
-            if (Nexus.getInstance().getConfigBoolean("commands." + commandName + ".enable")) {
-                getCommand(commandName).setExecutor(commandExecutor);
+        try {
+            final Field bukkitCommandMap = Bukkit.getServer().getClass().getDeclaredField("commandMap");
+            bukkitCommandMap.setAccessible(true);
+            CommandMap commandMap = (CommandMap) bukkitCommandMap.get(Bukkit.getServer());
+
+            for (Map.Entry<String, CommandExecutor> entry : commands.entrySet()) {
+                String commandName = entry.getKey();
+                CommandExecutor commandExecutor = entry.getValue();
+                if (Nexus.getInstance().getConfigBoolean("commands." + commandName + ".enable")) {
+                    Command command = new Command(commandName) {
+                        @Override
+                        public boolean execute(CommandSender sender, String label, String[] args) {
+                            return commandExecutor.onCommand(sender, this, label, args);
+                        }
+                    };
+                    List<String> aliases = Nexus.getInstance().getConfig().getStringList("commands." + commandName + ".aliases");
+                    command.setAliases(aliases);
+                    commandMap.register(commandName, command);
+                }
             }
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            e.printStackTrace();
         }
     }
 
