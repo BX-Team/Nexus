@@ -5,6 +5,7 @@ api-version: '1.16'
 authors: [ NONPLAYT, XENOLIT ]
 description: Nexus gives you ability to personalize your Minecraft server with useful features
 website: https://nexus.bxteam.gq
+soft-depend: [ PlaceholderAPI ]
 commands:
   nexus:
     aliases:

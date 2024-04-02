@@ -29,6 +29,7 @@ dependencies {
     implementation("com.tchristofferson:ConfigUpdater:${project.config_updater}")
     implementation("dev.triumphteam:triumph-gui:${project.triumph_gui}")
     implementation("me.clip:placeholderapi:${project.placeholder_api}")
+    implementation("com.zaxxer:HikariCP:${project.hikari}")
 }
 
 def targetJavaVersion = 17

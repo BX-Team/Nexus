@@ -12,6 +12,23 @@
 # You can see all available locales in the `language` folder.
 language: en
 
+# Database configuration
+database:
+  # Select here the database you want to use
+  # The following databases are supported:
+  #  - sqlite - (default) stores all data in a local file
+  #  - mysql - allows using a remote database
+  type: sqlite
+
+  # SQLite configuration
+  sqlite:
+    file: "nexus.db"
+  # MySQL configuration
+  mysql:
+    jdbc: "jdbc:mysql://localhost:3306/nexus"
+    username: "root"
+    password: "password"
+
 # You can enable or disable all Nexus commands.
 commands:
   anvil:

@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayerManager {
+public class PlayerManager { // TODO: Rewrite manager to work with SQLite and MySQL
     private final JavaPlugin plugin;
     private final File dataFolder;
 

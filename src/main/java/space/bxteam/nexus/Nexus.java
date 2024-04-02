@@ -2,6 +2,7 @@ package space.bxteam.nexus;
 
 import org.bukkit.command.*;
 import space.bxteam.nexus.commands.list.*;
+import space.bxteam.nexus.data.Database;
 import space.bxteam.nexus.integrations.PlaceholderIntegration;
 import space.bxteam.nexus.listeners.*;
 import space.bxteam.nexus.managers.*;
@@ -27,6 +28,7 @@ public final class Nexus extends JavaPlugin {
     public LocaleReader localeReader;
     public PlayerManager playerManager;
     public WarpManager warpManager;
+    public Database database;
     private static final String iconsPath = "icons" + File.separator;
 
     public static Nexus getInstance() {
@@ -38,6 +40,7 @@ public final class Nexus extends JavaPlugin {
         Nexus.instance = this;
         playerManager = new PlayerManager(this);
         warpManager = new WarpManager(this);
+        database = new Database(this);
 
         // Metrics
         new Metrics(Nexus.getInstance(), 19684);
@@ -64,6 +67,7 @@ public final class Nexus extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        database.dbSource.close();
         Bukkit.getScheduler().cancelTasks(Nexus.getInstance());
         Logger.log("Cancelling all tasks...", Logger.LogLevel.INFO, false);
     }
