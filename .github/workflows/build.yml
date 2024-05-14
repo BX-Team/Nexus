@@ -26,11 +26,11 @@ jobs:
       - name: Make Gradlew executable
         run: chmod +x ./gradlew
       - name: Build with Gradle
-        uses: gradle/gradle-build-action@v2.12.0
+        uses: gradle/gradle-build-action@v3.3.2
         with:
           arguments: shadowJar
       - name: Upload Nexus
-        uses: actions/upload-artifact@v4.3.0
+        uses: actions/upload-artifact@v4.3.3
         with:
           name: Nexus Dev Artifacts
           path: "build/libs/Nexus-*.jar"
