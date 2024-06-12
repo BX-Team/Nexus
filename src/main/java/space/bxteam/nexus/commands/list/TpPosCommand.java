@@ -78,7 +78,7 @@ public class TpPosCommand extends CommandBase implements CommandExecutor, TabCom
                             targetPlayer.teleport(teleportLocation);
                             SoundUtil.playSound(targetPlayer, "tppos");
                             player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader
-                                    .getString("tppos-complete-1").replace("%t2", cords)));
+                                    .getString("tppos-complete-1").replace("%t1", cords)));
                         } else {
                             player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader
                                     .getString("invalid-player")));
