@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'com.github.johnrengelman.shadow' version '8.1.1'
+    id 'maven-publish'
 }
 
 group = project.group
@@ -46,6 +47,10 @@ tasks.withType(JavaCompile).configureEach {
     if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible()) {
         options.release = targetJavaVersion
     }
+
+    compileJava.options.encoding = 'UTF-8'
+    compileTestJava.options.encoding = 'UTF-8'
+    javadoc.options.encoding = 'UTF-8'
 }
 
 shadowJar {
@@ -63,5 +68,26 @@ processResources {
     filteringCharset 'UTF-8'
     filesMatching('plugin.yml') {
         expand props
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "nexus"
+            url = "https://repo.bx-team.space/releases"
+            credentials(PasswordCredentials)
+            authentication {
+                basic(BasicAuthentication)
+            }
+        }
+    }
+    publications {
+        maven(MavenPublication) {
+            groupId = project.group
+            artifactId = "nexus"
+            version = project.version
+            from components.java
+        }
     }
 }

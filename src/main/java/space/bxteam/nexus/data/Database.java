@@ -57,11 +57,14 @@ public class Database {
 
     /**
      * Initialize the database tables
+     *
+     * @throws @NotNull SQLException
+     * @throws @NotNull IOException
      */
     private void initTables() throws @NotNull SQLException, @NotNull IOException {
         final @NotNull HashMap<@NotNull String, @NotNull String> initFiles = new HashMap<>() {{
             put("sqlite", "databases/sqlite.sql");
-            //put("mysql", "databases/mysql.sql");
+            put("mysql", "databases/mysql.sql");
         }};
         final @NotNull String dbType = Nexus.getInstance().getConfigString("database.type");
         if (!initFiles.containsKey(dbType)) {

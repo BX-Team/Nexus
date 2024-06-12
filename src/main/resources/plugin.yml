@@ -4,7 +4,7 @@ main: space.bxteam.nexus.Nexus
 api-version: '1.16'
 authors: [ NONPLAYT, XENOLIT ]
 description: Nexus gives you ability to personalize your Minecraft server with useful features
-website: https://nexus.bxteam.gq
+website: https://nexus.bx-team.space
 soft-depend: [ PlaceholderAPI ]
 commands:
   nexus:

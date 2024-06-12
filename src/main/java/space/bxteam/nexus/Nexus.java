@@ -3,7 +3,6 @@ package space.bxteam.nexus;
 import org.bukkit.command.*;
 import space.bxteam.nexus.commands.list.*;
 import space.bxteam.nexus.data.Database;
-import space.bxteam.nexus.integrations.PlaceholderIntegration;
 import space.bxteam.nexus.listeners.*;
 import space.bxteam.nexus.managers.*;
 import space.bxteam.nexus.utils.Metrics;
@@ -38,9 +37,6 @@ public final class Nexus extends JavaPlugin {
     @Override
     public void onEnable() {
         Nexus.instance = this;
-        playerManager = new PlayerManager(this);
-        warpManager = new WarpManager(this);
-        database = new Database(this);
 
         // Metrics
         new Metrics(Nexus.getInstance(), 19684);
@@ -54,13 +50,20 @@ public final class Nexus extends JavaPlugin {
         localeReader = new LocaleReader(langFile);
         loadIcons();
 
+        // Initialize managers
+        database = new Database(this);
+        playerManager = new PlayerManager(this, database);
+        warpManager = new WarpManager(this, database);
+
         // Register commands & listeners
         registerCommands();
         registerListeners();
+        /*
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             new PlaceholderIntegration().register();
             Logger.log("Loaded &bPlaceholderAPI &rhook!", Logger.LogLevel.INFO, false);
         }
+         */ // TODO - Fix error on startup
 
         Logger.log("Nexus successfully started!", Logger.LogLevel.INFO, false);
     }
@@ -78,6 +81,9 @@ public final class Nexus extends JavaPlugin {
         localeReader = new LocaleReader(langFile);
     }
 
+    /**
+     * Register all commands
+     */
     @SuppressWarnings("DataFlowIssue")
     public void registerCommands() {
         Map<String, CommandExecutor> commands = new HashMap<>();
@@ -140,8 +146,7 @@ public final class Nexus extends JavaPlugin {
 
     private void registerListeners() {
         Bukkit.getServer().getPluginManager().registerEvents(new BookAndSignEditListener(), this);
-        Bukkit.getServer().getPluginManager().registerEvents(new DoorKnockingListener(), this);
-        Bukkit.getServer().getPluginManager().registerEvents(new GlassKnockingListener(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new KnockingListener(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new PlayerQuitListener(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new ServerListPingListener(), this);

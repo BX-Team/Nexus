@@ -2,7 +2,6 @@ package space.bxteam.nexus.listeners;
 
 import space.bxteam.nexus.Nexus;
 import space.bxteam.nexus.commands.CommandBase;
-import space.bxteam.nexus.managers.PlayerManager;
 import space.bxteam.nexus.utils.SoundUtil;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -10,6 +9,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.jetbrains.annotations.NotNull;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class PlayerJoinListener implements Listener {
     @EventHandler
@@ -48,7 +51,19 @@ public class PlayerJoinListener implements Listener {
             sendJoinMessage(player);
         }
 
-        PlayerManager playerManager = new PlayerManager(Nexus.getInstance());
-        playerManager.savePlayerData(player, playerManager.getPlayerData(player));
+        createOrUpdatePlayerRecord(player);
+    }
+
+    private void createOrUpdatePlayerRecord(Player player) {
+        String sql = "INSERT OR REPLACE INTO users (player_uuid, username) VALUES (?, ?)";
+
+        try (Connection conn = Nexus.getInstance().database.dbSource.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, player.getUniqueId().toString());
+            stmt.setString(2, player.getName());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

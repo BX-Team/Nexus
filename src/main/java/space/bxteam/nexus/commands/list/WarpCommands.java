@@ -40,7 +40,6 @@ public class WarpCommands extends CommandBase implements CommandExecutor, TabCom
                     return;
                 }
                 Nexus.getInstance().warpManager.setWarp(args[0].toLowerCase(), player.getLocation());
-                Nexus.getInstance().warpManager.saveWarps();
                 player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("set-warp-success").replace("%w", args[0].toLowerCase())));
             } else {
                 sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("set-warp-usage")));

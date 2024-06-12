@@ -126,20 +126,25 @@ public class HomeCommands extends CommandBase implements CommandExecutor, TabCom
                             .disableAllInteractions()
                             .disableOtherActions()
                             .create();
+
                     gui.setItem(6, 3, ItemBuilder.from(Material.PAPER).setName("Previous").asGuiItem(event -> gui.previous()));
                     gui.setItem(6, 7, ItemBuilder.from(Material.PAPER).setName("Next").asGuiItem(event -> gui.next()));
 
-                    for (String home : Nexus.getInstance().playerManager.getAllPlayerHomes(player)) {
+                    List<String> playerHomes = Nexus.getInstance().playerManager.getAllPlayerHomes(player);
+                    for (String home : playerHomes) {
                         Location homeLocation = Nexus.getInstance().playerManager.getPlayerHome(player, home);
-                        gui.addItem(ItemBuilder.from(Material.ENDER_PEARL).setName(home)
-                                .setLore("X: " + homeLocation.getBlockX() + ", Y: " + homeLocation.getBlockY() + ", Z: " + homeLocation.getBlockZ())
-                                .asGuiItem(event -> {
-                                    Nexus.getInstance().playerManager.setPlayerPreviousLocation(player, player.getLocation());
-                                    player.teleport(Nexus.getInstance().playerManager.getPlayerHome(player, home));
-                                    player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("home-success").replace("%h", home)));
-                                    SoundUtil.playSound(player, player, "home");
-                                }));
+                        if (homeLocation != null) {
+                            gui.addItem(ItemBuilder.from(Material.ENDER_PEARL).setName(home)
+                                    .setLore("X: " + homeLocation.getBlockX() + ", Y: " + homeLocation.getBlockY() + ", Z: " + homeLocation.getBlockZ())
+                                    .asGuiItem(event -> {
+                                        Nexus.getInstance().playerManager.setPlayerPreviousLocation(player, player.getLocation());
+                                        player.teleport(homeLocation);
+                                        player.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("home-success").replace("%h", home)));
+                                        SoundUtil.playSound(player, player, "home");
+                                    }));
+                        }
                     }
+
                     gui.open(player);
                 }
             } else if (args.length == 1) {

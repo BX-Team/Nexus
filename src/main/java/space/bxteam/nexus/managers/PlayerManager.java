@@ -2,147 +2,237 @@ package space.bxteam.nexus.managers;
 
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
-import org.bukkit.configuration.ConfigurationSection;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
+import space.bxteam.nexus.data.Database;
 
-import java.io.File;
-import java.io.IOException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
-public class PlayerManager { // TODO: Rewrite manager to work with SQLite and MySQL
+public class PlayerManager {
     private final JavaPlugin plugin;
-    private final File dataFolder;
+    private Database database;
 
-    public PlayerManager(@NotNull JavaPlugin plugin) {
+    public PlayerManager(@NotNull JavaPlugin plugin, @NotNull Database database) {
         this.plugin = plugin;
-        this.dataFolder = new File(plugin.getDataFolder(), "userdata");
-        if (!dataFolder.exists()) {
-            dataFolder.mkdirs();
-        }
+        this.database = database;
     }
 
-    public FileConfiguration getPlayerData(Player player) {
-        File playerFile = getPlayerFile(player);
-        return YamlConfiguration.loadConfiguration(playerFile);
+    private Connection getConnection() throws SQLException {
+        return database.dbSource.getConnection();
     }
 
-    public FileConfiguration getPlayerData(OfflinePlayer player) {
-        File playerFile = getPlayerFile(player);
-        return YamlConfiguration.loadConfiguration(playerFile);
-    }
-
-    public void savePlayerData(Player player, FileConfiguration playerData) {
-        File playerFile = getPlayerFile(player);
-        try {
-            playerData.save(playerFile);
-        } catch (IOException e) {
+    /**
+     * Method to update player data in selected database
+     *
+     * @param playerUUID UUID of player
+     * @param field field to update data
+     * @param value what data will be set in field
+     */
+    public void updatePlayerData(UUID playerUUID, String field, String value) {
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement(
+                     "UPDATE users SET " + field + " = ? WHERE player_uuid = ?")) {
+            statement.setString(1, value);
+            statement.setString(2, playerUUID.toString());
+            statement.executeUpdate();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    private File getPlayerFile(@NotNull Player player) {
-        String fileName = player.getUniqueId() + ".yml";
-        return new File(dataFolder, fileName);
+    /**
+     * Method to get player data from selected database
+     *
+     * @param playerUUID UUID of player
+     * @param field field to read data from
+     */
+    private String getPlayerData(UUID playerUUID, String field) {
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement(
+                     "SELECT " + field + " FROM users WHERE player_uuid = ?")) {
+            statement.setString(1, playerUUID.toString());
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                return resultSet.getString(field);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 
-    private File getPlayerFile(@NotNull OfflinePlayer player) {
-        String fileName = player.getUniqueId() + ".yml";
-        return new File(dataFolder, fileName);
-    }
-
+    /**
+     * Method to set player home
+     *
+     * @param player player to set home to
+     * @param homeName name of home
+     * @param location location of home
+     */
     public void setPlayerHome(Player player, String homeName, Location location) {
-        FileConfiguration playerData = getPlayerData(player);
-        ConfigurationSection homesSection = playerData.getConfigurationSection("homes");
-        if (homesSection == null) {
-            homesSection = playerData.createSection("homes");
+        String homes = getAllPlayerHomesAsString(player);
+        String homeData = homeName + ":" + location.getX() + ":" + location.getY() + ":" + location.getZ() + ":" + location.getPitch() + ":" + location.getYaw() + ":" + location.getWorld().getName();
+        if (homes == null || homes.isEmpty()) {
+            homes = homeData;
+        } else {
+            homes += ";" + homeData;
         }
-        homesSection.set(homeName, location);
-        savePlayerData(player, playerData);
+        updatePlayerData(player.getUniqueId(), "Homes", homes);
     }
 
+    /**
+     * Method to delete player home
+     *
+     * @param player player to delete home from
+     * @param homeName name of home
+     */
     public void deletePlayerHome(Player player, String homeName) {
-        FileConfiguration playerData = getPlayerData(player);
-        ConfigurationSection homesSection = playerData.getConfigurationSection("homes");
-        if (homesSection != null && homesSection.contains(homeName)) {
-            homesSection.set(homeName, null);
-            savePlayerData(player, playerData);
+        String homes = getAllPlayerHomesAsString(player);
+        if (homes == null || homes.isEmpty()) {
+            return;
         }
+        String[] homeArray = homes.split(";");
+        StringBuilder updatedHomes = new StringBuilder();
+        for (String home : homeArray) {
+            if (!home.startsWith(homeName + ":")) {
+                if (updatedHomes.length() > 0) {
+                    updatedHomes.append(";");
+                }
+                updatedHomes.append(home);
+            }
+        }
+        updatePlayerData(player.getUniqueId(), "Homes", updatedHomes.toString());
     }
 
-    public Location getPlayerHome(Player player, String homeName) {
-        FileConfiguration playerData = getPlayerData(player);
-        ConfigurationSection homesSection = playerData.getConfigurationSection("homes");
-        if (homesSection != null && homesSection.contains(homeName)) {
-            return homesSection.getLocation(homeName);
-        }
-        return null;
-    }
-
-    public List<String> getAllPlayerHomes(Player player) {
-        List<String> homes = new ArrayList<>();
-        FileConfiguration playerData = getPlayerData(player);
-        ConfigurationSection homesSection = playerData.getConfigurationSection("homes");
-        if (homesSection != null) {
-            homes.addAll(homesSection.getKeys(false));
-        }
-        return homes;
-    }
-
+    /**
+     * Method to get player home
+     *
+     * @param player player to get data from
+     * @param homeName name of home
+     * @return location of home
+     */
     public Location getPlayerHome(OfflinePlayer player, String homeName) {
-        FileConfiguration playerData = getPlayerData(player);
-        ConfigurationSection homesSection = playerData.getConfigurationSection("homes");
-        if (homesSection != null && homesSection.contains(homeName)) {
-            return homesSection.getLocation(homeName);
+        String homes = getAllPlayerHomesAsString(player);
+        if (homes == null || homes.isEmpty()) {
+            return null;
+        }
+        String[] homeArray = homes.split(";");
+        for (String home : homeArray) {
+            String[] parts = home.split(":");
+            if (parts[0].equals(homeName)) {
+                double x = Double.parseDouble(parts[1]);
+                double y = Double.parseDouble(parts[2]);
+                double z = Double.parseDouble(parts[3]);
+                float pitch = Float.parseFloat(parts[4]);
+                float yaw = Float.parseFloat(parts[5]);
+                String world = parts[6];
+                return new Location(plugin.getServer().getWorld(world), x, y, z, yaw, pitch);
+            }
         }
         return null;
     }
 
+    /**
+     * Method to get all player homes
+     *
+     * @param player player to get data from
+     * @return all homes as list
+     */
     public List<String> getAllPlayerHomes(OfflinePlayer player) {
         List<String> homes = new ArrayList<>();
-        FileConfiguration playerData = getPlayerData(player);
-        ConfigurationSection homesSection = playerData.getConfigurationSection("homes");
-        if (homesSection != null) {
-            homes.addAll(homesSection.getKeys(false));
+        String homesString = getAllPlayerHomesAsString(player);
+        if (homesString == null || homesString.isEmpty()) {
+            return homes;
+        }
+        String[] homeArray = homesString.split(";");
+        for (String home : homeArray) {
+            homes.add(home.split(":")[0]);
         }
         return homes;
     }
 
+    /**
+     * Method to get all player homes
+     *
+     * @param player player to get data from
+     * @return all homes as string
+     */
+    private String getAllPlayerHomesAsString(OfflinePlayer player) {
+        return getPlayerData(player.getUniqueId(), "Homes");
+    }
+
+    /**
+     * Method to set player previous/last location
+     *
+     * @param player player to set last location to
+     * @param previousLocation location to set as last location
+     */
     public void setPlayerPreviousLocation(Player player, Location previousLocation) {
-        FileConfiguration playerData = getPlayerData(player);
-        playerData.set("previousLocation", previousLocation);
-        savePlayerData(player, playerData);
+        String location = previousLocation.getX() + ":" + previousLocation.getY() + ":" + previousLocation.getZ() + ":" + previousLocation.getPitch() + ":" + previousLocation.getYaw() + ":" + previousLocation.getWorld().getName();
+        updatePlayerData(player.getUniqueId(), "PreviousLocation", location);
     }
 
+    /**
+     * Method to get player previous/last location
+     *
+     * @param player player to get data from
+     * @return last location
+     */
     public Location getPlayerPreviousLocation(Player player) {
-        FileConfiguration playerData = getPlayerData(player);
-        return playerData.getLocation("previousLocation");
+        String location = getPlayerData(player.getUniqueId(), "PreviousLocation");
+        if (location == null || location.isEmpty()) {
+            return null;
+        }
+        String[] parts = location.split(":");
+        double x = Double.parseDouble(parts[0]);
+        double y = Double.parseDouble(parts[1]);
+        double z = Double.parseDouble(parts[2]);
+        float pitch = Float.parseFloat(parts[3]);
+        float yaw = Float.parseFloat(parts[4]);
+        String world = parts[5];
+        return new Location(plugin.getServer().getWorld(world), x, y, z, yaw, pitch);
     }
 
+    /**
+     * Method to set player last recipient
+     *
+     * @param player player to set last recipient to
+     * @param lastRecipient name of last recipient
+     */
     public void setLastRecipient(Player player, String lastRecipient) {
-        FileConfiguration playerData = getPlayerData(player);
-        String trimmedName = lastRecipient.substring(lastRecipient.indexOf("=") + 1, lastRecipient.length() - 1);
-        playerData.set("lastRecipient", trimmedName);
-        savePlayerData(player, playerData);
+        updatePlayerData(player.getUniqueId(), "LastReceipt", lastRecipient);
     }
 
+    /**
+     * Method to get player last recipient
+     *
+     * @param player player to get data from
+     * @return last recipient
+     */
     public String getLastRecipient(Player player) {
-        FileConfiguration playerData = getPlayerData(player);
-        return playerData.getString("lastRecipient");
+        return getPlayerData(player.getUniqueId(), "LastReceipt");
     }
 
+    /**
+     * Method to set player vanished or no
+     *
+     * @param player player to set vanished state to
+     * @param vanished state of vanished
+     */
     public void setVanishedState(Player player, boolean vanished) {
-        FileConfiguration playerData = getPlayerData(player);
-        playerData.set("vanished", vanished);
-        savePlayerData(player, playerData);
+        updatePlayerData(player.getUniqueId(), "Vanished", Boolean.toString(vanished));
     }
 
+    /**
+     * Method to get player vanished state
+     *
+     * @param player player to get data from
+     * @return vanished state
+     */
     public boolean getVanishedState(Player player) {
-        FileConfiguration playerData = getPlayerData(player);
-        return playerData.getBoolean("vanished");
+        return Boolean.parseBoolean(getPlayerData(player.getUniqueId(), "Vanished"));
     }
 }

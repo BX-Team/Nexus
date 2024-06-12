@@ -23,7 +23,7 @@ public class NexusCommand extends CommandBase implements CommandExecutor, TabCom
             for (String message : helpMessage) {
                 sender.sendMessage(TextUtils.applyColor(message));
             }
-        } else if (args[0].equalsIgnoreCase("version")) {
+        } else if (args[0].equalsIgnoreCase("version") || args[0].equalsIgnoreCase("v") || args[0].equalsIgnoreCase("ver")) {
             sender.sendMessage(TextUtils.applyColor(Nexus.getInstance().localeReader.getPrefix() + Nexus.getInstance().localeReader.getString("nexus-version").replace("%v", Nexus.getInstance().getPluginMeta().getVersion())));
             // TODO: Update checker from modrinth (on release)
         } else if (args[0].equalsIgnoreCase("reload")) {

@@ -7,10 +7,10 @@ import java.io.File;
 
 public class LocaleConfig {
     private static final String languagesPath = "language" + File.separator;
+    private static final String[] languageFiles = {"en.yml", "ru.yml"};
 
     public static File getLangFile() {
         String configLang = Nexus.getInstance().getConfigString("language");
-
         String langPath = Nexus.getInstance().getDataFolder() + File.separator + languagesPath + configLang + ".yml";
         File langFile = new File(langPath);
 
@@ -30,9 +30,9 @@ public class LocaleConfig {
         File langDir = new File(Nexus.getInstance().getDataFolder() + File.separator + languagesPath);
         if (!langDir.exists()) {
             langDir.mkdir();
-            // Saves all default language files
-            Nexus.getInstance().saveResource(languagesPath + "en.yml", false);
-            Nexus.getInstance().saveResource(languagesPath + "ru.yml", false);
+            for (String langFile : languageFiles) {
+                Nexus.getInstance().saveResource(languagesPath + langFile, false);
+            }
         }
     }
 }
