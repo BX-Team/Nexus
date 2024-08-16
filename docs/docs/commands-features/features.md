@@ -1,3 +1,0 @@
-# 🌟 Nexus Features
-
-WIP
