@@ -1,5 +1,6 @@
 package space.bxteam.nexus.core.feature.essentials.gamemode;
 
+import com.google.inject.Inject;
 import dev.rollczi.litecommands.argument.Argument;
 import dev.rollczi.litecommands.argument.parser.ParseResult;
 import dev.rollczi.litecommands.argument.resolver.ArgumentResolver;
@@ -8,12 +9,21 @@ import dev.rollczi.litecommands.suggestion.SuggestionContext;
 import dev.rollczi.litecommands.suggestion.SuggestionResult;
 import org.bukkit.GameMode;
 import org.bukkit.command.CommandSender;
+import space.bxteam.nexus.core.files.configuration.PluginConfigurationProvider;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class GamemodeCommandArgument extends ArgumentResolver<CommandSender, GameMode> {
     private static final Map<String, GameMode> GAME_MODE_ARGUMENTS = new HashMap<>();
+    private final PluginConfigurationProvider configurationProvider;
+
+    @Inject
+    public GamemodeCommandArgument(
+            PluginConfigurationProvider configurationProvider
+    ) {
+        this.configurationProvider = configurationProvider;
+    }
 
     static {
         for (GameMode value : GameMode.values()) {
@@ -28,7 +38,7 @@ public class GamemodeCommandArgument extends ArgumentResolver<CommandSender, Gam
         GameMode gameMode = GAME_MODE_ARGUMENTS.get(argument.toLowerCase());
 
         if (gameMode == null) {
-            //invocation.sender().sendMessage(Main.getPrefix() + "§cInvalid gamemode argument");
+            invocation.sender().sendMessage(configurationProvider.configuration().prefix() + "§cInvalid gamemode argument");
             return null;
         }
 

@@ -1,9 +1,8 @@
-package space.bxteam.nexus.core.configuration.main.records;
+package space.bxteam.nexus.core.files.configuration.records;
 
 import de.exlll.configlib.Comment;
 import de.exlll.configlib.Configuration;
 import lombok.Getter;
-import space.bxteam.nexus.core.database.DatabaseType;
 
 @Configuration
 @Getter
@@ -14,7 +13,7 @@ public class DatabaseConfig {
             " - sqlite - (default) stores all data in a local file",
             " - mariadb - allows using a remote database"
     })
-    private DatabaseType type = DatabaseType.SQLITE;
+    private String type = "sqlite";
 
     @Comment("SQLite configuration")
     private SQLiteConfig sqlite = new SQLiteConfig();

@@ -1,4 +1,4 @@
-package space.bxteam.nexus.core.configuration.main.records;
+package space.bxteam.nexus.core.files.configuration.records;
 
 import de.exlll.configlib.Configuration;
 import lombok.Getter;

@@ -12,8 +12,10 @@ paperyml = { id = "net.minecrell.plugin-yml.paper", version = "0.6.0" }
 paper = { module = "io.papermc.paper:paper-api", version = "1.19.4-R0.1-SNAPSHOT" }
 
 configlib = { module = "de.exlll:configlib-yaml", version = "4.5.0" }
-hikaricp = { module = "com.zaxxer:HikariCP", version = "5.1.0" }
+hikaricp = { module = "com.zaxxer:HikariCP", version = "6.0.0" }
 mariadb = { module = "org.mariadb.jdbc:mariadb-java-client", version = "3.4.1"}
 placeholderapi = { module = "me.clip:placeholderapi", version = "2.11.6" }
-litecommands = { module = "dev.rollczi:litecommands-bukkit", version = "3.4.3" }
+litecommands = { module = "dev.rollczi:litecommands-bukkit", version = "3.7.1" }
+litecommandsadventure = { module = "dev.rollczi:litecommands-adventure-platform", version = "3.7.1" }
 bstats = { module = "org.bstats:bstats-bukkit", version = "3.0.2" }
+guice = { module = "com.google.inject:guice", version = "7.0.0" }

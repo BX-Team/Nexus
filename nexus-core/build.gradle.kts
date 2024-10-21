@@ -19,7 +19,9 @@ dependencies {
     compileOnly(libs.hikaricp)
     compileOnly(libs.mariadb)
     compileOnly(libs.litecommands)
+    compileOnly(libs.litecommandsadventure)
     compileOnly(libs.configlib)
+    compileOnly(libs.guice)
 
     // Plugin dependencies
     compileOnly(libs.placeholderapi)

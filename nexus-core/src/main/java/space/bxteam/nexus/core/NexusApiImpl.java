@@ -1,14 +1,18 @@
 package space.bxteam.nexus.core;
 
+import com.google.inject.Injector;
 import space.bxteam.nexus.NexusApi;
-import space.bxteam.nexus.core.feature.warp.WarpServiceImpl;
 import space.bxteam.nexus.feature.warp.WarpService;
 
 public class NexusApiImpl implements NexusApi {
-    private final WarpService warpService = new WarpServiceImpl();
+    private final Injector injector;
+
+    public NexusApiImpl(Injector injector) {
+        this.injector = injector;
+    }
 
     @Override
     public WarpService getWarpService() {
-        return warpService;
+        return this.injector.getInstance(WarpService.class);
     }
 }

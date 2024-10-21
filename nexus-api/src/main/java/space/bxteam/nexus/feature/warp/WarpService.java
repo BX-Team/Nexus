@@ -12,9 +12,7 @@ public interface WarpService {
 
     boolean warpExists(String name);
 
-    Optional<Warp> findWarp(String name);
+    Optional<Warp> getWarp(String name);
 
-    Collection<String> getNamesOfWarps();
-
-    boolean hasWarps();
+    Collection<String> getWarpNames();
 }

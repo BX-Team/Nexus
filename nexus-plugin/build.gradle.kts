@@ -26,7 +26,9 @@ dependencies {
     library(libs.hikaricp)
     library(libs.mariadb)
     library(libs.litecommands)
+    library(libs.litecommandsadventure)
     library(libs.configlib)
+    library(libs.guice)
 
     // Plugin dependencies
     compileOnly(libs.placeholderapi)
