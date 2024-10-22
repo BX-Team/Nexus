@@ -2,10 +2,10 @@
 minecraft = "1.19.4-R0.1-SNAPSHOT"
 
 [plugins]
-lombok = { id = "io.freefair.lombok", version = "8.7.1" }
+lombok = { id = "io.freefair.lombok", version = "8.10.2" }
 shadow = { id = "com.github.johnrengelman.shadow", version = "8.1.1" }
-userdev = { id = "io.papermc.paperweight.userdev", version = "1.7.2" }
-runpaper = { id = "xyz.jpenilla.run-paper", version = "2.3.0" }
+userdev = { id = "io.papermc.paperweight.userdev", version = "1.7.3" }
+runpaper = { id = "xyz.jpenilla.run-paper", version = "2.3.1" }
 paperyml = { id = "net.minecrell.plugin-yml.paper", version = "0.6.0" }
 
 [libraries]
@@ -17,5 +17,5 @@ mariadb = { module = "org.mariadb.jdbc:mariadb-java-client", version = "3.4.1"}
 placeholderapi = { module = "me.clip:placeholderapi", version = "2.11.6" }
 litecommands = { module = "dev.rollczi:litecommands-bukkit", version = "3.7.1" }
 litecommandsadventure = { module = "dev.rollczi:litecommands-adventure-platform", version = "3.7.1" }
-bstats = { module = "org.bstats:bstats-bukkit", version = "3.0.2" }
+bstats = { module = "org.bstats:bstats-bukkit", version = "3.1.0" }
 guice = { module = "com.google.inject:guice", version = "7.0.0" }
