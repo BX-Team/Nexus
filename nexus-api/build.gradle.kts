@@ -11,3 +11,8 @@ repositories {
 dependencies {
     compileOnly(libs.paper)
 }
+
+tasks.withType<JavaCompile>() {
+    options.encoding = "UTF-8"
+    options.release = 17
+}
