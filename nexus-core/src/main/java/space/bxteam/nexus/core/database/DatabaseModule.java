@@ -4,7 +4,7 @@ import com.google.inject.AbstractModule;
 import lombok.RequiredArgsConstructor;
 import space.bxteam.nexus.core.database.mariadb.MariaDBClient;
 import space.bxteam.nexus.core.database.sqlite.SQLiteClient;
-import space.bxteam.nexus.core.files.configuration.PluginConfigurationProvider;
+import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
 
 @RequiredArgsConstructor
 public class DatabaseModule extends AbstractModule {

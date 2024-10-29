@@ -22,6 +22,8 @@ dependencies {
     compileOnly(libs.litecommandsadventure)
     compileOnly(libs.configlib)
     compileOnly(libs.guice)
+    compileOnly(libs.reflections)
+    compileOnly(libs.bundles.adventure)
 
     // Plugin dependencies
     compileOnly(libs.placeholderapi)

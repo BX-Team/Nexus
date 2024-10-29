@@ -7,53 +7,52 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class NexusWrapper {
-    private static final String LOADER_CORE_CLASS = "space.bxteam.nexus.core.Nexus";
+    private static final String NEXUS_CLASS_NAME = "space.bxteam.nexus.core.Nexus";
 
     private final Class<?> nexusCoreClass;
-    private Object nexus;
+    private Object nexusInstance;
 
-    NexusWrapper(Class<?> nexusCoreClass) {
+    private NexusWrapper(Class<?> nexusCoreClass) {
         this.nexusCoreClass = nexusCoreClass;
     }
 
-    public void enable(Plugin plugin) {
+    public void initialize(Plugin plugin) {
         try {
-            Constructor<?> constructor = this.nexusCoreClass.getConstructor(Plugin.class);
-            constructor.setAccessible(true);
-
-            this.nexus = constructor.newInstance(plugin);
-        } catch (InvocationTargetException exception) {
-            if (exception.getCause() instanceof RuntimeException runtimeException) {
-                throw runtimeException;
+            Constructor<?> nexusConstructor = nexusCoreClass.getConstructor(Plugin.class);
+            nexusConstructor.setAccessible(true);
+            this.nexusInstance = nexusConstructor.newInstance(plugin);
+        } catch (NoSuchMethodException | InstantiationException | IllegalAccessException e) {
+            throw new RuntimeException("Failed to initialize Nexus due to constructor issue: ", e);
+        } catch (InvocationTargetException e) {
+            Throwable cause = e.getCause();
+            if (cause instanceof RuntimeException) {
+                throw (RuntimeException) cause;
+            } else {
+                throw new RuntimeException("Unexpected error during Nexus initialization: ", cause);
             }
-
-            throw new RuntimeException("Could not enable Nexus: ", exception.getCause());
-        } catch (IllegalAccessException | NoSuchMethodException | InstantiationException exception) {
-            throw new RuntimeException(exception);
         }
     }
 
-    public void disable() {
+    public void terminate() {
+        if (nexusInstance == null) {
+            return;
+        }
+
         try {
-            Method disableMethod = this.nexusCoreClass.getMethod("disable");
-
-            disableMethod.setAccessible(true);
-
-            if (this.nexus != null) {
-                disableMethod.invoke(this.nexus);
-            }
-        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException exception) {
-            throw new RuntimeException(exception);
+            Method shutdownMethod = nexusCoreClass.getMethod("disable");
+            shutdownMethod.setAccessible(true);
+            shutdownMethod.invoke(nexusInstance);
+        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+            throw new RuntimeException("Failed to terminate Nexus: ", e);
         }
     }
 
-    public static NexusWrapper create(ClassLoader loader) {
+    public static NexusWrapper load(ClassLoader classLoader) {
         try {
-            Class<?> nexusCoreClass = Class.forName(LOADER_CORE_CLASS, true, loader);
-
-            return new NexusWrapper(nexusCoreClass);
-        } catch (ClassNotFoundException exception) {
-            throw new RuntimeException(exception);
+            Class<?> coreClass = Class.forName(NEXUS_CLASS_NAME, true, classLoader);
+            return new NexusWrapper(coreClass);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("Nexus core class not found in specified classloader: ", e);
         }
     }
 }

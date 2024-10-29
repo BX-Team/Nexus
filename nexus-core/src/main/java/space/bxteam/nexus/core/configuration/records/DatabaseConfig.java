@@ -1,4 +1,4 @@
-package space.bxteam.nexus.core.files.configuration.records;
+package space.bxteam.nexus.core.configuration.records;
 
 import de.exlll.configlib.Comment;
 import de.exlll.configlib.Configuration;

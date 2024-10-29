@@ -11,7 +11,7 @@ import lombok.SneakyThrows;
 import space.bxteam.nexus.core.database.DatabaseClient;
 import space.bxteam.nexus.core.database.DatabaseQueries;
 import space.bxteam.nexus.core.database.statement.StatementBuilder;
-import space.bxteam.nexus.core.files.configuration.PluginConfiguration;
+import space.bxteam.nexus.core.configuration.PluginConfiguration;
 
 import java.nio.file.Files;
 import java.nio.file.Path;

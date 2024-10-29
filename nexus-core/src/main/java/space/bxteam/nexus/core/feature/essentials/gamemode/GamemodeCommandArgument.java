@@ -9,7 +9,7 @@ import dev.rollczi.litecommands.suggestion.SuggestionContext;
 import dev.rollczi.litecommands.suggestion.SuggestionResult;
 import org.bukkit.GameMode;
 import org.bukkit.command.CommandSender;
-import space.bxteam.nexus.core.files.configuration.PluginConfigurationProvider;
+import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
 
 import java.util.HashMap;
 import java.util.Map;

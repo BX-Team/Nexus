@@ -2,7 +2,6 @@ package space.bxteam.nexus.core.feature.warp;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import lombok.RequiredArgsConstructor;
 import org.bukkit.Location;
 import space.bxteam.nexus.core.database.DatabaseClient;
 import space.bxteam.nexus.feature.warp.Warp;
@@ -11,10 +10,15 @@ import space.bxteam.nexus.feature.warp.WarpService;
 import java.util.*;
 
 @Singleton
-@RequiredArgsConstructor(onConstructor = @__(@Inject))
 public class WarpServiceImpl implements WarpService {
     private final Map<String, Warp> warpMap = new HashMap<>();
     private final DatabaseClient client;
+
+    @Inject
+    private WarpServiceImpl(DatabaseClient client) {
+        this.client = client;
+        loadWarpsFromDatabase();
+    }
 
     @Override
     public Warp createWarp(String name, Location location) {

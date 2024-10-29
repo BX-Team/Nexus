@@ -6,7 +6,7 @@ import dev.rollczi.litecommands.annotations.async.Async;
 import dev.rollczi.litecommands.annotations.command.Command;
 import dev.rollczi.litecommands.annotations.execute.Execute;
 import dev.rollczi.litecommands.annotations.permission.Permission;
-import space.bxteam.nexus.core.files.configuration.PluginConfigurationProvider;
+import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
 
 @Command(name = "nexus")
 @Permission("nexus.nexus")

@@ -7,8 +7,10 @@ import org.bukkit.plugin.Plugin;
 import space.bxteam.nexus.NexusApiProvider;
 import space.bxteam.nexus.core.database.DatabaseClient;
 import space.bxteam.nexus.core.database.DatabaseModule;
-import space.bxteam.nexus.core.files.configuration.ConfigModule;
-import space.bxteam.nexus.core.files.configuration.PluginConfigurationProvider;
+import space.bxteam.nexus.core.configuration.ConfigModule;
+import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
+import space.bxteam.nexus.core.integration.bstats.MetricsModule;
+import space.bxteam.nexus.core.translation.TranslationModule;
 import space.bxteam.nexus.core.utils.LogUtil;
 
 public class Nexus {
@@ -22,7 +24,9 @@ public class Nexus {
                 Guice.createInjector(
                         new NexusModule(this.configurationProvider, plugin),
                         new ConfigModule(),
-                        new DatabaseModule(this.configurationProvider));
+                        new TranslationModule(this.configurationProvider, plugin.getDataFolder().toPath().resolve("languages")),
+                        new DatabaseModule(this.configurationProvider),
+                        new MetricsModule());
 
         this.injector.getInstance(DatabaseClient.class).open();
 

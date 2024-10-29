@@ -11,14 +11,14 @@ public class NexusPlugin extends JavaPlugin {
     public void onEnable() {
         URLClassLoader pluginLoader = (URLClassLoader) this.getClassLoader();
 
-        this.nexusWrapper = NexusWrapper.create(pluginLoader);
-        this.nexusWrapper.enable(this);
+        this.nexusWrapper = NexusWrapper.load(pluginLoader);
+        this.nexusWrapper.initialize(this);
     }
 
     @Override
     public void onDisable() {
         if (this.nexusWrapper != null) {
-            this.nexusWrapper.disable();
+            this.nexusWrapper.terminate();
         }
     }
 }

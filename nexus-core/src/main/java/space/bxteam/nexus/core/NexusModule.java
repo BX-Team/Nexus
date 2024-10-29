@@ -3,13 +3,17 @@ package space.bxteam.nexus.core;
 import com.google.inject.AbstractModule;
 import com.google.inject.name.Names;
 import lombok.RequiredArgsConstructor;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Server;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.ServicesManager;
 import space.bxteam.nexus.core.feature.warp.WarpServiceImpl;
-import space.bxteam.nexus.core.files.configuration.PluginConfigurationProvider;
+import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
+import space.bxteam.nexus.core.integration.adventure.processors.AdventureLegacyColorPostProcessor;
+import space.bxteam.nexus.core.integration.adventure.processors.AdventureLegacyColorPreProcessor;
+import space.bxteam.nexus.core.integration.adventure.processors.AdventureUrlPostProcessor;
 import space.bxteam.nexus.feature.warp.WarpService;
 
 import java.nio.file.Path;
@@ -30,6 +34,15 @@ public class NexusModule extends AbstractModule {
         this.bind(Path.class)
                 .annotatedWith(Names.named("dataFolder"))
                 .toInstance(this.plugin.getDataFolder().toPath());
+
+        this.bind(MiniMessage.class).toInstance(MiniMessage.miniMessage());
+        this.bind(MiniMessage.class)
+                .annotatedWith(Names.named("colorMiniMessage"))
+                .toInstance(MiniMessage.builder()
+                        .postProcessor(new AdventureUrlPostProcessor())
+                        .postProcessor(new AdventureLegacyColorPostProcessor())
+                        .preProcessor(new AdventureLegacyColorPreProcessor())
+                        .build());
 
         this.bind(WarpService.class).to(WarpServiceImpl.class);
     }

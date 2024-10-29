@@ -8,37 +8,37 @@ import dev.rollczi.litecommands.invocation.Invocation;
 import dev.rollczi.litecommands.suggestion.SuggestionContext;
 import dev.rollczi.litecommands.suggestion.SuggestionResult;
 import org.bukkit.command.CommandSender;
-import space.bxteam.nexus.core.files.configuration.PluginConfigurationProvider;
+import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
 import space.bxteam.nexus.feature.warp.Warp;
 import space.bxteam.nexus.feature.warp.WarpService;
 
 import java.util.ArrayList;
 
 public class WarpCommandArgument extends ArgumentResolver<CommandSender, Warp> {
-    private final WarpService warpFeature;
+    private final WarpService warpService;
     private final PluginConfigurationProvider configurationProvider;
 
     @Inject
     public WarpCommandArgument(
-            WarpService warpFeature,
+            WarpService warpService,
             PluginConfigurationProvider configurationProvider
     ) {
-        this.warpFeature = warpFeature;
+        this.warpService = warpService;
         this.configurationProvider = configurationProvider;
     }
 
     @Override
     protected ParseResult<Warp> parse(Invocation<CommandSender> invocation, Argument<Warp> context, String argument) {
-        if (!this.warpFeature.warpExists(argument)) {
+        if (!this.warpService.warpExists(argument)) {
             invocation.sender().sendMessage(configurationProvider.configuration().prefix() + "&cWarp not found");
             return null;
         }
 
-        return ParseResult.success(this.warpFeature.getWarp(argument).orElseThrow());
+        return ParseResult.success(this.warpService.getWarp(argument).orElseThrow());
     }
 
     @Override
     public SuggestionResult suggest(Invocation<CommandSender> invocation, Argument<Warp> argument, SuggestionContext context) {
-        return SuggestionResult.of(new ArrayList<>(this.warpFeature.getWarpNames()));
+        return SuggestionResult.of(new ArrayList<>(this.warpService.getWarpNames()));
     }
 }

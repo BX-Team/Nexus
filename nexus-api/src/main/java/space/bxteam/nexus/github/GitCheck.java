@@ -19,7 +19,7 @@ import java.time.Duration;
  * @see GitRelease
  * @see GitRepository
  * @see GitTag
- * @since 3.0.0
+ * @since 0.2.0
  * @author NONPLAYT
  */
 public class GitCheck {
