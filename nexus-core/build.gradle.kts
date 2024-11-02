@@ -22,7 +22,7 @@ dependencies {
     compileOnly(libs.litecommandsadventure)
     compileOnly(libs.configlib)
     compileOnly(libs.guice)
-    compileOnly(libs.reflections)
+    compileOnly(libs.classgraph)
     compileOnly(libs.bundles.adventure)
 
     // Plugin dependencies
@@ -34,4 +34,5 @@ dependencies {
 tasks.withType<JavaCompile>() {
     options.encoding = "UTF-8"
     options.release = 17
+    options.compilerArgs.add("-parameters")
 }

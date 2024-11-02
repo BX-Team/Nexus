@@ -37,5 +37,8 @@ public class ENTranslation implements Translation {
     public static class ENArgumentSection implements ArgumentSection {
         private String onlyPlayers = "<red>Only players can execute this command.";
         private String noPermission = "<red>You do not have permission to execute this command.";
+        private String usageMessage = "<red>Correct usage: <white>{USAGE}";
+        private String usageMessageHead = "<green>Correct usage:";
+        private String usageMessageEntry = "<gray> - <white>{USAGE}";
     }
 }

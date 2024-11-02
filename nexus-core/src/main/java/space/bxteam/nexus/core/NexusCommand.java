@@ -6,17 +6,16 @@ import dev.rollczi.litecommands.annotations.async.Async;
 import dev.rollczi.litecommands.annotations.command.Command;
 import dev.rollczi.litecommands.annotations.execute.Execute;
 import dev.rollczi.litecommands.annotations.permission.Permission;
+import lombok.RequiredArgsConstructor;
 import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
+import space.bxteam.nexus.core.message.MessageManager;
 
 @Command(name = "nexus")
 @Permission("nexus.nexus")
+@RequiredArgsConstructor(onConstructor_ = @Inject)
 public class NexusCommand {
     private final PluginConfigurationProvider configurationProvider;
-
-    @Inject
-    public NexusCommand(PluginConfigurationProvider configurationProvider) {
-        this.configurationProvider = configurationProvider;
-    }
+    private final MessageManager messageManager;
 
     @Async
     @Execute(name = "reload")

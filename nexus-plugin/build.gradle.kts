@@ -29,7 +29,7 @@ dependencies {
     library(libs.litecommandsadventure)
     library(libs.configlib)
     library(libs.guice)
-    library(libs.reflections)
+    library(libs.classgraph)
     library(libs.bundles.adventure)
 
     // Plugin dependencies
@@ -42,6 +42,7 @@ tasks {
     compileJava {
         options.encoding = Charsets.UTF_8.name()
         options.release.set(17)
+        options.compilerArgs.add("-parameters")
     }
     build {
         dependsOn("shadowJar")

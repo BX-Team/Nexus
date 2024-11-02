@@ -8,5 +8,8 @@ public interface Translation {
     interface ArgumentSection {
         String onlyPlayers();
         String noPermission();
+        String usageMessage();
+        String usageMessageHead();
+        String usageMessageEntry();
     }
 }

@@ -10,6 +10,7 @@ import space.bxteam.nexus.core.database.DatabaseModule;
 import space.bxteam.nexus.core.configuration.ConfigModule;
 import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
 import space.bxteam.nexus.core.integration.bstats.MetricsModule;
+import space.bxteam.nexus.core.integration.litecommands.LiteCommandsRegister;
 import space.bxteam.nexus.core.translation.TranslationModule;
 import space.bxteam.nexus.core.utils.LogUtil;
 
@@ -26,9 +27,11 @@ public class Nexus {
                         new ConfigModule(),
                         new TranslationModule(this.configurationProvider, plugin.getDataFolder().toPath().resolve("languages")),
                         new DatabaseModule(this.configurationProvider),
-                        new MetricsModule());
+                        new MetricsModule()
+                );
 
         this.injector.getInstance(DatabaseClient.class).open();
+        this.injector.getInstance(LiteCommandsRegister.class).onEnable();
 
         NexusApiProvider.initialize(new NexusApiImpl(this.injector));
 
@@ -38,6 +41,7 @@ public class Nexus {
     public void disable() {
         LogUtil.log("Disabling Nexus...", LogUtil.LogLevel.INFO);
 
+        this.injector.getInstance(LiteCommandsRegister.class).onDisable();
         this.injector.getInstance(DatabaseClient.class).close();
 
         NexusApiProvider.shutdown();

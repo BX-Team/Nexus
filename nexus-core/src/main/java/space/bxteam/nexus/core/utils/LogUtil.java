@@ -1,6 +1,7 @@
 package space.bxteam.nexus.core.utils;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 
 public class LogUtil {
     public static void log(String message, LogLevel level) {
@@ -14,7 +15,7 @@ public class LogUtil {
             case DEBUG -> prefix = "&8[&b&lDEBUG&r&8]";
         }
 
-        Bukkit.getConsoleSender().sendMessage(TextUtils.applyColor("&6[&eNexus&6] &7" + prefix + " &f" + message));
+        Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&6[&eNexus&6] &7" + prefix + " &f" + message));
     }
 
     public enum LogLevel { ERROR, WARNING, INFO, DEBUG }

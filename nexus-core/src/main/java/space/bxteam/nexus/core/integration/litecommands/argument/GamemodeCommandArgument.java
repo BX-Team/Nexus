@@ -1,4 +1,4 @@
-package space.bxteam.nexus.core.feature.essentials.gamemode;
+package space.bxteam.nexus.core.integration.litecommands.argument;
 
 import com.google.inject.Inject;
 import dev.rollczi.litecommands.argument.Argument;
@@ -7,23 +7,22 @@ import dev.rollczi.litecommands.argument.resolver.ArgumentResolver;
 import dev.rollczi.litecommands.invocation.Invocation;
 import dev.rollczi.litecommands.suggestion.SuggestionContext;
 import dev.rollczi.litecommands.suggestion.SuggestionResult;
+import lombok.RequiredArgsConstructor;
 import org.bukkit.GameMode;
 import org.bukkit.command.CommandSender;
 import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
+import space.bxteam.nexus.core.integration.litecommands.annotations.LiteArgument;
+import space.bxteam.nexus.core.message.MessageManager;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@LiteArgument(type = GameMode.class)
+@RequiredArgsConstructor(onConstructor = @__(@Inject))
 public class GamemodeCommandArgument extends ArgumentResolver<CommandSender, GameMode> {
     private static final Map<String, GameMode> GAME_MODE_ARGUMENTS = new HashMap<>();
+    private final MessageManager messageManager;
     private final PluginConfigurationProvider configurationProvider;
-
-    @Inject
-    public GamemodeCommandArgument(
-            PluginConfigurationProvider configurationProvider
-    ) {
-        this.configurationProvider = configurationProvider;
-    }
 
     static {
         for (GameMode value : GameMode.values()) {

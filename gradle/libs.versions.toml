@@ -21,7 +21,7 @@ litecommands = { module = "dev.rollczi:litecommands-bukkit", version = "3.8.0" }
 litecommandsadventure = { module = "dev.rollczi:litecommands-adventure-platform", version = "3.8.0" }
 bstats = { module = "org.bstats:bstats-bukkit", version = "3.1.0" }
 guice = { module = "com.google.inject:guice", version = "7.0.0" }
-reflections = { module = "org.reflections:reflections", version = "0.10.2" }
+classgraph = { module = "io.github.classgraph:classgraph", version = "4.8.177" }
 
 adventure-platform-bukkit = { module = "net.kyori:adventure-platform-bukkit", version.ref = "adventure" }
 adventure-minimessage = { module = "net.kyori:adventure-text-minimessage", version.ref = "minimessage" }

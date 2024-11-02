@@ -37,5 +37,8 @@ public class RUTranslation implements Translation {
     public static class RUArgumentSection implements ArgumentSection {
         private String onlyPlayers = "<red>Только игроки могут выполнить эту команду.";
         private String noPermission = "<red>У вас нет разрешения на выполнение этой команды.";
+        private String usageMessage = "<red>Правильное использование: <white>{USAGE}";
+        private String usageMessageHead = "<green>Правильное использование:";
+        private String usageMessageEntry = "<gray> - <white>{USAGE}";
     }
 }

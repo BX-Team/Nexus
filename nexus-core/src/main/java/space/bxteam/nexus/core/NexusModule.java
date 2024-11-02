@@ -3,6 +3,8 @@ package space.bxteam.nexus.core;
 import com.google.inject.AbstractModule;
 import com.google.inject.name.Names;
 import lombok.RequiredArgsConstructor;
+import net.kyori.adventure.platform.AudienceProvider;
+import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Server;
 import org.bukkit.plugin.Plugin;
@@ -34,6 +36,7 @@ public class NexusModule extends AbstractModule {
         this.bind(Path.class)
                 .annotatedWith(Names.named("dataFolder"))
                 .toInstance(this.plugin.getDataFolder().toPath());
+        this.bind(AudienceProvider.class).toInstance(BukkitAudiences.create(this.plugin));
 
         this.bind(MiniMessage.class).toInstance(MiniMessage.miniMessage());
         this.bind(MiniMessage.class)
