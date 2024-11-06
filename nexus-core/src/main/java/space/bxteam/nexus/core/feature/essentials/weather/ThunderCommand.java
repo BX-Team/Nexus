@@ -1,0 +1,40 @@
+package space.bxteam.nexus.core.feature.essentials.weather;
+
+import com.google.inject.Inject;
+import dev.rollczi.litecommands.annotations.argument.Arg;
+import dev.rollczi.litecommands.annotations.command.Command;
+import dev.rollczi.litecommands.annotations.context.Context;
+import dev.rollczi.litecommands.annotations.execute.Execute;
+import dev.rollczi.litecommands.annotations.permission.Permission;
+import lombok.RequiredArgsConstructor;
+import org.bukkit.World;
+import org.bukkit.command.CommandSender;
+import space.bxteam.nexus.core.message.MessageManager;
+
+@Command(name = "thunder")
+@Permission("nexus.thunder")
+@RequiredArgsConstructor(onConstructor = @__(@Inject))
+public class ThunderCommand {
+    private final MessageManager messageManager;
+
+    @Execute
+    void thunder(@Context CommandSender sender, @Context World world) {
+        this.setThunder(sender, world);
+    }
+
+    @Execute
+    void thunderWorld(@Context CommandSender sender, @Arg World world) {
+        this.setThunder(sender, world);
+    }
+
+    private void setThunder(CommandSender sender, World world) {
+        world.setStorm(true);
+        world.setThundering(true);
+
+        this.messageManager.create()
+                .recipient(sender)
+                .message(translation -> translation.timeAndWeather().weatherSetThunder())
+                .placeholder("{WORLD}", world.getName())
+                .send();
+    }
+}

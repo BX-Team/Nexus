@@ -12,7 +12,7 @@ import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
 import space.bxteam.nexus.core.integration.bstats.MetricsModule;
 import space.bxteam.nexus.core.integration.litecommands.LiteCommandsRegister;
 import space.bxteam.nexus.core.translation.TranslationModule;
-import space.bxteam.nexus.core.utils.LogUtil;
+import space.bxteam.nexus.core.utils.Logger;
 
 public class Nexus {
     private PluginConfigurationProvider configurationProvider;
@@ -35,11 +35,11 @@ public class Nexus {
 
         NexusApiProvider.initialize(new NexusApiImpl(this.injector));
 
-        LogUtil.log("Enabled Nexus in " + stopwatch.stop(), LogUtil.LogLevel.INFO);
+        Logger.log("Enabled Nexus in " + stopwatch.stop(), Logger.LogLevel.INFO);
     }
 
     public void disable() {
-        LogUtil.log("Disabling Nexus...", LogUtil.LogLevel.INFO);
+        Logger.log("Disabling Nexus...", Logger.LogLevel.INFO);
 
         this.injector.getInstance(LiteCommandsRegister.class).onDisable();
         this.injector.getInstance(DatabaseClient.class).close();

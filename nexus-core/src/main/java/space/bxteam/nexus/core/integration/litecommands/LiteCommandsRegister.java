@@ -24,7 +24,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.Plugin;
 import space.bxteam.nexus.core.integration.litecommands.annotations.LiteArgument;
 import space.bxteam.nexus.core.integration.litecommands.annotations.LiteHandler;
-import space.bxteam.nexus.core.utils.LogUtil;
+import space.bxteam.nexus.core.utils.Logger;
 
 import java.lang.annotation.Annotation;
 import java.util.function.Consumer;
@@ -64,32 +64,32 @@ public class LiteCommandsRegister {
                 Object instance = injector.getInstance(classInfo.loadClass());
                 consumer.accept(instance);
             } catch (Exception e) {
-                LogUtil.log("Failed to load instance: " + e.getMessage(), LogUtil.LogLevel.ERROR);
+                Logger.log("Failed to load instance: " + e.getMessage(), Logger.LogLevel.ERROR);
             }
         });
     }
 
     @SuppressWarnings("unchecked")
     private void registerHandlersAndArguments() {
-        scanClassesWithAnnotation("space.bxteam.nexus.core.integration.litecommands", LiteArgument.class, classInfo -> {
+        scanClassesWithAnnotation("space.bxteam.nexus.core.feature", LiteArgument.class, classInfo -> {
             try {
                 Class<?> argumentClass = classInfo.loadClass();
                 LiteArgument liteArgument = argumentClass.getAnnotation(LiteArgument.class);
                 ArgumentResolverBase<CommandSender, Object> argumentResolver = (ArgumentResolverBase<CommandSender, Object>) injector.getInstance(argumentClass);
                 registerArgument((Class<Object>) liteArgument.type(), ArgumentKey.of(liteArgument.name()), argumentResolver);
             } catch (Exception e) {
-                LogUtil.log("Failed to load argument instance: " + e.getMessage(), LogUtil.LogLevel.ERROR);
+                Logger.log("Failed to load argument instance: " + e.getMessage(), Logger.LogLevel.ERROR);
             }
         });
 
-        scanClassesWithAnnotation("space.bxteam.nexus.core.integration.litecommands", LiteHandler.class, classInfo -> {
+        scanClassesWithAnnotation("space.bxteam.nexus.core.integration.litecommands.handler", LiteHandler.class, classInfo -> {
             try {
                 Class<?> handlerClass = classInfo.loadClass();
                 LiteHandler liteHandler = handlerClass.getAnnotation(LiteHandler.class);
                 ResultHandler<CommandSender, Object> resultHandler = (ResultHandler<CommandSender, Object>) injector.getInstance(handlerClass);
                 registerResultHandler((Class<Object>) liteHandler.value(), resultHandler);
             } catch (Exception e) {
-                LogUtil.log("Failed to load handler instance: " + e.getMessage(), LogUtil.LogLevel.ERROR);
+                Logger.log("Failed to load handler instance: " + e.getMessage(), Logger.LogLevel.ERROR);
             }
         });
     }

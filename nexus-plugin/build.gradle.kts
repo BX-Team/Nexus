@@ -39,10 +39,13 @@ dependencies {
 }
 
 tasks {
+    java {
+        toolchain.languageVersion.set(JavaLanguageVersion.of(21))
+    }
     compileJava {
         options.encoding = Charsets.UTF_8.name()
         options.release.set(17)
-        options.compilerArgs.add("-parameters")
+        options.compilerArgs = listOf("-Xlint:deprecation", "-parameters")
     }
     build {
         dependsOn("shadowJar")

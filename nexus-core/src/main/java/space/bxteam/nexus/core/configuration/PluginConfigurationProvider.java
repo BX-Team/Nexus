@@ -4,7 +4,7 @@ import com.google.inject.Singleton;
 import de.exlll.configlib.YamlConfigurationProperties;
 import de.exlll.configlib.YamlConfigurations;
 import lombok.Getter;
-import space.bxteam.nexus.core.utils.LogUtil;
+import space.bxteam.nexus.core.utils.Logger;
 
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
@@ -43,7 +43,7 @@ public class PluginConfigurationProvider {
                                     .header(HEADER)
                                     .build());
         } catch (Exception e) {
-            LogUtil.log("Could not load configuration file. This can happen if you have made a mistake in the configuration file", LogUtil.LogLevel.ERROR);
+            Logger.log("Could not load configuration file. This can happen if you have made a mistake in the configuration file", Logger.LogLevel.ERROR);
             throw new RuntimeException("Could not load configuration file.", e);
         }
     }

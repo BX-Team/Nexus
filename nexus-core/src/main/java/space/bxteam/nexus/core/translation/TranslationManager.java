@@ -4,7 +4,6 @@ import de.exlll.configlib.YamlConfigurationProperties;
 import de.exlll.configlib.YamlConfigurations;
 import lombok.RequiredArgsConstructor;
 import space.bxteam.nexus.core.translation.implementation.ENTranslation;
-import space.bxteam.nexus.core.translation.implementation.RUTranslation;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -17,7 +16,6 @@ public class TranslationManager {
 
     public void initializeLanguages() {
         saveLanguageFile(ENTranslation.class, "en");
-        saveLanguageFile(RUTranslation.class, "ru");
     }
 
     private <T extends Translation> void saveLanguageFile(Class<T> translationClass, String languageCode) {

@@ -24,19 +24,19 @@ public class InvalidUsageHandlerImpl implements InvalidUsageHandler<CommandSende
         if (schematic.isOnlyFirst()) {
             this.messageManager.create()
                     .recipient(sender)
-                    .notice(translation -> translation.argument().usageMessage())
+                    .message(translation -> translation.argument().usageMessage())
                     .placeholder("{USAGE}", schematic.first())
-                    .send(messageManager.translation());
+                    .send();
             return;
         }
 
-        this.messageManager.create().recipient(sender).notice(translation -> translation.argument().usageMessageHead()).send(messageManager.translation());
+        this.messageManager.create().recipient(sender).message(translation -> translation.argument().usageMessageHead()).send();
         for (String schema : schematic.all()) {
             this.messageManager.create()
                     .recipient(sender)
-                    .notice(translation -> translation.argument().usageMessageEntry())
+                    .message(translation -> translation.argument().usageMessageEntry())
                     .placeholder("{USAGE}", schema)
-                    .send(messageManager.translation());
+                    .send();
         }
     }
 }

@@ -1,4 +1,4 @@
-package space.bxteam.nexus.core.integration.litecommands.argument;
+package space.bxteam.nexus.core.feature.warp.command;
 
 import com.google.inject.Inject;
 import dev.rollczi.litecommands.argument.Argument;

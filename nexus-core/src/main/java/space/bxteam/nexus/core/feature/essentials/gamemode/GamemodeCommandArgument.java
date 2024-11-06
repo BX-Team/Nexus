@@ -1,4 +1,4 @@
-package space.bxteam.nexus.core.integration.litecommands.argument;
+package space.bxteam.nexus.core.feature.essentials.gamemode;
 
 import com.google.inject.Inject;
 import dev.rollczi.litecommands.argument.Argument;
@@ -10,7 +10,6 @@ import dev.rollczi.litecommands.suggestion.SuggestionResult;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.GameMode;
 import org.bukkit.command.CommandSender;
-import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
 import space.bxteam.nexus.core.integration.litecommands.annotations.LiteArgument;
 import space.bxteam.nexus.core.message.MessageManager;
 
@@ -22,7 +21,6 @@ import java.util.Map;
 public class GamemodeCommandArgument extends ArgumentResolver<CommandSender, GameMode> {
     private static final Map<String, GameMode> GAME_MODE_ARGUMENTS = new HashMap<>();
     private final MessageManager messageManager;
-    private final PluginConfigurationProvider configurationProvider;
 
     static {
         for (GameMode value : GameMode.values()) {
@@ -36,16 +34,17 @@ public class GamemodeCommandArgument extends ArgumentResolver<CommandSender, Gam
     protected ParseResult<GameMode> parse(Invocation<CommandSender> invocation, Argument<GameMode> context, String argument) {
         GameMode gameMode = GAME_MODE_ARGUMENTS.get(argument.toLowerCase());
 
-        if (gameMode == null) {
-            invocation.sender().sendMessage(configurationProvider.configuration().prefix() + "§cInvalid gamemode argument");
-            return null;
+        if (gameMode != null) {
+            return ParseResult.success(gameMode);
+        } else {
+            return ParseResult.failure(messageManager.getMessage(translation -> translation.player().gameModeNotCorrect()));
         }
-
-        return ParseResult.success(gameMode);
     }
 
     @Override
     public SuggestionResult suggest(Invocation<CommandSender> invocation, Argument<GameMode> argument, SuggestionContext context) {
-        return SuggestionResult.of(GAME_MODE_ARGUMENTS.keySet());
+        return GAME_MODE_ARGUMENTS.keySet()
+                .stream()
+                .collect(SuggestionResult.collector());
     }
 }

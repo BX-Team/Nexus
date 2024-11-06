@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: 
+Class-Path: bstats-base-3.1.0.jar bstats-bukkit-3.1.0.jar
+
