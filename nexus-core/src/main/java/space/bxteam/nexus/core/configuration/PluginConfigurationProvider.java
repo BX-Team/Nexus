@@ -8,43 +8,50 @@ import space.bxteam.nexus.core.utils.Logger;
 
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
+import java.util.Optional;
 
 @Singleton
 public class PluginConfigurationProvider {
     @Getter
     private volatile PluginConfiguration configuration;
+
     private final Path dataFolder;
+    private final static String CONFIG_FILE = "config.yml";
     private final static String HEADER = """
-                                            ███╗░░██╗███████╗██╗░░██╗██╗░░░██╗░██████╗
-                                            ████╗░██║██╔════╝╚██╗██╔╝██║░░░██║██╔════╝
-                                            ██╔██╗██║█████╗░░░╚███╔╝░██║░░░██║╚█████╗░
-                                            ██║╚████║██╔══╝░░░██╔██╗░██║░░░██║░╚═══██╗
-                                            ██║░╚███║███████╗██╔╝╚██╗╚██████╔╝██████╔╝
-                                            ╚═╝░░╚══╝╚══════╝╚═╝░░╚═╝░╚═════╝░╚═════╝░
-                                            
-                                            Discord server: https://discord.gg/p7cxhw7E2M
-                                            Modrinth: https://modrinth.com/plugin/nexuss
-                                            """;
+        ███╗░░██╗███████╗██╗░░██╗██╗░░░██╗░██████╗
+        ████╗░██║██╔════╝╚██╗██╔╝██║░░░██║██╔════╝
+        ██╔██╗██║█████╗░░░╚███╔╝░██║░░░██║╚█████╗░
+        ██║╚████║██╔══╝░░░██╔██╗░██║░░░██║░╚═══██╗
+        ██║░╚███║███████╗██╔╝╚██╗╚██████╔╝██████╔╝
+        ╚═╝░░╚══╝╚══════╝╚═╝░░╚═╝░╚═════╝░╚═════╝░
+
+        Discord server: https://discord.gg/p7cxhw7E2M
+        Modrinth: https://modrinth.com/plugin/nexuss
+        """;
 
     public PluginConfigurationProvider(Path dataFolder) {
         this.dataFolder = dataFolder;
-
-        this.loadConfig();
+        loadConfig();
     }
 
     public void loadConfig() {
+        Optional<PluginConfiguration> config = loadConfiguration();
+        this.configuration = config.orElseThrow(() ->
+                new RuntimeException("Failed to load configuration file."));
+    }
+
+    private Optional<PluginConfiguration> loadConfiguration() {
         try {
-            this.configuration =
-                    YamlConfigurations.update(
-                            this.dataFolder.resolve("config.yml"),
-                            PluginConfiguration.class,
-                            YamlConfigurationProperties.newBuilder()
-                                    .charset(StandardCharsets.UTF_8)
-                                    .header(HEADER)
-                                    .build());
+            return Optional.of(YamlConfigurations.update(
+                    this.dataFolder.resolve(CONFIG_FILE),
+                    PluginConfiguration.class,
+                    YamlConfigurationProperties.newBuilder()
+                            .charset(StandardCharsets.UTF_8)
+                            .header(HEADER)
+                            .build()));
         } catch (Exception e) {
-            Logger.log("Could not load configuration file. This can happen if you have made a mistake in the configuration file", Logger.LogLevel.ERROR);
-            throw new RuntimeException("Could not load configuration file.", e);
+            Logger.log("Could not load configuration file. Please check for syntax errors.", Logger.LogLevel.ERROR);
+            return Optional.empty();
         }
     }
 }

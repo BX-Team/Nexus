@@ -12,16 +12,15 @@ import space.bxteam.nexus.core.translation.Translation;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.UUID;
 import java.util.function.Function;
 
 public class MessageBuilder {
     private final MiniMessage miniMessage;
     private final Translation translation;
-    private Optional<CommandSender> recipient = Optional.empty();
-    private Optional<Function<Translation, String>> singleMessageFunction = Optional.empty();
-    private Optional<Function<Translation, List<String>>> listMessageFunction = Optional.empty();
+    private CommandSender recipient;
+    private Function<Translation, String> singleMessageFunction;
+    private Function<Translation, List<String>> listMessageFunction;
     private final Map<String, Function<Translation, String>> stringPlaceholders = new HashMap<>();
     private final Map<String, Component> componentPlaceholders = new HashMap<>();
 
@@ -32,27 +31,27 @@ public class MessageBuilder {
     }
 
     public MessageBuilder player(Player player) {
-        this.recipient = Optional.of(player);
+        this.recipient = player;
         return this;
     }
 
     public MessageBuilder player(UUID uuid) {
-        this.recipient = Optional.ofNullable(Bukkit.getPlayer(uuid));
+        this.recipient = Bukkit.getPlayer(uuid);
         return this;
     }
 
     public MessageBuilder recipient(CommandSender recipient) {
-        this.recipient = Optional.of(recipient);
+        this.recipient = recipient;
         return this;
     }
 
     public MessageBuilder message(Function<Translation, String> messageFunction) {
-        this.singleMessageFunction = Optional.of(messageFunction);
+        this.singleMessageFunction = messageFunction;
         return this;
     }
 
     public MessageBuilder messages(Function<Translation, List<String>> messageFunction) {
-        this.listMessageFunction = Optional.of(messageFunction);
+        this.listMessageFunction = messageFunction;
         return this;
     }
 
@@ -71,23 +70,24 @@ public class MessageBuilder {
     }
 
     public void send() {
-        if (recipient.isEmpty()) {
+        if (recipient == null) {
             throw new IllegalStateException("Recipient must be set before sending a message.");
         }
+        if (singleMessageFunction == null && listMessageFunction == null) {
+            throw new IllegalStateException("Message function must be set before sending a message.");
+        }
 
-        singleMessageFunction.ifPresent(func -> {
-            String messageTemplate = func.apply(translation);
-            String processedMessage = applyPlaceholders(messageTemplate);
+        if (singleMessageFunction != null) {
+            String processedMessage = applyPlaceholders(singleMessageFunction.apply(translation));
             sendMessage(processedMessage);
-        });
+        }
 
-        listMessageFunction.ifPresent(func -> {
-            List<String> messageTemplates = func.apply(translation);
-            for (String messageTemplate : messageTemplates) {
+        if (listMessageFunction != null) {
+            for (String messageTemplate : listMessageFunction.apply(translation)) {
                 String processedMessage = applyPlaceholders(messageTemplate);
                 sendMessage(processedMessage);
             }
-        });
+        }
     }
 
     private String applyPlaceholders(String messageTemplate) {
@@ -100,13 +100,10 @@ public class MessageBuilder {
 
     private void sendMessage(String messageTemplate) {
         Component messageComponent = miniMessage.deserialize(messageTemplate);
-
         for (Map.Entry<String, Component> entry : componentPlaceholders.entrySet()) {
             messageComponent = messageComponent.replaceText(builder ->
                     builder.matchLiteral(entry.getKey()).replacement(entry.getValue()));
         }
-
-        Component finalMessageComponent = messageComponent;
-        recipient.ifPresent(r -> r.sendMessage(finalMessageComponent));
+        recipient.sendMessage(messageComponent);
     }
 }

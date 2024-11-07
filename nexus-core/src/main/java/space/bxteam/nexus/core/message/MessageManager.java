@@ -29,6 +29,6 @@ public record MessageManager(Translation translation, MiniMessage miniMessage) {
     }
 
     public void player(Player player, Function<Translation, String> messageFunction) {
-        this.create().player(player).message(messageFunction).send();
+        create().recipient(player).message(messageFunction).send();
     }
 }
