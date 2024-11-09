@@ -1,27 +1,33 @@
-package space.bxteam.nexus.core.feature.essentials.item;
+package space.bxteam.nexus.core.feature.essentials.item.lore;
 
 import com.google.inject.Inject;
+import com.google.inject.name.Named;
+import dev.rollczi.litecommands.annotations.argument.Arg;
 import dev.rollczi.litecommands.annotations.command.Command;
 import dev.rollczi.litecommands.annotations.context.Context;
 import dev.rollczi.litecommands.annotations.execute.Execute;
 import dev.rollczi.litecommands.annotations.join.Join;
-import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
-import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import space.bxteam.nexus.core.message.MessageManager;
+import space.bxteam.nexus.core.utils.AdventureUtil;
 
-@Command(name = "itemname", aliases = {"iname", "itemrename"})
-@Permission("nexus.itemname")
+import java.util.ArrayList;
+import java.util.List;
+
+@Command(name = "itemlore", aliases = {"lore"})
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
-public class ItemNameCommand {
+public class ItemLoreCommand {
     private final MessageManager messageManager;
+    @Named("colorMiniMessage")
+    private final MiniMessage miniMessage;
 
     @Execute
-    void execute(@Context Player player, @Join Component name) {
+    void execute(@Context Player player, @Arg(ItemLoreArgument.KEY) int line, @Join String text) {
         ItemStack itemStack = this.checkItem(player);
 
         if (itemStack == null) {
@@ -33,13 +39,27 @@ public class ItemNameCommand {
         }
 
         ItemMeta itemMeta = itemStack.getItemMeta();
-        itemMeta.displayName(name);
+        List<String> lore = itemMeta.getLore();
+        lore = lore == null ? new ArrayList<>() : new ArrayList<>(lore);
+
+        if (text.equals("none")) {
+            lore.remove(line);
+        }
+        else {
+            while (lore.size() <= line) {
+                lore.add("");
+            }
+
+            lore.set(line, AdventureUtil.SECTION_SERIALIZER.serialize(AdventureUtil.resetItalic(this.miniMessage.deserialize(text))));
+        }
+
+        itemMeta.setLore(lore);
         itemStack.setItemMeta(itemMeta);
 
         this.messageManager.create()
-                .message(translation -> translation.item().itemChangeNameMessage())
-                .placeholder("{ITEM_NAME}", name)
-                .player(player.getUniqueId())
+                .player(player)
+                .message(translation -> translation.item().itemChangeLoreMessage())
+                .placeholder("{ITEM_LORE}", text)
                 .send();
     }
 
@@ -52,12 +72,13 @@ public class ItemNameCommand {
         }
 
         ItemMeta itemMeta = itemStack.getItemMeta();
-        itemMeta.displayName(null);
+
+        itemMeta.setLore(new ArrayList<>());
         itemStack.setItemMeta(itemMeta);
 
         this.messageManager.create()
                 .player(player)
-                .message(translation -> translation.item().itemClearNameMessage())
+                .message(translation -> translation.item().itemClearLoreMessage())
                 .send();
     }
 

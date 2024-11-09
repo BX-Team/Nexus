@@ -51,4 +51,16 @@ public class PluginConfiguration {
             private String password = "password";
         }
     }
+
+    private Items items = new Items();
+
+    @Getter
+    @Configuration
+    public static class Items {
+        @Comment("Use unsafe enchantments? Allows you to apply custom enchants to various items")
+        private boolean unsafeEnchantments = true;
+
+        @Comment({"", "The default item give amount, when no amount is specified in the command."})
+        private int defaultGiveAmount = 1;
+    }
 }

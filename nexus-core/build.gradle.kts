@@ -23,6 +23,7 @@ dependencies {
     compileOnly(libs.configlib)
     compileOnly(libs.guice)
     compileOnly(libs.classgraph)
+    compileOnly(libs.triumphgui)
     compileOnly(libs.bundles.adventure)
 
     // Plugin dependencies

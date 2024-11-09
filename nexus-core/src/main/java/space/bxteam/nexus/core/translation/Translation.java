@@ -17,6 +17,9 @@ public interface Translation {
         String numberBiggerThanOrEqualZero();
         String noDamaged();
         String noDamagedItems();
+        String noEnchantment();
+        String noValidEnchantmentLevel();
+        String giveNoItem();
     }
 
     Format format();
@@ -105,5 +108,16 @@ public interface Translation {
 
         String repairMessage();
         String repairAllMessage();
+
+        String incorrectItem();
+
+        String enchantedMessage();
+        String enchantedMessageFor();
+        String enchantedMessageBy();
+
+        String giveReceived();
+        String giveGiven();
+        String giveReceivedEnchantment();
+        String giveGivenEnchantment();
     }
 }

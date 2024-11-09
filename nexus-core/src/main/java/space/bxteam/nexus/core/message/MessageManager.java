@@ -4,7 +4,6 @@ import com.google.inject.Inject;
 import com.google.inject.name.Named;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import org.bukkit.entity.Player;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import space.bxteam.nexus.core.translation.Translation;
@@ -26,9 +25,5 @@ public record MessageManager(Translation translation, MiniMessage miniMessage) {
     public Component getMessage(Function<Translation, String> messageFunction) {
         String messageTemplate = messageFunction.apply(translation);
         return miniMessage.deserialize(messageTemplate);
-    }
-
-    public void player(Player player, Function<Translation, String> messageFunction) {
-        create().recipient(player).message(messageFunction).send();
     }
 }

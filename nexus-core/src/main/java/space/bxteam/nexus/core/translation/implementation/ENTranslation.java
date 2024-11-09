@@ -51,6 +51,9 @@ public class ENTranslation implements Translation {
         private String numberBiggerThanOrEqualZero = "<dark_red>Number must be bigger than or equal to 0!";
         private String noDamaged = "<dark_red>This item can't be repaired!";
         private String noDamagedItems = "<dark_red>There are no damaged items in your inventory!";
+        private String noEnchantment = "<dark_red>This enchantment doesn't exist!";
+        private String noValidEnchantmentLevel = "<dark_red>Not a valid enchantment level!";
+        private String giveNoItem = "<dark_red>This item is not obtainable!";
     }
 
     @Comment({"", "This answer is responsible for the general formatting of some values"})
@@ -144,7 +147,7 @@ public class ENTranslation implements Translation {
         @Comment("GAMEMODE} - Gamemode name")
         private String gameModeMessage = "<green>Gamemode is now set to <white>{GAMEMODE}";
         @Comment("{PLAYER} - Target player, {GAMEMODE} - Gamemode name")
-        private String gameModeSetMessage = "<green>Changed gamemode to <white>{GAMEMODE}<green>for player <white>{PLAYER}";
+        private String gameModeSetMessage = "<green>Changed gamemode to <white>{GAMEMODE}<green> for player <white>{PLAYER}";
     }
 
     @Comment({"", "This section is responsible for the inventory-related messages."})
@@ -201,5 +204,25 @@ public class ENTranslation implements Translation {
         @Comment("")
         private String repairMessage = "<green>Item has been repaired!";
         private String repairAllMessage = "<green>All items have been repaired!";
+
+        @Comment("")
+        private String incorrectItem = "<dark_red>This is not a valid item!";
+
+        @Comment("")
+        private String enchantedMessage = "<green>Item has been enchanted!";
+        private String enchantedMessageFor = "<green>Item in hand of <white>{PLAYER} <green>has been enchanted!";
+        private String enchantedMessageBy = "<green>Your item in hand has been enchanted by <white>{PLAYER}";
+
+        @Comment({"", "{ITEM} - Name of received item"})
+        private String giveReceived = "<green>You have received the item <white>{ITEM}";
+
+        @Comment({"", "{PLAYER} - Name of item receiver, {ITEM} - the item"})
+        private String giveGiven = "<green>You have given the item <white>{ITEM} <green>to <white>{PLAYER}";
+
+        @Comment({"", "{ITEM} - Name of received item, {ENCHANTMENT} - enchantment name"})
+        private String giveReceivedEnchantment = "<green>You have received the item <white>{ITEM} <green>with enchantment <white>{ENCHANTMENT}";
+
+        @Comment({"", "# {PLAYER} - Name of item receiver, {ITEM} - the item, {ENCHANTMENT} - enchantment name"})
+        private String giveGivenEnchantment = "<green>You have given the item <white>{ITEM} <green>to <white>{PLAYER} <green>with enchantment <white>{ENCHANTMENT}";
     }
 }

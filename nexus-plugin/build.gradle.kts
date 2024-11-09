@@ -30,6 +30,7 @@ dependencies {
     library(libs.configlib)
     library(libs.guice)
     library(libs.classgraph)
+    library(libs.triumphgui)
     library(libs.bundles.adventure)
 
     // Plugin dependencies
