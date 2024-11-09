@@ -218,11 +218,21 @@ public class ENTranslation implements Translation {
 
         @Comment({"", "{PLAYER} - Name of item receiver, {ITEM} - the item"})
         private String giveGiven = "<green>You have given the item <white>{ITEM} <green>to <white>{PLAYER}";
+    }
 
-        @Comment({"", "{ITEM} - Name of received item, {ENCHANTMENT} - enchantment name"})
-        private String giveReceivedEnchantment = "<green>You have received the item <white>{ITEM} <green>with enchantment <white>{ENCHANTMENT}";
+    @Comment({"", "This section is responsible for the warp-related messages."})
+    private ENWarpSection warp = new ENWarpSection();
 
-        @Comment({"", "# {PLAYER} - Name of item receiver, {ITEM} - the item, {ENCHANTMENT} - enchantment name"})
-        private String giveGivenEnchantment = "<green>You have given the item <white>{ITEM} <green>to <white>{PLAYER} <green>with enchantment <white>{ENCHANTMENT}";
+    @Getter
+    @Configuration
+    public static class ENWarpSection implements WarpSection {
+        @Comment("{WARP} - Warp name")
+        private String create = "<green>Warp <white>{WARP} <green>has been created.";
+        private String remove = "<green>Warp <white>{WARP} <green>has been deleted.";
+
+        @Comment("")
+        private String warpAlreadyExists = "<dark_red>Warp <white>{WARP} <dark_red>already exists!";
+        private String noWarps = "<dark_red>There are no warps!";
+        private String notExist = "<dark_red>This warp doesn't exist";
     }
 }

@@ -6,11 +6,13 @@ import java.util.Collection;
 import java.util.Optional;
 
 public interface WarpService {
-    Warp createWarp(String name, Location location);
+    void createWarp(String name, Location location);
 
     void removeWarp(String warp);
 
     boolean warpExists(String name);
+
+    Optional<Warp> findWarp(String name);
 
     Optional<Warp> getWarp(String name);
 

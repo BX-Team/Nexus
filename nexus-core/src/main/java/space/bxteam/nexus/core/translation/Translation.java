@@ -117,7 +117,16 @@ public interface Translation {
 
         String giveReceived();
         String giveGiven();
-        String giveReceivedEnchantment();
-        String giveGivenEnchantment();
+    }
+
+    WarpSection warp();
+
+    interface WarpSection {
+        String create();
+        String remove();
+
+        String warpAlreadyExists();
+        String notExist();
+        String noWarps();
     }
 }

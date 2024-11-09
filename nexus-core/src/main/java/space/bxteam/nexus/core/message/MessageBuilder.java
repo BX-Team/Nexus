@@ -5,6 +5,7 @@ import com.google.inject.name.Named;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
+import org.bukkit.Sound;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import space.bxteam.nexus.core.translation.Translation;
@@ -23,6 +24,10 @@ public class MessageBuilder {
     private Function<Translation, List<String>> listMessageFunction;
     private final Map<String, Function<Translation, String>> stringPlaceholders = new HashMap<>();
     private final Map<String, Component> componentPlaceholders = new HashMap<>();
+
+    private Sound sound;
+    private float volume = 1.0f;
+    private float pitch = 1.0f;
 
     @Inject
     public MessageBuilder(@Named("colorMiniMessage") MiniMessage miniMessage, Translation translation) {
@@ -69,12 +74,19 @@ public class MessageBuilder {
         return this;
     }
 
+    public MessageBuilder sound(Sound sound, float volume, float pitch) {
+        this.sound = sound;
+        this.volume = volume;
+        this.pitch = pitch;
+        return this;
+    }
+
     public void send() {
         if (recipient == null) {
             throw new IllegalStateException("Recipient must be set before sending a message.");
         }
-        if (singleMessageFunction == null && listMessageFunction == null) {
-            throw new IllegalStateException("Message function must be set before sending a message.");
+        if (singleMessageFunction == null && listMessageFunction == null && sound == null) {
+            throw new IllegalStateException("Message or sound must be set before sending.");
         }
 
         if (singleMessageFunction != null) {
@@ -87,6 +99,10 @@ public class MessageBuilder {
                 String processedMessage = applyPlaceholders(messageTemplate);
                 sendMessage(processedMessage);
             }
+        }
+
+        if (sound != null && recipient instanceof Player) {
+            ((Player) recipient).playSound(((Player) recipient).getLocation(), sound, volume, pitch);
         }
     }
 

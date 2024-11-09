@@ -2,11 +2,13 @@ package space.bxteam.nexus.core.feature.warp;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import space.bxteam.nexus.core.database.DatabaseClient;
 import space.bxteam.nexus.feature.warp.Warp;
 import space.bxteam.nexus.feature.warp.WarpService;
 
+import java.sql.SQLException;
 import java.util.*;
 
 @Singleton
@@ -21,13 +23,11 @@ public class WarpServiceImpl implements WarpService {
     }
 
     @Override
-    public Warp createWarp(String name, Location location) {
+    public void createWarp(String name, Location location) {
         Warp warp = new WarpImpl(name, location);
 
         this.warpMap.put(name, warp);
         saveWarpToDatabase(warp);
-
-        return warp;
     }
 
     @Override
@@ -45,6 +45,11 @@ public class WarpServiceImpl implements WarpService {
     }
 
     @Override
+    public Optional<Warp> findWarp(String name) {
+        return Optional.ofNullable(this.warpMap.get(name));
+    }
+
+    @Override
     public Optional<Warp> getWarp(String name) {
         return Optional.ofNullable(this.warpMap.get(name));
     }
@@ -56,66 +61,45 @@ public class WarpServiceImpl implements WarpService {
 
     private void saveWarpToDatabase(Warp warp) {
         String query = "INSERT INTO warps (name, world, x, y, z, yaw, pitch) VALUES (?, ?, ?, ?, ?, ?, ?)";
-
-        /*
-        try (Connection connection = databaseManager.dataSource().getConnection();
-             PreparedStatement statement = connection.prepareStatement(query)) {
-
-            statement.setString(1, warp.getName());
-            statement.setString(2, warp.getLocation().getWorld().getName());
-            statement.setDouble(3, warp.getLocation().getX());
-            statement.setDouble(4, warp.getLocation().getY());
-            statement.setDouble(5, warp.getLocation().getZ());
-            statement.setFloat(6, warp.getLocation().getYaw());
-            statement.setFloat(7, warp.getLocation().getPitch());
-
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-         */
+        client.newBuilder(query)
+                .appends(
+                        warp.getName(),
+                        warp.getLocation().getWorld().getName(),
+                        warp.getLocation().getX(),
+                        warp.getLocation().getY(),
+                        warp.getLocation().getZ(),
+                        warp.getLocation().getYaw(),
+                        warp.getLocation().getPitch()
+                )
+                .execute();
     }
 
     private void deleteWarpFromDatabase(String name) {
         String query = "DELETE FROM warps WHERE name = ?";
-        /*
-        try (Connection connection = databaseManager.dataSource().getConnection();
-             PreparedStatement statement = connection.prepareStatement(query)) {
-
-            statement.setString(1, name);
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-         */
+        client.newBuilder(query)
+                .append(name)
+                .execute();
     }
 
     private void loadWarpsFromDatabase() {
         String query = "SELECT * FROM warps";
+        client.newBuilder(query)
+                .queryAll(resultSet -> {
+                    try {
+                        String name = resultSet.getString("name");
+                        String world = resultSet.getString("world");
+                        double x = resultSet.getDouble("x");
+                        double y = resultSet.getDouble("y");
+                        double z = resultSet.getDouble("z");
+                        float yaw = resultSet.getFloat("yaw");
+                        float pitch = resultSet.getFloat("pitch");
 
-        /*
-        try (Connection connection = databaseManager.dataSource().getConnection();
-             PreparedStatement statement = connection.prepareStatement(query);
-             ResultSet resultSet = statement.executeQuery()) {
-
-            while (resultSet.next()) {
-                String name = resultSet.getString("name");
-                String world = resultSet.getString("world");
-                double x = resultSet.getDouble("x");
-                double y = resultSet.getDouble("y");
-                double z = resultSet.getDouble("z");
-                float yaw = resultSet.getFloat("yaw");
-                float pitch = resultSet.getFloat("pitch");
-
-                Location location = new Location(
-                        Bukkit.getWorld(world), x, y, z, yaw, pitch
-                );
-
-                warpMap.put(name, new WarpImpl(name, location));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-         */
+                        Location location = new Location(Bukkit.getWorld(world), x, y, z, yaw, pitch);
+                        warpMap.put(name, new WarpImpl(name, location));
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                    return null;
+                });
     }
 }
