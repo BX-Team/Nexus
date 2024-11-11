@@ -45,11 +45,6 @@ public class WarpServiceImpl implements WarpService {
     }
 
     @Override
-    public Optional<Warp> findWarp(String name) {
-        return Optional.ofNullable(this.warpMap.get(name));
-    }
-
-    @Override
     public Optional<Warp> getWarp(String name) {
         return Optional.ofNullable(this.warpMap.get(name));
     }
@@ -63,13 +58,13 @@ public class WarpServiceImpl implements WarpService {
         String query = "INSERT INTO warps (name, world, x, y, z, yaw, pitch) VALUES (?, ?, ?, ?, ?, ?, ?)";
         client.newBuilder(query)
                 .appends(
-                        warp.getName(),
-                        warp.getLocation().getWorld().getName(),
-                        warp.getLocation().getX(),
-                        warp.getLocation().getY(),
-                        warp.getLocation().getZ(),
-                        warp.getLocation().getYaw(),
-                        warp.getLocation().getPitch()
+                        warp.name(),
+                        warp.location().getWorld().getName(),
+                        warp.location().getX(),
+                        warp.location().getY(),
+                        warp.location().getZ(),
+                        warp.location().getYaw(),
+                        warp.location().getPitch()
                 )
                 .execute();
     }

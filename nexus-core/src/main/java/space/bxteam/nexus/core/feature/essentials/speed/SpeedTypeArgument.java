@@ -9,7 +9,7 @@ import dev.rollczi.litecommands.suggestion.SuggestionContext;
 import dev.rollczi.litecommands.suggestion.SuggestionResult;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.command.CommandSender;
-import space.bxteam.nexus.core.integration.litecommands.annotations.LiteArgument;
+import space.bxteam.nexus.core.scanner.annotations.litecommands.LiteArgument;
 import space.bxteam.nexus.core.message.MessageManager;
 
 import java.util.Arrays;

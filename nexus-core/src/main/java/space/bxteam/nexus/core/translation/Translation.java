@@ -129,4 +129,15 @@ public interface Translation {
         String notExist();
         String noWarps();
     }
+
+    HomeSection home();
+
+    interface HomeSection {
+        String homeList();
+        String create();
+        String delete();
+        String limit();
+        String noHomes();
+        String homeAlreadyExists();
+    }
 }

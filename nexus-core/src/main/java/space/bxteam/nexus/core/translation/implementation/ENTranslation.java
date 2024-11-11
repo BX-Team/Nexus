@@ -235,4 +235,23 @@ public class ENTranslation implements Translation {
         private String noWarps = "<dark_red>There are no warps!";
         private String notExist = "<dark_red>This warp doesn't exist";
     }
+
+    @Comment({"", "This section is responsible for the home-related messages."})
+    private ENHomeSection home = new ENHomeSection();
+
+    @Getter
+    @Configuration
+    public static class ENHomeSection implements HomeSection {
+        @Comment("{HOMES} - List of homes (separated by commas)")
+        private String homeList = "<green>Available homes: <white>{HOMES}";
+
+        @Comment({"", "{HOME} - Home name"})
+        private String create = "<green>Home <white>{HOME} <green>has been created.";
+        private String delete = "<green>Home <white>{HOME} <green>has been deleted.";
+        private String homeAlreadyExists = "<dark_red>Home with name <white>{HOME} <dark_red>already exists!";
+
+        @Comment({"", "{LIMIT} - Limit of homes"})
+        private String limit = "<dark_red>You have reached the limit of homes! <red>({LIMIT})";
+        private String noHomes = "<dark_red>You don't have any homes!";
+    }
 }

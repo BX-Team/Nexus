@@ -12,8 +12,6 @@ public interface WarpService {
 
     boolean warpExists(String name);
 
-    Optional<Warp> findWarp(String name);
-
     Optional<Warp> getWarp(String name);
 
     Collection<String> getWarpNames();

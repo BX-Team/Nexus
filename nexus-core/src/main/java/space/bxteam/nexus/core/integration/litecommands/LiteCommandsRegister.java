@@ -14,16 +14,14 @@ import dev.rollczi.litecommands.argument.ArgumentKey;
 import dev.rollczi.litecommands.argument.resolver.ArgumentResolverBase;
 import dev.rollczi.litecommands.bukkit.LiteBukkitFactory;
 import dev.rollczi.litecommands.handler.result.ResultHandler;
-import io.github.classgraph.ClassGraph;
-import io.github.classgraph.ClassInfo;
-import io.github.classgraph.ScanResult;
 import net.kyori.adventure.platform.AudienceProvider;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Server;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.Plugin;
-import space.bxteam.nexus.core.integration.litecommands.annotations.LiteArgument;
-import space.bxteam.nexus.core.integration.litecommands.annotations.LiteHandler;
+import space.bxteam.nexus.core.scanner.annotations.litecommands.LiteArgument;
+import space.bxteam.nexus.core.scanner.annotations.litecommands.LiteHandler;
+import space.bxteam.nexus.core.scanner.ClassgraphScanner;
 import space.bxteam.nexus.core.utils.Logger;
 
 import java.lang.annotation.Annotation;
@@ -59,7 +57,7 @@ public class LiteCommandsRegister {
     }
 
     private <A extends Annotation> void registerAnnotatedClasses(LiteCommandsAnnotations<CommandSender> annotations, Class<A> annotation, Consumer<Object> consumer) {
-        scanClassesWithAnnotation("space.bxteam.nexus.core", annotation, classInfo -> {
+        ClassgraphScanner.scanClassesWithAnnotation("space.bxteam.nexus.core", annotation, classInfo -> {
             try {
                 Object instance = injector.getInstance(classInfo.loadClass());
                 consumer.accept(instance);
@@ -71,7 +69,7 @@ public class LiteCommandsRegister {
 
     @SuppressWarnings("unchecked")
     private void registerHandlersAndArguments() {
-        scanClassesWithAnnotation("space.bxteam.nexus.core.feature", LiteArgument.class, classInfo -> {
+        ClassgraphScanner.scanClassesWithAnnotation("space.bxteam.nexus.core.feature", LiteArgument.class, classInfo -> {
             try {
                 Class<?> argumentClass = classInfo.loadClass();
                 LiteArgument liteArgument = argumentClass.getAnnotation(LiteArgument.class);
@@ -82,7 +80,7 @@ public class LiteCommandsRegister {
             }
         });
 
-        scanClassesWithAnnotation("space.bxteam.nexus.core.integration.litecommands.handler", LiteHandler.class, classInfo -> {
+        ClassgraphScanner.scanClassesWithAnnotation("space.bxteam.nexus.core.integration.litecommands.handler", LiteHandler.class, classInfo -> {
             try {
                 Class<?> handlerClass = classInfo.loadClass();
                 LiteHandler liteHandler = handlerClass.getAnnotation(LiteHandler.class);
@@ -92,16 +90,6 @@ public class LiteCommandsRegister {
                 Logger.log("Failed to load handler instance: " + e.getMessage(), Logger.LogLevel.ERROR);
             }
         });
-    }
-
-    private void scanClassesWithAnnotation(String packageName, Class<? extends Annotation> annotation, Consumer<ClassInfo> consumer) {
-        try (ScanResult scanResult = new ClassGraph()
-                .enableClassInfo()
-                .enableAnnotationInfo()
-                .acceptPackages(packageName)
-                .scan()) {
-            scanResult.getClassesWithAnnotation(annotation.getName()).forEach(consumer);
-        }
     }
 
     private <T> void registerArgument(Class<T> argumentClass, ArgumentKey key, ArgumentResolverBase<CommandSender, T> resolver) {

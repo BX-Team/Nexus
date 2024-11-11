@@ -11,6 +11,7 @@ import space.bxteam.nexus.core.configuration.ConfigModule;
 import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
 import space.bxteam.nexus.core.integration.bstats.MetricsModule;
 import space.bxteam.nexus.core.integration.litecommands.LiteCommandsRegister;
+import space.bxteam.nexus.core.scanner.register.ComponentRegister;
 import space.bxteam.nexus.core.translation.TranslationModule;
 import space.bxteam.nexus.core.utils.Logger;
 
@@ -32,6 +33,7 @@ public class Nexus {
 
         this.injector.getInstance(DatabaseClient.class).open();
         this.injector.getInstance(LiteCommandsRegister.class).onEnable();
+        this.injector.getInstance(ComponentRegister.class);
 
         NexusApiProvider.initialize(new NexusApiImpl(this.injector));
 

@@ -12,7 +12,7 @@ import space.bxteam.nexus.core.message.MessageManager;
 
 @Command(name = "nexus")
 @Permission("nexus.nexus")
-@RequiredArgsConstructor(onConstructor_ = @Inject)
+@RequiredArgsConstructor(onConstructor = @__(@Inject))
 public class NexusCommand {
     private final PluginConfigurationProvider configurationProvider;
     private final MessageManager messageManager;

@@ -8,7 +8,7 @@ import dev.rollczi.litecommands.invocation.Invocation;
 import dev.rollczi.litecommands.schematic.Schematic;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.command.CommandSender;
-import space.bxteam.nexus.core.integration.litecommands.annotations.LiteHandler;
+import space.bxteam.nexus.core.scanner.annotations.litecommands.LiteHandler;
 import space.bxteam.nexus.core.message.MessageManager;
 
 @LiteHandler(InvalidUsage.class)

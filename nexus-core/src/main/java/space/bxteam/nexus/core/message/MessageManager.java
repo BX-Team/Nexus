@@ -8,6 +8,7 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import space.bxteam.nexus.core.translation.Translation;
 
+import java.util.Map;
 import java.util.function.Function;
 
 public record MessageManager(Translation translation, MiniMessage miniMessage) {
@@ -24,6 +25,16 @@ public record MessageManager(Translation translation, MiniMessage miniMessage) {
 
     public Component getMessage(Function<Translation, String> messageFunction) {
         String messageTemplate = messageFunction.apply(translation);
+        return miniMessage.deserialize(messageTemplate);
+    }
+
+    public Component getMessage(Function<Translation, String> messageFunction, Map<String, String> placeholders) {
+        String messageTemplate = messageFunction.apply(translation);
+
+        for (Map.Entry<String, String> entry : placeholders.entrySet()) {
+            messageTemplate = messageTemplate.replace(entry.getKey(), entry.getValue());
+        }
+
         return miniMessage.deserialize(messageTemplate);
     }
 }

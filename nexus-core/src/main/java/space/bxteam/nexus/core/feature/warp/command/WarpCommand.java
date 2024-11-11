@@ -22,7 +22,7 @@ public class WarpCommand {
     @Execute(name = "warp")
     @Permission("nexus.warp")
     void executeWarp(@Context Player player, @Arg Warp warp) {
-        String name = warp.getName();
+        String name = warp.name();
 
         if (!this.warpService.warpExists(name)) {
             this.messageManager.create()
@@ -33,7 +33,7 @@ public class WarpCommand {
             return;
         }
 
-        player.teleport(warp.getLocation());
+        player.teleport(warp.location());
         this.messageManager.create()
                 .player(player)
                 .sound(Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1)
@@ -43,7 +43,7 @@ public class WarpCommand {
     @Execute(name = "warp")
     @Permission("nexus.warp.other")
     void executeWarpOther(@Context Player player, @Arg Warp warp, @Arg Player target) {
-        String name = warp.getName();
+        String name = warp.name();
 
         if (!this.warpService.warpExists(name)) {
             this.messageManager.create()
@@ -54,7 +54,7 @@ public class WarpCommand {
             return;
         }
 
-        target.teleport(warp.getLocation());
+        target.teleport(warp.location());
     }
 
     @Execute(name = "setwarp")
@@ -80,7 +80,7 @@ public class WarpCommand {
     @Execute(name = "delwarp")
     @Permission("nexus.delwarp")
     void executeDelWarp(@Context Player player, @Arg Warp warp) {
-        String name = warp.getName();
+        String name = warp.name();
 
         if (!this.warpService.warpExists(name)) {
             this.messageManager.create()

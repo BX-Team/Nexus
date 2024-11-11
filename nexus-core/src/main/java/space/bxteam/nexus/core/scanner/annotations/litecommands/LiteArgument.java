@@ -1,4 +1,4 @@
-package space.bxteam.nexus.core.integration.litecommands.annotations;
+package space.bxteam.nexus.core.scanner.annotations.litecommands;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -11,11 +11,13 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.ServicesManager;
+import space.bxteam.nexus.core.feature.home.HomeServiceImpl;
 import space.bxteam.nexus.core.feature.warp.WarpServiceImpl;
 import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
 import space.bxteam.nexus.core.integration.adventure.processors.AdventureLegacyColorPostProcessor;
 import space.bxteam.nexus.core.integration.adventure.processors.AdventureLegacyColorPreProcessor;
 import space.bxteam.nexus.core.integration.adventure.processors.AdventureUrlPostProcessor;
+import space.bxteam.nexus.feature.home.HomeService;
 import space.bxteam.nexus.feature.warp.WarpService;
 
 import java.nio.file.Path;
@@ -48,5 +50,6 @@ public class NexusModule extends AbstractModule {
                         .build());
 
         this.bind(WarpService.class).to(WarpServiceImpl.class);
+        this.bind(HomeService.class).to(HomeServiceImpl.class);
     }
 }

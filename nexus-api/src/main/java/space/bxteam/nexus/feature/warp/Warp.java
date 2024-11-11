@@ -3,7 +3,7 @@ package space.bxteam.nexus.feature.warp;
 import org.bukkit.Location;
 
 public interface Warp {
-    Location getLocation();
+    Location location();
 
-    String getName();
+    String name();
 }

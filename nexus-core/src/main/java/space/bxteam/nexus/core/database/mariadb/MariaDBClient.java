@@ -83,7 +83,7 @@ public class MariaDBClient implements DatabaseClient, DatabaseQueries {
 
         this.newBuilder(
                 "CREATE TABLE IF NOT EXISTS `homes` (" +
-                        "`uuid` TEXT NOT NULL," +
+                        "`owner` TEXT NOT NULL," +
                         "`name` TEXT NOT NULL," +
                         "`world` TEXT NOT NULL," +
                         "`x` REAL NOT NULL," +
@@ -91,7 +91,7 @@ public class MariaDBClient implements DatabaseClient, DatabaseQueries {
                         "`z` REAL NOT NULL," +
                         "`yaw` REAL NOT NULL," +
                         "`pitch` REAL NOT NULL," +
-                        "PRIMARY KEY(`uuid`, `name`)" +
+                        "PRIMARY KEY(`owner`, `name`)" +
                         ");"
         ).execute();
 

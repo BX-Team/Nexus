@@ -4,6 +4,9 @@ import de.exlll.configlib.Comment;
 import de.exlll.configlib.Configuration;
 import lombok.Getter;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 @Configuration
 @Getter
 @SuppressWarnings("FieldMayBeFinal")
@@ -62,5 +65,22 @@ public class PluginConfiguration {
 
         @Comment({"", "The default item give amount, when no amount is specified in the command."})
         private int defaultGiveAmount = 1;
+    }
+
+    private Homes homes = new Homes();
+
+    @Getter
+    @Configuration
+    public static class Homes {
+        @Comment("Default home name")
+        private String defaultHomeName = "home";
+
+        @Comment({"", "Maximum amount of homes per permission"})
+        private Map<String, Integer> maxHomes = new LinkedHashMap<>() {
+            {
+                put("nexus.home.default", 1);
+                put("nexus.home.extended", 2);
+            }
+        };
     }
 }

@@ -7,7 +7,7 @@ import dev.rollczi.litecommands.permission.MissingPermissions;
 import dev.rollczi.litecommands.permission.MissingPermissionsHandler;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.command.CommandSender;
-import space.bxteam.nexus.core.integration.litecommands.annotations.LiteHandler;
+import space.bxteam.nexus.core.scanner.annotations.litecommands.LiteHandler;
 import space.bxteam.nexus.core.message.MessageManager;
 
 @LiteHandler(MissingPermissions.class)

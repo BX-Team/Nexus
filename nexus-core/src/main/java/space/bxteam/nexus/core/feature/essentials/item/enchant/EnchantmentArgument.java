@@ -11,7 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.bukkit.NamespacedKey;
 import org.bukkit.command.CommandSender;
 import org.bukkit.enchantments.Enchantment;
-import space.bxteam.nexus.core.integration.litecommands.annotations.LiteArgument;
+import space.bxteam.nexus.core.scanner.annotations.litecommands.LiteArgument;
 import space.bxteam.nexus.core.message.MessageManager;
 
 import java.util.Arrays;
