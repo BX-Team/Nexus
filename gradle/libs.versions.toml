@@ -4,7 +4,7 @@ adventure = "4.3.4"
 minimessage = "4.17.0"
 
 [plugins]
-lombok = { id = "io.freefair.lombok", version = "8.10.2" }
+lombok = { id = "io.freefair.lombok", version = "8.11" }
 shadow = { id = "com.github.johnrengelman.shadow", version = "8.1.1" }
 userdev = { id = "io.papermc.paperweight.userdev", version = "1.7.4" }
 runpaper = { id = "xyz.jpenilla.run-paper", version = "2.3.1" }
@@ -14,15 +14,15 @@ paperyml = { id = "net.minecrell.plugin-yml.paper", version = "0.6.0" }
 paper = { module = "io.papermc.paper:paper-api", version = "1.19.4-R0.1-SNAPSHOT" }
 
 configlib = { module = "de.exlll:configlib-yaml", version = "4.5.0" }
-hikaricp = { module = "com.zaxxer:HikariCP", version = "6.1.0" }
+hikaricp = { module = "com.zaxxer:HikariCP", version = "6.2.0" }
 mariadb = { module = "org.mariadb.jdbc:mariadb-java-client", version = "3.5.0"}
 placeholderapi = { module = "me.clip:placeholderapi", version = "2.11.6" }
-litecommands = { module = "dev.rollczi:litecommands-bukkit", version = "3.9.0" }
-litecommandsadventure = { module = "dev.rollczi:litecommands-adventure-platform", version = "3.9.0" }
+litecommands = { module = "dev.rollczi:litecommands-bukkit", version = "3.9.1" }
+litecommandsadventure = { module = "dev.rollczi:litecommands-adventure-platform", version = "3.9.1" }
 multification = { module = "com.eternalcode:multification-bukkit", version = "1.1.4" }
 bstats = { module = "org.bstats:bstats-bukkit", version = "3.1.0" }
 guice = { module = "com.google.inject:guice", version = "7.0.0" }
-classgraph = { module = "io.github.classgraph:classgraph", version = "4.8.177" }
+classgraph = { module = "io.github.classgraph:classgraph", version = "4.8.179" }
 triumphgui = { module = "dev.triumphteam:triumph-gui", version = "3.1.10" }
 
 adventure-platform-bukkit = { module = "net.kyori:adventure-platform-bukkit", version.ref = "adventure" }
