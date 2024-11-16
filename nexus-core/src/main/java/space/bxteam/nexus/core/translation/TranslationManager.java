@@ -37,9 +37,7 @@ public class TranslationManager implements TranslationProvider<Translation> {
                 .filter(entry -> entry.getKey().isEquals(language))
                 .map(Map.Entry::getValue)
                 .findFirst()
-                .orElseGet(() -> {
-                    return translatedMessages.getOrDefault(Language.EN, new ENTranslation());
-                });
+                .orElseGet(() -> translatedMessages.getOrDefault(Language.EN, new ENTranslation()));
     }
 
     public void create(Language selectedLanguage) {

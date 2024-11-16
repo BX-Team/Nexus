@@ -15,7 +15,7 @@ import de.exlll.configlib.Serializer;
 
 import java.util.*;
 
-public class ConfigLibNoticeSerializer implements Serializer<Notice, Map<String, Object>> {
+public class ConfigLibNoticeSerializer implements Serializer<Notice, Object> {
     private final NoticeResolverRegistry noticeRegistry;
 
     public ConfigLibNoticeSerializer(NoticeResolverRegistry noticeRegistry) {
@@ -23,13 +23,12 @@ public class ConfigLibNoticeSerializer implements Serializer<Notice, Map<String,
     }
 
     @Override
-    public Map<String, Object> serialize(Notice notice) {
-        Map<String, Object> data = new HashMap<>();
-
-        if (trySerializeChatBeautiful(data, notice)) {
-            return data;
+    public Object serialize(Notice notice) {
+        if (trySerializeChatDirectly(notice)) {
+            return getSingleChatMessage(notice);
         }
 
+        Map<String, Object> data = new HashMap<>();
         for (NoticePart<?> part : notice.parts()) {
             NoticeSerdesResult result = this.noticeRegistry.serialize(part);
 
@@ -45,63 +44,46 @@ public class ConfigLibNoticeSerializer implements Serializer<Notice, Map<String,
         return data;
     }
 
-    @SuppressWarnings("unchecked")
     @Override
-    public Notice deserialize(Map<String, Object> data) {
+    public Notice deserialize(Object data) {
         Builder builder = Notice.builder();
 
-        if (data.size() == 1 && data.containsKey("value")) {
-            Object value = data.get("value");
-
-            if (value instanceof String stringValue) {
-                List<String> messages = Collections.singletonList(stringValue);
-                builder.withPart(NoticeKey.CHAT, new ChatContent(messages));
-            } else if (value instanceof List<?> listValue) {
-                List<String> messages = new ArrayList<>();
-                for (Object item : listValue) {
-                    if (item instanceof String str) {
-                        messages.add(str);
-                    }
-                }
-                builder.withPart(NoticeKey.CHAT, new ChatContent(messages));
-            }
-
+        if (data instanceof String stringValue) {
+            builder.withPart(NoticeKey.CHAT, new ChatContent(Collections.singletonList(stringValue)));
             return builder.build();
-        }
+        } else if (data instanceof Map<?, ?> mapData) {
+            for (Map.Entry<?, ?> entry : mapData.entrySet()) {
+                String key = entry.getKey().toString();
+                Object value = entry.getValue();
 
-        for (Map.Entry<String, Object> entry : data.entrySet()) {
-            String key = entry.getKey();
-            Object value = entry.getValue();
-
-            if (value instanceof String stringValue) {
-                NoticeDeserializeResult<?> noticeResult = this.noticeRegistry.deserialize(key, new Single(stringValue))
-                        .orElseThrow(() -> new UnsupportedOperationException(
-                                "Unsupported notice key: " + key + " with value: " + stringValue));
-
-                withPart(builder, noticeResult);
-            } else if (value instanceof List<?> listValue) {
-                List<String> messages = new ArrayList<>();
-                for (Object item : listValue) {
-                    if (item instanceof String str) {
-                        messages.add(str);
+                if (value instanceof String stringValue) {
+                    NoticeDeserializeResult<?> noticeResult = this.noticeRegistry.deserialize(key, new Single(stringValue))
+                            .orElseThrow(() -> new UnsupportedOperationException(
+                                    "Unsupported notice key: " + key + " with value: " + stringValue));
+                    withPart(builder, noticeResult);
+                } else if (value instanceof List<?> listValue) {
+                    List<String> messages = new ArrayList<>();
+                    for (Object item : listValue) {
+                        if (item instanceof String str) {
+                            messages.add(str);
+                        }
                     }
+                    NoticeDeserializeResult<?> noticeResult = this.noticeRegistry.deserialize(key, new Multiple(messages))
+                            .orElseThrow(() -> new UnsupportedOperationException(
+                                    "Unsupported notice key: " + key + " with values: " + messages));
+                    withPart(builder, noticeResult);
+                } else if (value instanceof Map<?, ?> mapValue) {
+                    NoticeDeserializeResult<?> noticeResult = this.noticeRegistry.deserialize(key, new NoticeSerdesResult.Section((Map<String, String>) mapValue))
+                            .orElseThrow(() -> new UnsupportedOperationException(
+                                    "Unsupported notice key: " + key + " with values: " + mapValue));
+                    withPart(builder, noticeResult);
+                } else {
+                    throw new UnsupportedOperationException(
+                            "Unsupported notice type: " + value.getClass() + " for key: " + key);
                 }
-
-                NoticeDeserializeResult<?> noticeResult = this.noticeRegistry.deserialize(key, new Multiple(messages))
-                        .orElseThrow(() -> new UnsupportedOperationException(
-                                "Unsupported notice key: " + key + " with values: " + messages));
-
-                withPart(builder, noticeResult);
-            } else if (value instanceof Map<?, ?> mapValue) {
-                NoticeDeserializeResult<?> noticeResult = this.noticeRegistry.deserialize(key, new NoticeSerdesResult.Section((Map<String, String>) mapValue))
-                        .orElseThrow(() -> new UnsupportedOperationException(
-                                "Unsupported notice key: " + key + " with values: " + mapValue));
-
-                withPart(builder, noticeResult);
-            } else {
-                throw new UnsupportedOperationException(
-                        "Unsupported notice type: " + value.getClass() + " for key: " + key);
             }
+        } else {
+            throw new UnsupportedOperationException("Unsupported data type: " + data.getClass());
         }
 
         return builder.build();
@@ -111,28 +93,15 @@ public class ConfigLibNoticeSerializer implements Serializer<Notice, Map<String,
         builder.withPart(noticeResult.noticeKey(), noticeResult.content());
     }
 
-    private static boolean trySerializeChatBeautiful(Map<String, Object> data, Notice notice) {
+    private boolean trySerializeChatDirectly(Notice notice) {
         List<NoticePart<?>> parts = notice.parts();
+        return parts.size() == 1 && parts.get(0).noticeKey() == NoticeKey.CHAT;
+    }
 
-        if (parts.size() != 1) {
-            return false;
-        }
-
-        NoticePart<?> part = parts.get(0);
-
-        if (part.noticeKey() != NoticeKey.CHAT) {
-            return false;
-        }
-
+    private Object getSingleChatMessage(Notice notice) {
+        NoticePart<?> part = notice.parts().get(0);
         ChatContent chat = (ChatContent) part.content();
         List<String> messages = chat.contents();
-
-        if (messages.size() == 1) {
-            data.put("value", messages.get(0));
-            return true;
-        }
-
-        data.put("value", messages);
-        return true;
+        return messages.size() == 1 ? messages.get(0) : messages;
     }
 }
