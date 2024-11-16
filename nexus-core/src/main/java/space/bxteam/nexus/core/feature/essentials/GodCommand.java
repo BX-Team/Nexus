@@ -9,21 +9,21 @@ import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import space.bxteam.nexus.core.message.MessageManager;
+import space.bxteam.nexus.core.multification.MultificationManager;
 
 @Command(name = "god", aliases = "godmode")
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
 public class GodCommand {
-    private final MessageManager messageManager;
+    private final MultificationManager multificationManager;
 
     @Execute
     @Permission("nexus.god")
     void execute(@Context Player player) {
         player.setInvulnerable(!player.isInvulnerable());
 
-        this.messageManager.create()
-                .player(player)
-                .message(translation -> player.isInvulnerable()
+        this.multificationManager.create()
+                .player(player.getUniqueId())
+                .notice(translation -> player.isInvulnerable()
                         ? translation.player().godEnable()
                         : translation.player().godDisable())
                 .placeholder("{STATE}", translation -> player.isInvulnerable()
@@ -37,9 +37,9 @@ public class GodCommand {
     void execute(@Context CommandSender sender, @Arg Player target) {
         target.setInvulnerable(!target.isInvulnerable());
 
-        this.messageManager.create()
+        this.multificationManager.create()
                 .player(target.getUniqueId())
-                .message(translation -> target.isInvulnerable()
+                .notice(translation -> target.isInvulnerable()
                         ? translation.player().godEnable()
                         : translation.player().godDisable())
                 .placeholder("{STATE}", translation -> target.isInvulnerable()
@@ -47,9 +47,9 @@ public class GodCommand {
                         : translation.format().disable())
                 .send();
 
-        this.messageManager.create()
-                .recipient(sender)
-                .message(translation -> target.isInvulnerable()
+        this.multificationManager.create()
+                .viewer(sender)
+                .notice(translation -> target.isInvulnerable()
                         ? translation.player().godSetEnable()
                         : translation.player().godSetDisable())
                 .placeholder("{STATE}", translation -> target.isInvulnerable()

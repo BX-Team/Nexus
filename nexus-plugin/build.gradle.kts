@@ -17,6 +17,8 @@ repositories {
     maven("https://oss.sonatype.org/content/groups/public/")
     maven("https://repo.extendedclip.com/content/repositories/placeholderapi/")
     maven("https://repo.panda-lang.org/releases")
+    maven("https://repo.eternalcode.pl/releases")
+    maven("https://s01.oss.sonatype.org/content/repositories/snapshots/")
 }
 
 dependencies {
@@ -27,6 +29,7 @@ dependencies {
     library(libs.mariadb)
     library(libs.litecommands)
     library(libs.litecommandsadventure)
+    library(libs.multification)
     library(libs.configlib)
     library(libs.guice)
     library(libs.classgraph)

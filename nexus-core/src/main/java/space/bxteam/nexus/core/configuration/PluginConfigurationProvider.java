@@ -4,6 +4,8 @@ import com.google.inject.Singleton;
 import de.exlll.configlib.YamlConfigurationProperties;
 import de.exlll.configlib.YamlConfigurations;
 import lombok.Getter;
+import space.bxteam.nexus.core.configuration.serializer.LanguageSerializer;
+import space.bxteam.nexus.core.translation.Language;
 import space.bxteam.nexus.core.utils.Logger;
 
 import java.nio.charset.StandardCharsets;
@@ -47,10 +49,12 @@ public class PluginConfigurationProvider {
                     PluginConfiguration.class,
                     YamlConfigurationProperties.newBuilder()
                             .charset(StandardCharsets.UTF_8)
+                            .addSerializer(Language.class, new LanguageSerializer())
                             .header(HEADER)
                             .build()));
         } catch (Exception e) {
             Logger.log("Could not load configuration file. Please check for syntax errors.", Logger.LogLevel.ERROR);
+            e.printStackTrace();
             return Optional.empty();
         }
     }

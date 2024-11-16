@@ -12,22 +12,22 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import space.bxteam.nexus.core.message.MessageManager;
+import space.bxteam.nexus.core.multification.MultificationManager;
 
 @Command(name = "itemname", aliases = {"iname", "itemrename"})
 @Permission("nexus.itemname")
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
 public class ItemNameCommand {
-    private final MessageManager messageManager;
+    private final MultificationManager multificationManager;
 
     @Execute
     void execute(@Context Player player, @Join Component name) {
         ItemStack itemStack = this.checkItem(player);
 
         if (itemStack == null) {
-            this.messageManager.create()
-                    .player(player)
-                    .message(translation -> translation.argument().noItem())
+            this.multificationManager.create()
+                    .player(player.getUniqueId())
+                    .notice(translation -> translation.argument().noItem())
                     .send();
             return;
         }
@@ -36,10 +36,10 @@ public class ItemNameCommand {
         itemMeta.displayName(name);
         itemStack.setItemMeta(itemMeta);
 
-        this.messageManager.create()
-                .message(translation -> translation.item().itemChangeNameMessage())
-                .placeholder("{ITEM_NAME}", name)
+        this.multificationManager.create()
                 .player(player.getUniqueId())
+                .notice(translation -> translation.item().itemChangeNameMessage())
+                .placeholder("{ITEM_NAME}", name.toString())
                 .send();
     }
 
@@ -55,9 +55,9 @@ public class ItemNameCommand {
         itemMeta.displayName(null);
         itemStack.setItemMeta(itemMeta);
 
-        this.messageManager.create()
-                .player(player)
-                .message(translation -> translation.item().itemClearNameMessage())
+        this.multificationManager.create()
+                .player(player.getUniqueId())
+                .notice(translation -> translation.item().itemClearNameMessage())
                 .send();
     }
 

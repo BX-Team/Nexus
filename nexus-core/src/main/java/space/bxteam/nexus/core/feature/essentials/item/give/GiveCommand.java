@@ -13,7 +13,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
-import space.bxteam.nexus.core.message.MessageManager;
+import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.core.utils.ItemUtil;
 import space.bxteam.nexus.core.utils.MaterialUtil;
 
@@ -21,7 +21,7 @@ import space.bxteam.nexus.core.utils.MaterialUtil;
 @Permission("nexus.give")
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
 public class GiveCommand {
-    private final MessageManager messageManager;
+    private final MultificationManager multificationManager;
     private final PluginConfigurationProvider configurationProvider;
 
     @Execute
@@ -30,9 +30,9 @@ public class GiveCommand {
 
         this.giveItem(player, material);
 
-        this.messageManager.create()
-                .player(player)
-                .message(translation -> translation.item().giveReceived())
+        this.multificationManager.create()
+                .player(player.getUniqueId())
+                .notice(translation -> translation.item().giveReceived())
                 .placeholder("{ITEM}", formattedMaterial)
                 .send();
     }
@@ -43,15 +43,15 @@ public class GiveCommand {
 
         this.giveItem(target, material);
 
-        this.messageManager.create()
-                .player(target)
-                .message(translation -> translation.item().giveReceived())
+        this.multificationManager.create()
+                .player(target.getUniqueId())
+                .notice(translation -> translation.item().giveReceived())
                 .placeholder("{ITEM}", formattedMaterial)
                 .send();
 
-        this.messageManager.create()
-                .recipient(sender)
-                .message(translation -> translation.item().giveGiven())
+        this.multificationManager.create()
+                .viewer(sender)
+                .notice(translation -> translation.item().giveGiven())
                 .placeholder("{ITEM}", formattedMaterial)
                 .placeholder("{PLAYER}", target.getName())
                 .send();
@@ -63,9 +63,9 @@ public class GiveCommand {
 
         this.giveItem(player, material, amount);
 
-        this.messageManager.create()
-                .player(player)
-                .message(translation -> translation.item().giveReceived())
+        this.multificationManager.create()
+                .player(player.getUniqueId())
+                .notice(translation -> translation.item().giveReceived())
                 .placeholder("{ITEM}", formattedMaterial)
                 .send();
     }
@@ -76,15 +76,15 @@ public class GiveCommand {
 
         this.giveItem(target, material, amount);
 
-        this.messageManager.create()
-                .player(target)
-                .message(translation -> translation.item().giveReceived())
+        this.multificationManager.create()
+                .player(target.getUniqueId())
+                .notice(translation -> translation.item().giveReceived())
                 .placeholder("{ITEM}", formattedMaterial)
                 .send();
 
-        this.messageManager.create()
-                .recipient(sender)
-                .message(translation -> translation.item().giveGiven())
+        this.multificationManager.create()
+                .viewer(sender)
+                .notice(translation -> translation.item().giveGiven())
                 .placeholder("{ITEM}", formattedMaterial)
                 .placeholder("{PLAYER}", target.getName())
                 .send();
@@ -94,9 +94,9 @@ public class GiveCommand {
         int amount = configurationProvider.configuration().items().defaultGiveAmount();
 
         if (!material.isItem()) {
-            this.messageManager.create()
-                    .player(player)
-                    .message(translation -> translation.item().incorrectItem())
+            this.multificationManager.create()
+                    .player(player.getUniqueId())
+                    .notice(translation -> translation.item().incorrectItem())
                     .send();
             return;
         }

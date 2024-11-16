@@ -10,7 +10,7 @@ import org.bukkit.Server;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
-import space.bxteam.nexus.core.message.MessageManager;
+import space.bxteam.nexus.core.multification.MultificationManager;
 
 import java.util.Collection;
 
@@ -18,7 +18,7 @@ import java.util.Collection;
 @Permission("nexus.list")
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
 public class OnlinePlayersListCommand {
-    private final MessageManager messageManager;
+    private final MultificationManager multificationManager;
     private final Server server;
 
     @Execute
@@ -33,9 +33,9 @@ public class OnlinePlayersListCommand {
                 .reduce((a, b) -> a + ", " + b)
                 .orElse("No players online");
 
-        this.messageManager.create()
-                .recipient(sender)
-                .message(translation -> translation.player().onlinePlayersMessage())
+        this.multificationManager.create()
+                .viewer(sender)
+                .notice(translation -> translation.player().onlinePlayersMessage())
                 .placeholder("{ONLINE}", onlineCount)
                 .placeholder("{PLAYERS}", players)
                 .send();

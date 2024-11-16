@@ -2,7 +2,10 @@ package space.bxteam.nexus.core.configuration;
 
 import de.exlll.configlib.Comment;
 import de.exlll.configlib.Configuration;
+import de.exlll.configlib.SerializeWith;
 import lombok.Getter;
+import space.bxteam.nexus.core.configuration.serializer.LanguageSerializer;
+import space.bxteam.nexus.core.translation.Language;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -18,7 +21,8 @@ public class PluginConfiguration {
     private String prefix = "&7[&6Nexus&7] ";
 
     @Comment("Plugin language")
-    private String language = "en";
+    @SerializeWith(serializer = LanguageSerializer.class)
+    private Language language = Language.EN;
 
     @Comment({"", "Database configuration"})
     private DatabaseConfig database = new DatabaseConfig();
@@ -55,6 +59,7 @@ public class PluginConfiguration {
         }
     }
 
+    @Comment("")
     private Items items = new Items();
 
     @Getter
@@ -67,6 +72,7 @@ public class PluginConfiguration {
         private int defaultGiveAmount = 1;
     }
 
+    @Comment("")
     private Homes homes = new Homes();
 
     @Getter

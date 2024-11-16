@@ -9,13 +9,13 @@ import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
-import space.bxteam.nexus.core.message.MessageManager;
+import space.bxteam.nexus.core.multification.MultificationManager;
 
 @Command(name = "rain")
 @Permission("nexus.rain")
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
 public class RainCommand {
-    private final MessageManager messageManager;
+    private final MultificationManager multificationManager;
 
     @Execute
     void rain(@Context CommandSender sender, @Context World world) {
@@ -31,9 +31,9 @@ public class RainCommand {
         world.setStorm(true);
         world.setThundering(false);
 
-        this.messageManager.create()
-                .recipient(sender)
-                .message(translation -> translation.timeAndWeather().weatherSetRain())
+        this.multificationManager.create()
+                .viewer(sender)
+                .notice(translation -> translation.timeAndWeather().weatherSetRain())
                 .placeholder("{WORLD}", world.getName())
                 .send();
     }

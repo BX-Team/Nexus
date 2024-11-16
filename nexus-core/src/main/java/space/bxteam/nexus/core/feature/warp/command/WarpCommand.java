@@ -7,16 +7,15 @@ import dev.rollczi.litecommands.annotations.context.Context;
 import dev.rollczi.litecommands.annotations.execute.Execute;
 import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
-import org.bukkit.Sound;
 import org.bukkit.entity.Player;
-import space.bxteam.nexus.core.message.MessageManager;
+import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.feature.warp.Warp;
 import space.bxteam.nexus.feature.warp.WarpService;
 
 @RootCommand
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
 public class WarpCommand {
-    private final MessageManager messageManager;
+    private final MultificationManager multificationManager;
     private final WarpService warpService;
 
     @Execute(name = "warp")
@@ -25,19 +24,16 @@ public class WarpCommand {
         String name = warp.name();
 
         if (!this.warpService.warpExists(name)) {
-            this.messageManager.create()
-                    .player(player)
-                    .message(translation -> translation.warp().notExist())
+            this.multificationManager.create()
+                    .player(player.getUniqueId())
+                    .notice(translation -> translation.warp().notExist())
                     .placeholder("{WARP}", name)
                     .send();
             return;
         }
 
         player.teleport(warp.location());
-        this.messageManager.create()
-                .player(player)
-                .sound(Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1)
-                .send();
+        // TODO: Add sound
     }
 
     @Execute(name = "warp")
@@ -46,9 +42,9 @@ public class WarpCommand {
         String name = warp.name();
 
         if (!this.warpService.warpExists(name)) {
-            this.messageManager.create()
-                    .player(player)
-                    .message(translation -> translation.warp().notExist())
+            this.multificationManager.create()
+                    .player(player.getUniqueId())
+                    .notice(translation -> translation.warp().notExist())
                     .placeholder("{WARP}", name)
                     .send();
             return;
@@ -61,18 +57,18 @@ public class WarpCommand {
     @Permission("nexus.setwarp")
     void executeSetWarp(@Context Player player, @Arg String name) {
         if (this.warpService.warpExists(name)) {
-            this.messageManager.create()
-                    .player(player)
-                    .message(translation -> translation.warp().warpAlreadyExists())
+            this.multificationManager.create()
+                    .player(player.getUniqueId())
+                    .notice(translation -> translation.warp().warpAlreadyExists())
                     .placeholder("{WARP}", name)
                     .send();
             return;
         }
 
         this.warpService.createWarp(name, player.getLocation());
-        this.messageManager.create()
-                .player(player)
-                .message(translation -> translation.warp().create())
+        this.multificationManager.create()
+                .player(player.getUniqueId())
+                .notice(translation -> translation.warp().create())
                 .placeholder("{WARP}", name)
                 .send();
     }
@@ -83,18 +79,18 @@ public class WarpCommand {
         String name = warp.name();
 
         if (!this.warpService.warpExists(name)) {
-            this.messageManager.create()
-                    .player(player)
-                    .message(translation -> translation.warp().notExist())
+            this.multificationManager.create()
+                    .player(player.getUniqueId())
+                    .notice(translation -> translation.warp().notExist())
                     .placeholder("{WARP}", name)
                     .send();
             return;
         }
 
         this.warpService.removeWarp(name);
-        this.messageManager.create()
-                .player(player)
-                .message(translation -> translation.warp().remove())
+        this.multificationManager.create()
+                .player(player.getUniqueId())
+                .notice(translation -> translation.warp().remove())
                 .placeholder("{WARP}", name)
                 .send();
     }

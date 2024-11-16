@@ -1,43 +1,68 @@
 package space.bxteam.nexus.core.translation;
 
+import com.eternalcode.multification.notice.Notice;
+import com.eternalcode.multification.translation.TranslationProvider;
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
 import de.exlll.configlib.YamlConfigurationProperties;
 import de.exlll.configlib.YamlConfigurations;
 import lombok.RequiredArgsConstructor;
+import org.jetbrains.annotations.NotNull;
+import space.bxteam.nexus.core.multification.MultificationManager;
+import space.bxteam.nexus.core.multification.serializer.ConfigLibNoticeSerializer;
 import space.bxteam.nexus.core.translation.implementation.ENTranslation;
 
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.*;
+import java.util.function.Supplier;
 
-@RequiredArgsConstructor
-public class TranslationManager {
-    private final Path languageFolder;
+@RequiredArgsConstructor(onConstructor = @__(@Inject))
+public class TranslationManager implements TranslationProvider<Translation> {
+    private final Map<Language, Translation> translatedMessages = new HashMap<>();
+    private final MultificationManager multificationManager;
+    @Named("dataFolder")
+    private final Path dataFolder;
 
-    public void initializeLanguages() {
-        saveLanguageFile(ENTranslation.class, "en");
-    }
+    private static final Map<Language, Supplier<Translation>> DEFAULT_TRANSLATIONS = Map.of(
+            Language.EN, ENTranslation::new
+    );
 
-    private <T extends Translation> void saveLanguageFile(Class<T> translationClass, String languageCode) {
-        try {
-            Path languageFile = languageFolder.resolve(languageCode + ".yml");
-            if (Files.notExists(languageFolder)) {
-                Files.createDirectories(languageFolder);
-            }
-            if (Files.notExists(languageFile)) {
-                YamlConfigurations.update(languageFile, translationClass, YamlConfigurationProperties.newBuilder()
-                        .charset(StandardCharsets.UTF_8)
-                        .build());
-            }
-        } catch (IOException e) {
-            throw new RuntimeException("Failed to save language file for: " + languageCode, e);
+    public Translation getMessages(Language language) {
+        if (translatedMessages.containsKey(language)) {
+            return translatedMessages.get(language);
         }
+
+        return translatedMessages.entrySet().stream()
+                .filter(entry -> entry.getKey().isEquals(language))
+                .map(Map.Entry::getValue)
+                .findFirst()
+                .orElseGet(() -> {
+                    return translatedMessages.getOrDefault(Language.EN, new ENTranslation());
+                });
     }
 
-    public <T extends Translation> T loadTranslation(Class<T> translationClass, String languageCode) {
-        Path languageFile = languageFolder.resolve(languageCode + ".yml");
-        return YamlConfigurations.update(languageFile, translationClass, YamlConfigurationProperties.newBuilder()
-                .charset(StandardCharsets.UTF_8)
-                .build());
+    public void create(Language selectedLanguage) {
+        DEFAULT_TRANSLATIONS.forEach((language, supplier) -> translatedMessages.putIfAbsent(language, supplier.get()));
+
+        Path languagesDirectory = dataFolder.resolve("languages");
+        if (!languagesDirectory.toFile().exists() && !languagesDirectory.toFile().mkdir()) {
+            throw new RuntimeException("Failed to create languages directory");
+        }
+
+        Path languageFile = languagesDirectory.resolve(selectedLanguage.lang() + ".yml");
+        YamlConfigurations.update(
+                languageFile,
+                selectedLanguage.clazz().get().getClass(),
+                YamlConfigurationProperties.newBuilder()
+                        .charset(StandardCharsets.UTF_8)
+                        .addSerializer(Notice.class, new ConfigLibNoticeSerializer(multificationManager.getNoticeRegistry()))
+                        .build()
+        );
+    }
+
+    @Override
+    public @NotNull Translation provide(Locale locale) {
+        return getMessages(Language.fromLocale(locale));
     }
 }

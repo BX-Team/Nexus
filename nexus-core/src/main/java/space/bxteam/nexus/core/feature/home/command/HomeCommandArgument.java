@@ -1,16 +1,20 @@
 package space.bxteam.nexus.core.feature.home.command;
 
+import com.eternalcode.multification.notice.NoticeBroadcast;
 import com.google.inject.Inject;
 import dev.rollczi.litecommands.argument.Argument;
 import dev.rollczi.litecommands.argument.parser.ParseResult;
-import dev.rollczi.litecommands.argument.resolver.ArgumentResolver;
 import dev.rollczi.litecommands.invocation.Invocation;
 import dev.rollczi.litecommands.suggestion.SuggestionContext;
 import dev.rollczi.litecommands.suggestion.SuggestionResult;
-import lombok.RequiredArgsConstructor;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import space.bxteam.nexus.core.message.MessageManager;
+import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
+import space.bxteam.nexus.core.multification.argument.MultificationLiteArgument;
+import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.core.scanner.annotations.litecommands.LiteArgument;
+import space.bxteam.nexus.core.translation.Translation;
+import space.bxteam.nexus.core.translation.TranslationManager;
 import space.bxteam.nexus.feature.home.Home;
 import space.bxteam.nexus.feature.home.HomeService;
 
@@ -20,14 +24,20 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @LiteArgument(type = Home.class)
-@RequiredArgsConstructor(onConstructor = @__(@Inject))
-public class HomeCommandArgument extends ArgumentResolver<Player, Home> {
-    private final MessageManager messageManager;
+public class HomeCommandArgument extends MultificationLiteArgument<Home> {
     private final HomeService homeService;
+    private final MultificationManager multificationManager;
+
+    @Inject
+    public HomeCommandArgument(TranslationManager translationManager, PluginConfigurationProvider configurationProvider, HomeService homeService, MultificationManager multificationManager) {
+        super(translationManager, configurationProvider);
+        this.homeService = homeService;
+        this.multificationManager = multificationManager;
+    }
 
     @Override
-    protected ParseResult<Home> parse(Invocation<Player> invocation, Argument<Home> context, String argument) {
-        UUID playerUUID = invocation.sender().getUniqueId();
+    public ParseResult<Home> parse(Invocation<CommandSender> invocation, String argument, Translation translation) {
+        UUID playerUUID = ((Player) invocation.sender()).getUniqueId();
 
         Optional<Home> getHome = this.homeService.getHome(playerUUID, argument);
 
@@ -42,12 +52,19 @@ public class HomeCommandArgument extends ArgumentResolver<Player, Home> {
         Map<String, String> placeholders = Map.of(
                 "{HOMES}", homes
         );
-        return ParseResult.failure(this.messageManager.getMessage(translation -> translation.home().homeList(), placeholders));
+
+        NoticeBroadcast homeListNotice = this.multificationManager.create()
+                .viewer(invocation.sender())
+                .notice(translate -> translate.home().homeList())
+                .placeholder("{HOMES}", homes);
+
+        return ParseResult.failure(homeListNotice);
     }
 
     @Override
-    public SuggestionResult suggest(Invocation<Player> invocation, Argument<Home> argument, SuggestionContext context) {
-        return this.homeService.getHomes(invocation.sender().getUniqueId()).stream()
+    public SuggestionResult suggest(Invocation<CommandSender> invocation, Argument<Home> argument, SuggestionContext context) {
+        Player player = (Player) invocation.sender();
+        return this.homeService.getHomes(player.getUniqueId()).stream()
                 .map(Home::name)
                 .collect(SuggestionResult.collector());
     }

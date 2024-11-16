@@ -10,21 +10,21 @@ import lombok.RequiredArgsConstructor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
-import space.bxteam.nexus.core.message.MessageManager;
+import space.bxteam.nexus.core.multification.MultificationManager;
 
 @Command(name = "heal")
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
 public class HealCommand {
-    private final MessageManager messageManager;
+    private final MultificationManager multificationManager;
 
     @Execute
     @Permission("nexus.heal")
     void execute(@Context Player player) {
         this.heal(player);
 
-        this.messageManager.create()
-                .player(player)
-                .message(translation -> translation.player().healMessage())
+        this.multificationManager.create()
+                .player(player.getUniqueId())
+                .notice(translation -> translation.player().healMessage())
                 .send();
     }
 
@@ -33,14 +33,14 @@ public class HealCommand {
     void execute(@Context CommandSender sender, @Arg Player target) {
         this.heal(target);
 
-        this.messageManager.create()
-                .message(translation -> translation.player().healMessage())
+        this.multificationManager.create()
                 .player(target.getUniqueId())
+                .notice(translation -> translation.player().healMessage())
                 .send();
 
-        this.messageManager.create()
-                .recipient(sender)
-                .message(translation -> translation.player().healMessageBy())
+        this.multificationManager.create()
+                .viewer(sender)
+                .notice(translation -> translation.player().healMessageBy())
                 .placeholder("{PLAYER}", target.getName())
                 .send();
     }
