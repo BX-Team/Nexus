@@ -44,6 +44,7 @@ public class ConfigLibNoticeSerializer implements Serializer<Notice, Object> {
         return data;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public Notice deserialize(Object data) {
         Builder builder = Notice.builder();
