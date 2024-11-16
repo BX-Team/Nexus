@@ -1,4 +1,4 @@
-package space.bxteam.nexus.core.loader;
+package space.bxteam.nexus.core.loader.paper;
 
 import com.google.gson.Gson;
 import io.papermc.paper.plugin.loader.PluginClasspathBuilder;

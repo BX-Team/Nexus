@@ -11,6 +11,8 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.ServicesManager;
+import space.bxteam.nexus.core.environment.meta.PluginVersionMeta;
+import space.bxteam.nexus.core.environment.meta.PluginVersionMetaFactory;
 import space.bxteam.nexus.core.feature.home.HomeServiceImpl;
 import space.bxteam.nexus.core.feature.warp.WarpServiceImpl;
 import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
@@ -39,6 +41,7 @@ public class NexusModule extends AbstractModule {
                 .annotatedWith(Names.named("dataFolder"))
                 .toInstance(this.plugin.getDataFolder().toPath());
         this.bind(AudienceProvider.class).toInstance(BukkitAudiences.create(this.plugin));
+        this.bind(PluginVersionMeta.class).toInstance(PluginVersionMetaFactory.create(this.plugin));
 
         this.bind(MiniMessage.class).toInstance(MiniMessage.miniMessage());
         this.bind(MiniMessage.class)

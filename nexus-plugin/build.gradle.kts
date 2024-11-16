@@ -92,7 +92,7 @@ paper {
     website = "https://github.com/BX-Team/Nexus"
 
     main = "space.bxteam.nexus.core.loader.NexusPlugin"
-    loader = "space.bxteam.nexus.core.loader.NexusLoader"
+    loader = "space.bxteam.nexus.core.loader.paper.NexusLoader"
 
     apiVersion = "1.19"
     serverDependencies {

@@ -1,6 +1,5 @@
 package space.bxteam.nexus.core;
 
-import com.google.common.base.Stopwatch;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import org.bukkit.plugin.Plugin;
@@ -9,6 +8,7 @@ import space.bxteam.nexus.core.database.DatabaseClient;
 import space.bxteam.nexus.core.database.DatabaseModule;
 import space.bxteam.nexus.core.configuration.ConfigModule;
 import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
+import space.bxteam.nexus.core.environment.NexusEnvironment;
 import space.bxteam.nexus.core.integration.bstats.MetricsModule;
 import space.bxteam.nexus.core.integration.litecommands.LiteCommandsRegister;
 import space.bxteam.nexus.core.scanner.register.ComponentRegister;
@@ -21,7 +21,8 @@ public class Nexus {
     private final Injector injector;
 
     public Nexus(Plugin plugin) {
-        Stopwatch stopwatch = Stopwatch.createStarted();
+        NexusEnvironment environment = new NexusEnvironment(plugin.getServer());
+
         this.configurationProvider = new PluginConfigurationProvider(plugin.getDataFolder().toPath());
         this.injector =
                 Guice.createInjector(
@@ -40,8 +41,7 @@ public class Nexus {
         this.injector.getInstance(ComponentRegister.class);
 
         NexusApiProvider.initialize(new NexusApiImpl(this.injector));
-
-        Logger.log("Enabled Nexus in " + stopwatch.stop(), Logger.LogLevel.INFO);
+        environment.finalizeLoading();
     }
 
     public void disable() {
