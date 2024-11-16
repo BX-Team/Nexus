@@ -9,21 +9,21 @@ import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import space.bxteam.nexus.core.message.MessageManager;
+import space.bxteam.nexus.core.multification.MultificationManager;
 
 @Command(name = "feed")
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
 public class FeedCommand {
-    private final MessageManager messageManager;
+    private final MultificationManager multificationManager;
 
     @Execute
     @Permission("nexus.feed")
     void execute(@Context Player player) {
         this.feed(player);
 
-        this.messageManager.create()
-                .player(player)
-                .message(translation -> translation.player().feedMessage())
+        this.multificationManager.create()
+                .player(player.getUniqueId())
+                .notice(translation -> translation.player().feedMessage())
                 .send();
     }
 
@@ -32,14 +32,14 @@ public class FeedCommand {
     void execute(@Context CommandSender sender, @Arg Player target) {
         this.feed(target);
 
-        this.messageManager.create()
+        this.multificationManager.create()
                 .player(target.getUniqueId())
-                .message(translation -> translation.player().feedMessage())
+                .notice(translation -> translation.player().feedMessage())
                 .send();
 
-        this.messageManager.create()
-                .recipient(sender)
-                .message(translation -> translation.player().feedMessageBy())
+        this.multificationManager.create()
+                .viewer(sender)
+                .notice(translation -> translation.player().feedMessageBy())
                 .placeholder("{PLAYER}", target.getName())
                 .send();
     }

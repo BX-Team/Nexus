@@ -13,7 +13,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import space.bxteam.nexus.core.message.MessageManager;
+import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.core.utils.AdventureUtil;
 
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ import java.util.List;
 @Command(name = "itemlore", aliases = {"lore"})
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
 public class ItemLoreCommand {
-    private final MessageManager messageManager;
+    private final MultificationManager multificationManager;
     @Named("colorMiniMessage")
     private final MiniMessage miniMessage;
 
@@ -31,9 +31,9 @@ public class ItemLoreCommand {
         ItemStack itemStack = this.checkItem(player);
 
         if (itemStack == null) {
-            this.messageManager.create()
-                    .player(player)
-                    .message(translation -> translation.argument().noItem())
+            this.multificationManager.create()
+                    .player(player.getUniqueId())
+                    .notice(translation -> translation.argument().noItem())
                     .send();
             return;
         }
@@ -56,9 +56,9 @@ public class ItemLoreCommand {
         itemMeta.setLore(lore);
         itemStack.setItemMeta(itemMeta);
 
-        this.messageManager.create()
-                .player(player)
-                .message(translation -> translation.item().itemChangeLoreMessage())
+        this.multificationManager.create()
+                .player(player.getUniqueId())
+                .notice(translation -> translation.item().itemChangeLoreMessage())
                 .placeholder("{ITEM_LORE}", text)
                 .send();
     }
@@ -76,9 +76,9 @@ public class ItemLoreCommand {
         itemMeta.setLore(new ArrayList<>());
         itemStack.setItemMeta(itemMeta);
 
-        this.messageManager.create()
-                .player(player)
-                .message(translation -> translation.item().itemClearLoreMessage())
+        this.multificationManager.create()
+                .player(player.getUniqueId())
+                .notice(translation -> translation.item().itemClearLoreMessage())
                 .send();
     }
 

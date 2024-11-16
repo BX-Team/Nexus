@@ -12,12 +12,13 @@ import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
 import space.bxteam.nexus.core.integration.bstats.MetricsModule;
 import space.bxteam.nexus.core.integration.litecommands.LiteCommandsRegister;
 import space.bxteam.nexus.core.scanner.register.ComponentRegister;
+import space.bxteam.nexus.core.translation.TranslationManager;
 import space.bxteam.nexus.core.translation.TranslationModule;
 import space.bxteam.nexus.core.utils.Logger;
 
 public class Nexus {
-    private PluginConfigurationProvider configurationProvider;
-    private Injector injector;
+    private final PluginConfigurationProvider configurationProvider;
+    private final Injector injector;
 
     public Nexus(Plugin plugin) {
         Stopwatch stopwatch = Stopwatch.createStarted();
@@ -26,10 +27,13 @@ public class Nexus {
                 Guice.createInjector(
                         new NexusModule(this.configurationProvider, plugin),
                         new ConfigModule(),
-                        new TranslationModule(this.configurationProvider, plugin.getDataFolder().toPath().resolve("languages")),
+                        new TranslationModule(),
                         new DatabaseModule(this.configurationProvider),
                         new MetricsModule()
                 );
+
+        TranslationManager translationManager = this.injector.getInstance(TranslationManager.class);
+        translationManager.create(configurationProvider.configuration().language());
 
         this.injector.getInstance(DatabaseClient.class).open();
         this.injector.getInstance(LiteCommandsRegister.class).onEnable();

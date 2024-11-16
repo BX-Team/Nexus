@@ -8,13 +8,13 @@ import dev.rollczi.litecommands.invocation.Invocation;
 import dev.rollczi.litecommands.schematic.Schematic;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.command.CommandSender;
+import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.core.scanner.annotations.litecommands.LiteHandler;
-import space.bxteam.nexus.core.message.MessageManager;
 
 @LiteHandler(InvalidUsage.class)
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
 public class InvalidUsageHandlerImpl implements InvalidUsageHandler<CommandSender> {
-    private final MessageManager messageManager;
+    private final MultificationManager multificationManager;
 
     @Override
     public void handle(Invocation<CommandSender> invocation, InvalidUsage<CommandSender> result, ResultHandlerChain<CommandSender> chain) {
@@ -22,19 +22,22 @@ public class InvalidUsageHandlerImpl implements InvalidUsageHandler<CommandSende
         Schematic schematic = result.getSchematic();
 
         if (schematic.isOnlyFirst()) {
-            this.messageManager.create()
-                    .recipient(sender)
-                    .message(translation -> translation.argument().usageMessage())
+            this.multificationManager.create()
+                    .viewer(sender)
+                    .notice(translation -> translation.argument().usageMessage())
                     .placeholder("{USAGE}", schematic.first())
                     .send();
             return;
         }
 
-        this.messageManager.create().recipient(sender).message(translation -> translation.argument().usageMessageHead()).send();
+        this.multificationManager.create()
+                .viewer(sender)
+                .notice(translation -> translation.argument().usageMessageHead())
+                .send();
         for (String schema : schematic.all()) {
-            this.messageManager.create()
-                    .recipient(sender)
-                    .message(translation -> translation.argument().usageMessageEntry())
+            this.multificationManager.create()
+                    .viewer(sender)
+                    .notice(translation -> translation.argument().usageMessageEntry())
                     .placeholder("{USAGE}", schema)
                     .send();
         }

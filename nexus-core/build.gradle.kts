@@ -9,6 +9,8 @@ repositories {
     maven("https://oss.sonatype.org/content/groups/public/")
     maven("https://repo.extendedclip.com/content/repositories/placeholderapi/")
     maven("https://repo.panda-lang.org/releases")
+    maven("https://repo.eternalcode.pl/releases")
+    maven("https://s01.oss.sonatype.org/content/repositories/snapshots/")
 }
 
 dependencies {
@@ -20,6 +22,7 @@ dependencies {
     compileOnly(libs.mariadb)
     compileOnly(libs.litecommands)
     compileOnly(libs.litecommandsadventure)
+    compileOnly(libs.multification)
     compileOnly(libs.configlib)
     compileOnly(libs.guice)
     compileOnly(libs.classgraph)
@@ -32,7 +35,7 @@ dependencies {
     compileOnly(libs.bstats)
 }
 
-tasks.withType<JavaCompile>() {
+tasks.withType<JavaCompile> {
     options.encoding = "UTF-8"
     options.release = 17
     options.compilerArgs = listOf("-Xlint:deprecation", "-parameters")

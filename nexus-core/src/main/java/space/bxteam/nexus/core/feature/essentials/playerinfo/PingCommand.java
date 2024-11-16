@@ -9,19 +9,19 @@ import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import space.bxteam.nexus.core.message.MessageManager;
+import space.bxteam.nexus.core.multification.MultificationManager;
 
 @Command(name = "ping")
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
 public class PingCommand {
-    private final MessageManager messageManager;
+    private final MultificationManager multificationManager;
 
     @Execute
     @Permission("nexus.ping")
     void execute(@Context Player player) {
-        this.messageManager.create()
-                .player(player)
-                .message(translation -> translation.player().pingMessage())
+        this.multificationManager.create()
+                .player(player.getUniqueId())
+                .notice(translation -> translation.player().pingMessage())
                 .placeholder("{PING}", String.valueOf(player.getPing()))
                 .send();
     }
@@ -29,9 +29,9 @@ public class PingCommand {
     @Execute
     @Permission("nexus.ping.other")
     void execute(@Context CommandSender sender, @Arg Player target) {
-        this.messageManager.create()
-                .recipient(sender)
-                .message(translation -> translation.player().pingOtherMessage())
+        this.multificationManager.create()
+                .viewer(sender)
+                .notice(translation -> translation.player().pingOtherMessage())
                 .placeholder("{PING}", String.valueOf(target.getPing()))
                 .placeholder("{PLAYER}", target.getName())
                 .send();

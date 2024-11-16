@@ -9,21 +9,21 @@ import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import space.bxteam.nexus.core.message.MessageManager;
+import space.bxteam.nexus.core.multification.MultificationManager;
 
 @Command(name = "speed")
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
 public class SpeedCommand {
-    private final MessageManager messageManager;
+    private final MultificationManager multificationManager;
 
     @Execute
     @Permission("nexus.speed")
     void execute(@Context Player player, @Arg(SpeedCommandArgument.KEY) Integer speed) {
         this.setSpeed(player, speed);
 
-        this.messageManager.create()
-                .player(player)
-                .message(translation -> player.isFlying() ? translation.player().speedFlySet() : translation.player().speedWalkSet())
+        this.multificationManager.create()
+                .player(player.getUniqueId())
+                .notice(translation -> player.isFlying() ? translation.player().speedFlySet() : translation.player().speedWalkSet())
                 .placeholder("{SPEED}", String.valueOf(speed))
                 .send();
     }
@@ -33,15 +33,15 @@ public class SpeedCommand {
     void execute(@Context CommandSender sender, @Arg(SpeedCommandArgument.KEY) Integer speed, @Arg Player target) {
         this.setSpeed(target, speed);
 
-        this.messageManager.create()
-                .player(target)
-                .message(translation -> target.isFlying() ? translation.player().speedFlySet() : translation.player().speedWalkSet())
+        this.multificationManager.create()
+                .player(target.getUniqueId())
+                .notice(translation -> target.isFlying() ? translation.player().speedFlySet() : translation.player().speedWalkSet())
                 .placeholder("{SPEED}", String.valueOf(speed))
                 .send();
 
-        this.messageManager.create()
-                .recipient(sender)
-                .message(translation -> target.isFlying() ? translation.player().speedFlySetBy() : translation.player().speedWalkSetBy())
+        this.multificationManager.create()
+                .viewer(sender)
+                .notice(translation -> target.isFlying() ? translation.player().speedFlySetBy() : translation.player().speedWalkSetBy())
                 .placeholder("{PLAYER}", target.getName())
                 .placeholder("{SPEED}", String.valueOf(speed))
                 .send();
@@ -52,12 +52,11 @@ public class SpeedCommand {
     void execute(@Context Player player, @Arg SpeedType speedType, @Arg(SpeedCommandArgument.KEY) Integer speed) {
         this.setSpeed(player, speedType, speed);
 
-        this.messageManager.create()
-                .player(player)
-                .message(translation -> speedType == SpeedType.WALK ? translation.player().speedWalkSet() : translation.player().speedFlySet())
+        this.multificationManager.create()
+                .player(player.getUniqueId())
+                .notice(translation -> speedType == SpeedType.WALK ? translation.player().speedWalkSet() : translation.player().speedFlySet())
                 .placeholder("{SPEED}", String.valueOf(speed))
                 .send();
-
     }
 
     @Execute
@@ -65,15 +64,15 @@ public class SpeedCommand {
     void execute(@Context CommandSender sender, @Arg SpeedType speedType, @Arg(SpeedCommandArgument.KEY) Integer speed, @Arg Player target) {
         this.setSpeed(target, speedType, speed);
 
-        this.messageManager.create()
-                .player(target)
-                .message(translation -> speedType == SpeedType.WALK ? translation.player().speedWalkSet() : translation.player().speedFlySet())
+        this.multificationManager.create()
+                .player(target.getUniqueId())
+                .notice(translation -> speedType == SpeedType.WALK ? translation.player().speedWalkSet() : translation.player().speedFlySet())
                 .placeholder("{SPEED}", String.valueOf(speed))
                 .send();
 
-        this.messageManager.create()
-                .recipient(sender)
-                .message(translation -> speedType == SpeedType.WALK ? translation.player().speedWalkSetBy() : translation.player().speedFlySetBy())
+        this.multificationManager.create()
+                .viewer(sender)
+                .notice(translation -> speedType == SpeedType.WALK ? translation.player().speedWalkSetBy() : translation.player().speedFlySetBy())
                 .placeholder("{PLAYER}", target.getName())
                 .placeholder("{SPEED}", String.valueOf(speed))
                 .send();

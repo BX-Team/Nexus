@@ -9,13 +9,13 @@ import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
-import space.bxteam.nexus.core.message.MessageManager;
+import space.bxteam.nexus.core.multification.MultificationManager;
 
 @Command(name = "thunder")
 @Permission("nexus.thunder")
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
 public class ThunderCommand {
-    private final MessageManager messageManager;
+    private final MultificationManager multificationManager;
 
     @Execute
     void thunder(@Context CommandSender sender, @Context World world) {
@@ -31,9 +31,9 @@ public class ThunderCommand {
         world.setStorm(true);
         world.setThundering(true);
 
-        this.messageManager.create()
-                .recipient(sender)
-                .message(translation -> translation.timeAndWeather().weatherSetThunder())
+        this.multificationManager.create()
+                .viewer(sender)
+                .notice(translation -> translation.timeAndWeather().weatherSetThunder())
                 .placeholder("{WORLD}", world.getName())
                 .send();
     }

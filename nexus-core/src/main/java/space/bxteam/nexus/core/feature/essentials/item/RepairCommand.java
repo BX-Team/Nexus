@@ -11,14 +11,14 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.Repairable;
-import space.bxteam.nexus.core.message.MessageManager;
+import space.bxteam.nexus.core.multification.MultificationManager;
 
 import java.util.Arrays;
 
 @Command(name = "repair")
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
 public class RepairCommand {
-    private final MessageManager messageManager;
+    private final MultificationManager multificationManager;
 
     @Execute
     @Permission("nexus.repair")
@@ -26,26 +26,26 @@ public class RepairCommand {
         ItemStack handItem = player.getInventory().getItemInMainHand();
 
         if (!isRepairable(handItem)) {
-            this.messageManager.create()
-                    .message(translation -> translation.argument().noItem())
+            this.multificationManager.create()
                     .player(player.getUniqueId())
+                    .notice(translation -> translation.argument().noItem())
                     .send();
             return;
         }
 
         Damageable damageable = (Damageable) handItem.getItemMeta();
         if (damageable.getDamage() == 0) {
-            this.messageManager.create()
-                    .message(translation -> translation.argument().noDamaged())
+            this.multificationManager.create()
                     .player(player.getUniqueId())
+                    .notice(translation -> translation.argument().noDamaged())
                     .send();
             return;
         }
 
         this.repairItem(handItem);
-        this.messageManager.create()
-                .message(translation -> translation.item().repairMessage())
+        this.multificationManager.create()
                 .player(player.getUniqueId())
+                .notice(translation -> translation.item().repairMessage())
                 .send();
     }
 
@@ -58,17 +58,17 @@ public class RepairCommand {
                 .toArray(ItemStack[]::new);
 
         if (damagedItems.length == 0) {
-            this.messageManager.create()
-                    .message(translation -> translation.argument().noDamagedItems())
+            this.multificationManager.create()
                     .player(player.getUniqueId())
+                    .notice(translation -> translation.argument().noDamagedItems())
                     .send();
             return;
         }
 
         Arrays.stream(damagedItems).forEach(this::repairItem);
-        this.messageManager.create()
-                .message(translation -> translation.item().repairAllMessage())
+        this.multificationManager.create()
                 .player(player.getUniqueId())
+                .notice(translation -> translation.item().repairAllMessage())
                 .send();
     }
 
@@ -82,7 +82,7 @@ public class RepairCommand {
         Damageable damageable = (Damageable) itemStack.getItemMeta();
         if (damageable != null) {
             damageable.setDamage(0);
-            itemStack.setItemMeta((ItemMeta) damageable);
+            itemStack.setItemMeta(damageable);
         }
     }
 }

@@ -7,22 +7,22 @@ import dev.rollczi.litecommands.permission.MissingPermissions;
 import dev.rollczi.litecommands.permission.MissingPermissionsHandler;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.command.CommandSender;
+import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.core.scanner.annotations.litecommands.LiteHandler;
-import space.bxteam.nexus.core.message.MessageManager;
 
 @LiteHandler(MissingPermissions.class)
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
 public class PermissionsHandler implements MissingPermissionsHandler<CommandSender> {
-    private final MessageManager messageManager;
+    private final MultificationManager multificationManager;
 
     @Override
     public void handle(Invocation<CommandSender> invocation, MissingPermissions missingPermissions, ResultHandlerChain<CommandSender> chain) {
         String permissions = missingPermissions.asJoinedText();
         CommandSender sender = invocation.sender();
 
-        this.messageManager.create()
-                .recipient(sender)
-                .message(translation -> translation.argument().noPermission())
+        this.multificationManager.create()
+                .viewer(sender)
+                .notice(translation -> translation.argument().noPermission())
                 .placeholder("{PERMISSIONS}", permissions)
                 .send();
     }

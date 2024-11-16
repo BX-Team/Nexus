@@ -10,21 +10,21 @@ import lombok.RequiredArgsConstructor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import space.bxteam.nexus.core.message.MessageManager;
+import space.bxteam.nexus.core.multification.MultificationManager;
 
 @Command(name = "clear")
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
 public class ClearCommand {
-    private final MessageManager messageManager;
+    private final MultificationManager multificationManager;
 
     @Execute
     @Permission("nexus.clear")
     void execute(@Context Player player) {
         this.clear(player);
 
-        this.messageManager.create()
-                .player(player)
-                .message(translation -> translation.inventory().inventoryClearMessage())
+        this.multificationManager.create()
+                .player(player.getUniqueId())
+                .notice(translation -> translation.inventory().inventoryClearMessage())
                 .send();
     }
 
@@ -33,15 +33,15 @@ public class ClearCommand {
     void execute(@Context CommandSender sender, @Arg Player target) {
         this.clear(target);
 
-        this.messageManager.create()
-                .recipient(sender)
-                .message(translation -> translation.inventory().inventoryClearMessageBy())
+        this.multificationManager.create()
+                .viewer(sender)
+                .notice(translation -> translation.inventory().inventoryClearMessageBy())
                 .placeholder("{PLAYER}", target.getName())
                 .send();
 
-        this.messageManager.create()
-                .player(target)
-                .message(translation -> translation.inventory().inventoryClearMessage())
+        this.multificationManager.create()
+                .player(target.getUniqueId())
+                .notice(translation -> translation.inventory().inventoryClearMessage())
                 .send();
     }
 

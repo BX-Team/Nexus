@@ -3,31 +3,34 @@ package space.bxteam.nexus.core.feature.essentials.item.enchant;
 import com.google.inject.Inject;
 import dev.rollczi.litecommands.argument.Argument;
 import dev.rollczi.litecommands.argument.parser.ParseResult;
-import dev.rollczi.litecommands.argument.resolver.ArgumentResolver;
 import dev.rollczi.litecommands.invocation.Invocation;
 import dev.rollczi.litecommands.suggestion.SuggestionContext;
 import dev.rollczi.litecommands.suggestion.SuggestionResult;
-import lombok.RequiredArgsConstructor;
 import org.bukkit.NamespacedKey;
 import org.bukkit.command.CommandSender;
 import org.bukkit.enchantments.Enchantment;
+import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
+import space.bxteam.nexus.core.multification.argument.MultificationLiteArgument;
 import space.bxteam.nexus.core.scanner.annotations.litecommands.LiteArgument;
-import space.bxteam.nexus.core.message.MessageManager;
+import space.bxteam.nexus.core.translation.Translation;
+import space.bxteam.nexus.core.translation.TranslationManager;
 
 import java.util.Arrays;
 import java.util.Locale;
 
 @LiteArgument(type = Enchantment.class)
-@RequiredArgsConstructor(onConstructor = @__(@Inject))
-public class EnchantmentArgument extends ArgumentResolver<CommandSender, Enchantment> {
-    private final MessageManager messageManager;
+public class EnchantmentArgument extends MultificationLiteArgument<Enchantment> {
+    @Inject
+    public EnchantmentArgument(TranslationManager translationManager, PluginConfigurationProvider configurationProvider) {
+        super(translationManager, configurationProvider);
+    }
 
     @Override
-    protected ParseResult<Enchantment> parse(Invocation<CommandSender> invocation, Argument<Enchantment> context, String argument) {
+    public ParseResult<Enchantment> parse(Invocation<CommandSender> invocation, String argument, Translation translation) {
         Enchantment enchantment = Enchantment.getByKey(NamespacedKey.minecraft(argument.toLowerCase(Locale.ROOT)));
 
         if (enchantment == null) {
-            return ParseResult.failure(messageManager.getMessage(translation -> translation.argument().noEnchantment()));
+            return ParseResult.failure(translation.argument().noEnchantment());
         }
 
         return ParseResult.success(enchantment);

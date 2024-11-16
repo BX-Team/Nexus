@@ -1,25 +1,25 @@
 package space.bxteam.nexus.core.translation;
 
+import com.eternalcode.multification.notice.Notice;
+
 import java.util.List;
 
 public interface Translation {
-    String getLanguage();
-
     ArgumentSection argument();
 
     interface ArgumentSection {
-        String onlyPlayers();
-        String noPermission();
-        String usageMessage();
-        String usageMessageHead();
-        String usageMessageEntry();
-        String noItem();
-        String numberBiggerThanOrEqualZero();
-        String noDamaged();
-        String noDamagedItems();
-        String noEnchantment();
-        String noValidEnchantmentLevel();
-        String giveNoItem();
+        Notice onlyPlayers();
+        Notice noPermission();
+        Notice usageMessage();
+        Notice usageMessageHead();
+        Notice usageMessageEntry();
+        Notice noItem();
+        Notice numberBiggerThanOrEqualZero();
+        Notice noDamaged();
+        Notice noDamagedItems();
+        Notice noEnchantment();
+        Notice noValidEnchantmentLevel();
+        Notice giveNoItem();
     }
 
     Format format();
@@ -32,112 +32,112 @@ public interface Translation {
     PlayerSection player();
 
     interface PlayerSection {
-        String feedMessage();
-        String feedMessageBy();
+        Notice feedMessage();
+        Notice feedMessageBy();
 
-        String healMessage();
-        String healMessageBy();
+        Notice healMessage();
+        Notice healMessageBy();
 
-        String killedMessage();
+        Notice killedMessage();
 
-        String flyEnable();
-        String flyDisable();
-        String flySetEnable();
-        String flySetDisable();
+        Notice flyEnable();
+        Notice flyDisable();
+        Notice flySetEnable();
+        Notice flySetDisable();
 
-        String godEnable();
-        String godDisable();
-        String godSetEnable();
-        String godSetDisable();
+        Notice godEnable();
+        Notice godDisable();
+        Notice godSetEnable();
+        Notice godSetDisable();
 
-        String onlinePlayersCountMessage();
-        String onlinePlayersMessage();
+        Notice onlinePlayersCountMessage();
+        Notice onlinePlayersMessage();
 
-        String pingMessage();
-        String pingOtherMessage();
+        Notice pingMessage();
+        Notice pingOtherMessage();
 
         List<String> whoisCommand();
 
-        String speedBetweenZeroAndTen();
-        String speedTypeNotCorrect();
+        Notice speedBetweenZeroAndTen();
+        Notice speedTypeNotCorrect();
 
-        String speedWalkSet();
-        String speedFlySet();
+        Notice speedWalkSet();
+        Notice speedFlySet();
 
-        String speedWalkSetBy();
-        String speedFlySetBy();
+        Notice speedWalkSetBy();
+        Notice speedFlySetBy();
 
-        String gameModeNotCorrect();
-        String gameModeMessage();
-        String gameModeSetMessage();
+        Notice gameModeNotCorrect();
+        Notice gameModeMessage();
+        Notice gameModeSetMessage();
     }
 
     InventorySection inventory();
 
     interface InventorySection {
-        String inventoryClearMessage();
-        String inventoryClearMessageBy();
+        Notice inventoryClearMessage();
+        Notice inventoryClearMessageBy();
     }
 
     SudoSection sudo();
 
     interface SudoSection {
-        String sudoMessageSpy();
-        String sudoMessage();
+        Notice sudoMessageSpy();
+        Notice sudoMessage();
     }
 
     TimeAndWeatherSection timeAndWeather();
 
     interface TimeAndWeatherSection {
-        String timeSet();
-        String timeAdd();
+        Notice timeSet();
+        Notice timeAdd();
 
-        String weatherSetRain();
-        String weatherSetSun();
-        String weatherSetThunder();
+        Notice weatherSetRain();
+        Notice weatherSetSun();
+        Notice weatherSetThunder();
     }
 
     ItemSection item();
 
     interface ItemSection {
-        String itemClearNameMessage();
-        String itemClearLoreMessage();
+        Notice itemClearNameMessage();
+        Notice itemClearLoreMessage();
 
-        String itemChangeNameMessage();
-        String itemChangeLoreMessage();
+        Notice itemChangeNameMessage();
+        Notice itemChangeLoreMessage();
 
-        String repairMessage();
-        String repairAllMessage();
+        Notice repairMessage();
+        Notice repairAllMessage();
 
-        String incorrectItem();
+        Notice incorrectItem();
 
-        String enchantedMessage();
-        String enchantedMessageFor();
-        String enchantedMessageBy();
+        Notice enchantedMessage();
+        Notice enchantedMessageFor();
+        Notice enchantedMessageBy();
 
-        String giveReceived();
-        String giveGiven();
+        Notice giveReceived();
+        Notice giveGiven();
     }
 
     WarpSection warp();
 
     interface WarpSection {
-        String create();
-        String remove();
+        Notice create();
+        Notice remove();
 
-        String warpAlreadyExists();
-        String notExist();
-        String noWarps();
+        Notice warpAlreadyExists();
+        Notice notExist();
+        Notice noWarps();
     }
 
     HomeSection home();
 
     interface HomeSection {
-        String homeList();
-        String create();
-        String delete();
-        String limit();
-        String noHomes();
-        String homeAlreadyExists();
+        Notice homeList();
+        Notice create();
+        Notice delete();
+        Notice limit();
+        Notice noHomes();
+        Notice homeAlreadyExists();
     }
 }

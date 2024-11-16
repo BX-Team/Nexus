@@ -9,19 +9,20 @@ import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import space.bxteam.nexus.core.message.MessageManager;
+import space.bxteam.nexus.core.multification.MultificationManager;
 
 @Command(name = "whois")
 @Permission("nexus.whois")
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
 public class WhoisCommand {
-    private final MessageManager messageManager;
+    private final MultificationManager multificationManager;
 
     @Execute
     void execute(@Context CommandSender sender, @Arg Player player) {
-        this.messageManager.create()
-                .recipient(sender)
-                .messages(translation -> translation.player().whoisCommand())
+        /*
+        this.multificationManager.create()
+                .viewer(sender)
+                .notice(translation -> translation.player().whoisCommand())
                 .placeholder("{PLAYER}", player.getName())
                 .placeholder("{UUID}", String.valueOf(player.getUniqueId()))
                 .placeholder("{IP}", player.getAddress().getHostString())
@@ -31,5 +32,6 @@ public class WhoisCommand {
                 .placeholder("{LEVEL}", String.valueOf(player.getLevel()))
                 .placeholder("{FOOD}", String.valueOf(player.getFoodLevel()))
                 .send();
+         */ // Commented out until we will found a way to send List<?> as a message
     }
 }

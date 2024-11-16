@@ -3,24 +3,23 @@ package space.bxteam.nexus.core.feature.essentials.gamemode;
 import com.google.inject.Inject;
 import dev.rollczi.litecommands.argument.Argument;
 import dev.rollczi.litecommands.argument.parser.ParseResult;
-import dev.rollczi.litecommands.argument.resolver.ArgumentResolver;
 import dev.rollczi.litecommands.invocation.Invocation;
 import dev.rollczi.litecommands.suggestion.SuggestionContext;
 import dev.rollczi.litecommands.suggestion.SuggestionResult;
-import lombok.RequiredArgsConstructor;
 import org.bukkit.GameMode;
 import org.bukkit.command.CommandSender;
+import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
+import space.bxteam.nexus.core.multification.argument.MultificationLiteArgument;
 import space.bxteam.nexus.core.scanner.annotations.litecommands.LiteArgument;
-import space.bxteam.nexus.core.message.MessageManager;
+import space.bxteam.nexus.core.translation.Translation;
+import space.bxteam.nexus.core.translation.TranslationManager;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @LiteArgument(type = GameMode.class)
-@RequiredArgsConstructor(onConstructor = @__(@Inject))
-public class GamemodeCommandArgument extends ArgumentResolver<CommandSender, GameMode> {
+public class GamemodeCommandArgument extends MultificationLiteArgument<GameMode> {
     private static final Map<String, GameMode> GAME_MODE_ARGUMENTS = new HashMap<>();
-    private final MessageManager messageManager;
 
     static {
         for (GameMode value : GameMode.values()) {
@@ -30,14 +29,19 @@ public class GamemodeCommandArgument extends ArgumentResolver<CommandSender, Gam
         }
     }
 
+    @Inject
+    public GamemodeCommandArgument(TranslationManager translationManager, PluginConfigurationProvider configurationProvider) {
+        super(translationManager, configurationProvider);
+    }
+
     @Override
-    protected ParseResult<GameMode> parse(Invocation<CommandSender> invocation, Argument<GameMode> context, String argument) {
+    public ParseResult<GameMode> parse(Invocation<CommandSender> invocation, String argument, Translation translation) {
         GameMode gameMode = GAME_MODE_ARGUMENTS.get(argument.toLowerCase());
 
         if (gameMode != null) {
             return ParseResult.success(gameMode);
         } else {
-            return ParseResult.failure(messageManager.getMessage(translation -> translation.player().gameModeNotCorrect()));
+            return ParseResult.failure(translation.player().gameModeNotCorrect());
         }
     }
 

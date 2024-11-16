@@ -10,13 +10,13 @@ import lombok.RequiredArgsConstructor;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import space.bxteam.nexus.core.message.MessageManager;
+import space.bxteam.nexus.core.multification.MultificationManager;
 
 @Command(name = "time")
 @Permission("nexus.time")
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
 public class TimeCommand {
-    private final MessageManager messageManager;
+    private final MultificationManager multificationManager;
 
     @Execute(name = "add")
     void add(@Context Player player, @Context CommandSender sender, @Arg(TimeCommandArgument.KEY) int time) {
@@ -27,9 +27,9 @@ public class TimeCommand {
     void add(@Context CommandSender sender, @Arg(TimeCommandArgument.KEY) int time, @Arg World world) {
         world.setTime(world.getTime() + time);
 
-        this.messageManager.create()
-                .recipient(sender)
-                .message(translation -> translation.timeAndWeather().timeAdd())
+        this.multificationManager.create()
+                .viewer(sender)
+                .notice(translation -> translation.timeAndWeather().timeAdd())
                 .placeholder("{TIME}", String.valueOf(time))
                 .send();
     }
@@ -43,9 +43,9 @@ public class TimeCommand {
     void set(@Context CommandSender sender, @Arg(TimeCommandArgument.KEY) int time, @Arg World world) {
         world.setTime(time);
 
-        this.messageManager.create()
-                .recipient(sender)
-                .message(translation -> translation.timeAndWeather().timeSet())
+        this.multificationManager.create()
+                .viewer(sender)
+                .notice(translation -> translation.timeAndWeather().timeSet())
                 .placeholder("{TIME}", String.valueOf(time))
                 .send();
     }

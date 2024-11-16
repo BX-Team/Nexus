@@ -3,30 +3,38 @@ package space.bxteam.nexus.core.feature.warp.command;
 import com.google.inject.Inject;
 import dev.rollczi.litecommands.argument.Argument;
 import dev.rollczi.litecommands.argument.parser.ParseResult;
-import dev.rollczi.litecommands.argument.resolver.ArgumentResolver;
 import dev.rollczi.litecommands.invocation.Invocation;
 import dev.rollczi.litecommands.suggestion.SuggestionContext;
 import dev.rollczi.litecommands.suggestion.SuggestionResult;
-import lombok.RequiredArgsConstructor;
 import org.bukkit.command.CommandSender;
+import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
+import space.bxteam.nexus.core.multification.argument.MultificationLiteArgument;
+import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.core.scanner.annotations.litecommands.LiteArgument;
-import space.bxteam.nexus.core.message.MessageManager;
+import space.bxteam.nexus.core.translation.Translation;
+import space.bxteam.nexus.core.translation.TranslationManager;
 import space.bxteam.nexus.feature.warp.Warp;
 import space.bxteam.nexus.feature.warp.WarpService;
 
 import java.util.Optional;
 
 @LiteArgument(type = Warp.class)
-@RequiredArgsConstructor(onConstructor = @__(@Inject))
-public class WarpCommandArgument extends ArgumentResolver<CommandSender, Warp> {
-    private final MessageManager messageManager;
+public class WarpCommandArgument extends MultificationLiteArgument<Warp> {
+    private final MultificationManager multificationManager;
     private final WarpService warpService;
 
+    @Inject
+    public WarpCommandArgument(TranslationManager translationManager, PluginConfigurationProvider configurationProvider, MultificationManager multificationManager, WarpService warpService) {
+        super(translationManager, configurationProvider);
+        this.multificationManager = multificationManager;
+        this.warpService = warpService;
+    }
+
     @Override
-    protected ParseResult<Warp> parse(Invocation<CommandSender> invocation, Argument<Warp> context, String argument) {
+    public ParseResult<Warp> parse(Invocation<CommandSender> invocation, String argument, Translation translation) {
         Optional<Warp> warpOption = this.warpService.getWarp(argument);
 
-        return warpOption.map(ParseResult::success).orElseGet(() -> ParseResult.failure(messageManager.getMessage(translation -> translation.warp().notExist())));
+        return warpOption.map(ParseResult::success).orElseGet(() -> ParseResult.failure(translation.warp().notExist()));
     }
 
     @Override

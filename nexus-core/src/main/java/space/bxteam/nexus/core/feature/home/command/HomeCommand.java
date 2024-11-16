@@ -7,10 +7,9 @@ import dev.rollczi.litecommands.annotations.context.Context;
 import dev.rollczi.litecommands.annotations.execute.Execute;
 import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
-import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
-import space.bxteam.nexus.core.message.MessageManager;
+import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.feature.home.Home;
 import space.bxteam.nexus.feature.home.HomeService;
 
@@ -21,7 +20,7 @@ import java.util.UUID;
 @RootCommand
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
 public class HomeCommand {
-    private final MessageManager messageManager;
+    private final MultificationManager multificationManager;
     private final HomeService homeService;
     private final PluginConfigurationProvider pluginConfiguration;
 
@@ -31,9 +30,9 @@ public class HomeCommand {
         Collection<Home> playerHomes = this.homeService.getHomes(player.getUniqueId());
 
         if (playerHomes.isEmpty()) {
-            this.messageManager.create()
-                    .player(player)
-                    .message(translation -> translation.home().noHomes())
+            this.multificationManager.create()
+                    .player(player.getUniqueId())
+                    .notice(translation -> translation.home().noHomes())
                     .send();
             return;
         }
@@ -51,16 +50,13 @@ public class HomeCommand {
 
             if (mainHome.isPresent()) {
                 player.teleport(mainHome.get().location());
-                this.messageManager.create()
-                        .player(player)
-                        .sound(Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1)
-                        .send();
+                // TODO: Add sound
                 return;
             }
 
-            this.messageManager.create()
-                    .player(player)
-                    .message(translation -> translation.home().homeList())
+            this.multificationManager.create()
+                    .player(player.getUniqueId())
+                    .notice(translation -> translation.home().homeList())
                     .placeholder("{HOMES}", homes)
                     .send();
             return;
@@ -69,20 +65,14 @@ public class HomeCommand {
         Home firstHome = playerHomes.iterator().next();
 
         player.teleport(firstHome.location());
-        this.messageManager.create()
-                .player(player)
-                .sound(Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1)
-                .send();
+        // TODO: Add sound
     }
 
     @Execute(name = "home")
     @Permission("nexus.home")
     void home(@Context Player player, @Arg Home home) {
         player.teleport(home.location());
-        this.messageManager.create()
-                .player(player)
-                .sound(Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1)
-                .send();
+        // TODO: Add sound
     }
 
     @Execute(name = "sethome")
@@ -101,9 +91,9 @@ public class HomeCommand {
     @Permission("nexus.delhome")
     void delhome(@Context Player player, @Arg Home home) {
         this.homeService.deleteHome(player.getUniqueId(), home.name());
-        this.messageManager.create()
-                .player(player)
-                .message(translation -> translation.home().delete())
+        this.multificationManager.create()
+                .player(player.getUniqueId())
+                .notice(translation -> translation.home().delete())
                 .placeholder("{HOME}", home.name())
                 .send();
     }
@@ -112,9 +102,9 @@ public class HomeCommand {
         UUID playerUUID = player.getUniqueId();
 
         if (this.homeService.hasHome(playerUUID, name)) {
-            this.messageManager.create()
-                    .player(player)
-                    .message(translation -> translation.home().homeAlreadyExists())
+            this.multificationManager.create()
+                    .player(player.getUniqueId())
+                    .notice(translation -> translation.home().homeAlreadyExists())
                     .placeholder("{HOME}", name)
                     .send();
             return;
@@ -124,18 +114,18 @@ public class HomeCommand {
         int maxAmountOfUserHomes = this.homeService.getHomeLimit(player);
 
         if (amountOfUserHomes >= maxAmountOfUserHomes) {
-            this.messageManager.create()
-                    .player(player)
-                    .message(translation -> translation.home().limit())
+            this.multificationManager.create()
+                    .player(player.getUniqueId())
+                    .notice(translation -> translation.home().limit())
                     .placeholder("{LIMIT}", String.valueOf(maxAmountOfUserHomes))
                     .send();
             return;
         }
 
         this.homeService.createHome(playerUUID, name, player.getLocation());
-        this.messageManager.create()
-                .player(player)
-                .message(translation -> translation.home().create())
+        this.multificationManager.create()
+                .player(player.getUniqueId())
+                .notice(translation -> translation.home().create())
                 .placeholder("{HOME}", name)
                 .send();
     }

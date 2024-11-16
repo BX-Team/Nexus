@@ -9,13 +9,13 @@ import lombok.RequiredArgsConstructor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
-import space.bxteam.nexus.core.message.MessageManager;
+import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.core.utils.ItemUtil;
 
 @Command(name = "hat")
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
 public class HatCommand {
-    private final MessageManager messageManager;
+    private final MultificationManager multificationManager;
 
     @Execute
     @Permission("nexus.hat")
@@ -26,9 +26,9 @@ public class HatCommand {
         ItemStack handItem = playerInventory.getItem(playerInventory.getHeldItemSlot());
 
         if (handItem == null) {
-            messageManager.create()
-                    .player(player)
-                    .message(translation -> translation.argument().noItem())
+            this.multificationManager.create()
+                    .player(player.getUniqueId())
+                    .notice(translation -> translation.argument().noItem())
                     .send();
             return;
         }
