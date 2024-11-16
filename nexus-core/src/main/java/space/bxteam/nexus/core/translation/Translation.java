@@ -140,4 +140,10 @@ public interface Translation {
         Notice noHomes();
         Notice homeAlreadyExists();
     }
+
+    ChatSection chat();
+
+    interface ChatSection {
+        Notice broadcastMessage();
+    }
 }

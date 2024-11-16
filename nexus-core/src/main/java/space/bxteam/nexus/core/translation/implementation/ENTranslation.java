@@ -253,4 +253,14 @@ public class ENTranslation implements Translation {
         private Notice limit = Notice.chat("<dark_red>You have reached the limit of homes! <red>({LIMIT})");
         private Notice noHomes = Notice.chat("<dark_red>You don't have any homes!");
     }
+
+    @Comment({"", "This section is responsible for the chat-related messages."})
+    private ENChatSection chat = new ENChatSection();
+
+    @Getter
+    @Configuration
+    public static class ENChatSection implements ChatSection {
+        @Comment("")
+        private Notice broadcastMessage = Notice.chat("<red>[Broadcast] <white>{MESSAGE}");
+    }
 }
