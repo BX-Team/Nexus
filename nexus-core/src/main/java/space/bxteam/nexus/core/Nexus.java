@@ -9,6 +9,7 @@ import space.bxteam.nexus.core.database.DatabaseModule;
 import space.bxteam.nexus.core.configuration.ConfigModule;
 import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
 import space.bxteam.nexus.core.environment.NexusEnvironment;
+import space.bxteam.nexus.core.integration.IntegrationRegistry;
 import space.bxteam.nexus.core.integration.bstats.MetricsModule;
 import space.bxteam.nexus.core.integration.litecommands.LiteCommandsRegister;
 import space.bxteam.nexus.core.scanner.register.ComponentRegister;
@@ -36,6 +37,7 @@ public class Nexus {
         TranslationManager translationManager = this.injector.getInstance(TranslationManager.class);
         translationManager.create(configurationProvider.configuration().language());
 
+        this.injector.getInstance(IntegrationRegistry.class).init();
         this.injector.getInstance(DatabaseClient.class).open();
         this.injector.getInstance(LiteCommandsRegister.class).onEnable();
         this.injector.getInstance(ComponentRegister.class);
