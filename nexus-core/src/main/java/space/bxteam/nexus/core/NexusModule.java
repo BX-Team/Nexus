@@ -1,6 +1,7 @@
 package space.bxteam.nexus.core;
 
 import com.google.inject.AbstractModule;
+import com.google.inject.Singleton;
 import com.google.inject.name.Names;
 import lombok.RequiredArgsConstructor;
 import net.kyori.adventure.platform.AudienceProvider;
@@ -19,6 +20,8 @@ import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
 import space.bxteam.nexus.core.integration.adventure.processors.AdventureLegacyColorPostProcessor;
 import space.bxteam.nexus.core.integration.adventure.processors.AdventureLegacyColorPreProcessor;
 import space.bxteam.nexus.core.integration.adventure.processors.AdventureUrlPostProcessor;
+import space.bxteam.nexus.core.integration.placeholderapi.resolver.PlaceholderRegistry;
+import space.bxteam.nexus.core.integration.placeholderapi.resolver.PlaceholderRegistryImpl;
 import space.bxteam.nexus.feature.home.HomeService;
 import space.bxteam.nexus.feature.warp.WarpService;
 
@@ -42,6 +45,7 @@ public class NexusModule extends AbstractModule {
                 .toInstance(this.plugin.getDataFolder().toPath());
         this.bind(AudienceProvider.class).toInstance(BukkitAudiences.create(this.plugin));
         this.bind(PluginVersionMeta.class).toInstance(PluginVersionMetaFactory.create(this.plugin));
+        this.bind(PlaceholderRegistry.class).to(PlaceholderRegistryImpl.class).in(Singleton.class);
 
         this.bind(MiniMessage.class).toInstance(MiniMessage.miniMessage());
         this.bind(MiniMessage.class)
