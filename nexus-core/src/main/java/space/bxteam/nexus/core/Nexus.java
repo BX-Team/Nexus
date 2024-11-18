@@ -16,6 +16,7 @@ import space.bxteam.nexus.core.scanner.register.ComponentRegister;
 import space.bxteam.nexus.core.translation.TranslationManager;
 import space.bxteam.nexus.core.translation.TranslationModule;
 import space.bxteam.nexus.core.utils.Logger;
+import space.bxteam.nexus.event.NexusInitializeEvent;
 
 public class Nexus {
     private final PluginConfigurationProvider configurationProvider;
@@ -44,6 +45,7 @@ public class Nexus {
 
         NexusApiProvider.initialize(new NexusApiImpl(this.injector));
         environment.finalizeLoading();
+        plugin.getServer().getPluginManager().callEvent(new NexusInitializeEvent());
     }
 
     public void disable() {

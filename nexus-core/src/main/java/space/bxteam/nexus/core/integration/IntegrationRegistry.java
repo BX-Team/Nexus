@@ -5,6 +5,7 @@ import com.google.inject.Injector;
 import com.google.inject.Singleton;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.plugin.PluginManager;
+import space.bxteam.nexus.core.integration.placeholderapi.PlaceholderAPIIntegration;
 import space.bxteam.nexus.core.utils.Logger;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class IntegrationRegistry {
     private final PluginManager pluginManager;
 
     public void init() {
-
+        this.tryEnable(PlaceholderAPIIntegration.class, () -> this.pluginManager.getPlugin("PlaceholderAPI") != null);
     }
 
     private void tryEnable(Class<? extends Integration> integrationClass, Supplier<Boolean> availablePredicate) {
