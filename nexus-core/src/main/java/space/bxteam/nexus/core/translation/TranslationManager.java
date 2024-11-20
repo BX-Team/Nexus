@@ -1,18 +1,18 @@
 package space.bxteam.nexus.core.translation;
 
-import com.eternalcode.multification.notice.Notice;
+import com.eternalcode.multification.okaeri.MultificationSerdesPack;
 import com.eternalcode.multification.translation.TranslationProvider;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
-import de.exlll.configlib.YamlConfigurationProperties;
-import de.exlll.configlib.YamlConfigurations;
+import eu.okaeri.configs.ConfigManager;
+import eu.okaeri.configs.serdes.commons.SerdesCommons;
+import eu.okaeri.configs.yaml.bukkit.YamlBukkitConfigurer;
+import eu.okaeri.configs.yaml.bukkit.serdes.SerdesBukkit;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import space.bxteam.nexus.core.multification.MultificationManager;
-import space.bxteam.nexus.core.multification.serializer.ConfigLibNoticeSerializer;
 import space.bxteam.nexus.core.translation.implementation.ENTranslation;
 
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.util.*;
 import java.util.function.Supplier;
@@ -49,14 +49,14 @@ public class TranslationManager implements TranslationProvider<Translation> {
         }
 
         Path languageFile = languagesDirectory.resolve(selectedLanguage.lang() + ".yml");
-        YamlConfigurations.update(
-                languageFile,
-                selectedLanguage.clazz().get().getClass(),
-                YamlConfigurationProperties.newBuilder()
-                        .charset(StandardCharsets.UTF_8)
-                        .addSerializer(Notice.class, new ConfigLibNoticeSerializer(multificationManager.getNoticeRegistry()))
-                        .build()
-        );
+        ConfigManager.create(selectedLanguage.clazz().get().getClass(), (language) -> {
+            language.withConfigurer(new YamlBukkitConfigurer(), new MultificationSerdesPack(multificationManager.getNoticeRegistry()));
+            language.withConfigurer(new YamlBukkitConfigurer(), new SerdesBukkit(), new SerdesCommons());
+            language.withBindFile(languageFile);
+            language.withRemoveOrphans(true);
+            language.saveDefaults();
+            language.load(true);
+        });
     }
 
     @Override

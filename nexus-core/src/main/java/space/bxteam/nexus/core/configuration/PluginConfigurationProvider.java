@@ -1,14 +1,12 @@
 package space.bxteam.nexus.core.configuration;
 
 import com.google.inject.Singleton;
-import de.exlll.configlib.YamlConfigurationProperties;
-import de.exlll.configlib.YamlConfigurations;
+import eu.okaeri.configs.ConfigManager;
+import eu.okaeri.configs.yaml.bukkit.YamlBukkitConfigurer;
+import eu.okaeri.configs.yaml.bukkit.serdes.SerdesBukkit;
 import lombok.Getter;
-import space.bxteam.nexus.core.configuration.serializer.LanguageSerializer;
-import space.bxteam.nexus.core.translation.Language;
 import space.bxteam.nexus.core.utils.Logger;
 
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.util.Optional;
 
@@ -19,17 +17,6 @@ public class PluginConfigurationProvider {
 
     private final Path dataFolder;
     private final static String CONFIG_FILE = "config.yml";
-    private final static String HEADER = """
-        ███╗░░██╗███████╗██╗░░██╗██╗░░░██╗░██████╗
-        ████╗░██║██╔════╝╚██╗██╔╝██║░░░██║██╔════╝
-        ██╔██╗██║█████╗░░░╚███╔╝░██║░░░██║╚█████╗░
-        ██║╚████║██╔══╝░░░██╔██╗░██║░░░██║░╚═══██╗
-        ██║░╚███║███████╗██╔╝╚██╗╚██████╔╝██████╔╝
-        ╚═╝░░╚══╝╚══════╝╚═╝░░╚═╝░╚═════╝░╚═════╝░
-
-        Discord server: https://discord.gg/p7cxhw7E2M
-        Modrinth: https://modrinth.com/plugin/nexuss
-        """;
 
     public PluginConfigurationProvider(Path dataFolder) {
         this.dataFolder = dataFolder;
@@ -44,17 +31,15 @@ public class PluginConfigurationProvider {
 
     private Optional<PluginConfiguration> loadConfiguration() {
         try {
-            return Optional.of(YamlConfigurations.update(
-                    this.dataFolder.resolve(CONFIG_FILE),
-                    PluginConfiguration.class,
-                    YamlConfigurationProperties.newBuilder()
-                            .charset(StandardCharsets.UTF_8)
-                            .addSerializer(Language.class, new LanguageSerializer())
-                            .header(HEADER)
-                            .build()));
+            return Optional.of(ConfigManager.create(PluginConfiguration.class, (config) -> {
+                config.withConfigurer(new YamlBukkitConfigurer(), new SerdesBukkit());
+                config.withBindFile(dataFolder.resolve(CONFIG_FILE));
+                config.withRemoveOrphans(true);
+                config.saveDefaults();
+                config.load(true);
+            }));
         } catch (Exception e) {
             Logger.log("Could not load configuration file. Please check for syntax errors.", Logger.LogLevel.ERROR);
-            e.printStackTrace();
             return Optional.empty();
         }
     }

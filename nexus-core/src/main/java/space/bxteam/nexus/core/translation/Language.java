@@ -1,5 +1,6 @@
 package space.bxteam.nexus.core.translation;
 
+import eu.okaeri.configs.OkaeriConfig;
 import lombok.Getter;
 import space.bxteam.nexus.core.translation.implementation.ENTranslation;
 
@@ -12,9 +13,9 @@ public enum Language {
     @Getter
     private final String lang;
     @Getter
-    private final Supplier<Translation> clazz;
+    private final Supplier<? extends OkaeriConfig> clazz;
 
-    Language(String lang, Supplier<Translation> clazz) {
+    Language(String lang, Supplier<? extends OkaeriConfig> clazz) {
         this.lang = lang;
         this.clazz = clazz;
     }
