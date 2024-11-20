@@ -1,22 +1,18 @@
 package space.bxteam.nexus.core.translation.implementation;
 
 import com.eternalcode.multification.notice.Notice;
-import de.exlll.configlib.Comment;
-import de.exlll.configlib.Configuration;
-import de.exlll.configlib.SerializeWith;
+import eu.okaeri.configs.OkaeriConfig;
+import eu.okaeri.configs.annotation.Comment;
 import lombok.Getter;
 import lombok.experimental.Accessors;
-import space.bxteam.nexus.core.multification.serializer.ConfigLibNoticeSerializer;
 import space.bxteam.nexus.core.translation.Translation;
 
 import java.util.List;
 
-@Configuration
 @Getter
 @Accessors(fluent = true)
 @SuppressWarnings("FieldMayBeFinal")
-@SerializeWith(serializer = ConfigLibNoticeSerializer.class)
-public class ENTranslation implements Translation {
+public class ENTranslation extends OkaeriConfig implements Translation {
     @Comment({
             "This file is responsible for the English translation in the Nexus plugin.",
             "",
@@ -35,8 +31,7 @@ public class ENTranslation implements Translation {
     private ENArgumentSection argument = new ENArgumentSection();
 
     @Getter
-    @Configuration
-    public static class ENArgumentSection implements ArgumentSection {
+    public static class ENArgumentSection extends OkaeriConfig implements ArgumentSection {
         private Notice onlyPlayers = Notice.chat("<dark_red>Only players can execute this command.");
         private Notice noItem = Notice.chat("<dark_red>You need item to use this command!");
 
@@ -59,8 +54,7 @@ public class ENTranslation implements Translation {
     public ENFormatSection format = new ENFormatSection();
 
     @Getter
-    @Configuration
-    public static class ENFormatSection implements Format {
+    public static class ENFormatSection extends OkaeriConfig implements Format {
         private String enable = "<green>enabled";
         private String disable = "<red>disabled";
     }
@@ -69,8 +63,7 @@ public class ENTranslation implements Translation {
     private ENPlayerSection player = new ENPlayerSection();
 
     @Getter
-    @Configuration
-    public static class ENPlayerSection implements PlayerSection {
+    public static class ENPlayerSection extends OkaeriConfig implements PlayerSection {
         private Notice feedMessage = Notice.chat("<green>You have been fed!");
         private Notice feedMessageBy = Notice.chat("<green>You've fed the player <white>{PLAYER}");
 
@@ -153,8 +146,7 @@ public class ENTranslation implements Translation {
     private ENInventorySection inventory = new ENInventorySection();
 
     @Getter
-    @Configuration
-    public static class ENInventorySection implements InventorySection {
+    public static class ENInventorySection extends OkaeriConfig implements InventorySection {
         private Notice inventoryClearMessage = Notice.chat("<green>Your inventory has been cleared!");
         private Notice inventoryClearMessageBy = Notice.chat("<green>The inventory of the player <white>{PLAYER} <green>has been cleared!");
     }
@@ -163,8 +155,7 @@ public class ENTranslation implements Translation {
     private ENSudoSection sudo = new ENSudoSection();
 
     @Getter
-    @Configuration
-    public static class ENSudoSection implements SudoSection {
+    public static class ENSudoSection extends OkaeriConfig implements SudoSection {
         @Comment("{PLAYER} - Player who executed the command, {COMMAND} - Command that the player executed")
         private Notice sudoMessageSpy = Notice.chat("<gray>[SUDO] <white>{PLAYER} <gray>executed command: <white>{COMMAND}");
         private Notice sudoMessage = Notice.chat("<green>You have executed the command: <white>{COMMAND} <green>on player <white>{PLAYER}");
@@ -174,8 +165,7 @@ public class ENTranslation implements Translation {
     private ENTimeAndWeatherSection timeAndWeather = new ENTimeAndWeatherSection();
 
     @Getter
-    @Configuration
-    public static class ENTimeAndWeatherSection implements TimeAndWeatherSection {
+    public static class ENTimeAndWeatherSection extends OkaeriConfig implements TimeAndWeatherSection {
         @Comment("{TIME} - Changed time in ticks")
         private Notice timeSet = Notice.chat("<green>Time has been set to <white>{TIME}");
         private Notice timeAdd = Notice.chat("<green>Time has been added by <white>{TIME}");
@@ -190,8 +180,7 @@ public class ENTranslation implements Translation {
     private ENItemSection item = new ENItemSection();
 
     @Getter
-    @Configuration
-    public static class ENItemSection implements ItemSection {
+    public static class ENItemSection extends OkaeriConfig implements ItemSection {
         @Comment("{ITEM_NAME} - New item name")
         private Notice itemChangeNameMessage = Notice.chat("<green>Item name has been changed to: <white>{ITEM_NAME}");
         private Notice itemClearNameMessage = Notice.chat("<green>Item name has been cleared!");
@@ -223,8 +212,7 @@ public class ENTranslation implements Translation {
     private ENWarpSection warp = new ENWarpSection();
 
     @Getter
-    @Configuration
-    public static class ENWarpSection implements WarpSection {
+    public static class ENWarpSection extends OkaeriConfig implements WarpSection {
         @Comment("{WARP} - Warp name")
         private Notice create = Notice.chat("<green>Warp <white>{WARP} <green>has been created.");
         private Notice remove = Notice.chat("<green>Warp <white>{WARP} <green>has been deleted.");
@@ -239,8 +227,7 @@ public class ENTranslation implements Translation {
     private ENHomeSection home = new ENHomeSection();
 
     @Getter
-    @Configuration
-    public static class ENHomeSection implements HomeSection {
+    public static class ENHomeSection extends OkaeriConfig implements HomeSection {
         @Comment("{HOMES} - List of homes (separated by commas)")
         private Notice homeList = Notice.chat("<green>Available homes: <white>{HOMES}");
 
@@ -258,9 +245,7 @@ public class ENTranslation implements Translation {
     private ENChatSection chat = new ENChatSection();
 
     @Getter
-    @Configuration
-    public static class ENChatSection implements ChatSection {
-        @Comment("")
+    public static class ENChatSection extends OkaeriConfig implements ChatSection {
         private Notice broadcastMessage = Notice.chat("<red>[Broadcast] <white>{MESSAGE}");
     }
 }

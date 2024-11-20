@@ -11,6 +11,7 @@ repositories {
     maven("https://repo.panda-lang.org/releases")
     maven("https://repo.eternalcode.pl/releases")
     maven("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+    maven("https://storehouse.okaeri.eu/repository/maven-public/")
 }
 
 dependencies {
@@ -22,12 +23,12 @@ dependencies {
     compileOnly(libs.mariadb)
     compileOnly(libs.litecommands)
     compileOnly(libs.litecommandsadventure)
-    compileOnly(libs.multification)
-    compileOnly(libs.configlib)
     compileOnly(libs.guice)
     compileOnly(libs.classgraph)
     compileOnly(libs.triumphgui)
     compileOnly(libs.bundles.adventure)
+    compileOnly(libs.bundles.okaeri)
+    compileOnly(libs.bundles.multification)
 
     // Plugin dependencies
     compileOnly(libs.placeholderapi)

@@ -1,19 +1,26 @@
 package space.bxteam.nexus.core.configuration;
 
-import de.exlll.configlib.Comment;
-import de.exlll.configlib.Configuration;
-import de.exlll.configlib.SerializeWith;
+import eu.okaeri.configs.OkaeriConfig;
+import eu.okaeri.configs.annotation.Comment;
+import eu.okaeri.configs.annotation.Header;
 import lombok.Getter;
-import space.bxteam.nexus.core.configuration.serializer.LanguageSerializer;
 import space.bxteam.nexus.core.translation.Language;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-@Configuration
 @Getter
 @SuppressWarnings("FieldMayBeFinal")
-public class PluginConfiguration {
+@Header("███╗░░██╗███████╗██╗░░██╗██╗░░░██╗░██████╗")
+@Header("████╗░██║██╔════╝╚██╗██╔╝██║░░░██║██╔════╝")
+@Header("██╔██╗██║█████╗░░░╚███╔╝░██║░░░██║╚█████╗░")
+@Header("██║╚████║██╔══╝░░░██╔██╗░██║░░░██║░╚═══██╗")
+@Header("██║░╚███║███████╗██╔╝╚██╗╚██████╔╝██████╔╝")
+@Header("╚═╝░░╚══╝╚══════╝╚═╝░░╚═╝░╚═════╝░╚═════╝░")
+@Header("")
+@Header("Discord server: https://discord.gg/p7cxhw7E2M")
+@Header("Modrinth: https://modrinth.com/plugin/nexuss")
+public class PluginConfiguration extends OkaeriConfig {
     @Comment("Should the plugin check for updates?")
     private boolean checkForUpdates = true;
 
@@ -21,15 +28,13 @@ public class PluginConfiguration {
     private String prefix = "&7[&6Nexus&7] ";
 
     @Comment("Plugin language")
-    @SerializeWith(serializer = LanguageSerializer.class)
     private Language language = Language.EN;
 
     @Comment({"", "Database configuration"})
     private DatabaseConfig database = new DatabaseConfig();
 
     @Getter
-    @Configuration
-    public static class DatabaseConfig {
+    public static class DatabaseConfig extends OkaeriConfig {
         @Comment({
                 "Select here the database you want to use",
                 "The following databases are supported:",
@@ -42,8 +47,7 @@ public class PluginConfiguration {
         private SQLiteConfig sqlite = new SQLiteConfig();
 
         @Getter
-        @Configuration
-        public static class SQLiteConfig {
+        public static class SQLiteConfig extends OkaeriConfig {
             private String file = "nexus.db";
         }
 
@@ -51,8 +55,7 @@ public class PluginConfiguration {
         private MariaDBConfig mariadb = new MariaDBConfig();
 
         @Getter
-        @Configuration
-        public static class MariaDBConfig {
+        public static class MariaDBConfig extends OkaeriConfig {
             private String jdbc = "jdbc:mariadb://localhost:3306/nexus";
             private String username = "root";
             private String password = "password";
@@ -63,8 +66,7 @@ public class PluginConfiguration {
     private Items items = new Items();
 
     @Getter
-    @Configuration
-    public static class Items {
+    public static class Items extends OkaeriConfig {
         @Comment("Use unsafe enchantments? Allows you to apply custom enchants to various items")
         private boolean unsafeEnchantments = true;
 
@@ -76,8 +78,7 @@ public class PluginConfiguration {
     private Homes homes = new Homes();
 
     @Getter
-    @Configuration
-    public static class Homes {
+    public static class Homes extends OkaeriConfig {
         @Comment("Default home name")
         private String defaultHomeName = "home";
 
