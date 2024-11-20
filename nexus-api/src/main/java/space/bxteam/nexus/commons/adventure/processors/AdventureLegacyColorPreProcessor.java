@@ -1,4 +1,4 @@
-package space.bxteam.nexus.core.integration.adventure.processors;
+package space.bxteam.nexus.commons.adventure.processors;
 
 import java.util.function.UnaryOperator;
 
