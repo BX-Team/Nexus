@@ -8,7 +8,6 @@ import space.bxteam.nexus.core.database.DatabaseClient;
 import space.bxteam.nexus.core.database.DatabaseModule;
 import space.bxteam.nexus.core.configuration.ConfigModule;
 import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
-import space.bxteam.nexus.core.environment.NexusEnvironment;
 import space.bxteam.nexus.core.integration.IntegrationRegistry;
 import space.bxteam.nexus.core.integration.bstats.MetricsModule;
 import space.bxteam.nexus.core.integration.litecommands.LiteCommandsRegister;
@@ -23,7 +22,7 @@ public class Nexus {
     private final Injector injector;
 
     public Nexus(Plugin plugin) {
-        NexusEnvironment environment = new NexusEnvironment(plugin.getServer());
+        NexusEnvironment environment = new NexusEnvironment();
 
         this.configurationProvider = new PluginConfigurationProvider(plugin.getDataFolder().toPath());
         this.injector =

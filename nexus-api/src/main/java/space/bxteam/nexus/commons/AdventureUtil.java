@@ -1,4 +1,4 @@
-package space.bxteam.nexus.core.utils;
+package space.bxteam.nexus.commons;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;

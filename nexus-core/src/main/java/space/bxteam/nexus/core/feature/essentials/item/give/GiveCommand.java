@@ -14,8 +14,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
 import space.bxteam.nexus.core.multification.MultificationManager;
-import space.bxteam.nexus.core.utils.ItemUtil;
-import space.bxteam.nexus.core.utils.MaterialUtil;
+import space.bxteam.nexus.commons.item.ItemUtil;
+import space.bxteam.nexus.commons.item.MaterialUtil;
 
 @Command(name = "give")
 @Permission("nexus.give")

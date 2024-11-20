@@ -12,9 +12,10 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.ServicesManager;
-import space.bxteam.nexus.core.environment.meta.PluginVersionMeta;
-import space.bxteam.nexus.core.environment.meta.PluginVersionMetaFactory;
+import space.bxteam.nexus.core.utils.meta.PluginVersionMeta;
+import space.bxteam.nexus.core.utils.meta.PluginVersionMetaFactory;
 import space.bxteam.nexus.core.feature.home.HomeServiceImpl;
+import space.bxteam.nexus.core.feature.teleport.TeleportServiceImpl;
 import space.bxteam.nexus.core.feature.warp.WarpServiceImpl;
 import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
 import space.bxteam.nexus.core.integration.adventure.processors.AdventureLegacyColorPostProcessor;
@@ -23,6 +24,7 @@ import space.bxteam.nexus.core.integration.adventure.processors.AdventureUrlPost
 import space.bxteam.nexus.core.integration.placeholderapi.resolver.PlaceholderRegistry;
 import space.bxteam.nexus.core.integration.placeholderapi.resolver.PlaceholderRegistryImpl;
 import space.bxteam.nexus.feature.home.HomeService;
+import space.bxteam.nexus.feature.teleport.TeleportService;
 import space.bxteam.nexus.feature.warp.WarpService;
 
 import java.nio.file.Path;
@@ -58,5 +60,6 @@ public class NexusModule extends AbstractModule {
 
         this.bind(WarpService.class).to(WarpServiceImpl.class);
         this.bind(HomeService.class).to(HomeServiceImpl.class);
+        this.bind(TeleportService.class).to(TeleportServiceImpl.class);
     }
 }

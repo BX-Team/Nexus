@@ -25,6 +25,7 @@ dependencies {
     compileOnly(libs.paper)
     implementation(project(":nexus-core"))
 
+    library(libs.paperlib)
     library(libs.hikaricp)
     library(libs.mariadb)
     library(libs.litecommands)

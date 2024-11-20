@@ -24,11 +24,6 @@ public class NexusCommand {
     void reload(@Context CommandSender sender) {
         Stopwatch stopwatch = Stopwatch.createStarted();
         this.configurationProvider.loadConfig();
-
-        this.multificationManager.create()
-                .viewer(sender)
-                .notice(translation -> translation.argument().onlyPlayers())
-                .send();
     }
 
     @Execute(name = "version")

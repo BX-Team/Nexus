@@ -14,7 +14,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import space.bxteam.nexus.core.multification.MultificationManager;
-import space.bxteam.nexus.core.utils.AdventureUtil;
+import space.bxteam.nexus.commons.AdventureUtil;
 
 import java.util.ArrayList;
 import java.util.List;

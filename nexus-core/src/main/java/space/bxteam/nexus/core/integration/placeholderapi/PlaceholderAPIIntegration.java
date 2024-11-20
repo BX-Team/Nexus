@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import space.bxteam.nexus.core.environment.meta.PluginVersionMeta;
+import space.bxteam.nexus.core.utils.meta.PluginVersionMeta;
 import space.bxteam.nexus.core.integration.Integration;
 import space.bxteam.nexus.core.integration.placeholderapi.resolver.PlaceholderRaw;
 import space.bxteam.nexus.core.integration.placeholderapi.resolver.PlaceholderRegistry;

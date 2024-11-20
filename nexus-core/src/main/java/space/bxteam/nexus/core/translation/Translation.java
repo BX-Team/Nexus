@@ -141,6 +141,21 @@ public interface Translation {
         Notice homeAlreadyExists();
     }
 
+    TeleportSection teleport();
+
+    interface TeleportSection {
+        Notice teleportedToPlayer();
+        Notice teleportedPlayerToPlayer();
+        Notice teleportedToHighestBlock();
+
+        Notice teleportedToCoordinates();
+        Notice teleportedSpecifiedPlayerToCoordinates();
+
+        Notice teleportedToLastLocation();
+        Notice teleportedSpecifiedPlayerLastLocation();
+        Notice lastLocationNoExist();
+    }
+
     ChatSection chat();
 
     interface ChatSection {

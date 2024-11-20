@@ -254,6 +254,32 @@ public class ENTranslation implements Translation {
         private Notice noHomes = Notice.chat("<dark_red>You don't have any homes!");
     }
 
+    @Comment({"", "This section is responsible for the teleport-related messages."})
+    private ENTeleportSection teleport = new ENTeleportSection();
+
+    @Getter
+    @Configuration
+    public static class ENTeleportSection implements TeleportSection {
+        @Comment("{PLAYER} - Player who will be teleported")
+        private Notice teleportedToPlayer = Notice.chat("<green>You have been teleported to the player <white>{PLAYER}");
+        @Comment("{PLAYER} - Player who will be teleported, {SENDER} - Player who executed the command")
+        private Notice teleportedPlayerToPlayer = Notice.chat("<green>You have teleported the player <white>{PLAYER} <green>to <white>{SENDER}");
+
+        @Comment({"", "{Y} - Highest block by Y"})
+        private Notice teleportedToHighestBlock = Notice.chat("<green>You have been teleported to the highest block! (Y: {Y})");
+
+        @Comment({"", "{X} - X coordinate, {Y} - Y coordinate, {Z} - Z coordinate"})
+        private Notice teleportedToCoordinates = Notice.chat("<green>You have been teleported to the coordinates: <white>X: {X}, Y: {Y}, Z: {Z}");
+        @Comment("{PLAYER} - Player who will be teleported, {X} - X coordinate, {Y} - Y coordinate, {Z} - Z coordinate")
+        private Notice teleportedSpecifiedPlayerToCoordinates = Notice.chat("<green>You have teleported the player <white>{PLAYER} <green>to the coordinates: <white>X: {X}, Y: {Y}, Z: {Z}");
+
+        @Comment("")
+        private Notice teleportedToLastLocation = Notice.chat("<green>You have been teleported to your last location!");
+        @Comment("{PLAYER} - Player who will be teleported")
+        private Notice teleportedSpecifiedPlayerLastLocation = Notice.chat("<green>You have teleported the player <white>{PLAYER} <green>to their last location!");
+        private Notice lastLocationNoExist = Notice.chat("<dark_red>Last location doesn't exist!");
+    }
+
     @Comment({"", "This section is responsible for the chat-related messages."})
     private ENChatSection chat = new ENChatSection();
 

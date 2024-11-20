@@ -12,6 +12,7 @@ paperyml = { id = "net.minecrell.plugin-yml.paper", version = "0.6.0" }
 
 [libraries]
 paper = { module = "io.papermc.paper:paper-api", version = "1.19.4-R0.1-SNAPSHOT" }
+paperlib = { module = "io.papermc:paperlib", version = "1.0.8" }
 
 configlib = { module = "de.exlll:configlib-yaml", version = "4.5.0" }
 hikaricp = { module = "com.zaxxer:HikariCP", version = "6.2.0" }

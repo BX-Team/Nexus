@@ -1,4 +1,4 @@
-package space.bxteam.nexus.core.utils;
+package space.bxteam.nexus.commons.item;
 
 import org.apache.commons.lang3.StringUtils;
 import org.bukkit.Material;

@@ -1,3 +1,3 @@
-package space.bxteam.nexus.core.environment.meta;
+package space.bxteam.nexus.core.utils.meta;
 
 public record PluginVersionMeta(String version) { }

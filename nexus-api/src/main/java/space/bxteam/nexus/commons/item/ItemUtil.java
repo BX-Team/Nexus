@@ -1,4 +1,4 @@
-package space.bxteam.nexus.core.utils;
+package space.bxteam.nexus.commons.item;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -7,6 +7,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.jetbrains.annotations.ApiStatus;
 
+/**
+ * Utility class for handling item manipulations.
+ */
 public final class ItemUtil {
     private ItemUtil() {
         throw new UnsupportedOperationException("This class cannot be instantiated");
