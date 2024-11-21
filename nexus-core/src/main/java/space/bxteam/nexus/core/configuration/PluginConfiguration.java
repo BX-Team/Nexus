@@ -6,6 +6,7 @@ import eu.okaeri.configs.annotation.Header;
 import lombok.Getter;
 import space.bxteam.nexus.core.translation.Language;
 
+import java.time.Duration;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -89,5 +90,19 @@ public class PluginConfiguration extends OkaeriConfig {
                 put("nexus.home.extended", 2);
             }
         };
+    }
+
+    @Comment("")
+    private Chat chat = new Chat();
+
+    @Getter
+    public static class Chat extends OkaeriConfig {
+        @Comment("Is the slowmode enabled?")
+        private boolean slowModeEnabled = true;
+        @Comment("Chat slowmode time in seconds")
+        private Duration slowMode = Duration.ofSeconds(5);
+
+        @Comment("How many lines should be cleared when using the /chat clear command")
+        private int clearLines = 100;
     }
 }

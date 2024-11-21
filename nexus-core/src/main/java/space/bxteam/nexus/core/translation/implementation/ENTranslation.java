@@ -140,6 +140,12 @@ public class ENTranslation extends OkaeriConfig implements Translation {
         private Notice gameModeMessage = Notice.chat("<green>Gamemode is now set to <white>{GAMEMODE}");
         @Comment("{PLAYER} - Target player, {GAMEMODE} - Gamemode name")
         private Notice gameModeSetMessage = Notice.chat("<green>Changed gamemode to <white>{GAMEMODE}<green> for player <white>{PLAYER}");
+
+        @Comment("")
+        private List<String> fullServerSlots = List.of(
+                "<dark_red>Server is full!",
+                "<dark_red>Try again later!"
+        );
     }
 
     @Comment({"", "This section is responsible for the inventory-related messages."})
@@ -245,7 +251,7 @@ public class ENTranslation extends OkaeriConfig implements Translation {
     private ENTeleportSection teleport = new ENTeleportSection();
 
     @Getter
-    public static class ENTeleportSection implements TeleportSection {
+    public static class ENTeleportSection extends OkaeriConfig implements TeleportSection {
         @Comment("{PLAYER} - Player who will be teleported")
         private Notice teleportedToPlayer = Notice.chat("<green>You have been teleported to the player <white>{PLAYER}");
         @Comment("{PLAYER} - Player who will be teleported, {SENDER} - Player who executed the command")
@@ -271,6 +277,22 @@ public class ENTranslation extends OkaeriConfig implements Translation {
 
     @Getter
     public static class ENChatSection extends OkaeriConfig implements ChatSection {
+        @Comment("{PLAYER} - Player who executed the command")
+        private Notice enabled = Notice.chat("<green>Chat has been enabled by <white>{PLAYER}");
+        private Notice disabled = Notice.chat("<dark_red>Chat is disabled by <white>{PLAYER}");
+        private Notice cleared = Notice.chat("<green>Chat has been cleared by <white>{PLAYER}");
+
+        @Comment("")
+        private Notice alreadyDisabled = Notice.chat("<dark_red>Chat is already disabled!");
+        private Notice alreadyEnabled = Notice.chat("<dark_red>Chat is already enabled!");
+
+        @Comment("")
+        private Notice chatDisabled = Notice.chat("<dark_red>Chat is disabled!");
+
+        @Comment("{TIME} - Remaining time in seconds")
+        private Notice slowMode = Notice.chat("<dark_red>You can write next message in <white>{TIME} <dark_red>seconds!");
+
+        @Comment({"", "{MESSAGE} - Broadcast content"})
         private Notice broadcastMessage = Notice.chat("<red>[Broadcast] <white>{MESSAGE}");
     }
 }

@@ -1,4 +1,4 @@
-package space.bxteam.nexus.core.feature.essentials.chat;
+package space.bxteam.nexus.core.feature.chat.command;
 
 import com.google.inject.Inject;
 import dev.rollczi.litecommands.annotations.command.Command;

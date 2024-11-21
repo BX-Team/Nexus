@@ -1,0 +1,81 @@
+package space.bxteam.nexus.core.feature.chat.command;
+
+import com.eternalcode.multification.notice.Notice;
+import com.google.inject.Inject;
+import dev.rollczi.litecommands.annotations.command.Command;
+import dev.rollczi.litecommands.annotations.context.Context;
+import dev.rollczi.litecommands.annotations.execute.Execute;
+import dev.rollczi.litecommands.annotations.permission.Permission;
+import org.bukkit.command.CommandSender;
+import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
+import space.bxteam.nexus.core.multification.MultificationManager;
+import space.bxteam.nexus.feature.chat.ChatService;
+
+import java.util.function.Supplier;
+
+@Command(name = "chat")
+@Permission("nexus.chat")
+public class ChatCommand {
+    private final ChatService chatService;
+    private final MultificationManager multificationManager;
+
+    private final Supplier<Notice> clear;
+
+    @Inject
+    public ChatCommand(ChatService chatService, MultificationManager multificationManager, PluginConfigurationProvider configurationProvider) {
+        this.chatService = chatService;
+        this.multificationManager = multificationManager;
+        this.clear = create(configurationProvider);
+    }
+
+    @Execute(name = "clear", aliases = {"cc"})
+    void clear(@Context CommandSender sender) {
+        this.multificationManager.create()
+                .notice(this.clear.get())
+                .notice(translation -> translation.chat().cleared())
+                .placeholder("{PLAYER}", sender.getName())
+                .onlinePlayers()
+                .send();
+    }
+
+    @Execute(name = "on")
+    void on(@Context CommandSender sender) {
+        if (this.chatService.isChatEnabled()) {
+            this.multificationManager.create()
+                    .viewer(sender)
+                    .notice(translation -> translation.chat().alreadyEnabled())
+                    .send();
+            return;
+        }
+
+        this.chatService.setChatEnabled(true);
+        this.multificationManager.create()
+                .onlinePlayers()
+                .notice(translation -> translation.chat().enabled())
+                .placeholder("{PLAYER}", sender.getName())
+                .send();
+    }
+
+    @Execute(name = "off")
+    void off(@Context CommandSender sender) {
+        if (!this.chatService.isChatEnabled()) {
+            this.multificationManager.create()
+                    .viewer(sender)
+                    .notice(translation -> translation.chat().alreadyDisabled())
+                    .send();
+            return;
+        }
+
+        this.chatService.setChatEnabled(false);
+        this.multificationManager.create()
+                .onlinePlayers()
+                .notice(translation -> translation.chat().disabled())
+                .placeholder("{PLAYER}", sender.getName())
+                .send();
+    }
+
+    private static Supplier<Notice> create(PluginConfigurationProvider configurationProvider) {
+        int line = configurationProvider.configuration().chat().clearLines();
+        return () -> Notice.chat("<newline>".repeat(Math.max(0, line)));
+    }
+}

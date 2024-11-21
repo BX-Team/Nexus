@@ -70,6 +70,8 @@ public interface Translation {
         Notice gameModeNotCorrect();
         Notice gameModeMessage();
         Notice gameModeSetMessage();
+
+        List<String> fullServerSlots();
     }
 
     InventorySection inventory();
@@ -159,6 +161,17 @@ public interface Translation {
     ChatSection chat();
 
     interface ChatSection {
+        Notice enabled();
+        Notice disabled();
+        Notice cleared();
+
+        Notice alreadyDisabled();
+        Notice alreadyEnabled();
+
+        Notice chatDisabled();
+
+        Notice slowMode();
+
         Notice broadcastMessage();
     }
 }

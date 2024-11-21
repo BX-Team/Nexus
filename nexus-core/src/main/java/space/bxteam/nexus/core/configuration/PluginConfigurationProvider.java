@@ -2,6 +2,7 @@ package space.bxteam.nexus.core.configuration;
 
 import com.google.inject.Singleton;
 import eu.okaeri.configs.ConfigManager;
+import eu.okaeri.configs.serdes.commons.SerdesCommons;
 import eu.okaeri.configs.yaml.bukkit.YamlBukkitConfigurer;
 import eu.okaeri.configs.yaml.bukkit.serdes.SerdesBukkit;
 import lombok.Getter;
@@ -32,7 +33,7 @@ public class PluginConfigurationProvider {
     private Optional<PluginConfiguration> loadConfiguration() {
         try {
             return Optional.of(ConfigManager.create(PluginConfiguration.class, (config) -> {
-                config.withConfigurer(new YamlBukkitConfigurer(), new SerdesBukkit());
+                config.withConfigurer(new YamlBukkitConfigurer(), new SerdesBukkit(), new SerdesCommons());
                 config.withBindFile(dataFolder.resolve(CONFIG_FILE));
                 config.withRemoveOrphans(true);
                 config.saveDefaults();

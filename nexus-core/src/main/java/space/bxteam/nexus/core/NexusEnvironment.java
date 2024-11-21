@@ -16,8 +16,8 @@ public class NexusEnvironment {
     }
 
     public void finalizeLoading() {
-        long seconds = this.stopwatch.elapsed(TimeUnit.SECONDS);
-        Logger.log("Nexus has been enabled in " + seconds + "s.", Logger.LogLevel.INFO);
+        long milliseconds = this.stopwatch.elapsed(TimeUnit.MILLISECONDS);
+        Logger.log("Nexus has been enabled in " + milliseconds + "ms.", Logger.LogLevel.INFO);
     }
 
     private void checkEnvironment() {
