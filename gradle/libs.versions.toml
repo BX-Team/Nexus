@@ -8,7 +8,7 @@ okaeri = "5.0.5"
 [plugins]
 lombok = { id = "io.freefair.lombok", version = "8.11" }
 shadow = { id = "com.github.johnrengelman.shadow", version = "8.1.1" }
-userdev = { id = "io.papermc.paperweight.userdev", version = "1.7.4" }
+userdev = { id = "io.papermc.paperweight.userdev", version = "1.7.5" }
 runpaper = { id = "xyz.jpenilla.run-paper", version = "2.3.1" }
 paperyml = { id = "net.minecrell.plugin-yml.paper", version = "0.6.0" }
 
@@ -16,8 +16,8 @@ paperyml = { id = "net.minecrell.plugin-yml.paper", version = "0.6.0" }
 paper = { module = "io.papermc.paper:paper-api", version = "1.19.4-R0.1-SNAPSHOT" }
 paperlib = { module = "io.papermc:paperlib", version = "1.0.8" }
 
-hikaricp = { module = "com.zaxxer:HikariCP", version = "6.2.0" }
-mariadb = { module = "org.mariadb.jdbc:mariadb-java-client", version = "3.5.0"}
+hikaricp = { module = "com.zaxxer:HikariCP", version = "6.2.1" }
+mariadb = { module = "org.mariadb.jdbc:mariadb-java-client", version = "3.5.1"}
 placeholderapi = { module = "me.clip:placeholderapi", version = "2.11.6" }
 litecommands = { module = "dev.rollczi:litecommands-bukkit", version = "3.9.1" }
 litecommandsadventure = { module = "dev.rollczi:litecommands-adventure-platform", version = "3.9.1" }
