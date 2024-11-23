@@ -174,4 +174,10 @@ public interface Translation {
 
         Notice broadcastMessage();
     }
+
+    FunSection fun();
+
+    interface FunSection {
+        Notice spitSound();
+    }
 }

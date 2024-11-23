@@ -5,6 +5,7 @@ import eu.okaeri.configs.OkaeriConfig;
 import eu.okaeri.configs.annotation.Comment;
 import lombok.Getter;
 import lombok.experimental.Accessors;
+import net.kyori.adventure.key.Key;
 import space.bxteam.nexus.core.translation.Translation;
 
 import java.util.List;
@@ -294,5 +295,13 @@ public class ENTranslation extends OkaeriConfig implements Translation {
 
         @Comment({"", "{MESSAGE} - Broadcast content"})
         private Notice broadcastMessage = Notice.chat("<red>[Broadcast] <white>{MESSAGE}");
+    }
+
+    @Comment({"", "This section is responsible for the fun-related messages."})
+    private ENFunSection fun = new ENFunSection();
+
+    @Getter
+    public static class ENFunSection extends OkaeriConfig implements FunSection {
+        private Notice spitSound = Notice.sound(Key.key("entity.llama.spit"), 1.0f, 1.0f);
     }
 }
