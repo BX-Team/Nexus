@@ -14,10 +14,22 @@ public final class Logger {
     }
 
     /**
+     * Logs a message to the console without a log level.
+     *
+     * @param message the message to be logged
+     */
+    public static void log(String message) {
+        if (message == null) return;
+
+        String formattedMessage = PLUGIN_PREFIX + "&f" + message;
+        Bukkit.getConsoleSender().sendMessage(color(formattedMessage));
+    }
+
+    /**
      * Logs a message to the console with the specified log level.
      *
      * @param message the message to be logged
-     * @param level   the level of the log (INFO, WARNING, ERROR, DEBUG)
+     * @param level   the level of the log (see {@link LogLevel})
      */
     public static void log(String message, LogLevel level) {
         if (message == null) return;

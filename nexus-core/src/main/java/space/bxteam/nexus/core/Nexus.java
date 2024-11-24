@@ -21,7 +21,7 @@ public class Nexus {
     private final Injector injector;
 
     public Nexus(Plugin plugin) {
-        NexusEnvironment environment = new NexusEnvironment();
+        NexusEnvironment environment = new NexusEnvironment(plugin);
 
         this.configurationProvider = new PluginConfigurationProvider(plugin.getDataFolder().toPath());
         this.injector = Guice.createInjector(
