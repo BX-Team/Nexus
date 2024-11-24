@@ -12,7 +12,7 @@ import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
+import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.commons.item.ItemUtil;
 import space.bxteam.nexus.commons.item.MaterialUtil;

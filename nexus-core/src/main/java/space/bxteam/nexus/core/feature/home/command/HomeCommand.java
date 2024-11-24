@@ -8,7 +8,7 @@ import dev.rollczi.litecommands.annotations.execute.Execute;
 import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.entity.Player;
-import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
+import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.feature.home.Home;
 import space.bxteam.nexus.feature.home.HomeService;

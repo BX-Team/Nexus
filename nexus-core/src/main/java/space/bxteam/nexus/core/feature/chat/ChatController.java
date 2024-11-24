@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
+import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.core.scanner.annotations.component.Controller;
 import space.bxteam.nexus.feature.chat.ChatService;

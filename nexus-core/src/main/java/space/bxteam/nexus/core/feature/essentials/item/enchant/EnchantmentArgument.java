@@ -9,11 +9,11 @@ import dev.rollczi.litecommands.suggestion.SuggestionResult;
 import org.bukkit.NamespacedKey;
 import org.bukkit.command.CommandSender;
 import org.bukkit.enchantments.Enchantment;
-import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
+import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import space.bxteam.nexus.core.multification.argument.MultificationLiteArgument;
 import space.bxteam.nexus.core.scanner.annotations.litecommands.LiteArgument;
 import space.bxteam.nexus.core.translation.Translation;
-import space.bxteam.nexus.core.translation.TranslationManager;
+import space.bxteam.nexus.core.translation.TranslationProvider;
 
 import java.util.Arrays;
 import java.util.Locale;
@@ -21,8 +21,8 @@ import java.util.Locale;
 @LiteArgument(type = Enchantment.class)
 public class EnchantmentArgument extends MultificationLiteArgument<Enchantment> {
     @Inject
-    public EnchantmentArgument(TranslationManager translationManager, PluginConfigurationProvider configurationProvider) {
-        super(translationManager, configurationProvider);
+    public EnchantmentArgument(TranslationProvider translationProvider, PluginConfigurationProvider configurationProvider) {
+        super(translationProvider, configurationProvider);
     }
 
     @Override

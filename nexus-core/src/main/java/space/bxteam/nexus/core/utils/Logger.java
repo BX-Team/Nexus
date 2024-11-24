@@ -1,6 +1,5 @@
 package space.bxteam.nexus.core.utils;
 
-import lombok.Setter;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 
@@ -9,8 +8,6 @@ import org.bukkit.ChatColor;
  */
 public final class Logger {
     private static final String PLUGIN_PREFIX = "&6[&eNexus&6] &7";
-    @Setter
-    private static boolean debugEnabled = false;
 
     private Logger() {
         throw new UnsupportedOperationException("This class cannot be instantiated.");
@@ -40,7 +37,7 @@ public final class Logger {
             case ERROR -> "&8[&c&lERROR&r&8]";
             case WARNING -> "&8[&6&lWARNING&r&8]";
             case INFO -> "&8[&e&lINFO&r&8]";
-            case DEBUG -> debugEnabled ? "&8[&b&lDEBUG&r&8]" : "";
+            case DEBUG -> "&8[&b&lDEBUG&r&8]";
         };
     }
 

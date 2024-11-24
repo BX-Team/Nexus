@@ -7,11 +7,11 @@ import dev.rollczi.litecommands.invocation.Invocation;
 import dev.rollczi.litecommands.suggestion.SuggestionContext;
 import dev.rollczi.litecommands.suggestion.SuggestionResult;
 import org.bukkit.command.CommandSender;
-import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
+import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import space.bxteam.nexus.core.multification.argument.MultificationLiteArgument;
 import space.bxteam.nexus.core.scanner.annotations.litecommands.LiteArgument;
 import space.bxteam.nexus.core.translation.Translation;
-import space.bxteam.nexus.core.translation.TranslationManager;
+import space.bxteam.nexus.core.translation.TranslationProvider;
 
 import java.util.stream.IntStream;
 
@@ -20,8 +20,8 @@ public class SpeedCommandArgument extends MultificationLiteArgument<Integer> {
     public static final String KEY = "speed";
 
     @Inject
-    public SpeedCommandArgument(TranslationManager translationManager, PluginConfigurationProvider configurationProvider) {
-        super(translationManager, configurationProvider);
+    public SpeedCommandArgument(TranslationProvider translationProvider, PluginConfigurationProvider configurationProvider) {
+        super(translationProvider, configurationProvider);
     }
 
     @Override

@@ -5,6 +5,8 @@ import com.eternalcode.multification.notice.Notice;
 import java.util.List;
 
 public interface Translation {
+    Language language();
+
     ArgumentSection argument();
 
     interface ArgumentSection {

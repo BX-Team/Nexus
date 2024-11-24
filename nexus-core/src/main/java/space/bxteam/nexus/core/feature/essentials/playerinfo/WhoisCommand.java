@@ -22,7 +22,7 @@ public class WhoisCommand {
         /*
         this.multificationManager.create()
                 .viewer(sender)
-                .notice(translation -> translation.player().whoisCommand())
+                .notice(translationConfig -> translationConfig.player().whoisCommand())
                 .placeholder("{PLAYER}", player.getName())
                 .placeholder("{UUID}", String.valueOf(player.getUniqueId()))
                 .placeholder("{IP}", player.getAddress().getHostString())

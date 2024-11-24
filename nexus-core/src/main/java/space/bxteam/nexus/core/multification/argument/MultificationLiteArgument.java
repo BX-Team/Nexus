@@ -7,20 +7,20 @@ import dev.rollczi.litecommands.argument.resolver.ArgumentResolver;
 import dev.rollczi.litecommands.invocation.Invocation;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.command.CommandSender;
-import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
+import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import space.bxteam.nexus.core.translation.Language;
 import space.bxteam.nexus.core.translation.Translation;
-import space.bxteam.nexus.core.translation.TranslationManager;
+import space.bxteam.nexus.core.translation.TranslationProvider;
 
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
 public abstract class MultificationLiteArgument<T> extends ArgumentResolver<CommandSender, T> {
-    protected final TranslationManager translationManager;
+    protected final TranslationProvider translationProvider;
     protected final PluginConfigurationProvider configurationProvider;
 
     @Override
     protected ParseResult<T> parse(Invocation<CommandSender> invocation, Argument<T> context, String argument) {
         Language language = this.configurationProvider.configuration().language();
-        Translation translation = this.translationManager.getMessages(language);
+        Translation translation = this.translationProvider.getMessages(language);
 
         return this.parse(invocation, argument, translation);
     }

@@ -12,13 +12,14 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.ServicesManager;
+import space.bxteam.nexus.core.configuration.ConfigurationManager;
 import space.bxteam.nexus.core.feature.chat.ChatServiceImpl;
 import space.bxteam.nexus.core.utils.meta.PluginVersionMeta;
 import space.bxteam.nexus.core.utils.meta.PluginVersionMetaFactory;
 import space.bxteam.nexus.core.feature.home.HomeServiceImpl;
 import space.bxteam.nexus.core.feature.teleport.TeleportServiceImpl;
 import space.bxteam.nexus.core.feature.warp.WarpServiceImpl;
-import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
+import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import space.bxteam.nexus.commons.adventure.processors.AdventureLegacyColorPostProcessor;
 import space.bxteam.nexus.commons.adventure.processors.AdventureLegacyColorPreProcessor;
 import space.bxteam.nexus.commons.adventure.processors.AdventureUrlPostProcessor;
@@ -50,6 +51,7 @@ public class NexusModule extends AbstractModule {
         this.bind(AudienceProvider.class).toInstance(BukkitAudiences.create(this.plugin));
         this.bind(PluginVersionMeta.class).toInstance(PluginVersionMetaFactory.create(this.plugin));
         this.bind(PlaceholderRegistry.class).to(PlaceholderRegistryImpl.class).in(Singleton.class);
+        this.bind(ConfigurationManager.class).asEagerSingleton();
 
         this.bind(MiniMessage.class).toInstance(MiniMessage.miniMessage());
         this.bind(MiniMessage.class)

@@ -9,12 +9,12 @@ import dev.rollczi.litecommands.suggestion.SuggestionContext;
 import dev.rollczi.litecommands.suggestion.SuggestionResult;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
+import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import space.bxteam.nexus.core.multification.argument.MultificationLiteArgument;
 import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.core.scanner.annotations.litecommands.LiteArgument;
 import space.bxteam.nexus.core.translation.Translation;
-import space.bxteam.nexus.core.translation.TranslationManager;
+import space.bxteam.nexus.core.translation.TranslationProvider;
 import space.bxteam.nexus.feature.home.Home;
 import space.bxteam.nexus.feature.home.HomeService;
 
@@ -29,8 +29,8 @@ public class HomeCommandArgument extends MultificationLiteArgument<Home> {
     private final MultificationManager multificationManager;
 
     @Inject
-    public HomeCommandArgument(TranslationManager translationManager, PluginConfigurationProvider configurationProvider, HomeService homeService, MultificationManager multificationManager) {
-        super(translationManager, configurationProvider);
+    public HomeCommandArgument(TranslationProvider translationProvider, PluginConfigurationProvider configurationProvider, HomeService homeService, MultificationManager multificationManager) {
+        super(translationProvider, configurationProvider);
         this.homeService = homeService;
         this.multificationManager = multificationManager;
     }

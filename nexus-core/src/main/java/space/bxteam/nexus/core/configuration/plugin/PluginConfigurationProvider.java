@@ -1,4 +1,4 @@
-package space.bxteam.nexus.core.configuration;
+package space.bxteam.nexus.core.configuration.plugin;
 
 import com.google.inject.Singleton;
 import eu.okaeri.configs.ConfigManager;

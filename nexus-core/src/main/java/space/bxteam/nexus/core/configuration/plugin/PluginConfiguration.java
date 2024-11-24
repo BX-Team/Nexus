@@ -1,4 +1,4 @@
-package space.bxteam.nexus.core.configuration;
+package space.bxteam.nexus.core.configuration.plugin;
 
 import eu.okaeri.configs.OkaeriConfig;
 import eu.okaeri.configs.annotation.Comment;

@@ -13,20 +13,18 @@ import net.kyori.adventure.text.serializer.ComponentSerializer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
-import space.bxteam.nexus.core.translation.Language;
 import space.bxteam.nexus.core.translation.Translation;
-import space.bxteam.nexus.core.translation.TranslationFactory;
 
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
 public class MultificationManager extends BukkitMultification<Translation> {
-    private final TranslationFactory translationFactory;
+    private final space.bxteam.nexus.core.translation.TranslationProvider translationProvider;
     private final AudienceProvider audienceProvider;
     @Named("colorMiniMessage")
     private final MiniMessage miniMessage;
 
     @Override
     protected @NotNull TranslationProvider<Translation> translationProvider() {
-        return locale -> this.translationFactory.getTranslation(Language.fromLocale(locale));
+        return locale -> this.translationProvider.getCurrentTranslation();
     }
 
     @Override

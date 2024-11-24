@@ -8,11 +8,11 @@ import dev.rollczi.litecommands.suggestion.SuggestionContext;
 import dev.rollczi.litecommands.suggestion.SuggestionResult;
 import org.bukkit.GameMode;
 import org.bukkit.command.CommandSender;
-import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
+import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import space.bxteam.nexus.core.multification.argument.MultificationLiteArgument;
 import space.bxteam.nexus.core.scanner.annotations.litecommands.LiteArgument;
 import space.bxteam.nexus.core.translation.Translation;
-import space.bxteam.nexus.core.translation.TranslationManager;
+import space.bxteam.nexus.core.translation.TranslationProvider;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,8 +30,8 @@ public class GamemodeCommandArgument extends MultificationLiteArgument<GameMode>
     }
 
     @Inject
-    public GamemodeCommandArgument(TranslationManager translationManager, PluginConfigurationProvider configurationProvider) {
-        super(translationManager, configurationProvider);
+    public GamemodeCommandArgument(TranslationProvider translationProvider, PluginConfigurationProvider configurationProvider) {
+        super(translationProvider, configurationProvider);
     }
 
     @Override

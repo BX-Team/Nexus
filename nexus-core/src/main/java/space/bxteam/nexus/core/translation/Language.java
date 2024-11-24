@@ -3,16 +3,17 @@ package space.bxteam.nexus.core.translation;
 import eu.okaeri.configs.OkaeriConfig;
 import lombok.Getter;
 import space.bxteam.nexus.core.translation.implementation.ENTranslation;
+import space.bxteam.nexus.core.translation.implementation.RUTranslation;
 
 import java.util.Locale;
 import java.util.function.Supplier;
 
+@Getter
 public enum Language {
-    EN("en", ENTranslation::new);
+    EN("en", ENTranslation::new),
+    RU("ru", RUTranslation::new);
 
-    @Getter
     private final String lang;
-    @Getter
     private final Supplier<? extends OkaeriConfig> clazz;
 
     Language(String lang, Supplier<? extends OkaeriConfig> clazz) {
@@ -30,6 +31,7 @@ public enum Language {
                 return language;
             }
         }
+
         return EN;
     }
 

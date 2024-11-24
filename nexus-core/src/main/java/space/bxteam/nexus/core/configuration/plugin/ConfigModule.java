@@ -1,4 +1,4 @@
-package space.bxteam.nexus.core.configuration;
+package space.bxteam.nexus.core.configuration.plugin;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Inject;

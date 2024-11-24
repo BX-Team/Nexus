@@ -7,12 +7,12 @@ import dev.rollczi.litecommands.invocation.Invocation;
 import dev.rollczi.litecommands.suggestion.SuggestionContext;
 import dev.rollczi.litecommands.suggestion.SuggestionResult;
 import org.bukkit.command.CommandSender;
-import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
+import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import space.bxteam.nexus.core.multification.argument.MultificationLiteArgument;
 import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.core.scanner.annotations.litecommands.LiteArgument;
 import space.bxteam.nexus.core.translation.Translation;
-import space.bxteam.nexus.core.translation.TranslationManager;
+import space.bxteam.nexus.core.translation.TranslationProvider;
 import space.bxteam.nexus.feature.warp.Warp;
 import space.bxteam.nexus.feature.warp.WarpService;
 
@@ -24,8 +24,8 @@ public class WarpCommandArgument extends MultificationLiteArgument<Warp> {
     private final WarpService warpService;
 
     @Inject
-    public WarpCommandArgument(TranslationManager translationManager, PluginConfigurationProvider configurationProvider, MultificationManager multificationManager, WarpService warpService) {
-        super(translationManager, configurationProvider);
+    public WarpCommandArgument(TranslationProvider translationProvider, PluginConfigurationProvider configurationProvider, MultificationManager multificationManager, WarpService warpService) {
+        super(translationProvider, configurationProvider);
         this.multificationManager = multificationManager;
         this.warpService = warpService;
     }

@@ -5,7 +5,7 @@ import com.google.inject.Singleton;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
-import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
+import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import space.bxteam.nexus.core.database.DatabaseClient;
 import space.bxteam.nexus.core.event.EventCaller;
 import space.bxteam.nexus.feature.home.Home;

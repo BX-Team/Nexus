@@ -10,7 +10,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import space.bxteam.nexus.core.database.DatabaseClient;
 import space.bxteam.nexus.core.database.DatabaseQueries;
 import space.bxteam.nexus.core.database.statement.StatementBuilder;
-import space.bxteam.nexus.core.configuration.PluginConfiguration;
+import space.bxteam.nexus.core.configuration.plugin.PluginConfiguration;
 
 import java.sql.SQLException;
 

@@ -6,14 +6,13 @@ import org.bukkit.plugin.Plugin;
 import space.bxteam.nexus.NexusApiProvider;
 import space.bxteam.nexus.core.database.DatabaseClient;
 import space.bxteam.nexus.core.database.DatabaseModule;
-import space.bxteam.nexus.core.configuration.ConfigModule;
-import space.bxteam.nexus.core.configuration.PluginConfigurationProvider;
+import space.bxteam.nexus.core.configuration.plugin.ConfigModule;
+import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import space.bxteam.nexus.core.integration.IntegrationRegistry;
 import space.bxteam.nexus.core.integration.bstats.MetricsModule;
 import space.bxteam.nexus.core.integration.litecommands.LiteCommandsRegister;
 import space.bxteam.nexus.core.scanner.register.ComponentRegister;
-import space.bxteam.nexus.core.translation.TranslationManager;
-import space.bxteam.nexus.core.translation.TranslationModule;
+import space.bxteam.nexus.core.translation.TranslationProvider;
 import space.bxteam.nexus.core.utils.Logger;
 import space.bxteam.nexus.event.NexusInitializeEvent;
 
@@ -25,18 +24,14 @@ public class Nexus {
         NexusEnvironment environment = new NexusEnvironment();
 
         this.configurationProvider = new PluginConfigurationProvider(plugin.getDataFolder().toPath());
-        this.injector =
-                Guice.createInjector(
+        this.injector = Guice.createInjector(
                         new NexusModule(this.configurationProvider, plugin),
                         new ConfigModule(),
-                        new TranslationModule(),
                         new DatabaseModule(this.configurationProvider),
                         new MetricsModule()
-                );
+        );
 
-        TranslationManager translationManager = this.injector.getInstance(TranslationManager.class);
-        translationManager.create(configurationProvider.configuration().language());
-
+        this.injector.getInstance(TranslationProvider.class);
         this.injector.getInstance(IntegrationRegistry.class).init();
         this.injector.getInstance(DatabaseClient.class).open();
         this.injector.getInstance(LiteCommandsRegister.class).onEnable();
