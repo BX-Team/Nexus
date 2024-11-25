@@ -279,6 +279,20 @@ public class RUTranslation extends OkaeriConfig implements Translation {
         public Notice lastLocationNoExist = Notice.chat("<dark_red>Последнее местоположение не существует!");
     }
 
+    @Comment({"", "This section is responsible for the random teleport-related messages."})
+    public RURandomTeleportSection randomTeleport = new RURandomTeleportSection();
+
+    @Getter
+    public class RURandomTeleportSection extends OkaeriConfig implements RandomTeleportSection {
+        public Notice randomTeleportSearchStart = Notice.chat("<green>Поиск случайных коордиант начат...");
+        public Notice randomTeleportSearchFailed = Notice.chat("<dark_red>Не удалось найти случайное местоположение! Попробуйте еще раз.");
+
+        @Comment("")
+        public Notice randomTeleportTeleported = Notice.chat("<green>Вы были телепортированы на случайное координаты!");
+        @Comment("{PLAYER} - Игрок который будет телепортирован")
+        public Notice teleportedSpecifiedPlayerToRandomLocation = Notice.chat("<green>Вы телепортировали игрока <white>{PLAYER} <green>на случайные координаты!");
+    }
+
     @Comment({"", "Этот раздел отвечает за сообщения, связанные с чатом."})
     public RUChatSection chat = new RUChatSection();
 

@@ -279,6 +279,20 @@ public class ENTranslation extends OkaeriConfig implements Translation {
         public Notice lastLocationNoExist = Notice.chat("<dark_red>Last location doesn't exist!");
     }
 
+    @Comment({"", "This section is responsible for the random teleport-related messages."})
+    public ENRandomTeleportSection randomTeleport = new ENRandomTeleportSection();
+
+    @Getter
+    public class ENRandomTeleportSection extends OkaeriConfig implements RandomTeleportSection {
+        public Notice randomTeleportSearchStart = Notice.chat("<green>Searching for a random location...");
+        public Notice randomTeleportSearchFailed = Notice.chat("<dark_red>Failed to find a random location! Please try again.");
+
+        @Comment("")
+        public Notice randomTeleportTeleported = Notice.chat("<green>You have been teleported to a random location!");
+        @Comment("{PLAYER} - Player who will be teleported")
+        public Notice teleportedSpecifiedPlayerToRandomLocation = Notice.chat("<green>You have teleported the player <white>{PLAYER} <green>to a random location!");
+    }
+
     @Comment({"", "This section is responsible for the chat-related messages."})
     public ENChatSection chat = new ENChatSection();
 

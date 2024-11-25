@@ -14,6 +14,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.ServicesManager;
 import space.bxteam.nexus.core.configuration.ConfigurationManager;
 import space.bxteam.nexus.core.feature.chat.ChatServiceImpl;
+import space.bxteam.nexus.core.feature.randomteleport.RandomTeleportServiceImpl;
 import space.bxteam.nexus.core.utils.meta.PluginVersionMeta;
 import space.bxteam.nexus.core.utils.meta.PluginVersionMetaFactory;
 import space.bxteam.nexus.core.feature.home.HomeServiceImpl;
@@ -27,6 +28,7 @@ import space.bxteam.nexus.core.integration.placeholderapi.resolver.PlaceholderRe
 import space.bxteam.nexus.core.integration.placeholderapi.resolver.PlaceholderRegistryImpl;
 import space.bxteam.nexus.feature.chat.ChatService;
 import space.bxteam.nexus.feature.home.HomeService;
+import space.bxteam.nexus.feature.randomteleport.RandomTeleportService;
 import space.bxteam.nexus.feature.teleport.TeleportService;
 import space.bxteam.nexus.feature.warp.WarpService;
 
@@ -65,6 +67,7 @@ public class NexusModule extends AbstractModule {
         this.bind(ChatService.class).to(ChatServiceImpl.class);
         this.bind(WarpService.class).to(WarpServiceImpl.class);
         this.bind(HomeService.class).to(HomeServiceImpl.class);
+        this.bind(RandomTeleportService.class).to(RandomTeleportServiceImpl.class);
         this.bind(TeleportService.class).to(TeleportServiceImpl.class);
     }
 }

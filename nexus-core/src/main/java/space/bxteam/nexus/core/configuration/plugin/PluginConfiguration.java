@@ -4,6 +4,7 @@ import eu.okaeri.configs.OkaeriConfig;
 import eu.okaeri.configs.annotation.Comment;
 import eu.okaeri.configs.annotation.Header;
 import lombok.Getter;
+import space.bxteam.nexus.core.feature.randomteleport.RandomTeleportType;
 import space.bxteam.nexus.core.translation.Language;
 
 import java.time.Duration;
@@ -104,5 +105,27 @@ public class PluginConfiguration extends OkaeriConfig {
 
         @Comment("How many lines should be cleared when using the /chat clear command")
         private int clearLines = 100;
+    }
+
+    @Comment("")
+    private RandomTeleport randomTeleport = new RandomTeleport();
+
+    @Getter
+    public static class RandomTeleport extends OkaeriConfig {
+        @Comment({
+                "Type of the random teleportation:",
+                "- WORLD_BORDER_RADIUS - Teleports the player to a random location within the world border",
+                "- STATIC_RADIUS - Teleports the player to a random location within the specified radius",
+        })
+        private RandomTeleportType randomTeleportType = RandomTeleportType.WORLD_BORDER_RADIUS;
+
+        @Comment("The radius in which the player will be teleported")
+        private int randomTeleportRadius = 1000;
+
+        @Comment("The maximum amount of attempts to find a safe location")
+        private int maxAttempts = 10;
+
+        @Comment("Teleport to a specific world, if left empty it will teleport to the player's current world")
+        private String randomTeleportWorld = "world";
     }
 }

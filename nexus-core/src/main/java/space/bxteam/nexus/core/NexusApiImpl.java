@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import space.bxteam.nexus.NexusApi;
 import space.bxteam.nexus.feature.chat.ChatService;
 import space.bxteam.nexus.feature.home.HomeService;
+import space.bxteam.nexus.feature.randomteleport.RandomTeleportService;
 import space.bxteam.nexus.feature.teleport.TeleportService;
 import space.bxteam.nexus.feature.warp.WarpService;
 
@@ -20,6 +21,11 @@ public class NexusApiImpl implements NexusApi {
     @Override
     public HomeService getHomeService() {
         return this.injector.getInstance(HomeService.class);
+    }
+
+    @Override
+    public RandomTeleportService getRandomTeleportService() {
+        return this.injector.getInstance(RandomTeleportService.class);
     }
 
     @Override

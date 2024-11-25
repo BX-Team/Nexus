@@ -160,6 +160,15 @@ public interface Translation {
         Notice lastLocationNoExist();
     }
 
+    RandomTeleportSection randomTeleport();
+
+    interface RandomTeleportSection {
+        Notice randomTeleportSearchStart();
+        Notice randomTeleportSearchFailed();
+        Notice randomTeleportTeleported();
+        Notice teleportedSpecifiedPlayerToRandomLocation();
+    }
+
     ChatSection chat();
 
     interface ChatSection {
