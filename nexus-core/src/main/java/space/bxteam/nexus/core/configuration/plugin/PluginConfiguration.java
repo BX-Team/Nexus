@@ -29,7 +29,12 @@ public class PluginConfiguration extends OkaeriConfig {
     @Comment("Plugin prefix")
     private String prefix = "&7[&6Nexus&7] ";
 
-    @Comment("Plugin language")
+    @Comment({
+            "Select the language of the plugin",
+            "The following languages are supported:",
+            "- EN - English",
+            "- RU - Russian"
+    })
     private Language language = Language.EN;
 
     @Comment({"", "Database configuration"})
