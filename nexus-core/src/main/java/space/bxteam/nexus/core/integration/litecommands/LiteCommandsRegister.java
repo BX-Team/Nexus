@@ -9,7 +9,6 @@ import dev.rollczi.litecommands.LiteCommandsBuilder;
 import dev.rollczi.litecommands.adventure.bukkit.platform.LiteAdventurePlatformExtension;
 import dev.rollczi.litecommands.annotations.LiteCommandsAnnotations;
 import dev.rollczi.litecommands.annotations.command.Command;
-import dev.rollczi.litecommands.annotations.command.RootCommand;
 import dev.rollczi.litecommands.argument.ArgumentKey;
 import dev.rollczi.litecommands.argument.resolver.ArgumentResolverBase;
 import dev.rollczi.litecommands.bukkit.LiteBukkitFactory;
@@ -39,7 +38,6 @@ public class LiteCommandsRegister {
         this.injector = injector;
         this.annotations = LiteCommandsAnnotations.create();
         registerAnnotatedClasses(annotations, Command.class, annotations::load);
-        registerAnnotatedClasses(annotations, RootCommand.class, annotations::load);
 
         this.liteCommandsBuilder = LiteBukkitFactory.builder("nexus", plugin, server)
                 .commands(annotations)

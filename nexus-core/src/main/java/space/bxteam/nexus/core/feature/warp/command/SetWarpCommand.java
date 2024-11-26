@@ -9,47 +9,31 @@ import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.entity.Player;
 import space.bxteam.nexus.core.multification.MultificationManager;
-import space.bxteam.nexus.feature.warp.Warp;
 import space.bxteam.nexus.feature.warp.WarpService;
 
-@Command(name = "warp")
+@Command(name = "setwarp")
+@Permission("nexus.setwarp")
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
-public class WarpCommand {
+public class SetWarpCommand {
     private final MultificationManager multificationManager;
     private final WarpService warpService;
 
     @Execute
-    @Permission("nexus.warp")
-    void executeWarp(@Context Player player, @Arg Warp warp) {
-        String name = warp.name();
-
-        if (!this.warpService.warpExists(name)) {
+    void executeSetWarp(@Context Player player, @Arg String name) {
+        if (this.warpService.warpExists(name)) {
             this.multificationManager.create()
                     .player(player.getUniqueId())
-                    .notice(translation -> translation.warp().notExist())
+                    .notice(translation -> translation.warp().warpAlreadyExists())
                     .placeholder("{WARP}", name)
                     .send();
             return;
         }
 
-        player.teleport(warp.location());
-        // TODO: Add sound
-    }
-
-    @Execute
-    @Permission("nexus.warp.other")
-    void executeWarpOther(@Context Player player, @Arg Warp warp, @Arg Player target) {
-        String name = warp.name();
-
-        if (!this.warpService.warpExists(name)) {
-            this.multificationManager.create()
-                    .player(player.getUniqueId())
-                    .notice(translation -> translation.warp().notExist())
-                    .placeholder("{WARP}", name)
-                    .send();
-            return;
-        }
-
-        target.teleport(warp.location());
+        this.warpService.createWarp(name, player.getLocation());
+        this.multificationManager.create()
+                .player(player.getUniqueId())
+                .notice(translation -> translation.warp().create())
+                .placeholder("{WARP}", name)
+                .send();
     }
 }

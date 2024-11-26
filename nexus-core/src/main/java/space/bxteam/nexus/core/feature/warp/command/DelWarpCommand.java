@@ -12,15 +12,15 @@ import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.feature.warp.Warp;
 import space.bxteam.nexus.feature.warp.WarpService;
 
-@Command(name = "warp")
+@Command(name = "delwarp")
+@Permission("nexus.delwarp")
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
-public class WarpCommand {
+public class DelWarpCommand {
     private final MultificationManager multificationManager;
     private final WarpService warpService;
 
     @Execute
-    @Permission("nexus.warp")
-    void executeWarp(@Context Player player, @Arg Warp warp) {
+    void executeDelWarp(@Context Player player, @Arg Warp warp) {
         String name = warp.name();
 
         if (!this.warpService.warpExists(name)) {
@@ -32,24 +32,11 @@ public class WarpCommand {
             return;
         }
 
-        player.teleport(warp.location());
-        // TODO: Add sound
-    }
-
-    @Execute
-    @Permission("nexus.warp.other")
-    void executeWarpOther(@Context Player player, @Arg Warp warp, @Arg Player target) {
-        String name = warp.name();
-
-        if (!this.warpService.warpExists(name)) {
-            this.multificationManager.create()
-                    .player(player.getUniqueId())
-                    .notice(translation -> translation.warp().notExist())
-                    .placeholder("{WARP}", name)
-                    .send();
-            return;
-        }
-
-        target.teleport(warp.location());
+        this.warpService.removeWarp(name);
+        this.multificationManager.create()
+                .player(player.getUniqueId())
+                .notice(translation -> translation.warp().remove())
+                .placeholder("{WARP}", name)
+                .send();
     }
 }
