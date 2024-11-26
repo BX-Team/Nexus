@@ -133,4 +133,13 @@ public class PluginConfiguration extends OkaeriConfig {
         @Comment("Teleport to a specific world, if left empty it will teleport to the player's current world")
         private String randomTeleportWorld = "world";
     }
+
+    @Comment("")
+    private TeleportRequest teleportRequest = new TeleportRequest();
+
+    @Getter
+    public static class TeleportRequest extends OkaeriConfig {
+        @Comment("The time in seconds after which the teleport request will expire")
+        private Duration requestTimeout = Duration.ofSeconds(30);
+    }
 }

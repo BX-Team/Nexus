@@ -5,8 +5,6 @@ import com.eternalcode.multification.notice.Notice;
 import java.util.List;
 
 public interface Translation {
-    Language language();
-
     ArgumentSection argument();
 
     interface ArgumentSection {
@@ -167,6 +165,25 @@ public interface Translation {
         Notice randomTeleportSearchFailed();
         Notice randomTeleportTeleported();
         Notice teleportedSpecifiedPlayerToRandomLocation();
+    }
+
+    TeleportRequestSection teleportRequest();
+
+    interface TeleportRequestSection {
+        Notice tpaSelfMessage();
+        Notice tpaAlreadySentMessage();
+        Notice tpaSentMessage();
+        Notice tpaReceivedMessage();
+
+        Notice tpaAcceptMessage();
+        Notice tpaAcceptNoRequestMessage();
+        Notice tpaAcceptReceivedMessage();
+        Notice tpaAcceptAllAccepted();
+
+        Notice tpaDenyNoRequestMessage();
+        Notice tpaDenyMessage();
+        Notice tpaDenyReceivedMessage();
+        Notice tpaDenyAllDenied();
     }
 
     ChatSection chat();

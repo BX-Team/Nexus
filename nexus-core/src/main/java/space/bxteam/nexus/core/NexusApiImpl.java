@@ -7,6 +7,7 @@ import space.bxteam.nexus.feature.chat.ChatService;
 import space.bxteam.nexus.feature.home.HomeService;
 import space.bxteam.nexus.feature.randomteleport.RandomTeleportService;
 import space.bxteam.nexus.feature.teleport.TeleportService;
+import space.bxteam.nexus.feature.teleportrequest.TeleportRequestService;
 import space.bxteam.nexus.feature.warp.WarpService;
 
 @RequiredArgsConstructor
@@ -31,6 +32,11 @@ public class NexusApiImpl implements NexusApi {
     @Override
     public TeleportService getTeleportService() {
         return this.injector.getInstance(TeleportService.class);
+    }
+
+    @Override
+    public TeleportRequestService getTeleportRequestService() {
+        return this.injector.getInstance(TeleportRequestService.class);
     }
 
     @Override

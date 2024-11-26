@@ -6,7 +6,6 @@ import eu.okaeri.configs.annotation.Comment;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 import net.kyori.adventure.key.Key;
-import space.bxteam.nexus.core.translation.Language;
 import space.bxteam.nexus.core.translation.Translation;
 
 import java.util.List;
@@ -15,11 +14,6 @@ import java.util.List;
 @Accessors(fluent = true)
 @SuppressWarnings({"FieldMayBeFinal", "InnerClassMayBeStatic"})
 public class ENTranslation extends OkaeriConfig implements Translation {
-    @Override
-    public Language language() {
-        return Language.EN;
-    }
-
     @Comment({
             "This file is responsible for the English translationConfig in the Nexus plugin.",
             "",
@@ -291,6 +285,36 @@ public class ENTranslation extends OkaeriConfig implements Translation {
         public Notice randomTeleportTeleported = Notice.chat("<green>You have been teleported to a random location!");
         @Comment("{PLAYER} - Player who will be teleported")
         public Notice teleportedSpecifiedPlayerToRandomLocation = Notice.chat("<green>You have teleported the player <white>{PLAYER} <green>to a random location!");
+    }
+
+    @Comment({"", "This section is responsible for the teleport request-related messages."})
+    public ENTeleportRequestSection teleportRequest = new ENTeleportRequestSection();
+
+    @Getter
+    public class ENTeleportRequestSection extends OkaeriConfig implements TeleportRequestSection {
+        public Notice tpaSelfMessage = Notice.chat("<dark_red>You can't teleport to yourself!");
+        public Notice tpaAlreadySentMessage = Notice.chat("<dark_red>You have already sent a teleport request to this player!");
+        @Comment("{PLAYER} - Player who will receive the teleport request")
+        public Notice tpaSentMessage = Notice.chat("<green>You have sent a teleport request to the player <white>{PLAYER}");
+
+        @Comment({"", "{PLAYER} - Player who sent the teleport request"})
+        public Notice tpaReceivedMessage = Notice.builder()
+                .chat("<green>You have received a teleport request from the player <white>{PLAYER}")
+                .chat("<hover:show_text:'<green>Accept request for teleports</green>'><gold><click:suggest_command:'/tpaccept {PLAYER}'><dark_gray>» <gold>/tpaccept {PLAYER} <green>to accept! <gray>(Click)</gray></click></gold></hover>")
+                .chat("<hover:show_text:'<red>Decline a teleportation request</red>'><gold><click:suggest_command:'/tpdeny {PLAYER}'><dark_gray>» <gold>/tpdeny {PLAYER} <red><green>to deny! <gray>(Click)</gray></click></gold></hover>")
+                .build();
+
+        @Comment("")
+        public Notice tpaAcceptMessage = Notice.chat("<green>You have accepted the teleport request from the player <white>{PLAYER}");
+        public Notice tpaAcceptNoRequestMessage = Notice.chat("<dark_red>You don't have any teleport requests!");
+        public Notice tpaAcceptReceivedMessage = Notice.chat("<green>The player <white>{PLAYER} <green>has accepted your teleport request!");
+        public Notice tpaAcceptAllAccepted = Notice.chat("<green>All teleport requests have been accepted!");
+
+        @Comment("")
+        public Notice tpaDenyNoRequestMessage = Notice.chat("<dark_red>You don't have any teleport requests!");
+        public Notice tpaDenyMessage = Notice.chat("<green>You have denied the teleport request from the player <white>{PLAYER}");
+        public Notice tpaDenyReceivedMessage = Notice.chat("<green>The player <white>{PLAYER} <green>has denied your teleport request!");
+        public Notice tpaDenyAllDenied = Notice.chat("<green>All teleport requests have been denied!");
     }
 
     @Comment({"", "This section is responsible for the chat-related messages."})

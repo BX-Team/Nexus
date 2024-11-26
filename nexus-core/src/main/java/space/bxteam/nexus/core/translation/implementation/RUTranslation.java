@@ -6,7 +6,6 @@ import eu.okaeri.configs.annotation.Comment;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 import net.kyori.adventure.key.Key;
-import space.bxteam.nexus.core.translation.Language;
 import space.bxteam.nexus.core.translation.Translation;
 
 import java.util.List;
@@ -15,11 +14,6 @@ import java.util.List;
 @Accessors(fluent = true)
 @SuppressWarnings({"FieldMayBeFinal", "InnerClassMayBeStatic"})
 public class RUTranslation extends OkaeriConfig implements Translation {
-    @Override
-    public Language language() {
-        return Language.RU;
-    }
-
     @Comment({
             "Этот файл отвечает за русский перевод в плагине Nexus.",
             "",
@@ -291,6 +285,36 @@ public class RUTranslation extends OkaeriConfig implements Translation {
         public Notice randomTeleportTeleported = Notice.chat("<green>Вы были телепортированы на случайное координаты!");
         @Comment("{PLAYER} - Игрок который будет телепортирован")
         public Notice teleportedSpecifiedPlayerToRandomLocation = Notice.chat("<green>Вы телепортировали игрока <white>{PLAYER} <green>на случайные координаты!");
+    }
+
+    @Comment({"", "Этот раздел отвечает за запросы на телепортацию."})
+    public RUTeleportRequestSection teleportRequest = new RUTeleportRequestSection();
+
+    @Getter
+    public class RUTeleportRequestSection extends OkaeriConfig implements TeleportRequestSection {
+        public Notice tpaSelfMessage = Notice.chat("<dark_red>Вы не можете отправить запрос на телепортацию самому себе!");
+        public Notice tpaAlreadySentMessage = Notice.chat("<dark_red>Вы уже отправили запрос на телепортацию этому игроку!");
+        @Comment("{PLAYER} - Игрок, которому отправлен запрос на телепортацию")
+        public Notice tpaSentMessage = Notice.chat("<green>Вы отправили запрос на телепортацию игроку <white>{PLAYER}");
+
+        @Comment({"", "{PLAYER} - Игрок, отправивший запрос на телепортацию"})
+        public Notice tpaReceivedMessage = Notice.builder()
+                .chat("<green>Вы получили запрос на телепортацию от игрока <white>{PLAYER}")
+                .chat("<hover:show_text:'<green>Принять запрос на телепортацию</green>'><gold><click:suggest_command:'/tpaccept {PLAYER}'><dark_gray>» <gold>/tpaccept {PLAYER} <green>чтобы принять! <gray>(Нажмите)</gray></click></gold></hover>")
+                .chat("<hover:show_text:'<red>Отклонить запрос на телепортацию</red>'><gold><click:suggest_command:'/tpdeny {PLAYER}'><dark_gray>» <gold>/tpdeny {PLAYER} <red><green>чтобы отклонить! <gray>(Нажмите)</gray></click></gold></hover>")
+                .build();
+
+        @Comment("")
+        public Notice tpaAcceptMessage = Notice.chat("<green>Вы приняли запрос на телепортацию от игрока <white>{PLAYER}");
+        public Notice tpaAcceptNoRequestMessage = Notice.chat("<dark_red>У вас нет запросов на телепортацию!");
+        public Notice tpaAcceptReceivedMessage = Notice.chat("<green>Игрок <white>{PLAYER} <green>принял ваш запрос на телепортацию!");
+        public Notice tpaAcceptAllAccepted = Notice.chat("<green>Все запросы на телепортацию были приняты!");
+
+        @Comment("")
+        public Notice tpaDenyNoRequestMessage = Notice.chat("<dark_red>У вас нет запросов на телепортацию!");
+        public Notice tpaDenyMessage = Notice.chat("<green>Вы отклонили запрос на телепортацию от игрока <white>{PLAYER}");
+        public Notice tpaDenyReceivedMessage = Notice.chat("<green>Игрок <white>{PLAYER} <green>отклонил ваш запрос на телепортацию!");
+        public Notice tpaDenyAllDenied = Notice.chat("<green>Все запросы на телепортацию были отклонены!");
     }
 
     @Comment({"", "Этот раздел отвечает за сообщения, связанные с чатом."})
