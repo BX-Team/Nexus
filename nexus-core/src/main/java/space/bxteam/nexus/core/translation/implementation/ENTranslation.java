@@ -341,6 +341,15 @@ public class ENTranslation extends OkaeriConfig implements Translation {
         public Notice broadcastMessage = Notice.chat("<red>[Broadcast] <white>{MESSAGE}");
     }
 
+    @Comment({"", "This section is responsible for the admin chat feature"})
+    public ENAdminChatSection adminChat = new ENAdminChatSection();
+
+    @Getter
+    public class ENAdminChatSection extends OkaeriConfig implements AdminChatSection {
+        @Comment("{PLAYER} - Player who sent the message, {MESSAGE} - Message content")
+        public Notice message = Notice.chat("<dark_red>[AdminChat] <white>{PLAYER} <dark_gray>» <white>{MESSAGE}");
+    }
+
     @Comment({"", "This section is responsible for the fun-related messages."})
     public ENFunSection fun = new ENFunSection();
 

@@ -341,6 +341,15 @@ public class RUTranslation extends OkaeriConfig implements Translation {
         public Notice broadcastMessage = Notice.chat("<red>[Объявление] <white>{MESSAGE}");
     }
 
+    @Comment({"", "Этот раздел отвечает за сообщения, связанные с административным чатом."})
+    public RUAdminChatSection adminChat = new RUAdminChatSection();
+
+    @Getter
+    public class RUAdminChatSection extends OkaeriConfig implements AdminChatSection {
+        @Comment("{PLAYER} - Игрок отправивший сообщение, {MESSAGE} - Сообщение")
+        public Notice message = Notice.chat("<dark_red>[Админ чат] <white>{PLAYER} <dark_gray>» <white>{MESSAGE}");
+    }
+
     @Comment({"", "Этот раздел отвечает за веселые команды :)"})
     public RUFunSection fun = new RUFunSection();
 

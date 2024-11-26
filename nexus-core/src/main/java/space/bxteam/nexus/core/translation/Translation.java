@@ -203,6 +203,12 @@ public interface Translation {
         Notice broadcastMessage();
     }
 
+    AdminChatSection adminChat();
+
+    interface AdminChatSection {
+        Notice message();
+    }
+
     FunSection fun();
 
     interface FunSection {
