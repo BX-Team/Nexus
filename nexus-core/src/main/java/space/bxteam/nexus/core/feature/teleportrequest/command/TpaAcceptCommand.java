@@ -51,7 +51,7 @@ public class TpaAcceptCommand {
             this.multificationManager.create()
                     .player(player.getUniqueId())
                     .notice(translation -> translation.teleportRequest().tpaAcceptNoRequestMessage())
-                    .send(); // TODO: подправить перевод
+                    .send();
             return;
         }
 
