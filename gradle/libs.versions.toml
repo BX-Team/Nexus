@@ -4,7 +4,7 @@ adventure = "4.3.4"
 minimessage = "4.17.0"
 multification = "1.1.4"
 okaeri = "5.0.5"
-commons = "1.1.0"
+commons = "1.2.0"
 
 [plugins]
 lombok = { id = "io.freefair.lombok", version = "8.11" }
@@ -41,7 +41,7 @@ multification = { module = "com.eternalcode:multification-bukkit", version.ref =
 multification-okaeri = { module = "com.eternalcode:multification-okaeri", version.ref = "multification" }
 
 commons-adventure = { module = "space.bxteam:commons-adventure", version.ref = "commons" }
-commons-paper = { module = "space.bxteam:commons-paper", version.ref = "commons" }
+commons-github = { module = "space.bxteam:commons-github", version.ref = "commons" }
 commons-bukkit = { module = "space.bxteam:commons-bukkit", version.ref = "commons" }
 
 [bundles]
@@ -66,6 +66,6 @@ multification = [
 
 commons = [
     "commons-adventure",
-    "commons-paper",
+    "commons-github",
     "commons-bukkit"
 ]
