@@ -6,9 +6,9 @@ import io.papermc.lib.PaperLib;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
+import space.bxteam.commons.bukkit.position.Position;
+import space.bxteam.commons.bukkit.position.PositionFactory;
 import space.bxteam.nexus.feature.teleport.TeleportService;
-import space.bxteam.nexus.commons.position.Position;
-import space.bxteam.nexus.commons.position.PositionFactory;
 
 import java.util.HashMap;
 import java.util.Map;

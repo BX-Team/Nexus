@@ -20,6 +20,7 @@ repositories {
     maven("https://repo.eternalcode.pl/releases")
     maven("https://s01.oss.sonatype.org/content/repositories/snapshots/")
     maven("https://storehouse.okaeri.eu/repository/maven-public/")
+    maven("https://repo.bx-team.space/releases")
 }
 
 dependencies {
@@ -37,6 +38,7 @@ dependencies {
     library(libs.bundles.adventure)
     library(libs.bundles.okaeri)
     library(libs.bundles.multification)
+    library(libs.bundles.commons)
 
     // Plugin dependencies
     compileOnly(libs.placeholderapi)

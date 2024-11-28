@@ -9,8 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
+import space.bxteam.commons.bukkit.inventory.ItemUtil;
 import space.bxteam.nexus.core.multification.MultificationManager;
-import space.bxteam.nexus.commons.item.ItemUtil;
 
 @Command(name = "hat")
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
