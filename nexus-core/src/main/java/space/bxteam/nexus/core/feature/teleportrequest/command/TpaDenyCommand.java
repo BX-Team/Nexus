@@ -48,7 +48,7 @@ public class TpaDenyCommand {
             this.multificationManager.create()
                     .player(player.getUniqueId())
                     .notice(translation -> translation.teleportRequest().tpaDenyNoRequestMessage())
-                    .send(); // TODO: подправить перевод
+                    .send();
             return;
         }
 

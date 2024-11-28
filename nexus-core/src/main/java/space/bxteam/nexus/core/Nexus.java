@@ -4,6 +4,7 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import org.bukkit.plugin.Plugin;
 import space.bxteam.nexus.NexusApiProvider;
+import space.bxteam.nexus.core.configuration.commands.CommandsConfigProvider;
 import space.bxteam.nexus.core.database.DatabaseClient;
 import space.bxteam.nexus.core.database.DatabaseModule;
 import space.bxteam.nexus.core.configuration.plugin.ConfigModule;
@@ -34,6 +35,7 @@ public class Nexus {
         this.injector.getInstance(TranslationProvider.class);
         this.injector.getInstance(IntegrationRegistry.class).init();
         this.injector.getInstance(DatabaseClient.class).open();
+        this.injector.getInstance(CommandsConfigProvider.class);
         this.injector.getInstance(LiteCommandsRegister.class).onEnable();
         this.injector.getInstance(ComponentRegister.class);
 

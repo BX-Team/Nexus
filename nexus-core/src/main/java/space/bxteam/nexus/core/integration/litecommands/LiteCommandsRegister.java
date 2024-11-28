@@ -12,13 +12,20 @@ import dev.rollczi.litecommands.annotations.command.Command;
 import dev.rollczi.litecommands.argument.ArgumentKey;
 import dev.rollczi.litecommands.argument.resolver.ArgumentResolverBase;
 import dev.rollczi.litecommands.bukkit.LiteBukkitFactory;
+import dev.rollczi.litecommands.editor.Editor;
 import dev.rollczi.litecommands.handler.result.ResultHandler;
+import dev.rollczi.litecommands.message.LiteMessages;
+import dev.rollczi.litecommands.scope.Scope;
 import net.kyori.adventure.platform.AudienceProvider;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Server;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.Plugin;
+import space.bxteam.nexus.core.integration.litecommands.commands.CommandCooldownMessage;
+import space.bxteam.nexus.core.configuration.commands.CommandsConfigProvider;
+import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.core.scanner.annotations.litecommands.LiteArgument;
+import space.bxteam.nexus.core.scanner.annotations.litecommands.LiteEditor;
 import space.bxteam.nexus.core.scanner.annotations.litecommands.LiteHandler;
 import space.bxteam.nexus.core.scanner.ClassgraphScanner;
 import space.bxteam.nexus.core.utils.Logger;
@@ -41,9 +48,11 @@ public class LiteCommandsRegister {
 
         this.liteCommandsBuilder = LiteBukkitFactory.builder("nexus", plugin, server)
                 .commands(annotations)
+                .message(LiteMessages.COMMAND_COOLDOWN, new CommandCooldownMessage(injector.getInstance(MultificationManager.class), injector.getInstance(CommandsConfigProvider.class)))
                 .extension(new LiteAdventurePlatformExtension<>(audiencesProvider), extension -> extension.serializer(miniMessage));
 
         registerHandlersAndArguments();
+        registerEditor();
     }
 
     public void onEnable() {
@@ -87,6 +96,26 @@ public class LiteCommandsRegister {
             } catch (Exception e) {
                 Logger.log("Failed to load handler instance: " + e.getMessage(), Logger.LogLevel.ERROR);
             }
+        });
+    }
+
+    @SuppressWarnings("unchecked")
+    private void registerEditor() {
+        ClassgraphScanner.scanClassesWithAnnotation("space.bxteam.nexus.core.integration.litecommands", LiteEditor.class, classInfo -> {
+            Class<?> handlerClass = classInfo.loadClass();
+            LiteEditor liteEditor = handlerClass.getAnnotation(LiteEditor.class);
+
+            Scope scope = Scope.global();
+
+            if (liteEditor.command() != Object.class) {
+                scope = Scope.command(liteEditor.command());
+            }
+
+            if (!liteEditor.name().isEmpty()) {
+                scope = Scope.command(liteEditor.name());
+            }
+
+            liteCommandsBuilder.editor(scope, (Editor<CommandSender>) injector.getInstance(handlerClass));
         });
     }
 
