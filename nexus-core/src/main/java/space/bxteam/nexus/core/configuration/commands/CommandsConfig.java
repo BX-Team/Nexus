@@ -37,6 +37,6 @@ public class CommandsConfig extends OkaeriConfig {
             "        actionBar: <cooldown_action_bar_message>"
     })
     Map<String, CommandConfiguration> commands = Map.of(
-            "nexus", new CommandConfiguration()
+            "randomteleport", new CommandConfiguration()
     );
 }

@@ -16,7 +16,7 @@ import java.util.Map;
 @Accessors(fluent = true)
 @SuppressWarnings({"FieldMayBeFinal", "InnerClassMayBeStatic"})
 public class CommandConfiguration extends OkaeriConfig {
-    private String name = "nexus";
+    private String name = "randomteleport";
     private List<String> aliases = new ArrayList<>();
     private List<String> permissions = new ArrayList<>();
 
@@ -28,15 +28,15 @@ public class CommandConfiguration extends OkaeriConfig {
 
     @Getter
     public static class SubCommand extends OkaeriConfig {
-        private boolean enabled = true;
-        private String name = "version";
+        private boolean enabled = false;
+        private String name = "default";
         private List<String> aliases = new ArrayList<>();
         private List<String> permissions = new ArrayList<>();
     }
 
     @Getter
     public static class Cooldown extends OkaeriConfig {
-        private boolean enabled = false;
+        private boolean enabled = true;
         @Comment("Duration of the cooldown (e.g. 5s, 10m, 1h)")
         private Duration duration = Duration.ofSeconds(60);
         @Comment("Permission required to bypass the cooldown")

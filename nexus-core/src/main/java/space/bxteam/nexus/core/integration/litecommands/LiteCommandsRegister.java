@@ -14,12 +14,16 @@ import dev.rollczi.litecommands.argument.resolver.ArgumentResolverBase;
 import dev.rollczi.litecommands.bukkit.LiteBukkitFactory;
 import dev.rollczi.litecommands.editor.Editor;
 import dev.rollczi.litecommands.handler.result.ResultHandler;
+import dev.rollczi.litecommands.message.LiteMessages;
 import dev.rollczi.litecommands.scope.Scope;
 import net.kyori.adventure.platform.AudienceProvider;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Server;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.Plugin;
+import space.bxteam.nexus.core.integration.litecommands.commands.CommandCooldownMessage;
+import space.bxteam.nexus.core.configuration.commands.CommandsConfigProvider;
+import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.core.scanner.annotations.litecommands.LiteArgument;
 import space.bxteam.nexus.core.scanner.annotations.litecommands.LiteEditor;
 import space.bxteam.nexus.core.scanner.annotations.litecommands.LiteHandler;
@@ -44,6 +48,7 @@ public class LiteCommandsRegister {
 
         this.liteCommandsBuilder = LiteBukkitFactory.builder("nexus", plugin, server)
                 .commands(annotations)
+                .message(LiteMessages.COMMAND_COOLDOWN, new CommandCooldownMessage(injector.getInstance(MultificationManager.class), injector.getInstance(CommandsConfigProvider.class)))
                 .extension(new LiteAdventurePlatformExtension<>(audiencesProvider), extension -> extension.serializer(miniMessage));
 
         registerHandlersAndArguments();
