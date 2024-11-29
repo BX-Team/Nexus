@@ -49,7 +49,11 @@ public class HomeCommand {
 
             if (mainHome.isPresent()) {
                 player.teleport(mainHome.get().location());
-                // TODO: Add sound
+                this.multificationManager.create()
+                        .player(player.getUniqueId())
+                        .notice(translation -> translation.home().homeTeleported())
+                        .placeholder("{HOME}", mainHome.get().name())
+                        .send();
                 return;
             }
 
@@ -64,12 +68,20 @@ public class HomeCommand {
         Home firstHome = playerHomes.iterator().next();
 
         player.teleport(firstHome.location());
-        // TODO: Add sound
+        this.multificationManager.create()
+                .player(player.getUniqueId())
+                .notice(translation -> translation.home().homeTeleported())
+                .placeholder("{HOME}", firstHome.name())
+                .send();
     }
 
     @Execute
     void home(@Context Player player, @Arg Home home) {
         player.teleport(home.location());
-        // TODO: Add sound
+        this.multificationManager.create()
+                .player(player.getUniqueId())
+                .notice(translation -> translation.home().homeTeleported())
+                .placeholder("{HOME}", home.name())
+                .send();
     }
 }

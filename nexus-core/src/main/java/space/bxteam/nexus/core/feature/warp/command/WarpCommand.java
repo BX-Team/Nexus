@@ -33,7 +33,11 @@ public class WarpCommand {
         }
 
         player.teleport(warp.location());
-        // TODO: Add sound
+        this.multificationManager.create()
+                .player(player.getUniqueId())
+                .notice(translation -> translation.warp().warpTeleported())
+                .placeholder("{WARP}", name)
+                .send();
     }
 
     @Execute
@@ -51,5 +55,10 @@ public class WarpCommand {
         }
 
         target.teleport(warp.location());
+        this.multificationManager.create()
+                .player(target.getUniqueId())
+                .notice(translation -> translation.warp().warpTeleported())
+                .placeholder("{WARP}", name)
+                .send();
     }
 }

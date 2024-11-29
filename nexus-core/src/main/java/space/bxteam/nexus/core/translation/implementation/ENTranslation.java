@@ -221,13 +221,18 @@ public class ENTranslation extends OkaeriConfig implements Translation {
     @Getter
     public class ENWarpSection extends OkaeriConfig implements WarpSection {
         @Comment("{WARP} - Warp name")
+        public Notice warpTeleported = Notice.builder()
+                .chat("<green>You have been teleported to warp <white>{WARP}")
+                .sound(Key.key("entity.enderman.teleport"), 1.0f, 1.0f)
+                .build();
+
         public Notice create = Notice.chat("<green>Warp <white>{WARP} <green>has been created.");
         public Notice remove = Notice.chat("<green>Warp <white>{WARP} <green>has been deleted.");
 
         @Comment("")
         public Notice warpAlreadyExists = Notice.chat("<dark_red>Warp <white>{WARP} <dark_red>already exists!");
         public Notice noWarps = Notice.chat("<dark_red>There are no warps!");
-        public Notice notExist = Notice.chat("<dark_red>This warp doesn't exist");
+        public Notice notExist = Notice.chat("<dark_red>Warp <white>{WARP} <dark_red>doesn't exist!");
     }
 
     @Comment({"", "This section is responsible for the home-related messages."})
@@ -235,7 +240,13 @@ public class ENTranslation extends OkaeriConfig implements Translation {
 
     @Getter
     public class ENHomeSection extends OkaeriConfig implements HomeSection {
-        @Comment("{HOMES} - List of homes (separated by commas)")
+        @Comment("{HOME} - Home name")
+        public Notice homeTeleported = Notice.builder()
+                .chat("<green>You have been teleported to home <white>{HOME}")
+                .sound(Key.key("entity.enderman.teleport"), 1.0f, 1.0f)
+                .build();
+
+        @Comment({"", "{HOMES} - List of homes (separated by commas)"})
         public Notice homeList = Notice.chat("<green>Available homes: <white>{HOMES}");
 
         @Comment({"", "{HOME} - Home name"})

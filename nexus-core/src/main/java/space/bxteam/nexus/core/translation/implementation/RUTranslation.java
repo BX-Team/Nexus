@@ -220,14 +220,19 @@ public class RUTranslation extends OkaeriConfig implements Translation {
 
     @Getter
     public class RUWarpSection extends OkaeriConfig implements WarpSection {
-        @Comment("{WARP} - Название точки телепортации")
-        public Notice create = Notice.chat("<green>Точка телепортации <white>{WARP} <green>создана.");
-        public Notice remove = Notice.chat("<green>Точка телепортации <white>{WARP} <green>удалена.");
+        @Comment("{WARP} - Название варпа")
+        public Notice warpTeleported = Notice.builder()
+                .chat("<green>Вы были телепортированы на варп <white>{WARP}")
+                .sound(Key.key("entity.enderman.teleport"), 1.0f, 1.0f)
+                .build();
+
+        public Notice create = Notice.chat("<green>Варп <white>{WARP} <green>создан.");
+        public Notice remove = Notice.chat("<green>Варп <white>{WARP} <green>удален.");
 
         @Comment("")
-        public Notice warpAlreadyExists = Notice.chat("<dark_red>Точка телепортации <white>{WARP} <dark_red>уже существует!");
-        public Notice noWarps = Notice.chat("<dark_red>Нет точек телепортации!");
-        public Notice notExist = Notice.chat("<dark_red>Эта точка телепортации не существует");
+        public Notice warpAlreadyExists = Notice.chat("<dark_red>Варп с именем <white>{WARP} <dark_red>уже существует!");
+        public Notice noWarps = Notice.chat("<dark_red>Нет варпов!");
+        public Notice notExist = Notice.chat("<dark_red>Варпа <white>{WARP} <dark_red>не существует!");
     }
 
     @Comment({"", "Этот раздел отвечает за сообщения, связанные с домами."})
@@ -235,7 +240,13 @@ public class RUTranslation extends OkaeriConfig implements Translation {
 
     @Getter
     public class RUHomeSection extends OkaeriConfig implements HomeSection {
-        @Comment("{HOMES} - Список домов (через запятую)")
+        @Comment("{HOME} - Название дома")
+        public Notice homeTeleported = Notice.builder()
+                .chat("<green>Вы были телепортированы в дом <white>{HOME}")
+                .sound(Key.key("entity.enderman.teleport"), 1.0f, 1.0f)
+                .build();
+
+        @Comment({"", "{HOMES} - Список домов (через запятую)"})
         public Notice homeList = Notice.chat("<green>Доступные дома: <white>{HOMES}");
 
         @Comment({"", "{HOME} - Название дома"})

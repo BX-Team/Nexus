@@ -124,6 +124,7 @@ public interface Translation {
     WarpSection warp();
 
     interface WarpSection {
+        Notice warpTeleported();
         Notice create();
         Notice remove();
 
@@ -135,6 +136,7 @@ public interface Translation {
     HomeSection home();
 
     interface HomeSection {
+        Notice homeTeleported();
         Notice homeList();
         Notice create();
         Notice delete();
