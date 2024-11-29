@@ -9,7 +9,9 @@ import org.bukkit.event.Event;
 public class EventCaller {
     private final Server server;
 
-    public <T extends Event> void callEvent(T event) {
+    public <T extends Event> T callEvent(T event) {
         this.server.getPluginManager().callEvent(event);
+
+        return event;
     }
 }

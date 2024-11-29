@@ -2,8 +2,9 @@ package space.bxteam.nexus.core.feature.warp;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import space.bxteam.commons.bukkit.position.Position;
+import space.bxteam.commons.bukkit.position.PositionFactory;
 import space.bxteam.nexus.core.database.DatabaseClient;
 import space.bxteam.nexus.feature.warp.Warp;
 import space.bxteam.nexus.feature.warp.WarpService;
@@ -55,16 +56,11 @@ public class WarpServiceImpl implements WarpService {
     }
 
     private void saveWarpToDatabase(Warp warp) {
-        String query = "INSERT INTO warps (name, world, x, y, z, yaw, pitch) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO warps (name, position) VALUES (?, ?)";
         client.newBuilder(query)
                 .appends(
                         warp.name(),
-                        warp.location().getWorld().getName(),
-                        warp.location().getX(),
-                        warp.location().getY(),
-                        warp.location().getZ(),
-                        warp.location().getYaw(),
-                        warp.location().getPitch()
+                        PositionFactory.convert(warp.location())
                 )
                 .execute();
     }
@@ -82,15 +78,9 @@ public class WarpServiceImpl implements WarpService {
                 .queryAll(resultSet -> {
                     try {
                         String name = resultSet.getString("name");
-                        String world = resultSet.getString("world");
-                        double x = resultSet.getDouble("x");
-                        double y = resultSet.getDouble("y");
-                        double z = resultSet.getDouble("z");
-                        float yaw = resultSet.getFloat("yaw");
-                        float pitch = resultSet.getFloat("pitch");
+                        Location location = PositionFactory.convert(Position.parse(resultSet.getString("position")));
 
-                        Location location = new Location(Bukkit.getWorld(world), x, y, z, yaw, pitch);
-                        warpMap.put(name, new WarpImpl(name, location));
+                        this.warpMap.put(name, new WarpImpl(name, location));
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }

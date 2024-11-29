@@ -2,9 +2,10 @@ package space.bxteam.nexus.core.feature.home;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
+import space.bxteam.commons.bukkit.position.Position;
+import space.bxteam.commons.bukkit.position.PositionFactory;
 import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import space.bxteam.nexus.core.database.DatabaseClient;
 import space.bxteam.nexus.core.event.EventCaller;
@@ -139,17 +140,12 @@ public class HomeServiceImpl implements HomeService {
     }
 
     private void createHome(Home home) {
-        String query = "INSERT INTO homes (owner, name, world, x, y, z, yaw, pitch) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO homes (owner, name, position) VALUES (?, ?, ?)";
         client.newBuilder(query)
                 .appends(
                         home.owner(),
                         home.name(),
-                        home.location().getWorld().getName(),
-                        home.location().getX(),
-                        home.location().getY(),
-                        home.location().getZ(),
-                        home.location().getYaw(),
-                        home.location().getPitch()
+                        PositionFactory.convert(home.location())
                 )
                 .execute();
     }
@@ -168,16 +164,9 @@ public class HomeServiceImpl implements HomeService {
                     try {
                         UUID owner = UUID.fromString(resultSet.getString("owner"));
                         String name = resultSet.getString("name");
-                        String world = resultSet.getString("world");
-                        double x = resultSet.getDouble("x");
-                        double y = resultSet.getDouble("y");
-                        double z = resultSet.getDouble("z");
-                        float yaw = resultSet.getFloat("yaw");
-                        float pitch = resultSet.getFloat("pitch");
+                        Location location = PositionFactory.convert(Position.parse(resultSet.getString("position")));
 
-                        Location location = new Location(Bukkit.getWorld(world), x, y, z, yaw, pitch);
                         Home home = new HomeImpl(owner, name, location);
-
                         this.userHomes.computeIfAbsent(owner, k -> new HashMap<>()).put(name, home);
                     } catch (Exception e) {
                         e.printStackTrace();

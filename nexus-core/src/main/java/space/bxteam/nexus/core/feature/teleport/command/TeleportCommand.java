@@ -12,7 +12,6 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import space.bxteam.nexus.core.feature.teleport.TeleportContext;
 import space.bxteam.nexus.core.multification.formatter.MultificationFormatter;
 import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.feature.teleport.TeleportService;
@@ -115,4 +114,6 @@ public class TeleportCommand {
     private Formatter formatter(Player player, Location location) {
         return CONTEXT.toFormatter(new TeleportContext(player, location));
     }
+
+    private record TeleportContext(Player player, Location location) { }
 }

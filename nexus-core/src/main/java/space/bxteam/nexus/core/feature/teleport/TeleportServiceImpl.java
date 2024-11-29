@@ -8,7 +8,9 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import space.bxteam.commons.bukkit.position.Position;
 import space.bxteam.commons.bukkit.position.PositionFactory;
+import space.bxteam.nexus.core.event.EventCaller;
 import space.bxteam.nexus.feature.teleport.TeleportService;
+import space.bxteam.nexus.feature.teleport.event.TeleportEvent;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,11 +21,18 @@ import java.util.UUID;
 @Singleton
 public class TeleportServiceImpl implements TeleportService {
     private final Map<UUID, Position> lastPosition = new HashMap<>();
+    private final EventCaller eventCaller;
 
     @Override
     public void teleport(Player player, Location location) {
+        TeleportEvent event = this.eventCaller.callEvent(new TeleportEvent(player, location));
+
+        if (event.isCancelled()) {
+            return;
+        }
+
         Location lastLocation = player.getLocation().clone();
-        PaperLib.teleportAsync(player, location);
+        PaperLib.teleportAsync(player, event.getLocation());
         this.markLastLocation(player.getUniqueId(), lastLocation);
     }
 

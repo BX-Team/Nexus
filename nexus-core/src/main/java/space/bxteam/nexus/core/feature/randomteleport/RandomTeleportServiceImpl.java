@@ -9,8 +9,11 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
 import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
+import space.bxteam.nexus.core.event.EventCaller;
 import space.bxteam.nexus.feature.randomteleport.RandomTeleportService;
 import space.bxteam.nexus.feature.randomteleport.TeleportResult;
+import space.bxteam.nexus.feature.randomteleport.event.PreRandomTeleportEvent;
+import space.bxteam.nexus.feature.randomteleport.event.RandomTeleportEvent;
 
 import java.util.EnumSet;
 import java.util.Random;
@@ -22,6 +25,7 @@ import java.util.concurrent.CompletableFuture;
 public class RandomTeleportServiceImpl implements RandomTeleportService {
     private final PluginConfigurationProvider configurationProvider;
     private final Server server;
+    private final EventCaller eventCaller;
     private final Random random = new Random();
 
     private static final Set<Material> UNSAFE_BLOCKS = EnumSet.of(
@@ -54,9 +58,15 @@ public class RandomTeleportServiceImpl implements RandomTeleportService {
 
     @Override
     public CompletableFuture<TeleportResult> teleport(Player player, World world) {
-        return getSafeRandomLocation(world, configurationProvider.configuration().randomTeleport().maxAttempts())
-                .thenCompose(location -> PaperLib.teleportAsync(player, location)
-                        .thenApply(success -> new TeleportResult(success, location)));
+        if (this.eventCaller.callEvent(new PreRandomTeleportEvent(player)).isCancelled()) {
+            return CompletableFuture.completedFuture(new TeleportResult(false, player.getLocation()));
+        }
+
+        return this.getSafeRandomLocation(world, this.configurationProvider.configuration().randomTeleport().maxAttempts())
+                .thenCompose(location -> PaperLib.teleportAsync(player, location).thenApply(success -> {
+                    this.eventCaller.callEvent(new RandomTeleportEvent(player, location));
+                    return new TeleportResult(success, location);
+                }));
     }
 
     @Override

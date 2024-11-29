@@ -92,12 +92,7 @@ public class SQLiteClient implements DatabaseClient, DatabaseQueries {
                 "CREATE TABLE IF NOT EXISTS `homes` (" +
                         "`owner` TEXT NOT NULL," +
                         "`name` TEXT NOT NULL," +
-                        "`world` TEXT NOT NULL," +
-                        "`x` REAL NOT NULL," +
-                        "`y` REAL NOT NULL," +
-                        "`z` REAL NOT NULL," +
-                        "`yaw` REAL NOT NULL," +
-                        "`pitch` REAL NOT NULL," +
+                        "`position` TEXT NOT NULL," +
                         "PRIMARY KEY(`owner`, `name`)" +
                         ");"
         ).execute();
@@ -105,12 +100,7 @@ public class SQLiteClient implements DatabaseClient, DatabaseQueries {
         this.newBuilder(
                 "CREATE TABLE IF NOT EXISTS `warps` (" +
                         "`name` TEXT NOT NULL UNIQUE," +
-                        "`world` TEXT NOT NULL," +
-                        "`x` REAL NOT NULL," +
-                        "`y` REAL NOT NULL," +
-                        "`z` REAL NOT NULL," +
-                        "`yaw` REAL NOT NULL," +
-                        "`pitch` REAL NOT NULL," +
+                        "`position` TEXT NOT NULL," +
                         "PRIMARY KEY(`name`)" +
                         ");"
         ).execute();
