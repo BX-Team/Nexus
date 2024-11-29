@@ -13,6 +13,7 @@ import space.bxteam.nexus.core.integration.IntegrationRegistry;
 import space.bxteam.nexus.core.integration.bstats.MetricsModule;
 import space.bxteam.nexus.core.integration.litecommands.LiteCommandsRegister;
 import space.bxteam.nexus.core.scanner.register.ComponentRegister;
+import space.bxteam.nexus.core.scheduler.SchedulerSetup;
 import space.bxteam.nexus.core.translation.TranslationProvider;
 import space.bxteam.nexus.core.utils.Logger;
 import space.bxteam.nexus.event.NexusInitializeEvent;
@@ -29,6 +30,7 @@ public class Nexus {
                         new NexusModule(this.configurationProvider, plugin),
                         new ConfigModule(),
                         new DatabaseModule(this.configurationProvider),
+                        new SchedulerSetup(plugin),
                         new MetricsModule()
         );
 
