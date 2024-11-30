@@ -27,7 +27,7 @@ public class TpaAcceptCommand {
 
     @Execute
     void execute(@Context Player player, @Arg(RequesterArgument.KEY) Player target) {
-        this.teleportService.teleport(player, target.getLocation());
+        this.teleportService.teleport(target, player.getLocation());
         this.requestService.removeRequest(target.getUniqueId());
 
         this.multificationManager.create()
