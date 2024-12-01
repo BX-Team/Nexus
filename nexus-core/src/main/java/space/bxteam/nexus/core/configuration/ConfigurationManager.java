@@ -15,7 +15,6 @@ import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
 import org.yaml.snakeyaml.representer.Representer;
 import org.yaml.snakeyaml.resolver.Resolver;
-import space.bxteam.nexus.core.configuration.representer.CustomSnakeYamlRepresenter;
 
 import java.io.File;
 import java.util.HashSet;

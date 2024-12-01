@@ -259,6 +259,22 @@ public class ENTranslation extends OkaeriConfig implements Translation {
         public Notice noHomes = Notice.chat("<dark_red>You don't have any homes!");
     }
 
+    @Comment({"", "This section is responsible for the spawn-related messages."})
+    public ENSpawnSection spawn = new ENSpawnSection();
+
+    @Getter
+    public class ENSpawnSection extends OkaeriConfig implements SpawnSection {
+        public Notice spawnTeleported = Notice.builder()
+                .chat("<green>You have been teleported to spawn!")
+                .sound(Key.key("entity.enderman.teleport"), 1.0f, 1.0f)
+                .build();
+        public Notice spawnTeleportedOther = Notice.chat("<green>You have teleported the player <white>{PLAYER} <green>to spawn!");
+
+        @Comment("")
+        public Notice setSpawn = Notice.chat("<green>Spawn has been set to your current location!");
+        public Notice noSpawn = Notice.chat("<dark_red>Spawn doesn't exist!");
+    }
+
     @Comment({"", "This section is responsible for the teleport-related messages."})
     public ENTeleportSection teleport = new ENTeleportSection();
 

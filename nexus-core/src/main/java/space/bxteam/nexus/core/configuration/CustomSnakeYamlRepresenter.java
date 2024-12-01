@@ -1,4 +1,4 @@
-package space.bxteam.nexus.core.configuration.representer;
+package space.bxteam.nexus.core.configuration;
 
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.nodes.Node;
