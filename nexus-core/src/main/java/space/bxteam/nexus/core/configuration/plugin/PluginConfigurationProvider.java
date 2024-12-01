@@ -6,6 +6,7 @@ import eu.okaeri.configs.serdes.commons.SerdesCommons;
 import eu.okaeri.configs.yaml.bukkit.YamlBukkitConfigurer;
 import eu.okaeri.configs.yaml.bukkit.serdes.SerdesBukkit;
 import lombok.Getter;
+import space.bxteam.nexus.core.configuration.seriazlier.position.PositionSerdesPack;
 import space.bxteam.nexus.core.utils.Logger;
 
 import java.nio.file.Path;
@@ -33,7 +34,7 @@ public class PluginConfigurationProvider {
     private Optional<PluginConfiguration> loadConfiguration() {
         try {
             return Optional.of(ConfigManager.create(PluginConfiguration.class, (config) -> {
-                config.withConfigurer(new YamlBukkitConfigurer(), new SerdesBukkit(), new SerdesCommons());
+                config.withConfigurer(new YamlBukkitConfigurer(), new SerdesBukkit(), new SerdesCommons(), new PositionSerdesPack());
                 config.withBindFile(dataFolder.resolve(CONFIG_FILE));
                 config.withRemoveOrphans(true);
                 config.saveDefaults();

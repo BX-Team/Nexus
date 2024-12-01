@@ -259,6 +259,22 @@ public class RUTranslation extends OkaeriConfig implements Translation {
         public Notice noHomes = Notice.chat("<dark_red>У вас нет домов!");
     }
 
+    @Comment({"", "This section is responsible for the spawn-related messages."})
+    public RUSpawnSection spawn = new RUSpawnSection();
+
+    @Getter
+    public class RUSpawnSection extends OkaeriConfig implements SpawnSection {
+        public Notice spawnTeleported = Notice.builder()
+                .chat("<green>Вы были телепортированы на спавн!")
+                .sound(Key.key("entity.enderman.teleport"), 1.0f, 1.0f)
+                .build();
+        public Notice spawnTeleportedOther = Notice.chat("<green>Вы телепортировали игрока <white>{PLAYER} <green>на спавн!");
+
+        @Comment("")
+        public Notice setSpawn = Notice.chat("<green>Спавн установлен на вашем текущем местоположении!");
+        public Notice noSpawn = Notice.chat("<dark_red>Спавн не установлен!");
+    }
+
     @Comment({"", "Этот раздел отвечает за сообщения, связанные с телепортацией."})
     public RUTeleportSection teleport = new RUTeleportSection();
 

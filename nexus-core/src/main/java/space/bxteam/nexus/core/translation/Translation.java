@@ -145,6 +145,16 @@ public interface Translation {
         Notice homeAlreadyExists();
     }
 
+    SpawnSection spawn();
+
+    interface SpawnSection {
+        Notice spawnTeleported();
+        Notice spawnTeleportedOther();
+
+        Notice setSpawn();
+        Notice noSpawn();
+    }
+
     TeleportSection teleport();
 
     interface TeleportSection {

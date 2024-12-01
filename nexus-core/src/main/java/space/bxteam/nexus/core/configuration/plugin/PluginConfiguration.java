@@ -2,8 +2,10 @@ package space.bxteam.nexus.core.configuration.plugin;
 
 import eu.okaeri.configs.OkaeriConfig;
 import eu.okaeri.configs.annotation.Comment;
+import eu.okaeri.configs.annotation.Exclude;
 import eu.okaeri.configs.annotation.Header;
 import lombok.Getter;
+import space.bxteam.commons.bukkit.position.Position;
 import space.bxteam.nexus.core.feature.randomteleport.RandomTeleportType;
 import space.bxteam.nexus.core.translation.Language;
 
@@ -67,6 +69,17 @@ public class PluginConfiguration extends OkaeriConfig {
             private String username = "root";
             private String password = "password";
         }
+    }
+
+    @Comment("")
+    private Spawn spawn = new Spawn();
+    @Exclude
+    public static final Position EMPTY_POSITION = new Position(0, 0, 0, 0.0f, 0.0f, Position.NONE_WORLD);
+
+    @Getter
+    public static class Spawn extends OkaeriConfig {
+        @Comment({"The spawn location", "WE DO NOT RECOMMEND CHANGING THIS VALUE MANUALLY"})
+        private Position location = EMPTY_POSITION;
     }
 
     @Comment("")
