@@ -2,6 +2,7 @@ package space.bxteam.nexus.core.configuration.plugin;
 
 import eu.okaeri.configs.OkaeriConfig;
 import eu.okaeri.configs.annotation.Comment;
+import eu.okaeri.configs.annotation.Exclude;
 import eu.okaeri.configs.annotation.Header;
 import lombok.Getter;
 import space.bxteam.commons.bukkit.position.Position;
@@ -26,10 +27,10 @@ import java.util.Set;
 @Header("Modrinth: https://modrinth.com/plugin/nexuss")
 public class PluginConfiguration extends OkaeriConfig {
     @Comment("Should the plugin check for updates?")
-    public boolean checkForUpdates = true;
+    private boolean checkForUpdates = true;
 
     @Comment("Plugin prefix")
-    public String prefix = "&7[&6Nexus&7] ";
+    private String prefix = "&7[&6Nexus&7] ";
 
     @Comment({
             "Select the language of the plugin",
@@ -37,10 +38,10 @@ public class PluginConfiguration extends OkaeriConfig {
             "- EN - English",
             "- RU - Russian"
     })
-    public Language language = Language.EN;
+    private Language language = Language.EN;
 
     @Comment({"", "Database configuration"})
-    public DatabaseConfig database = new DatabaseConfig();
+    private DatabaseConfig database = new DatabaseConfig();
 
     @Getter
     public class DatabaseConfig extends OkaeriConfig {
@@ -50,59 +51,60 @@ public class PluginConfiguration extends OkaeriConfig {
                 " - sqlite - (default) stores all data in a local file",
                 " - mariadb - allows using a remote database"
         })
-        public String type = "sqlite";
+        private String type = "sqlite";
 
         @Comment({"", "SQLite configuration"})
-        public SQLiteConfig sqlite = new SQLiteConfig();
+        private SQLiteConfig sqlite = new SQLiteConfig();
 
         @Getter
         public class SQLiteConfig extends OkaeriConfig {
-            public String file = "nexus.db";
+            private String file = "nexus.db";
         }
 
         @Comment({"", "MariaDB configuration"})
-        public MariaDBConfig mariadb = new MariaDBConfig();
+        private MariaDBConfig mariadb = new MariaDBConfig();
 
         @Getter
         public class MariaDBConfig extends OkaeriConfig {
-            public String jdbc = "jdbc:mariadb://localhost:3306/nexus";
-            public String username = "root";
-            public String password = "password";
+            private String jdbc = "jdbc:mariadb://localhost:3306/nexus";
+            private String username = "root";
+            private String password = "password";
         }
     }
 
     @Comment("")
-    public Spawn spawn = new Spawn();
-    public transient Position EMPTY_POSITION = new Position(0, 0, 0, 0.0f, 0.0f, Position.NONE_WORLD);
+    private Spawn spawn = new Spawn();
+    @Exclude
+    private static final Position EMPTY_POSITION = new Position(0, 0, 0, 0.0f, 0.0f, Position.NONE_WORLD);
 
     @Getter
     public class Spawn extends OkaeriConfig {
         @Comment({"The spawn location", "WE DO NOT RECOMMEND CHANGING THIS VALUE MANUALLY"})
-        public Position location = EMPTY_POSITION;
+        private Position location = EMPTY_POSITION;
     }
 
     @Comment("")
-    public Items items = new Items();
+    private Items items = new Items();
 
     @Getter
     public class Items extends OkaeriConfig {
         @Comment("Use unsafe enchantments? Allows you to apply custom enchants to various items")
-        public boolean unsafeEnchantments = true;
+        private boolean unsafeEnchantments = true;
 
         @Comment({"", "The default item give amount, when no amount is specified in the command."})
-        public int defaultGiveAmount = 1;
+        private int defaultGiveAmount = 1;
     }
 
     @Comment("")
-    public Homes homes = new Homes();
+    private Homes homes = new Homes();
 
     @Getter
     public class Homes extends OkaeriConfig {
         @Comment("Default home name")
-        public String defaultHomeName = "home";
+        private String defaultHomeName = "home";
 
         @Comment({"", "Maximum amount of homes per permission"})
-        public Map<String, Integer> maxHomes = new LinkedHashMap<>() {
+        private Map<String, Integer> maxHomes = new LinkedHashMap<>() {
             {
                 put("nexus.home.default", 1);
                 put("nexus.home.extended", 2);
@@ -111,17 +113,17 @@ public class PluginConfiguration extends OkaeriConfig {
     }
 
     @Comment("")
-    public Chat chat = new Chat();
+    private Chat chat = new Chat();
 
     @Getter
     public class Chat extends OkaeriConfig {
         @Comment("Is the slowmode enabled?")
-        public boolean slowModeEnabled = true;
+        private boolean slowModeEnabled = true;
         @Comment("Chat slowmode time in seconds")
-        public Duration slowMode = Duration.ofSeconds(5);
+        private Duration slowMode = Duration.ofSeconds(5);
 
         @Comment("How many lines should be cleared when using the /chat clear command")
-        public int clearLines = 100;
+        private int clearLines = 100;
     }
 
     @Comment("")
@@ -144,7 +146,7 @@ public class PluginConfiguration extends OkaeriConfig {
     }
 
     @Comment("")
-    public RandomTeleport randomTeleport = new RandomTeleport();
+    private RandomTeleport randomTeleport = new RandomTeleport();
 
     @Getter
     public class RandomTeleport extends OkaeriConfig {
@@ -153,24 +155,24 @@ public class PluginConfiguration extends OkaeriConfig {
                 "- WORLD_BORDER_RADIUS - Teleports the player to a random location within the world border",
                 "- STATIC_RADIUS - Teleports the player to a random location within the specified radius",
         })
-        public RandomTeleportType randomTeleportType = RandomTeleportType.WORLD_BORDER_RADIUS;
+        private RandomTeleportType randomTeleportType = RandomTeleportType.WORLD_BORDER_RADIUS;
 
         @Comment("The radius in which the player will be teleported")
-        public int randomTeleportRadius = 1000;
+        private int randomTeleportRadius = 1000;
 
         @Comment("The maximum amount of attempts to find a safe location")
-        public int maxAttempts = 10;
+        private int maxAttempts = 10;
 
         @Comment("Teleport to a specific world, if left empty it will teleport to the player's current world")
-        public String randomTeleportWorld = "world";
+        private String randomTeleportWorld = "world";
     }
 
     @Comment("")
-    public TeleportRequest teleportRequest = new TeleportRequest();
+    private TeleportRequest teleportRequest = new TeleportRequest();
 
     @Getter
     public class TeleportRequest extends OkaeriConfig {
         @Comment("The time in seconds after which the teleport request will expire")
-        public Duration requestTimeout = Duration.ofSeconds(30);
+        private Duration requestTimeout = Duration.ofSeconds(30);
     }
 }
