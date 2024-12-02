@@ -97,5 +97,15 @@ public class MariaDBClient implements DatabaseClient, DatabaseQueries {
                         "PRIMARY KEY(`name`)" +
                         ");"
         ).execute();
+
+        this.newBuilder(
+                "CREATE TABLE IF NOT EXISTS `jail` (" +
+                        "`id` TEXT NOT NULL," +
+                        "`jailedAt` TEXT NOT NULL," +
+                        "`duration` TEXT NOT NULL," +
+                        "`jailedBy` TEXT NOT NULL," +
+                        "PRIMARY KEY(`player`)" +
+                        ");"
+        ).execute();
     }
 }
