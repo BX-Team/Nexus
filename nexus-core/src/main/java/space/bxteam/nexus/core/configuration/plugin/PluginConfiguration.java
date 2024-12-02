@@ -2,7 +2,6 @@ package space.bxteam.nexus.core.configuration.plugin;
 
 import eu.okaeri.configs.OkaeriConfig;
 import eu.okaeri.configs.annotation.Comment;
-import eu.okaeri.configs.annotation.Exclude;
 import eu.okaeri.configs.annotation.Header;
 import lombok.Getter;
 import space.bxteam.commons.bukkit.position.Position;
@@ -74,8 +73,7 @@ public class PluginConfiguration extends OkaeriConfig {
 
     @Comment("")
     public Spawn spawn = new Spawn();
-    @Exclude
-    public static final Position EMPTY_POSITION = new Position(0, 0, 0, 0.0f, 0.0f, Position.NONE_WORLD);
+    public transient Position EMPTY_POSITION = new Position(0, 0, 0, 0.0f, 0.0f, Position.NONE_WORLD);
 
     @Getter
     public class Spawn extends OkaeriConfig {
