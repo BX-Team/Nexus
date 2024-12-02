@@ -7,7 +7,6 @@ import org.jetbrains.annotations.Nullable;
 
 import java.time.Duration;
 import java.util.Collection;
-import java.util.Map;
 import java.util.UUID;
 
 public interface JailService {
@@ -21,16 +20,16 @@ public interface JailService {
      * @param detainedBy The player who detained the player.
      * @param duration   The duration of the detainment.
      */
-    boolean jailPlayer(String jailName, Player player, CommandSender detainedBy, @Nullable Duration duration);
+    void jailPlayer(String jailName, Player player, CommandSender detainedBy, @Nullable Duration duration);
 
     /**
      * Releases the player from jail. If the player is not jailed, nothing happens.
      * Released player is teleported to spawn.
      * Returns true if player has been released.
      *
-     * @param player     The player to release.
+     * @param player The player to release.
      */
-    boolean releasePlayer(Player player);
+    void releasePlayer(Player player);
 
     /**
      * Releases all players from jail and teleports them to spawn.
@@ -65,4 +64,17 @@ public interface JailService {
      * @param name The name of the jail area.
      */
     void removeJailArea(String name);
+
+    /**
+     * Checks if jail with specified name exists.
+     *
+     * @param name The name of the jail.
+     * @return True if jail exists.
+     */
+    boolean jailExists(String name);
+
+    /**
+     * Gets all jail names.
+     */
+    Collection<String> getAllJailNames();
 }

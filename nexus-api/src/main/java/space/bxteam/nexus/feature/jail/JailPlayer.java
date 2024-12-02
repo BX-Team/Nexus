@@ -6,35 +6,35 @@ import java.util.UUID;
 
 public class JailPlayer {
     private final UUID player;
-    private final Instant detainedAt;
+    private final Instant jailedAt;
     private final Duration prisonTime;
-    private final String detainedBy;
+    private final String jailedBy;
 
     public JailPlayer(UUID player, Instant detainedAt, Duration prisonTime, String lockedUpBy) {
         this.player = player;
-        this.detainedAt = detainedAt;
+        this.jailedAt = detainedAt;
         this.prisonTime = prisonTime;
-        this.detainedBy = lockedUpBy;
+        this.jailedBy = lockedUpBy;
     }
 
     public UUID getPlayerUniqueId() {
         return this.player;
     }
 
-    public Instant getDetainedAt() {
-        return this.detainedAt;
+    public Instant getJailedAt() {
+        return this.jailedAt;
     }
 
     public Duration getPrisonTime() {
         return this.prisonTime;
     }
 
-    public String getDetainedBy() {
-        return this.detainedBy;
+    public String getJailedBy() {
+        return this.jailedBy;
     }
 
     public boolean isPrisonExpired() {
-        return this.detainedAt.plus(this.prisonTime).isBefore(Instant.now());
+        return this.jailedAt.plus(this.prisonTime).isBefore(Instant.now());
     }
 
     public Instant getReleaseTime() {
@@ -42,6 +42,6 @@ public class JailPlayer {
     }
 
     public Duration getRemainingTime() {
-        return Duration.between(Instant.now(), this.detainedAt.plus(this.prisonTime));
+        return Duration.between(Instant.now(), this.jailedAt.plus(this.prisonTime));
     }
 }

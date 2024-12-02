@@ -127,18 +127,18 @@ public class PluginConfiguration extends OkaeriConfig {
     }
 
     @Comment("")
-    public Jail jail = new Jail();
+    private Jail jail = new Jail();
 
     @Getter
     public class Jail extends OkaeriConfig {
         @Comment("Default jail duration")
-        public Duration jailTime = Duration.ofMinutes(30);
+        private Duration jailTime = Duration.ofMinutes(30);
 
         @Comment({"", "List of allowed commands for jailed players"})
-        public Set<String> allowedCommands = Set.of("msg", "tell", "r", "reply", "me");
+        private Set<String> allowedCommands = Set.of("msg", "tell", "r", "reply", "me");
 
         @Comment({"", "Jail area locations", "WE DO NOT RECOMMEND CHANGING THIS VALUE MANUALLY"})
-        public Map<String, Position> jailArea = new LinkedHashMap<>() {
+        private Map<String, Position> jailArea = new LinkedHashMap<>() {
             {
                 put("jail", EMPTY_POSITION);
             }

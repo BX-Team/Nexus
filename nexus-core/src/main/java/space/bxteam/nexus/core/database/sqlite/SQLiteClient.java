@@ -106,12 +106,12 @@ public class SQLiteClient implements DatabaseClient, DatabaseQueries {
         ).execute();
 
         this.newBuilder(
-                "CREATE TABLE IF NOT EXISTS `jail` (" +
+                "CREATE TABLE IF NOT EXISTS `jailed_players` (" +
                         "`id` TEXT NOT NULL," +
                         "`jailedAt` TEXT NOT NULL," +
                         "`duration` TEXT NOT NULL," +
                         "`jailedBy` TEXT NOT NULL," +
-                        "PRIMARY KEY(`player`)" +
+                        "PRIMARY KEY(`id`)" +
                         ");"
         ).execute();
     }

@@ -45,14 +45,14 @@ public class JailServiceImpl implements JailService {
     }
 
     @Override
-    public boolean jailPlayer(String jailName, Player player, CommandSender detainedBy, @Nullable Duration duration) {
+    public void jailPlayer(String jailName, Player player, CommandSender detainedBy, @Nullable Duration duration) {
         if (duration == null) {
             duration = this.configurationProvider.configuration().jail().jailTime();
         }
 
         Position jailPosition = this.configurationProvider.configuration().jail().jailArea().get(jailName);
         if (jailPosition == null) {
-            return false;
+            return;
         }
 
         Location jailLocation = PositionFactory.convert(jailPosition);
@@ -61,7 +61,7 @@ public class JailServiceImpl implements JailService {
         this.eventCaller.callEvent(event);
 
         if (event.isCancelled()) {
-            return false;
+            return;
         }
 
         JailPlayer jailPlayer = new JailPlayer(player.getUniqueId(), Instant.now(), duration, detainedBy.getName());
@@ -69,22 +69,20 @@ public class JailServiceImpl implements JailService {
         this.saveJailPlayerDatabase(jailPlayer);
         this.jailedPlayers.put(player.getUniqueId(), jailPlayer);
         this.teleportService.teleport(player, jailLocation);
-        return true;
     }
 
     @Override
-    public boolean releasePlayer(Player player) {
+    public void releasePlayer(Player player) {
         PlayerReleaseEvent event = new PlayerReleaseEvent(player.getUniqueId());
         this.eventCaller.callEvent(event);
 
         if (event.isCancelled()) {
-            return false;
+            return;
         }
 
         this.deleteJailPlayerDatabase(player.getUniqueId());
         this.jailedPlayers.remove(player.getUniqueId());
         this.spawnService.teleportToSpawn(player);
-        return true;
     }
 
     @Override
@@ -131,14 +129,24 @@ public class JailServiceImpl implements JailService {
         this.configurationProvider.configuration().save();
     }
 
+    @Override
+    public boolean jailExists(String name) {
+        return this.configurationProvider.configuration().jail().jailArea().containsKey(name);
+    }
+
+    @Override
+    public Collection<String> getAllJailNames() {
+        return this.configurationProvider.configuration().jail().jailArea().keySet();
+    }
+
     private void saveJailPlayerDatabase(JailPlayer jailPlayer) {
         String query = "INSERT INTO jailed_players (id, jailedAt, duration, jailedBy) VALUES (?, ?, ?, ?)";
         this.client.newBuilder(query)
                 .appends(
                         jailPlayer.getPlayerUniqueId(),
-                        jailPlayer.getDetainedAt(),
+                        jailPlayer.getJailedAt(),
                         jailPlayer.getPrisonTime(),
-                        jailPlayer.getDetainedBy()
+                        jailPlayer.getJailedBy()
                 )
                 .execute();
     }

@@ -259,7 +259,38 @@ public class RUTranslation extends OkaeriConfig implements Translation {
         public Notice noHomes = Notice.chat("<dark_red>У вас нет домов!");
     }
 
-    @Comment({"", "This section is responsible for the spawn-related messages."})
+    @Comment({"", "Этот раздел отвечает за сообщения, связанные с тюрьмой."})
+    public RUJailSection jail = new RUJailSection();
+
+    @Getter
+    public class RUJailSection extends OkaeriConfig implements JailSection {
+        @Comment("{JAIL} - Имя тюрьмы")
+        public Notice jailLocationSet = Notice.chat("<green>Тюрьма с именем <white>{JAIL} <green>установлена!");
+        public Notice jailLocationRemove = Notice.chat("<green>Тюрьма с именем <white>{JAIL} <green>удалена!");
+        public Notice jailLocationExists = Notice.chat("<dark_red>Тюрьма <white>{JAIL} <dark_red>уже существует!");
+        public Notice jailLocationNotExists = Notice.chat("<dark_red>Тюрьмы с именем <white>{JAIL} <dark_red>не существует!");
+
+        @Comment("")
+        public Notice jailJailedPrivate = Notice.chat("<green>Вы были посажены в тюрьму!");
+        @Comment("{PLAYER} - Игрок, который был посажен")
+        public Notice jailJailedExecutor = Notice.chat("<green>Вы посадили игрока <white>{PLAYER} в тюрьму!");
+        public Notice jailAlreadyJailed = Notice.chat("<green>Игрок <white>{PLAYER} <green>уже находится в тюрьме!");
+
+        @Comment({"","{PLAYER} - Игрок который был посажен"})
+        public Notice jailReleasePrivate = Notice.chat("<green>Вы были освобождены из тюрьмы!");
+        public Notice jailReleaseExecutor = Notice.chat("<green>Вы освободили игрока <white>{PLAYER} из тюрьмы!");
+        public Notice jailReleaseAll = Notice.chat("<green>Все игроки были освобождены из тюрьмы");
+        public Notice jailReleaseNoPlayers = Notice.chat("<dark_red>В тюрьме нет игроков!");
+        public Notice jailNotJailed = Notice.chat("<dark_red>Игрок <white>{PLAYER} <dark_red>не находится в тюрьме!");
+
+        @Comment("")
+        public Notice jailListEmpty = Notice.chat("<dark_red>В тюрьме нет игроков!");
+        public Notice jailListHeader = Notice.chat("<green>Игроки в тюрьме:");
+        @Comment("{PLAYER} - Игрок который был посажен, {REMAINING_TIME} - Оставшееся время в тюрьме, {JAILED_BY} - Игрок, посадивший другого игрока")
+        public Notice jailListEntry = Notice.chat("<gray>- <white>{PLAYER} <gray>(<white>{REMAINING_TIME}<gray>) <white>посажен игроком <green>{JAILED_BY}");
+    }
+
+    @Comment({"", "Этот раздел отвечает за сообщения, связанные со спавном."})
     public RUSpawnSection spawn = new RUSpawnSection();
 
     @Getter
