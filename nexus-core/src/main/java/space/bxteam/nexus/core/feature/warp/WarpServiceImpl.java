@@ -60,7 +60,7 @@ public class WarpServiceImpl implements WarpService {
         client.newBuilder(query)
                 .appends(
                         warp.name(),
-                        PositionFactory.convert(warp.location())
+                        PositionFactory.convert(warp.location()).toString()
                 )
                 .execute();
     }

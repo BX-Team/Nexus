@@ -145,7 +145,7 @@ public class HomeServiceImpl implements HomeService {
                 .appends(
                         home.owner(),
                         home.name(),
-                        PositionFactory.convert(home.location())
+                        PositionFactory.convert(home.location()).toString()
                 )
                 .execute();
     }

@@ -6,6 +6,7 @@ import eu.okaeri.configs.annotation.Exclude;
 import eu.okaeri.configs.annotation.Header;
 import lombok.Getter;
 import space.bxteam.commons.bukkit.position.Position;
+import space.bxteam.nexus.core.database.DatabaseType;
 import space.bxteam.nexus.core.feature.randomteleport.RandomTeleportType;
 import space.bxteam.nexus.core.translation.Language;
 
@@ -48,10 +49,10 @@ public class PluginConfiguration extends OkaeriConfig {
         @Comment({
                 "Select here the database you want to use",
                 "The following databases are supported:",
-                " - sqlite - (default) stores all data in a local file",
-                " - mariadb - allows using a remote database"
+                " - SQLITE - (default) stores all data in a local file",
+                " - MARIADB - allows using a remote database"
         })
-        private String type = "sqlite";
+        private DatabaseType type = DatabaseType.SQLITE;
 
         @Comment({"", "SQLite configuration"})
         private SQLiteConfig sqlite = new SQLiteConfig();

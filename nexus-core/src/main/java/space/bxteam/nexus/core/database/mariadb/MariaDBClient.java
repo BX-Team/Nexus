@@ -6,7 +6,6 @@ import com.google.inject.Singleton;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import lombok.Getter;
-import org.bukkit.plugin.java.JavaPlugin;
 import space.bxteam.nexus.core.database.DatabaseClient;
 import space.bxteam.nexus.core.database.DatabaseQueries;
 import space.bxteam.nexus.core.database.statement.StatementBuilder;
@@ -22,7 +21,7 @@ public class MariaDBClient implements DatabaseClient, DatabaseQueries {
     private final HikariConfig hikariConfig;
 
     @Inject
-    public MariaDBClient(Provider<PluginConfiguration> configurationProvider, JavaPlugin plugin) {
+    public MariaDBClient(Provider<PluginConfiguration> configurationProvider) {
         this.configurationProvider = configurationProvider;
 
         this.hikariConfig = new HikariConfig();
@@ -74,36 +73,36 @@ public class MariaDBClient implements DatabaseClient, DatabaseQueries {
     public void createTables() {
         this.newBuilder(
                 "CREATE TABLE IF NOT EXISTS `players` (" +
-                        "`uuid` TEXT NOT NULL UNIQUE," +
-                        "`name` TEXT NOT NULL," +
-                        "`ip` TEXT NOT NULL," +
+                        "`uuid` VARCHAR(255) NOT NULL UNIQUE," +
+                        "`name` VARCHAR(255) NOT NULL," +
+                        "`ip` VARCHAR(255) NOT NULL," +
                         "PRIMARY KEY(`uuid`)" +
                         ");"
         ).execute();
 
         this.newBuilder(
                 "CREATE TABLE IF NOT EXISTS `homes` (" +
-                        "`owner` TEXT NOT NULL," +
-                        "`name` TEXT NOT NULL," +
-                        "`position` TEXT NOT NULL," +
+                        "`owner` VARCHAR(255) NOT NULL," +
+                        "`name` VARCHAR(255) NOT NULL," +
+                        "`position` VARCHAR(255) NOT NULL," +
                         "PRIMARY KEY(`owner`, `name`)" +
                         ");"
         ).execute();
 
         this.newBuilder(
                 "CREATE TABLE IF NOT EXISTS `warps` (" +
-                        "`name` TEXT NOT NULL UNIQUE," +
-                        "`position` TEXT NOT NULL," +
+                        "`name` VARCHAR(255) NOT NULL UNIQUE," +
+                        "`position` VARCHAR(255) NOT NULL," +
                         "PRIMARY KEY(`name`)" +
                         ");"
         ).execute();
 
         this.newBuilder(
                 "CREATE TABLE IF NOT EXISTS `jailed_players` (" +
-                        "`id` TEXT NOT NULL," +
-                        "`jailedAt` TEXT NOT NULL," +
-                        "`duration` TEXT NOT NULL," +
-                        "`jailedBy` TEXT NOT NULL," +
+                        "`id` VARCHAR(255) NOT NULL," +
+                        "`jailedAt` VARCHAR(255) NOT NULL," +
+                        "`duration` VARCHAR(255) NOT NULL," +
+                        "`jailedBy` VARCHAR(255) NOT NULL," +
                         "PRIMARY KEY(`id`)" +
                         ");"
         ).execute();

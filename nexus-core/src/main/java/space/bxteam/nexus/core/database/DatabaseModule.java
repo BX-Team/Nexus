@@ -12,7 +12,7 @@ public class DatabaseModule extends AbstractModule {
 
     @Override
     protected void configure() {
-        if (this.configurationProvider.configuration().database().type().equals("mariadb")) {
+        if (this.configurationProvider.configuration().database().type() == DatabaseType.MARIADB) {
             this.bind(DatabaseClient.class).to(MariaDBClient.class);
         } else {
             this.bind(DatabaseClient.class).to(SQLiteClient.class);
