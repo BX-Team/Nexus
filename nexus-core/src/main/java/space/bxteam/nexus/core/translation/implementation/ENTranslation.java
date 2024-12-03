@@ -259,6 +259,44 @@ public class ENTranslation extends OkaeriConfig implements Translation {
         public Notice noHomes = Notice.chat("<dark_red>You don't have any homes!");
     }
 
+    @Comment({"", "This section is responsible for the jail-related messages."})
+    public ENJailSection jail = new ENJailSection();
+
+    @Getter
+    public class ENJailSection extends OkaeriConfig implements JailSection {
+        @Comment("{JAIL} - Jail name")
+        public Notice jailLocationSet = Notice.chat("<green>Jail location with name <white>{JAIL} <green>has been set!");
+        public Notice jailLocationRemove = Notice.chat("<green>Jail location with name <white>{JAIL} <green>has been removed!");
+        public Notice jailLocationExists = Notice.chat("<dark_red>Jail location <white>{JAIL} <dark_red>already exists!");
+        public Notice jailLocationNotExists = Notice.chat("<dark_red>This jail location doesn't exist!");
+
+        @Comment("")
+        public Notice jailJailedPrivate = Notice.chat("<green>You have been jailed!");
+        @Comment("{PLAYER} - Player who is jailed")
+        public Notice jailJailedExecutor = Notice.chat("<green>You have jailed the player <white>{PLAYER}");
+        @Comment("{TIME} - Remaining time to release")
+        public Notice jailCountdown = Notice.actionbar("<red>You are jailed! <gray>Time left: <white>{TIME}");
+        public Notice jailCannotJailAdmin = Notice.chat("<dark_red>You can't jail <white>{PLAYER} <dark_red>because he is admin!");
+        public Notice jailCannotJailSelf = Notice.chat("<dark_red>You can't jail yourself!");
+        public Notice jailAlreadyJailed = Notice.chat("<green>Player <white>{PLAYER} <green>is already jailed!");
+
+        @Comment({"","{PLAYER} - Player name who is jailed"})
+        public Notice jailReleasePrivate = Notice.chat("<green>You have released from the jail!");
+        public Notice jailReleaseExecutor = Notice.chat("<green>You have released the player <white>{PLAYER} <green>from the jail!");
+        public Notice jailReleaseAll = Notice.chat("<green>All players have been released from the jail!");
+        public Notice jailReleaseNoPlayers = Notice.chat("<dark_red>There are no players in jail!");
+        public Notice jailNotJailed = Notice.chat("<dark_red>Player <white>{PLAYER} <dark_red>is not jailed!");
+
+        @Comment("")
+        public Notice jailListEmpty = Notice.chat("<dark_red>There are no players in jail!");
+        public Notice jailListHeader = Notice.chat("<green>Players in jail:");
+        @Comment("{PLAYER} - Player who has been jailed, {REMAINING_TIME} - Time of jail, {JAILED_BY} - Player who jailed the player")
+        public Notice jailListEntry = Notice.chat("<gray>- <white>{PLAYER} <gray>(<white>{REMAINING_TIME}<gray>) <white>jailed by <green>{JAILED_BY}");
+
+        @Comment("")
+        public Notice jailCannotUseCommand = Notice.chat("<dark_red>You can't use this command while you are in jail!");
+    }
+
     @Comment({"", "This section is responsible for the spawn-related messages."})
     public ENSpawnSection spawn = new ENSpawnSection();
 

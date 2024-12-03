@@ -10,6 +10,7 @@ import org.bukkit.event.Listener;
 import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.core.scanner.annotations.component.Controller;
+import space.bxteam.nexus.core.utils.DurationUtil;
 import space.bxteam.nexus.feature.chat.ChatService;
 
 import java.time.Duration;
@@ -43,7 +44,7 @@ public class ChatController implements Listener {
             this.multificationManager.create()
                     .player(uniqueId)
                     .notice(translation -> translation.chat().slowMode())
-                    .placeholder("{TIME}", String.valueOf(remainingDuration.toSeconds()))
+                    .placeholder("{TIME}", DurationUtil.format(remainingDuration))
                     .send();
 
             event.setCancelled(true);

@@ -4,7 +4,7 @@ adventure = "4.3.4"
 minimessage = "4.17.0"
 multification = "1.1.4"
 okaeri = "5.0.5"
-commons = "1.2.0"
+commons = "1.2.1"
 
 [plugins]
 lombok = { id = "io.freefair.lombok", version = "8.11" }

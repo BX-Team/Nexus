@@ -12,9 +12,10 @@ import space.bxteam.nexus.core.translation.Language;
 import java.time.Duration;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Set;
 
 @Getter
-@SuppressWarnings("FieldMayBeFinal")
+@SuppressWarnings({"FieldMayBeFinal", "InnerClassMayBeStatic"})
 @Header("███╗░░██╗███████╗██╗░░██╗██╗░░░██╗░██████╗")
 @Header("████╗░██║██╔════╝╚██╗██╔╝██║░░░██║██╔════╝")
 @Header("██╔██╗██║█████╗░░░╚███╔╝░██║░░░██║╚█████╗░")
@@ -43,7 +44,7 @@ public class PluginConfiguration extends OkaeriConfig {
     private DatabaseConfig database = new DatabaseConfig();
 
     @Getter
-    public static class DatabaseConfig extends OkaeriConfig {
+    public class DatabaseConfig extends OkaeriConfig {
         @Comment({
                 "Select here the database you want to use",
                 "The following databases are supported:",
@@ -56,7 +57,7 @@ public class PluginConfiguration extends OkaeriConfig {
         private SQLiteConfig sqlite = new SQLiteConfig();
 
         @Getter
-        public static class SQLiteConfig extends OkaeriConfig {
+        public class SQLiteConfig extends OkaeriConfig {
             private String file = "nexus.db";
         }
 
@@ -64,7 +65,7 @@ public class PluginConfiguration extends OkaeriConfig {
         private MariaDBConfig mariadb = new MariaDBConfig();
 
         @Getter
-        public static class MariaDBConfig extends OkaeriConfig {
+        public class MariaDBConfig extends OkaeriConfig {
             private String jdbc = "jdbc:mariadb://localhost:3306/nexus";
             private String username = "root";
             private String password = "password";
@@ -74,10 +75,10 @@ public class PluginConfiguration extends OkaeriConfig {
     @Comment("")
     private Spawn spawn = new Spawn();
     @Exclude
-    public static final Position EMPTY_POSITION = new Position(0, 0, 0, 0.0f, 0.0f, Position.NONE_WORLD);
+    private static final Position EMPTY_POSITION = new Position(0, 0, 0, 0.0f, 0.0f, Position.NONE_WORLD);
 
     @Getter
-    public static class Spawn extends OkaeriConfig {
+    public class Spawn extends OkaeriConfig {
         @Comment({"The spawn location", "WE DO NOT RECOMMEND CHANGING THIS VALUE MANUALLY"})
         private Position location = EMPTY_POSITION;
     }
@@ -86,7 +87,7 @@ public class PluginConfiguration extends OkaeriConfig {
     private Items items = new Items();
 
     @Getter
-    public static class Items extends OkaeriConfig {
+    public class Items extends OkaeriConfig {
         @Comment("Use unsafe enchantments? Allows you to apply custom enchants to various items")
         private boolean unsafeEnchantments = true;
 
@@ -98,7 +99,7 @@ public class PluginConfiguration extends OkaeriConfig {
     private Homes homes = new Homes();
 
     @Getter
-    public static class Homes extends OkaeriConfig {
+    public class Homes extends OkaeriConfig {
         @Comment("Default home name")
         private String defaultHomeName = "home";
 
@@ -115,7 +116,7 @@ public class PluginConfiguration extends OkaeriConfig {
     private Chat chat = new Chat();
 
     @Getter
-    public static class Chat extends OkaeriConfig {
+    public class Chat extends OkaeriConfig {
         @Comment("Is the slowmode enabled?")
         private boolean slowModeEnabled = true;
         @Comment("Chat slowmode time in seconds")
@@ -126,10 +127,29 @@ public class PluginConfiguration extends OkaeriConfig {
     }
 
     @Comment("")
+    private Jail jail = new Jail();
+
+    @Getter
+    public class Jail extends OkaeriConfig {
+        @Comment("Default jail duration")
+        private Duration jailTime = Duration.ofMinutes(30);
+
+        @Comment({"", "List of allowed commands for jailed players"})
+        private Set<String> allowedCommands = Set.of("msg", "tell", "r", "reply", "me");
+
+        @Comment({"", "Jail area locations", "WE DO NOT RECOMMEND CHANGING THIS VALUE MANUALLY"})
+        private Map<String, Position> jailArea = new LinkedHashMap<>() {
+            {
+                put("jail", EMPTY_POSITION);
+            }
+        };
+    }
+
+    @Comment("")
     private RandomTeleport randomTeleport = new RandomTeleport();
 
     @Getter
-    public static class RandomTeleport extends OkaeriConfig {
+    public class RandomTeleport extends OkaeriConfig {
         @Comment({
                 "Type of the random teleportation:",
                 "- WORLD_BORDER_RADIUS - Teleports the player to a random location within the world border",
@@ -151,7 +171,7 @@ public class PluginConfiguration extends OkaeriConfig {
     private TeleportRequest teleportRequest = new TeleportRequest();
 
     @Getter
-    public static class TeleportRequest extends OkaeriConfig {
+    public class TeleportRequest extends OkaeriConfig {
         @Comment("The time in seconds after which the teleport request will expire")
         private Duration requestTimeout = Duration.ofSeconds(30);
     }

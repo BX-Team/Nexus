@@ -145,6 +145,34 @@ public interface Translation {
         Notice homeAlreadyExists();
     }
 
+    JailSection jail();
+
+    interface JailSection {
+        Notice jailLocationSet();
+        Notice jailLocationRemove();
+        Notice jailLocationExists();
+        Notice jailLocationNotExists();
+
+        Notice jailJailedPrivate();
+        Notice jailJailedExecutor();
+        Notice jailCountdown();
+        Notice jailCannotJailAdmin();
+        Notice jailCannotJailSelf();
+        Notice jailAlreadyJailed();
+
+        Notice jailReleasePrivate();
+        Notice jailReleaseExecutor();
+        Notice jailReleaseAll();
+        Notice jailReleaseNoPlayers();
+        Notice jailNotJailed();
+
+        Notice jailListEmpty();
+        Notice jailListHeader();
+        Notice jailListEntry();
+
+        Notice jailCannotUseCommand();
+    }
+
     SpawnSection spawn();
 
     interface SpawnSection {
