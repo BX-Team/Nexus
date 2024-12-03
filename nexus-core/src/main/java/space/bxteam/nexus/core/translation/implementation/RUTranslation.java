@@ -274,6 +274,8 @@ public class RUTranslation extends OkaeriConfig implements Translation {
         public Notice jailJailedPrivate = Notice.chat("<green>Вы были посажены в тюрьму!");
         @Comment("{PLAYER} - Игрок, который был посажен")
         public Notice jailJailedExecutor = Notice.chat("<green>Вы посадили игрока <white>{PLAYER} в тюрьму!");
+        @Comment("{TIME} - Оставшееся время в тюрьме")
+        public Notice jailCountdown = Notice.actionbar("<red>Вы находитесь в тюрьме! <gray>Осталось: <white>{TIME}");
         public Notice jailCannotJailAdmin = Notice.chat("<dark_red>Вы не можете посадить игрока <white>{PLAYER} <dark_red>в тюрьму потому что он администратор!");
         public Notice jailCannotJailSelf = Notice.chat("<dark_red>Вы не можете посадить себя в тюрьму!");
         public Notice jailAlreadyJailed = Notice.chat("<green>Игрок <white>{PLAYER} <green>уже находится в тюрьме!");

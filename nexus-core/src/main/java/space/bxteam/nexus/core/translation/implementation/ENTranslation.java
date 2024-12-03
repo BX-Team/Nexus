@@ -274,6 +274,8 @@ public class ENTranslation extends OkaeriConfig implements Translation {
         public Notice jailJailedPrivate = Notice.chat("<green>You have been jailed!");
         @Comment("{PLAYER} - Player who is jailed")
         public Notice jailJailedExecutor = Notice.chat("<green>You have jailed the player <white>{PLAYER}");
+        @Comment("{TIME} - Remaining time to release")
+        public Notice jailCountdown = Notice.actionbar("<red>You are jailed! <gray>Time left: <white>{TIME}");
         public Notice jailCannotJailAdmin = Notice.chat("<dark_red>You can't jail <white>{PLAYER} <dark_red>because he is admin!");
         public Notice jailCannotJailSelf = Notice.chat("<dark_red>You can't jail yourself!");
         public Notice jailAlreadyJailed = Notice.chat("<green>Player <white>{PLAYER} <green>is already jailed!");

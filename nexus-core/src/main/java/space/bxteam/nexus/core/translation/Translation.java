@@ -155,6 +155,7 @@ public interface Translation {
 
         Notice jailJailedPrivate();
         Notice jailJailedExecutor();
+        Notice jailCountdown();
         Notice jailCannotJailAdmin();
         Notice jailCannotJailSelf();
         Notice jailAlreadyJailed();
