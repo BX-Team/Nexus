@@ -268,7 +268,7 @@ public class ENTranslation extends OkaeriConfig implements Translation {
         public Notice jailLocationSet = Notice.chat("<green>Jail location with name <white>{JAIL} <green>has been set!");
         public Notice jailLocationRemove = Notice.chat("<green>Jail location with name <white>{JAIL} <green>has been removed!");
         public Notice jailLocationExists = Notice.chat("<dark_red>Jail location <white>{JAIL} <dark_red>already exists!");
-        public Notice jailLocationNotExists = Notice.chat("<dark_red>Jail location <white>{JAIL} <dark_red>doesn't exist!");
+        public Notice jailLocationNotExists = Notice.chat("<dark_red>This jail location doesn't exist!");
 
         @Comment("")
         public Notice jailJailedPrivate = Notice.chat("<green>You have been jailed!");

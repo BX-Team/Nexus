@@ -14,6 +14,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import space.bxteam.nexus.core.multification.MultificationManager;
+import space.bxteam.nexus.core.utils.DurationUtil;
 import space.bxteam.nexus.feature.jail.JailPlayer;
 import space.bxteam.nexus.feature.jail.JailService;
 
@@ -224,7 +225,7 @@ public class JailCommand {
             this.multificationManager.create()
                     .notice(translation -> translation.jail().jailListEntry())
                     .placeholder("{PLAYER}", this.server.getOfflinePlayer(jailPlayer.getPlayerUniqueId()).getName())
-                    .placeholder("{REMAINING_TIME}", String.valueOf(jailPlayer.getRemainingTime()))
+                    .placeholder("{REMAINING_TIME}", DurationUtil.format(jailPlayer.getRemainingTime()))
                     .placeholder("{JAILED_BY}", jailPlayer.getJailedBy())
                     .player(player.getUniqueId())
                     .send();

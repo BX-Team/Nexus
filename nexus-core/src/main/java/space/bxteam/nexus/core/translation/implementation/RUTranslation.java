@@ -268,7 +268,7 @@ public class RUTranslation extends OkaeriConfig implements Translation {
         public Notice jailLocationSet = Notice.chat("<green>Тюрьма с именем <white>{JAIL} <green>установлена!");
         public Notice jailLocationRemove = Notice.chat("<green>Тюрьма с именем <white>{JAIL} <green>удалена!");
         public Notice jailLocationExists = Notice.chat("<dark_red>Тюрьма <white>{JAIL} <dark_red>уже существует!");
-        public Notice jailLocationNotExists = Notice.chat("<dark_red>Тюрьмы с именем <white>{JAIL} <dark_red>не существует!");
+        public Notice jailLocationNotExists = Notice.chat("<dark_red>Тюрьмы с таким именем не существует!");
 
         @Comment("")
         public Notice jailJailedPrivate = Notice.chat("<green>Вы были посажены в тюрьму!");
