@@ -274,6 +274,8 @@ public class ENTranslation extends OkaeriConfig implements Translation {
         public Notice jailJailedPrivate = Notice.chat("<green>You have been jailed!");
         @Comment("{PLAYER} - Player who is jailed")
         public Notice jailJailedExecutor = Notice.chat("<green>You have jailed the player <white>{PLAYER}");
+        public Notice jailCannotJailAdmin = Notice.chat("<dark_red>You can't jail <white>{PLAYER} <dark_red>because he is admin!");
+        public Notice jailCannotJailSelf = Notice.chat("<dark_red>You can't jail yourself!");
         public Notice jailAlreadyJailed = Notice.chat("<green>Player <white>{PLAYER} <green>is already jailed!");
 
         @Comment({"","{PLAYER} - Player name who is jailed"})
@@ -288,6 +290,9 @@ public class ENTranslation extends OkaeriConfig implements Translation {
         public Notice jailListHeader = Notice.chat("<green>Players in jail:");
         @Comment("{PLAYER} - Player who has been jailed, {REMAINING_TIME} - Time of jail, {JAILED_BY} - Player who jailed the player")
         public Notice jailListEntry = Notice.chat("<gray>- <white>{PLAYER} <gray>(<white>{REMAINING_TIME}<gray>) <white>jailed by <green>{JAILED_BY}");
+
+        @Comment("")
+        public Notice jailCannotUseCommand = Notice.chat("<dark_red>You can't use this command while you are in jail!");
     }
 
     @Comment({"", "This section is responsible for the spawn-related messages."})

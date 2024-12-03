@@ -155,6 +155,8 @@ public interface Translation {
 
         Notice jailJailedPrivate();
         Notice jailJailedExecutor();
+        Notice jailCannotJailAdmin();
+        Notice jailCannotJailSelf();
         Notice jailAlreadyJailed();
 
         Notice jailReleasePrivate();
@@ -166,6 +168,8 @@ public interface Translation {
         Notice jailListEmpty();
         Notice jailListHeader();
         Notice jailListEntry();
+
+        Notice jailCannotUseCommand();
     }
 
     SpawnSection spawn();

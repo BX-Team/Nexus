@@ -36,6 +36,23 @@ public class JailCommand {
     @Execute
     @Permission("nexus.jail")
     void executeJailForTime(@Context Player player, @Arg Player target, @Arg(JailCommandArgument.KEY) String name, @Arg Duration duration) {
+        if (target.hasPermission("nexus.jail.bypass")) {
+            this.multificationManager.create()
+                    .player(player.getUniqueId())
+                    .notice(translation -> translation.jail().jailCannotJailAdmin())
+                    .placeholder("{PLAYER}", target.getName())
+                    .send();
+            return;
+        }
+
+        if (player == target) {
+            this.multificationManager.create()
+                    .player(player.getUniqueId())
+                    .notice(translation -> translation.jail().jailCannotJailSelf())
+                    .send();
+            return;
+        }
+
         if (this.jailService.isPlayerJailed(target.getUniqueId())) {
             this.multificationManager.create()
                     .player(player.getUniqueId())

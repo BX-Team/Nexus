@@ -1,6 +1,7 @@
 package space.bxteam.nexus.core.feature.jail;
 
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 import org.bukkit.Location;
 import org.bukkit.Server;
 import org.bukkit.command.CommandSender;
@@ -22,6 +23,7 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.*;
 
+@Singleton
 public class JailServiceImpl implements JailService {
     private final Map<UUID, JailPlayer> jailedPlayers = new HashMap<>();
 
@@ -168,7 +170,7 @@ public class JailServiceImpl implements JailService {
         String query = "SELECT * FROM jailed_players";
         this.client.newBuilder(query)
                 .queryAll(resultSet -> {
-                    while (resultSet.next()) {
+                    try {
                         UUID player = UUID.fromString(resultSet.getString("id"));
                         Instant detainedAt = Instant.parse(resultSet.getString("jailedAt"));
                         Duration prisonTime = Duration.parse(resultSet.getString("duration"));
@@ -176,8 +178,9 @@ public class JailServiceImpl implements JailService {
 
                         JailPlayer jailPlayer = new JailPlayer(player, detainedAt, prisonTime, detainedBy);
                         this.jailedPlayers.put(player, jailPlayer);
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-
                     return null;
                 });
     }

@@ -274,6 +274,8 @@ public class RUTranslation extends OkaeriConfig implements Translation {
         public Notice jailJailedPrivate = Notice.chat("<green>Вы были посажены в тюрьму!");
         @Comment("{PLAYER} - Игрок, который был посажен")
         public Notice jailJailedExecutor = Notice.chat("<green>Вы посадили игрока <white>{PLAYER} в тюрьму!");
+        public Notice jailCannotJailAdmin = Notice.chat("<dark_red>Вы не можете посадить игрока <white>{PLAYER} <dark_red>в тюрьму потому что он администратор!");
+        public Notice jailCannotJailSelf = Notice.chat("<dark_red>Вы не можете посадить себя в тюрьму!");
         public Notice jailAlreadyJailed = Notice.chat("<green>Игрок <white>{PLAYER} <green>уже находится в тюрьме!");
 
         @Comment({"","{PLAYER} - Игрок который был посажен"})
@@ -288,6 +290,9 @@ public class RUTranslation extends OkaeriConfig implements Translation {
         public Notice jailListHeader = Notice.chat("<green>Игроки в тюрьме:");
         @Comment("{PLAYER} - Игрок который был посажен, {REMAINING_TIME} - Оставшееся время в тюрьме, {JAILED_BY} - Игрок, посадивший другого игрока")
         public Notice jailListEntry = Notice.chat("<gray>- <white>{PLAYER} <gray>(<white>{REMAINING_TIME}<gray>) <white>посажен игроком <green>{JAILED_BY}");
+
+        @Comment("")
+        public Notice jailCannotUseCommand = Notice.chat("<dark_red>Вы не можете использовать эту команду в тюрьме!");
     }
 
     @Comment({"", "Этот раздел отвечает за сообщения, связанные со спавном."})
