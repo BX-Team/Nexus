@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import space.bxteam.nexus.core.event.EventCaller;
 import space.bxteam.nexus.feature.randomteleport.RandomTeleportService;
-import space.bxteam.nexus.feature.randomteleport.TeleportResult;
+import space.bxteam.nexus.feature.randomteleport.RandomTeleportResult;
 import space.bxteam.nexus.feature.randomteleport.event.PreRandomTeleportEvent;
 import space.bxteam.nexus.feature.randomteleport.event.RandomTeleportEvent;
 
@@ -42,7 +42,7 @@ public class RandomTeleportServiceImpl implements RandomTeleportService {
     private static final int NETHER_MAX_HEIGHT = 127;
 
     @Override
-    public CompletableFuture<TeleportResult> teleport(Player player) {
+    public CompletableFuture<RandomTeleportResult> teleport(Player player) {
         World world = getWorld(player);
 
         if (!this.configurationProvider.configuration().randomTeleport().randomTeleportWorld().isBlank()) {
@@ -57,15 +57,15 @@ public class RandomTeleportServiceImpl implements RandomTeleportService {
     }
 
     @Override
-    public CompletableFuture<TeleportResult> teleport(Player player, World world) {
+    public CompletableFuture<RandomTeleportResult> teleport(Player player, World world) {
         if (this.eventCaller.callEvent(new PreRandomTeleportEvent(player)).isCancelled()) {
-            return CompletableFuture.completedFuture(new TeleportResult(false, player.getLocation()));
+            return CompletableFuture.completedFuture(new RandomTeleportResult(false, player.getLocation()));
         }
 
         return this.getSafeRandomLocation(world, this.configurationProvider.configuration().randomTeleport().maxAttempts())
                 .thenCompose(location -> PaperLib.teleportAsync(player, location).thenApply(success -> {
                     this.eventCaller.callEvent(new RandomTeleportEvent(player, location));
-                    return new TeleportResult(success, location);
+                    return new RandomTeleportResult(success, location);
                 }));
     }
 

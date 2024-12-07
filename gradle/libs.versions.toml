@@ -41,7 +41,7 @@ multification = { module = "com.eternalcode:multification-bukkit", version.ref =
 multification-okaeri = { module = "com.eternalcode:multification-okaeri", version.ref = "multification" }
 
 commons-adventure = { module = "space.bxteam:commons-adventure", version.ref = "commons" }
-commons-github = { module = "space.bxteam:commons-github", version.ref = "commons" }
+commons-folia = { module = "space.bxteam:commons-folia", version.ref = "commons" }
 commons-bukkit = { module = "space.bxteam:commons-bukkit", version.ref = "commons" }
 
 [bundles]
@@ -66,5 +66,6 @@ multification = [
 
 commons = [
     "commons-adventure",
+    "commons-folia",
     "commons-bukkit"
 ]

@@ -8,13 +8,21 @@ import dev.rollczi.litecommands.annotations.execute.Execute;
 import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.entity.Player;
+import space.bxteam.commons.bukkit.position.Position;
+import space.bxteam.commons.bukkit.position.PositionFactory;
 import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
+import space.bxteam.nexus.core.event.EventCaller;
+import space.bxteam.nexus.core.feature.teleport.Teleport;
+import space.bxteam.nexus.core.feature.teleport.TeleportTaskService;
 import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.feature.home.Home;
 import space.bxteam.nexus.feature.home.HomeService;
+import space.bxteam.nexus.feature.home.event.HomeTeleportEvent;
 
+import java.time.Duration;
 import java.util.Collection;
 import java.util.Optional;
+import java.util.UUID;
 
 @Command(name = "home")
 @Permission("nexus.home")
@@ -23,6 +31,8 @@ public class HomeCommand {
     private final MultificationManager multificationManager;
     private final HomeService homeService;
     private final PluginConfigurationProvider pluginConfiguration;
+    private final EventCaller eventCaller;
+    private final TeleportTaskService teleportTaskService;
 
     @Execute
     void home(@Context Player player) {
@@ -48,12 +58,7 @@ public class HomeCommand {
                     .findFirst();
 
             if (mainHome.isPresent()) {
-                player.teleport(mainHome.get().location());
-                this.multificationManager.create()
-                        .player(player.getUniqueId())
-                        .notice(translation -> translation.home().homeTeleported())
-                        .placeholder("{HOME}", mainHome.get().name())
-                        .send();
+                this.teleport(player, mainHome.get());
                 return;
             }
 
@@ -67,21 +72,31 @@ public class HomeCommand {
 
         Home firstHome = playerHomes.iterator().next();
 
-        player.teleport(firstHome.location());
-        this.multificationManager.create()
-                .player(player.getUniqueId())
-                .notice(translation -> translation.home().homeTeleported())
-                .placeholder("{HOME}", firstHome.name())
-                .send();
+        this.teleport(player, firstHome);
     }
 
     @Execute
     void home(@Context Player player, @Arg Home home) {
-        player.teleport(home.location());
-        this.multificationManager.create()
-                .player(player.getUniqueId())
-                .notice(translation -> translation.home().homeTeleported())
-                .placeholder("{HOME}", home.name())
-                .send();
+        this.teleport(player, home);
+    }
+
+    private void teleport(Player player, Home home) {
+        UUID playerUniqueId = player.getUniqueId();
+
+        Duration teleportTime = player.hasPermission("nexus.home.instant")
+                ? Duration.ZERO
+                : this.pluginConfiguration.configuration().homes().timeToTeleport();
+
+        Position from = PositionFactory.convert(player.getLocation());
+        Position to = PositionFactory.convert(home.location());
+
+        HomeTeleportEvent event = new HomeTeleportEvent(playerUniqueId, home);
+        Teleport teleport = this.teleportTaskService.createTeleport(
+                playerUniqueId,
+                from,
+                to,
+                teleportTime
+        );
+        teleport.result().whenComplete((result, throwable) -> this.eventCaller.callEvent(event));
     }
 }

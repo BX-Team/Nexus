@@ -55,7 +55,11 @@ public class ComponentRegister {
                     long delay = taskAnnotation.delay();
                     long period = taskAnnotation.period();
 
-                    scheduler.runTaskTimer(taskInstance, delay, period);
+                    if (period == 0L) {
+                        scheduler.runTaskLater(taskInstance, delay);
+                    } else {
+                        scheduler.runTaskTimer(taskInstance, delay, period);
+                    }
                 }
             } catch (Exception e) {
                 Logger.log("Failed to register task: " + e.getMessage(), Logger.LogLevel.ERROR);

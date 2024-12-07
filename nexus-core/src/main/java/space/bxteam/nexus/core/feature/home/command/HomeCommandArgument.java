@@ -18,7 +18,6 @@ import space.bxteam.nexus.core.translation.TranslationProvider;
 import space.bxteam.nexus.feature.home.Home;
 import space.bxteam.nexus.feature.home.HomeService;
 
-import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -48,10 +47,6 @@ public class HomeCommandArgument extends MultificationLiteArgument<Home> {
         String homes = this.homeService.getHomes(playerUUID).stream()
                 .map(Home::name)
                 .collect(Collectors.joining(", "));
-
-        Map<String, String> placeholders = Map.of(
-                "{HOMES}", homes
-        );
 
         NoticeBroadcast homeListNotice = this.multificationManager.create()
                 .viewer(invocation.sender())

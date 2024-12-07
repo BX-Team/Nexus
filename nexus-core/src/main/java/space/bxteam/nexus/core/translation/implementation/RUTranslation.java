@@ -220,12 +220,6 @@ public class RUTranslation extends OkaeriConfig implements Translation {
 
     @Getter
     public class RUWarpSection extends OkaeriConfig implements WarpSection {
-        @Comment("{WARP} - Название варпа")
-        public Notice warpTeleported = Notice.builder()
-                .chat("<green>Вы были телепортированы на варп <white>{WARP}")
-                .sound(Key.key("entity.enderman.teleport"), 1.0f, 1.0f)
-                .build();
-
         public Notice create = Notice.chat("<green>Варп <white>{WARP} <green>создан.");
         public Notice remove = Notice.chat("<green>Варп <white>{WARP} <green>удален.");
 
@@ -240,13 +234,7 @@ public class RUTranslation extends OkaeriConfig implements Translation {
 
     @Getter
     public class RUHomeSection extends OkaeriConfig implements HomeSection {
-        @Comment("{HOME} - Название дома")
-        public Notice homeTeleported = Notice.builder()
-                .chat("<green>Вы были телепортированы в дом <white>{HOME}")
-                .sound(Key.key("entity.enderman.teleport"), 1.0f, 1.0f)
-                .build();
-
-        @Comment({"", "{HOMES} - Список домов (через запятую)"})
+        @Comment("{HOMES} - Список домов (через запятую)")
         public Notice homeList = Notice.chat("<green>Доступные дома: <white>{HOMES}");
 
         @Comment({"", "{HOME} - Название дома"})
@@ -336,6 +324,15 @@ public class RUTranslation extends OkaeriConfig implements Translation {
         @Comment("{PLAYER} - Игрок, который будет телепортирован")
         public Notice teleportedSpecifiedPlayerLastLocation = Notice.chat("<green>Вы телепортировали игрока <white>{PLAYER} <green>на его последнее местоположение!");
         public Notice lastLocationNoExist = Notice.chat("<dark_red>Последнее местоположение не существует!");
+
+        @Comment("")
+        public Notice teleported = Notice.builder()
+                .chat("<green>Вы были телепортированы!")
+                .sound(Key.key("entity.enderman.teleport"), 1.0f, 1.0f)
+                .build();
+        @Comment("{TIME} - Оставшееся время до телепортации")
+        public Notice teleporting = Notice.actionbar("<green>Телепортация через <white>{TIME}");
+        public Notice teleportTaskCanceled = Notice.chat("<dark_red>Телепортация отменена из-за движения!");
     }
 
     @Comment({"", "This section is responsible for the random teleport-related messages."})

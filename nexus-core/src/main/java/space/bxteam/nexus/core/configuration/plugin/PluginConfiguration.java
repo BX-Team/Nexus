@@ -85,6 +85,15 @@ public class PluginConfiguration extends OkaeriConfig {
     }
 
     @Comment("")
+    private Warp warp = new Warp();
+
+    @Getter
+    public class Warp extends OkaeriConfig {
+        @Comment("Time to teleport to the warp")
+        private Duration timeToTeleport = Duration.ofSeconds(5);
+    }
+
+    @Comment("")
     private Items items = new Items();
 
     @Getter
@@ -101,6 +110,9 @@ public class PluginConfiguration extends OkaeriConfig {
 
     @Getter
     public class Homes extends OkaeriConfig {
+        @Comment("Time to teleport to the home")
+        private Duration timeToTeleport = Duration.ofSeconds(5);
+
         @Comment("Default home name")
         private String defaultHomeName = "home";
 

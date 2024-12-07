@@ -13,7 +13,7 @@ public interface RandomTeleportService {
      * @param player the player to teleport
      * @return a CompletableFuture that completes with the result of the teleportation
      */
-    CompletableFuture<TeleportResult> teleport(Player player);
+    CompletableFuture<RandomTeleportResult> teleport(Player player);
 
     /**
      * Teleports the player to a random location in the specified world.
@@ -22,7 +22,7 @@ public interface RandomTeleportService {
      * @param world the world to teleport the player to
      * @return a CompletableFuture that completes with the result of the teleportation
      */
-    CompletableFuture<TeleportResult> teleport(Player player, World world);
+    CompletableFuture<RandomTeleportResult> teleport(Player player, World world);
 
     /**
      * Finds a safe random location in the specified world.

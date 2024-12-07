@@ -20,6 +20,7 @@ import space.bxteam.nexus.core.feature.chat.ChatServiceImpl;
 import space.bxteam.nexus.core.feature.jail.JailServiceImpl;
 import space.bxteam.nexus.core.feature.randomteleport.RandomTeleportServiceImpl;
 import space.bxteam.nexus.core.feature.spawn.SpawnServiceImpl;
+import space.bxteam.nexus.core.feature.teleport.TeleportTaskService;
 import space.bxteam.nexus.core.feature.teleportrequest.TeleportRequestServiceImpl;
 import space.bxteam.nexus.core.utils.meta.PluginVersionMeta;
 import space.bxteam.nexus.core.utils.meta.PluginVersionMetaFactory;
@@ -77,6 +78,7 @@ public class NexusModule extends AbstractModule {
         this.bind(RandomTeleportService.class).to(RandomTeleportServiceImpl.class);
         this.bind(SpawnService.class).to(SpawnServiceImpl.class);
         this.bind(TeleportService.class).to(TeleportServiceImpl.class);
+        this.bind(TeleportTaskService.class).asEagerSingleton();
         this.bind(TeleportRequestService.class).to(TeleportRequestServiceImpl.class);
     }
 }
