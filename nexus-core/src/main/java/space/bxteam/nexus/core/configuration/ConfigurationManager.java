@@ -8,6 +8,7 @@ import com.google.inject.Singleton;
 import eu.okaeri.configs.ConfigManager;
 import eu.okaeri.configs.OkaeriConfig;
 import eu.okaeri.configs.serdes.commons.SerdesCommons;
+import eu.okaeri.configs.yaml.bukkit.serdes.SerdesBukkit;
 import eu.okaeri.configs.yaml.snakeyaml.YamlSnakeYamlConfigurer;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.LoaderOptions;
@@ -15,6 +16,7 @@ import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
 import org.yaml.snakeyaml.representer.Representer;
 import org.yaml.snakeyaml.resolver.Resolver;
+import space.bxteam.nexus.core.configuration.seriazlier.position.PositionSerdesPack;
 
 import java.io.File;
 import java.util.HashSet;
@@ -31,7 +33,7 @@ public class ConfigurationManager {
 
         NoticeResolverRegistry noticeRegistry = NoticeResolverDefaults.createRegistry().registerResolver(new SoundAdventureResolver());
         configFile
-                .withConfigurer(yamlConfigurer, new SerdesCommons())
+                .withConfigurer(yamlConfigurer, new SerdesBukkit(), new SerdesCommons(), new PositionSerdesPack())
                 .withConfigurer(yamlConfigurer, new MultificationSerdesPack(noticeRegistry))
                 .withBindFile(file)
                 .withRemoveOrphans(true)

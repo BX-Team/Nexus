@@ -9,7 +9,6 @@ import space.bxteam.commons.bukkit.position.Position;
 import space.bxteam.commons.bukkit.position.PositionFactory;
 import space.bxteam.nexus.core.configuration.ConfigurationManager;
 import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
-import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.feature.spawn.SpawnService;
 
 @Singleton
@@ -32,7 +31,7 @@ public class SpawnServiceImpl implements SpawnService {
     @Override
     public void setSpawnLocation(Location location) {
         this.configurationProvider.configuration().spawn().set("location", PositionFactory.convert(location));
-        this.configurationProvider.configuration().save();
+        this.configurationManager.save(configurationProvider.configuration());
     }
 
     @Override

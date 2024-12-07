@@ -5,6 +5,7 @@ import com.google.inject.Singleton;
 import com.google.inject.name.Named;
 import lombok.Getter;
 import space.bxteam.nexus.core.configuration.ConfigurationManager;
+import space.bxteam.nexus.core.utils.Logger;
 
 import java.io.File;
 import java.nio.file.Path;
@@ -26,6 +27,13 @@ public class CommandsConfigProvider {
     }
 
     private void loadConfig() {
-        this.commandsConfig = this.configurationManager.create(CommandsConfig.class, new File(this.dataFolder.resolve("commands.yml").toString()));
+        File commandsFile = this.dataFolder.resolve("commands.yml").toFile();
+
+        try {
+            this.commandsConfig = configurationManager.create(CommandsConfig.class, commandsFile);
+        } catch (Exception e) {
+            Logger.log("Could not create commands.yml file", Logger.LogLevel.ERROR);
+            e.printStackTrace();
+        }
     }
 }

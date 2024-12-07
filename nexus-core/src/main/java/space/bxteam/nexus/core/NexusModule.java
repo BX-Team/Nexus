@@ -45,11 +45,13 @@ import java.nio.file.Path;
 public class NexusModule extends AbstractModule {
     private final PluginConfigurationProvider configurationProvider;
     private final Plugin plugin;
+    private final ConfigurationManager configurationManager;
 
     @Override
     protected void configure() {
         this.bind(Plugin.class).toInstance(this.plugin);
         this.bind(PluginConfigurationProvider.class).toInstance(this.configurationProvider);
+        this.bind(ConfigurationManager.class).toInstance(this.configurationManager);
         this.bind(Server.class).toInstance(this.plugin.getServer());
         this.bind(PluginManager.class).toInstance(this.plugin.getServer().getPluginManager());
         this.bind(PluginDescriptionFile.class).toInstance(this.plugin.getDescription());
@@ -60,7 +62,6 @@ public class NexusModule extends AbstractModule {
         this.bind(AudienceProvider.class).toInstance(BukkitAudiences.create(this.plugin));
         this.bind(PluginVersionMeta.class).toInstance(PluginVersionMetaFactory.create(this.plugin));
         this.bind(PlaceholderRegistry.class).to(PlaceholderRegistryImpl.class).in(Singleton.class);
-        this.bind(ConfigurationManager.class).asEagerSingleton();
 
         this.bind(MiniMessage.class).toInstance(MiniMessage.miniMessage());
         this.bind(MiniMessage.class)
