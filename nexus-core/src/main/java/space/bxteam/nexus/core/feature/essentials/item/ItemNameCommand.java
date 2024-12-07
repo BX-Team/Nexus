@@ -1,17 +1,19 @@
 package space.bxteam.nexus.core.feature.essentials.item;
 
 import com.google.inject.Inject;
+import com.google.inject.name.Named;
 import dev.rollczi.litecommands.annotations.command.Command;
 import dev.rollczi.litecommands.annotations.context.Context;
 import dev.rollczi.litecommands.annotations.execute.Execute;
 import dev.rollczi.litecommands.annotations.join.Join;
 import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
-import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import space.bxteam.commons.adventure.AdventureUtil;
 import space.bxteam.nexus.core.multification.MultificationManager;
 
 @Command(name = "itemname", aliases = {"iname", "itemrename"})
@@ -19,9 +21,11 @@ import space.bxteam.nexus.core.multification.MultificationManager;
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
 public class ItemNameCommand {
     private final MultificationManager multificationManager;
+    @Named("colorMiniMessage")
+    private final MiniMessage miniMessage;
 
     @Execute
-    void execute(@Context Player player, @Join Component name) {
+    void execute(@Context Player player, @Join String name) {
         ItemStack itemStack = this.checkItem(player);
 
         if (itemStack == null) {
@@ -33,13 +37,14 @@ public class ItemNameCommand {
         }
 
         ItemMeta itemMeta = itemStack.getItemMeta();
-        itemMeta.displayName(name);
+        String serialized = AdventureUtil.SECTION_SERIALIZER.serialize(this.miniMessage.deserialize(name));
+        itemMeta.setDisplayName(serialized);
         itemStack.setItemMeta(itemMeta);
 
         this.multificationManager.create()
                 .player(player.getUniqueId())
                 .notice(translation -> translation.item().itemChangeNameMessage())
-                .placeholder("{ITEM_NAME}", name.toString())
+                .placeholder("{ITEM_NAME}", name)
                 .send();
     }
 
@@ -52,7 +57,7 @@ public class ItemNameCommand {
         }
 
         ItemMeta itemMeta = itemStack.getItemMeta();
-        itemMeta.displayName(null);
+        itemMeta.setDisplayName(null);
         itemStack.setItemMeta(itemMeta);
 
         this.multificationManager.create()
