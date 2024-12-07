@@ -1,6 +1,5 @@
 plugins {
     `java-library`
-    `maven-publish`
     alias(libs.plugins.lombok)
     alias(libs.plugins.runpaper)
     alias(libs.plugins.shadow)
@@ -106,29 +105,4 @@ paper {
     }
 
     generateLibrariesJson = true
-}
-
-publishing {
-    repositories {
-        maven {
-            name = "nexus"
-            if (project.version.toString().contains("-SNAPSHOT")) {
-                url = uri("https://repo.bx-team.space/snapshots/")
-            } else {
-                url = uri("https://repo.bx-team.space/releases/")
-            }
-            credentials(PasswordCredentials::class)
-            authentication {
-                create<BasicAuthentication>("basic")
-            }
-        }
-    }
-    publications {
-        create<MavenPublication>("maven") {
-            groupId = project.group.toString()
-            artifactId = "nexus"
-            version = project.version.toString()
-            from(components["java"])
-        }
-    }
 }
