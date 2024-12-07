@@ -16,13 +16,6 @@
       "matchPackageNames": [
         "*"
       ]
-    },
-    {
-      "matchDatasources": ["maven"],
-      "registryUrls": [
-        "https://repo.bx-team.space/releases",
-        "https://repo.bx-team.space/snapshots"
-      ]
     }
   ],
   "separateMajorMinor": false
