@@ -66,6 +66,5 @@ multification = [
 
 commons = [
     "commons-adventure",
-    "commons-github",
     "commons-bukkit"
 ]
