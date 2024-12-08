@@ -15,13 +15,13 @@ import space.bxteam.nexus.core.translation.TranslationProvider;
 
 import java.util.List;
 
-@LiteArgument(type = int.class, name = GiveCommandArgument.KEY)
-public class GiveCommandArgument extends MultificationLiteArgument<Integer> {
-    private static final List<Integer> suggestions = List.of(1, 8, 16, 32, 64);
+@LiteArgument(type = int.class, name = GiveAmountArgument.KEY)
+public class GiveAmountArgument extends MultificationLiteArgument<Integer> {
+    private static final List<Integer> suggestions = List.of(1, 8, 16, 32, 64); // TODO: Get actual max size for item stack
     static final String KEY = "item-amount";
 
     @Inject
-    public GiveCommandArgument(TranslationProvider translationProvider, PluginConfigurationProvider configurationProvider) {
+    public GiveAmountArgument(TranslationProvider translationProvider, PluginConfigurationProvider configurationProvider) {
         super(translationProvider, configurationProvider);
     }
 

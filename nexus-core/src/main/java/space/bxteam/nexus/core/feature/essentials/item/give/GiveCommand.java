@@ -25,69 +25,45 @@ public class GiveCommand {
     private final PluginConfigurationProvider configurationProvider;
 
     @Execute
-    void execute(@Context Player player, @Arg Material material) {
-        String formattedMaterial = MaterialUtil.format(material);
-
-        this.giveItem(player, material);
-
-        this.multificationManager.create()
-                .player(player.getUniqueId())
-                .notice(translation -> translation.item().giveReceived())
-                .placeholder("{ITEM}", formattedMaterial)
-                .send();
-    }
-
-    @Execute
-    void execute(@Context CommandSender sender, @Arg Material material, @Arg Player target) {
+    void execute(@Context CommandSender sender, @Arg Player target, @Arg Material material) {
         String formattedMaterial = MaterialUtil.format(material);
 
         this.giveItem(target, material);
 
         this.multificationManager.create()
-                .player(target.getUniqueId())
-                .notice(translation -> translation.item().giveReceived())
-                .placeholder("{ITEM}", formattedMaterial)
-                .send();
-
-        this.multificationManager.create()
                 .viewer(sender)
-                .notice(translation -> translation.item().giveGiven())
-                .placeholder("{ITEM}", formattedMaterial)
-                .placeholder("{PLAYER}", target.getName())
-                .send();
-    }
-
-    @Execute
-    void execute(@Context Player player, @Arg Material material, @Arg(GiveCommandArgument.KEY) int amount) {
-        String formattedMaterial = MaterialUtil.format(material);
-
-        this.giveItem(player, material, amount);
-
-        this.multificationManager.create()
-                .player(player.getUniqueId())
                 .notice(translation -> translation.item().giveReceived())
                 .placeholder("{ITEM}", formattedMaterial)
                 .send();
+
+        if (!sender.equals(target)) {
+            this.multificationManager.create()
+                    .player(target.getUniqueId())
+                    .notice(translation -> translation.item().giveGiven())
+                    .placeholder("{ITEM}", formattedMaterial)
+                    .send();
+        }
     }
 
     @Execute
-    void execute(@Context CommandSender sender, @Arg Material material, @Arg(GiveCommandArgument.KEY) int amount, @Arg Player target) {
+    void execute(@Context CommandSender sender, @Arg Player target, @Arg Material material, @Arg(GiveAmountArgument.KEY) int amount) {
         String formattedMaterial = MaterialUtil.format(material);
 
         this.giveItem(target, material, amount);
 
         this.multificationManager.create()
-                .player(target.getUniqueId())
+                .viewer(sender)
                 .notice(translation -> translation.item().giveReceived())
                 .placeholder("{ITEM}", formattedMaterial)
                 .send();
 
-        this.multificationManager.create()
-                .viewer(sender)
-                .notice(translation -> translation.item().giveGiven())
-                .placeholder("{ITEM}", formattedMaterial)
-                .placeholder("{PLAYER}", target.getName())
-                .send();
+        if (!sender.equals(target)) {
+            this.multificationManager.create()
+                    .player(target.getUniqueId())
+                    .notice(translation -> translation.item().giveGiven())
+                    .placeholder("{ITEM}", formattedMaterial)
+                    .send();
+        }
     }
 
     private void giveItem(Player player, Material material) {
@@ -105,14 +81,22 @@ public class GiveCommand {
                 .amount(amount)
                 .build();
 
-        ItemUtil.giveItem(player, item);
+        ItemUtil.giveItem(player, item); // TODO: Fix 99 stack size
     }
 
     private void giveItem(Player player, Material material, int amount) {
+        if (!material.isItem()) {
+            this.multificationManager.create()
+                    .player(player.getUniqueId())
+                    .notice(translation -> translation.item().incorrectItem())
+                    .send();
+            return;
+        }
+
         ItemStack item = ItemBuilder.from(material)
                 .amount(amount)
                 .build();
 
-        ItemUtil.giveItem(player, item);
+        ItemUtil.giveItem(player, item); // TODO: Fix 99 stack size
     }
 }

@@ -48,7 +48,7 @@ public class RUTranslation extends OkaeriConfig implements Translation {
         public Notice noDamagedItems = Notice.chat("<dark_red>В вашем инвентаре нет поврежденных предметов!");
         public Notice noEnchantment = Notice.chat("<dark_red>Такого зачарования не существует!");
         public Notice noValidEnchantmentLevel = Notice.chat("<dark_red>Недопустимый уровень зачарования!");
-        public Notice giveNoItem = Notice.chat("<dark_red>Этот предмет недоступен!");
+        public Notice noValidItem = Notice.chat("<dark_red>Этот предмет недопустим!");
     }
 
     @Comment({"", "Этот ответ отвечает за общее форматирование некоторых значений"})
@@ -225,7 +225,6 @@ public class RUTranslation extends OkaeriConfig implements Translation {
 
         @Comment("")
         public Notice warpAlreadyExists = Notice.chat("<dark_red>Варп с именем <white>{WARP} <dark_red>уже существует!");
-        public Notice noWarps = Notice.chat("<dark_red>Нет варпов!");
         public Notice notExist = Notice.chat("<dark_red>Варпа <white>{WARP} <dark_red>не существует!");
     }
 

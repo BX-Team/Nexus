@@ -19,7 +19,7 @@ public interface Translation {
         Notice noDamagedItems();
         Notice noEnchantment();
         Notice noValidEnchantmentLevel();
-        Notice giveNoItem();
+        Notice noValidItem();
     }
 
     Format format();
@@ -129,7 +129,6 @@ public interface Translation {
 
         Notice warpAlreadyExists();
         Notice notExist();
-        Notice noWarps();
     }
 
     HomeSection home();
