@@ -23,31 +23,25 @@ public class SudoCommand {
     @Permission("nexus.sudo.console")
     void console(@Context CommandSender sender, @Join String command) {
         this.server.dispatchCommand(this.server.getConsoleSender(), command);
-        this.sendResultMessage(sender, command);
+        this.sendResultMessage(sender, this.server.getConsoleSender(), command);
     }
 
     @Execute
     @Permission("nexus.sudo.player")
     void player(@Context CommandSender sender, @Arg Player target, @Join String command) {
         this.server.dispatchCommand(target, command);
-        this.sendResultMessage(sender, command);
+        this.sendResultMessage(sender, target, command);
     }
 
-    private void sendResultMessage(CommandSender sender, String command) {
-        this.multificationManager.create()
-                .viewer(sender)
-                .notice(translation -> translation.sudo().sudoMessage())
-                .placeholder("{COMMAND}", command)
-                .placeholder("{PLAYER}", sender.getName())
-                .send();
-
+    private void sendResultMessage(CommandSender sender, CommandSender target, String command) {
         this.server.getOnlinePlayers().stream()
                 .filter(player -> player.hasPermission("nexus.sudo.spy"))
                 .forEach(player -> this.multificationManager.create()
                         .player(player.getUniqueId())
                         .notice(translation -> translation.sudo().sudoMessageSpy())
-                        .placeholder("{COMMAND}", command)
                         .placeholder("{PLAYER}", sender.getName())
+                        .placeholder("{TARGET}", target.getName())
+                        .placeholder("{COMMAND}", command)
                         .send());
     }
 }

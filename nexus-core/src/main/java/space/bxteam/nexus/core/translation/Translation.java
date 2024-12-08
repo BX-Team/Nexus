@@ -85,7 +85,6 @@ public interface Translation {
 
     interface SudoSection {
         Notice sudoMessageSpy();
-        Notice sudoMessage();
     }
 
     TimeAndWeatherSection timeAndWeather();

@@ -163,9 +163,8 @@ public class RUTranslation extends OkaeriConfig implements Translation {
 
     @Getter
     public class RUSudoSection extends OkaeriConfig implements SudoSection {
-        @Comment("{PLAYER} - Игрок, выполнивший команду, {COMMAND} - Команда, которую выполнил игрок")
-        public Notice sudoMessageSpy = Notice.chat("<gray>[SUDO] <white>{PLAYER} <gray>выполнил команду: <white>{COMMAND}");
-        public Notice sudoMessage = Notice.chat("<green>Вы выполнили команду: <white>{COMMAND} <green>на игроке <white>{PLAYER}");
+        @Comment("{PLAYER} - Игрок, выполнивший команду, {TARGET} - Целевой игрок, {COMMAND} - Команда, которая была выполнена")
+        public Notice sudoMessageSpy = Notice.chat("<gray>[SUDO] <white>{PLAYER} <gray>-> <white>{TARGET} <gray>: <white>{COMMAND}");
     }
 
     @Comment({"", "Этот раздел отвечает за сообщения, связанные с временем и погодой."})
