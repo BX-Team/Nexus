@@ -19,10 +19,9 @@ public class WhoisCommand {
 
     @Execute
     void execute(@Context CommandSender sender, @Arg Player player) {
-        /*
         this.multificationManager.create()
-                .viewer(sender)
-                .notice(translationConfig -> translationConfig.player().whoisCommand())
+                .sender(sender)
+                .messages(translationConfig -> translationConfig.player().whoisCommand())
                 .placeholder("{PLAYER}", player.getName())
                 .placeholder("{UUID}", String.valueOf(player.getUniqueId()))
                 .placeholder("{IP}", player.getAddress().getHostString())
@@ -32,6 +31,5 @@ public class WhoisCommand {
                 .placeholder("{LEVEL}", String.valueOf(player.getLevel()))
                 .placeholder("{FOOD}", String.valueOf(player.getFoodLevel()))
                 .send();
-         */ // Commented out until we will found a way to send List<?> as a message
     }
 }

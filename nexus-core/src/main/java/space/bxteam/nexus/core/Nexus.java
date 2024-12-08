@@ -13,6 +13,7 @@ import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import space.bxteam.nexus.core.integration.IntegrationRegistry;
 import space.bxteam.nexus.core.integration.bstats.MetricsModule;
 import space.bxteam.nexus.core.integration.litecommands.LiteCommandsRegister;
+import space.bxteam.nexus.core.multification.module.MultificationModule;
 import space.bxteam.nexus.core.scanner.register.ComponentRegister;
 import space.bxteam.nexus.core.scheduler.SchedulerSetup;
 import space.bxteam.nexus.core.translation.TranslationProvider;
@@ -32,6 +33,7 @@ public class Nexus {
         this.injector = Guice.createInjector(
                         new NexusModule(this.configurationProvider, plugin, configurationManager),
                         new ConfigModule(),
+                        new MultificationModule(),
                         new DatabaseModule(this.configurationProvider),
                         new SchedulerSetup(plugin),
                         new MetricsModule()

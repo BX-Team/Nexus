@@ -3,6 +3,7 @@ package space.bxteam.nexus.core.integration.placeholderapi.resolver;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import lombok.RequiredArgsConstructor;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.*;
@@ -23,9 +24,11 @@ public class PlaceholderRegistryImpl implements PlaceholderRegistry {
     }
 
     @Override
-    public String format(String text, Player target) {
-        for (PlaceholderReplacer replacer : this.replacerPlayers) {
-            text = replacer.apply(text, target);
+    public String format(String text, CommandSender target) {
+        if (target instanceof Player player) {
+            for (PlaceholderReplacer replacer : this.replacerPlayers) {
+                text = replacer.apply(text, player);
+            }
         }
 
         return text;

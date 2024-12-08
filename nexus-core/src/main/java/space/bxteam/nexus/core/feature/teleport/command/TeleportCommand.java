@@ -12,7 +12,7 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import space.bxteam.nexus.core.multification.formatter.MultificationFormatter;
+import space.bxteam.nexus.core.multification.MultificationFormatter;
 import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.feature.teleport.TeleportService;
 

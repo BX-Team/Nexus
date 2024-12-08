@@ -8,7 +8,7 @@ import dev.rollczi.litecommands.suggestion.SuggestionContext;
 import dev.rollczi.litecommands.suggestion.SuggestionResult;
 import org.bukkit.command.CommandSender;
 import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
-import space.bxteam.nexus.core.multification.argument.MultificationLiteArgument;
+import space.bxteam.nexus.core.multification.MultificationLiteArgument;
 import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.core.scanner.annotations.litecommands.LiteArgument;
 import space.bxteam.nexus.core.translation.Translation;
