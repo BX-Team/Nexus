@@ -7,6 +7,7 @@ import dev.rollczi.litecommands.annotations.command.Command;
 import dev.rollczi.litecommands.annotations.context.Context;
 import dev.rollczi.litecommands.annotations.execute.Execute;
 import dev.rollczi.litecommands.annotations.join.Join;
+import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Material;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Command(name = "itemlore", aliases = {"lore"})
+@Permission("nexus.itemlore")
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
 public class ItemLoreCommand {
     private final MultificationManager multificationManager;

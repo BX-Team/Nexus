@@ -20,7 +20,7 @@ public class WhoisCommand {
     @Execute
     void execute(@Context CommandSender sender, @Arg Player player) {
         this.multificationManager.create()
-                .sender(sender)
+                .viewer(sender)
                 .messages(translationConfig -> translationConfig.player().whoisCommand())
                 .placeholder("{PLAYER}", player.getName())
                 .placeholder("{UUID}", String.valueOf(player.getUniqueId()))

@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Command(name = "tpadeny", aliases = {"tpno", "tpdeny"})
-@Permission({"nexus.tpadeny"})
+@Permission("nexus.tpadeny")
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
 public class TpaDenyCommand {
     private final Server server;
