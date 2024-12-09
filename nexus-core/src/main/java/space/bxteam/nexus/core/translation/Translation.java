@@ -19,7 +19,7 @@ public interface Translation {
         Notice noDamagedItems();
         Notice noEnchantment();
         Notice noValidEnchantmentLevel();
-        Notice giveNoItem();
+        Notice noValidItem();
     }
 
     Format format();
@@ -85,7 +85,6 @@ public interface Translation {
 
     interface SudoSection {
         Notice sudoMessageSpy();
-        Notice sudoMessage();
     }
 
     TimeAndWeatherSection timeAndWeather();
@@ -129,18 +128,21 @@ public interface Translation {
 
         Notice warpAlreadyExists();
         Notice notExist();
-        Notice noWarps();
     }
 
     HomeSection home();
 
     interface HomeSection {
         Notice homeList();
+
         Notice create();
         Notice delete();
+        Notice homeAlreadyExists();
+
         Notice limit();
         Notice noHomes();
-        Notice homeAlreadyExists();
+
+        String noHomesPlaceholder();
     }
 
     JailSection jail();

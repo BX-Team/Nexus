@@ -48,7 +48,7 @@ public class RUTranslation extends OkaeriConfig implements Translation {
         public Notice noDamagedItems = Notice.chat("<dark_red>В вашем инвентаре нет поврежденных предметов!");
         public Notice noEnchantment = Notice.chat("<dark_red>Такого зачарования не существует!");
         public Notice noValidEnchantmentLevel = Notice.chat("<dark_red>Недопустимый уровень зачарования!");
-        public Notice giveNoItem = Notice.chat("<dark_red>Этот предмет недоступен!");
+        public Notice noValidItem = Notice.chat("<dark_red>Этот предмет недопустим!");
     }
 
     @Comment({"", "Этот ответ отвечает за общее форматирование некоторых значений"})
@@ -163,9 +163,8 @@ public class RUTranslation extends OkaeriConfig implements Translation {
 
     @Getter
     public class RUSudoSection extends OkaeriConfig implements SudoSection {
-        @Comment("{PLAYER} - Игрок, выполнивший команду, {COMMAND} - Команда, которую выполнил игрок")
-        public Notice sudoMessageSpy = Notice.chat("<gray>[SUDO] <white>{PLAYER} <gray>выполнил команду: <white>{COMMAND}");
-        public Notice sudoMessage = Notice.chat("<green>Вы выполнили команду: <white>{COMMAND} <green>на игроке <white>{PLAYER}");
+        @Comment("{PLAYER} - Игрок, выполнивший команду, {TARGET} - Целевой игрок, {COMMAND} - Команда, которая была выполнена")
+        public Notice sudoMessageSpy = Notice.chat("<gray>[SUDO] <white>{PLAYER} <gray>-> <white>{TARGET} <gray>: <white>{COMMAND}");
     }
 
     @Comment({"", "Этот раздел отвечает за сообщения, связанные с временем и погодой."})
@@ -225,7 +224,6 @@ public class RUTranslation extends OkaeriConfig implements Translation {
 
         @Comment("")
         public Notice warpAlreadyExists = Notice.chat("<dark_red>Варп с именем <white>{WARP} <dark_red>уже существует!");
-        public Notice noWarps = Notice.chat("<dark_red>Нет варпов!");
         public Notice notExist = Notice.chat("<dark_red>Варпа <white>{WARP} <dark_red>не существует!");
     }
 
@@ -245,6 +243,9 @@ public class RUTranslation extends OkaeriConfig implements Translation {
         @Comment({"", "{LIMIT} - Лимит домов"})
         public Notice limit = Notice.chat("<dark_red>Вы достигли лимита домов! <red>({LIMIT})");
         public Notice noHomes = Notice.chat("<dark_red>У вас нет домов!");
+
+        @Comment({"", "Сообщение для плейсхолдеров"})
+        public String noHomesPlaceholder = "У вас нет домов!";
     }
 
     @Comment({"", "Этот раздел отвечает за сообщения, связанные с тюрьмой."})

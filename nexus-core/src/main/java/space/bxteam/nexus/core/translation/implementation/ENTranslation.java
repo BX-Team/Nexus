@@ -48,7 +48,7 @@ public class ENTranslation extends OkaeriConfig implements Translation {
         public Notice noDamagedItems = Notice.chat("<dark_red>There are no damaged items in your inventory!");
         public Notice noEnchantment = Notice.chat("<dark_red>This enchantment doesn't exist!");
         public Notice noValidEnchantmentLevel = Notice.chat("<dark_red>Not a valid enchantment level!");
-        public Notice giveNoItem = Notice.chat("<dark_red>This item is not obtainable!");
+        public Notice noValidItem = Notice.chat("<dark_red>This is not a valid item!");
     }
 
     @Comment({"", "This answer is responsible for the general formatting of some values"})
@@ -163,9 +163,8 @@ public class ENTranslation extends OkaeriConfig implements Translation {
 
     @Getter
     public class ENSudoSection extends OkaeriConfig implements SudoSection {
-        @Comment("{PLAYER} - Player who executed the command, {COMMAND} - Command that the player executed")
-        public Notice sudoMessageSpy = Notice.chat("<gray>[SUDO] <white>{PLAYER} <gray>executed command: <white>{COMMAND}");
-        public Notice sudoMessage = Notice.chat("<green>You have executed the command: <white>{COMMAND} <green>on player <white>{PLAYER}");
+        @Comment("{PLAYER} - Player who executed the command, {TARGET} - Target player, {COMMAND} - Command that the player executed")
+        public Notice sudoMessageSpy = Notice.chat("<gray>[SUDO] <white>{PLAYER} <gray>-> <white>{TARGET} <gray>: <white>{COMMAND}");
     }
 
     @Comment({"", "This section is responsible for the time and weather-related messages."})
@@ -225,7 +224,6 @@ public class ENTranslation extends OkaeriConfig implements Translation {
 
         @Comment("")
         public Notice warpAlreadyExists = Notice.chat("<dark_red>Warp <white>{WARP} <dark_red>already exists!");
-        public Notice noWarps = Notice.chat("<dark_red>There are no warps!");
         public Notice notExist = Notice.chat("<dark_red>Warp <white>{WARP} <dark_red>doesn't exist!");
     }
 
@@ -245,6 +243,9 @@ public class ENTranslation extends OkaeriConfig implements Translation {
         @Comment({"", "{LIMIT} - Limit of homes"})
         public Notice limit = Notice.chat("<dark_red>You have reached the limit of homes! <red>({LIMIT})");
         public Notice noHomes = Notice.chat("<dark_red>You don't have any homes!");
+
+        @Comment({"", "Placeholder message"})
+        public String noHomesPlaceholder = "You don't have any homes!";
     }
 
     @Comment({"", "This section is responsible for the jail-related messages."})

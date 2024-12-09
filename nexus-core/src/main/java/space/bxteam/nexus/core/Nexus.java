@@ -4,6 +4,7 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import org.bukkit.plugin.Plugin;
 import space.bxteam.nexus.NexusApiProvider;
+import space.bxteam.nexus.core.configuration.ConfigurationManager;
 import space.bxteam.nexus.core.configuration.commands.CommandsConfigProvider;
 import space.bxteam.nexus.core.database.DatabaseClient;
 import space.bxteam.nexus.core.database.DatabaseModule;
@@ -12,6 +13,7 @@ import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import space.bxteam.nexus.core.integration.IntegrationRegistry;
 import space.bxteam.nexus.core.integration.bstats.MetricsModule;
 import space.bxteam.nexus.core.integration.litecommands.LiteCommandsRegister;
+import space.bxteam.nexus.core.multification.module.MultificationModule;
 import space.bxteam.nexus.core.scanner.register.ComponentRegister;
 import space.bxteam.nexus.core.scheduler.SchedulerSetup;
 import space.bxteam.nexus.core.translation.TranslationProvider;
@@ -25,10 +27,13 @@ public class Nexus {
     public Nexus(Plugin plugin) {
         NexusEnvironment environment = new NexusEnvironment(plugin);
 
-        this.configurationProvider = new PluginConfigurationProvider(plugin.getDataFolder().toPath());
+        ConfigurationManager configurationManager = new ConfigurationManager();
+        this.configurationProvider = new PluginConfigurationProvider(plugin.getDataFolder().toPath(), configurationManager);
+
         this.injector = Guice.createInjector(
-                        new NexusModule(this.configurationProvider, plugin),
+                        new NexusModule(this.configurationProvider, plugin, configurationManager),
                         new ConfigModule(),
+                        new MultificationModule(),
                         new DatabaseModule(this.configurationProvider),
                         new SchedulerSetup(plugin),
                         new MetricsModule()

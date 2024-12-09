@@ -1,4 +1,4 @@
-package space.bxteam.nexus.core.multification.argument;
+package space.bxteam.nexus.core.multification;
 
 import com.google.inject.Inject;
 import dev.rollczi.litecommands.argument.Argument;

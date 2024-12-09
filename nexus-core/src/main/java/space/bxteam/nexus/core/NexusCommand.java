@@ -33,7 +33,7 @@ public class NexusCommand {
     void reload(@Context CommandSender sender) {
         Stopwatch stopwatch = Stopwatch.createStarted();
         this.configurationManager.reload();
-        translationProvider.setTranslation(configurationProvider.configuration().language());
+        this.translationProvider.setTranslation(configurationProvider.configuration().language());
 
         Duration duration = stopwatch.elapsed();
         this.multificationManager.create()

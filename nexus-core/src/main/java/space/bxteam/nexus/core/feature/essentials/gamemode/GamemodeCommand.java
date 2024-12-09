@@ -5,6 +5,7 @@ import dev.rollczi.litecommands.annotations.argument.Arg;
 import dev.rollczi.litecommands.annotations.command.Command;
 import dev.rollczi.litecommands.annotations.context.Context;
 import dev.rollczi.litecommands.annotations.execute.Execute;
+import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.GameMode;
 import org.bukkit.command.CommandSender;
@@ -17,6 +18,7 @@ public class GamemodeCommand {
     private final MultificationManager multificationManager;
 
     @Execute
+    @Permission("nexus.gamemode")
     void execute(@Context Player sender, @Arg GameMode gameMode) {
         sender.setGameMode(gameMode);
 
@@ -28,6 +30,7 @@ public class GamemodeCommand {
     }
 
     @Execute
+    @Permission("nexus.gamemode.other")
     void execute(@Context CommandSender sender, @Arg GameMode gameMode, @Arg Player target) {
         target.setGameMode(gameMode);
 

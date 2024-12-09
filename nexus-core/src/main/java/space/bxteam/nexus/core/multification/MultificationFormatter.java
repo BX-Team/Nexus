@@ -1,4 +1,4 @@
-package space.bxteam.nexus.core.multification.formatter;
+package space.bxteam.nexus.core.multification;
 
 import com.eternalcode.multification.shared.Formatter;
 

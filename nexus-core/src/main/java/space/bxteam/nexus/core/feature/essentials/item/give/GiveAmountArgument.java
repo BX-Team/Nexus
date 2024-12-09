@@ -8,20 +8,20 @@ import dev.rollczi.litecommands.suggestion.SuggestionContext;
 import dev.rollczi.litecommands.suggestion.SuggestionResult;
 import org.bukkit.command.CommandSender;
 import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
-import space.bxteam.nexus.core.multification.argument.MultificationLiteArgument;
+import space.bxteam.nexus.core.multification.MultificationLiteArgument;
 import space.bxteam.nexus.core.scanner.annotations.litecommands.LiteArgument;
 import space.bxteam.nexus.core.translation.Translation;
 import space.bxteam.nexus.core.translation.TranslationProvider;
 
 import java.util.List;
 
-@LiteArgument(type = int.class, name = GiveCommandArgument.KEY)
-public class GiveCommandArgument extends MultificationLiteArgument<Integer> {
-    private static final List<Integer> suggestions = List.of(1, 8, 16, 32, 64);
+@LiteArgument(type = int.class, name = GiveAmountArgument.KEY)
+public class GiveAmountArgument extends MultificationLiteArgument<Integer> {
+    private static final List<Integer> suggestions = List.of(1, 8, 16, 32, 64); // TODO: Get actual max size for item stack
     static final String KEY = "item-amount";
 
     @Inject
-    public GiveCommandArgument(TranslationProvider translationProvider, PluginConfigurationProvider configurationProvider) {
+    public GiveAmountArgument(TranslationProvider translationProvider, PluginConfigurationProvider configurationProvider) {
         super(translationProvider, configurationProvider);
     }
 

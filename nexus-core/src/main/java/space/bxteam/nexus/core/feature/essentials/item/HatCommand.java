@@ -13,12 +13,12 @@ import space.bxteam.commons.bukkit.inventory.ItemUtil;
 import space.bxteam.nexus.core.multification.MultificationManager;
 
 @Command(name = "hat")
+@Permission("nexus.hat")
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
 public class HatCommand {
     private final MultificationManager multificationManager;
 
     @Execute
-    @Permission("nexus.hat")
     void execute(@Context Player player) {
         PlayerInventory playerInventory = player.getInventory();
 

@@ -37,7 +37,7 @@ okaeri-commons = { module = "eu.okaeri:okaeri-configs-serdes-commons", version.r
 okaeri-bukkit = { module = "eu.okaeri:okaeri-configs-serdes-bukkit", version.ref = "okaeri" }
 okaeri-yaml = { module = "eu.okaeri:okaeri-configs-yaml-bukkit", version.ref = "okaeri" }
 
-multification = { module = "com.eternalcode:multification-bukkit", version.ref = "multification" }
+multification = { module = "com.eternalcode:multification-core", version.ref = "multification" }
 multification-okaeri = { module = "com.eternalcode:multification-okaeri", version.ref = "multification" }
 
 commons-adventure = { module = "space.bxteam:commons-adventure", version.ref = "commons" }
