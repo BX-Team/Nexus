@@ -243,6 +243,9 @@ public class ENTranslation extends OkaeriConfig implements Translation {
         @Comment({"", "{LIMIT} - Limit of homes"})
         public Notice limit = Notice.chat("<dark_red>You have reached the limit of homes! <red>({LIMIT})");
         public Notice noHomes = Notice.chat("<dark_red>You don't have any homes!");
+
+        @Comment({"", "Placeholder message"})
+        public String noHomesPlaceholder = "You don't have any homes!";
     }
 
     @Comment({"", "This section is responsible for the jail-related messages."})

@@ -243,6 +243,9 @@ public class RUTranslation extends OkaeriConfig implements Translation {
         @Comment({"", "{LIMIT} - Лимит домов"})
         public Notice limit = Notice.chat("<dark_red>Вы достигли лимита домов! <red>({LIMIT})");
         public Notice noHomes = Notice.chat("<dark_red>У вас нет домов!");
+
+        @Comment({"", "Сообщение для плейсхолдеров"})
+        public String noHomesPlaceholder = "У вас нет домов!";
     }
 
     @Comment({"", "Этот раздел отвечает за сообщения, связанные с тюрьмой."})

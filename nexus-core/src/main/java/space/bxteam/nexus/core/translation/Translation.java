@@ -134,11 +134,15 @@ public interface Translation {
 
     interface HomeSection {
         Notice homeList();
+
         Notice create();
         Notice delete();
+        Notice homeAlreadyExists();
+
         Notice limit();
         Notice noHomes();
-        Notice homeAlreadyExists();
+
+        String noHomesPlaceholder();
     }
 
     JailSection jail();
