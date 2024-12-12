@@ -7,6 +7,9 @@ import org.jetbrains.annotations.ApiStatus;
 import java.util.Optional;
 import java.util.UUID;
 
+/**
+ * Service for teleportation around the world.
+ */
 public interface TeleportService {
     /**
      * Teleport the player to the specified location.

@@ -9,6 +9,9 @@ import java.time.Duration;
 import java.util.Collection;
 import java.util.UUID;
 
+/**
+ * Service for jail management.
+ */
 public interface JailService {
     /**
      * Detains the player in jail. If the duration is null, the default duration from plugin configuration is used.

@@ -7,6 +7,9 @@ import java.util.Collection;
 import java.util.Optional;
 import java.util.UUID;
 
+/**
+ * Service for home management.
+ */
 public interface HomeService {
     /**
      * Create a home for the player.

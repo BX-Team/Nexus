@@ -9,6 +9,9 @@ import space.bxteam.nexus.feature.teleport.TeleportService;
 import space.bxteam.nexus.feature.teleportrequest.TeleportRequestService;
 import space.bxteam.nexus.feature.warp.WarpService;
 
+/**
+ * Main API for the Nexus plugin. Provides access to all services.
+ */
 public interface NexusApi {
     ChatService getChatService();
 

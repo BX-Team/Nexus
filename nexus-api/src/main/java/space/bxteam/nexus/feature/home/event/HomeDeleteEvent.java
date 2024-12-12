@@ -8,6 +8,9 @@ import space.bxteam.nexus.feature.home.Home;
 
 import java.util.UUID;
 
+/**
+ * Event that is called when a home is deleted.
+ */
 public class HomeDeleteEvent extends Event implements Cancellable {
     private static final HandlerList HANDLER_LIST = new HandlerList();
 

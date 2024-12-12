@@ -9,6 +9,9 @@ import org.bukkit.event.HandlerList;
 
 import java.util.UUID;
 
+/**
+ * Event that is called when a home is created.
+ */
 public class HomeCreateEvent extends Event implements Cancellable {
     private static final HandlerList HANDLER_LIST = new HandlerList();
 

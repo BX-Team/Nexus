@@ -3,6 +3,9 @@ package space.bxteam.nexus.feature.teleportrequest;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Service for teleport requests.
+ */
 public interface TeleportRequestService {
     /**
      * Create a teleport request.

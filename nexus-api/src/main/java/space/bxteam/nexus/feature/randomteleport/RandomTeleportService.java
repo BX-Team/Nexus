@@ -6,6 +6,9 @@ import org.bukkit.entity.Player;
 
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * Service for random teleportation.
+ */
 public interface RandomTeleportService {
     /**
      * Teleports the player to a random location in their current world.

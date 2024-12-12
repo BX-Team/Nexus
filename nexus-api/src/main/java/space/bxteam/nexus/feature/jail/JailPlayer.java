@@ -4,6 +4,9 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.UUID;
 
+/**
+ * Represents a player that is jailed.
+ */
 public class JailPlayer {
     private final UUID player;
     private final Instant jailedAt;

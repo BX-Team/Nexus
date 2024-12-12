@@ -5,6 +5,9 @@ import org.bukkit.Location;
 import java.util.Collection;
 import java.util.Optional;
 
+/**
+ * Service for managing warps.
+ */
 public interface WarpService {
     /**
      * Create a new warp.

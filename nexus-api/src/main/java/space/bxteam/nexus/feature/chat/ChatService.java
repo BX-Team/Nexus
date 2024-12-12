@@ -3,6 +3,9 @@ package space.bxteam.nexus.feature.chat;
 import java.time.Duration;
 import java.util.UUID;
 
+/**
+ * Service for chat management.
+ */
 public interface ChatService {
     /**
      * Mark the player that he used the chat.
@@ -34,5 +37,10 @@ public interface ChatService {
      */
     boolean isChatEnabled();
 
+    /**
+     * Enable or disable the chat.
+     *
+     * @param enabled true to enable the chat, false to disable
+     */
     void setChatEnabled(boolean enabled);
 }

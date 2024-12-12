@@ -3,6 +3,9 @@ package space.bxteam.nexus.feature.spawn;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
+/**
+ * This service provides methods to handle custom spawn location in the game.
+ */
 public interface SpawnService {
     /**
      * Teleports the player to the spawn location.
