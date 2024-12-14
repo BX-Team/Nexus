@@ -8,7 +8,7 @@
   "lockFileMaintenance": {
     "enabled": false
   },
-  "labels": ["renovate"],
+  "labels": ["\uD83D\uDD04 dependencies"],
   "packageRules": [
     {
       "groupName": "all dependencies",
