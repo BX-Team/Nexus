@@ -1,5 +1,6 @@
 <div align="center">
 
+![Banner](/assets/readme-banner.png)
 ### Nexus
 Powerful plugin that gives you ability to personalize your Minecraft server with useful features.
 
