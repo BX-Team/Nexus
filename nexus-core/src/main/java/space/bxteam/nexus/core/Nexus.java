@@ -11,7 +11,6 @@ import space.bxteam.nexus.core.database.DatabaseModule;
 import space.bxteam.nexus.core.configuration.plugin.ConfigModule;
 import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import space.bxteam.nexus.core.integration.IntegrationRegistry;
-import space.bxteam.nexus.core.integration.bstats.MetricsModule;
 import space.bxteam.nexus.core.integration.litecommands.LiteCommandsRegister;
 import space.bxteam.nexus.core.multification.module.MultificationModule;
 import space.bxteam.nexus.core.scanner.register.ComponentRegister;
@@ -35,8 +34,7 @@ public class Nexus {
                         new ConfigModule(),
                         new MultificationModule(),
                         new DatabaseModule(this.configurationProvider),
-                        new SchedulerSetup(plugin),
-                        new MetricsModule()
+                        new SchedulerSetup(plugin)
         );
 
         this.injector.getInstance(TranslationProvider.class);
