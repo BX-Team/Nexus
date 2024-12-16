@@ -98,6 +98,7 @@ paper {
     loader = "space.bxteam.nexus.core.loader.NexusLoader"
 
     apiVersion = "1.19"
+    foliaSupported = true
     serverDependencies {
         register("PlaceholderAPI") {
             required = false

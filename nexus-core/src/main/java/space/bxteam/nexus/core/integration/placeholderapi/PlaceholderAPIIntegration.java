@@ -26,7 +26,7 @@ public class PlaceholderAPIIntegration extends PlaceholderExpansion implements I
 
     @Override
     public boolean available() {
-        return this.plugin.getServer().getPluginManager().getPlugin("PlaceholderAPI") != null;
+        return this.plugin.getServer().getPluginManager().getPlugin("PlaceholderAPI") != null; // TODO: why this is not working?
     }
 
     @Override
