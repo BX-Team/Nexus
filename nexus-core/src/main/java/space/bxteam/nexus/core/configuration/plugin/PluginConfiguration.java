@@ -76,7 +76,7 @@ public class PluginConfiguration extends OkaeriConfig {
     @Comment("")
     private Spawn spawn = new Spawn();
     @Exclude
-    private static final Position EMPTY_POSITION = new Position(0, 0, 0, 0.0f, 0.0f, Position.NONE_WORLD); // TODO: Fix this (error on server start)
+    private static final Position EMPTY_POSITION = new Position(0, 0, 0, 0.0f, 0.0f, Position.NONE_WORLD);
 
     @Getter
     public class Spawn extends OkaeriConfig {
