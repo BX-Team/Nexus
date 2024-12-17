@@ -9,6 +9,7 @@ import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
+import space.bxteam.commons.scheduler.Scheduler;
 import space.bxteam.nexus.core.multification.MultificationManager;
 
 @Command(name = "rain")
@@ -16,6 +17,7 @@ import space.bxteam.nexus.core.multification.MultificationManager;
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
 public class RainCommand {
     private final MultificationManager multificationManager;
+    private final Scheduler scheduler;
 
     @Execute
     void rain(@Context CommandSender sender, @Context World world) {
@@ -28,8 +30,10 @@ public class RainCommand {
     }
 
     private void setRain(CommandSender sender, World world) {
-        world.setStorm(true);
-        world.setThundering(false);
+        this.scheduler.runTask(() -> {
+            world.setStorm(true);
+            world.setThundering(false);
+        });
 
         this.multificationManager.create()
                 .viewer(sender)

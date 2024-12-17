@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import space.bxteam.commons.scheduler.Scheduler;
 import space.bxteam.nexus.core.multification.MultificationManager;
 
 @Command(name = "time")
@@ -17,6 +18,7 @@ import space.bxteam.nexus.core.multification.MultificationManager;
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
 public class TimeCommand {
     private final MultificationManager multificationManager;
+    private final Scheduler scheduler;
 
     @Execute(name = "add")
     void add(@Context Player player, @Context CommandSender sender, @Arg(TimeCommandArgument.KEY) int time) {
@@ -25,7 +27,9 @@ public class TimeCommand {
 
     @Execute(name = "add")
     void add(@Context CommandSender sender, @Arg(TimeCommandArgument.KEY) int time, @Arg World world) {
-        world.setTime(world.getTime() + time);
+        this.scheduler.runTask(() -> {
+            world.setTime(world.getTime() + time);
+        });
 
         this.multificationManager.create()
                 .viewer(sender)
@@ -41,7 +45,9 @@ public class TimeCommand {
 
     @Execute(name = "set")
     void set(@Context CommandSender sender, @Arg(TimeCommandArgument.KEY) int time, @Arg World world) {
-        world.setTime(time);
+        this.scheduler.runTask(() -> {
+            world.setTime(time);
+        });
 
         this.multificationManager.create()
                 .viewer(sender)

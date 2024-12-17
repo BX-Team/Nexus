@@ -2,6 +2,7 @@ package space.bxteam.nexus.core.feature.spawn;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import io.papermc.lib.PaperLib;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -25,7 +26,7 @@ public class SpawnServiceImpl implements SpawnService {
             return;
         }
 
-        player.teleport(PositionFactory.convert(spawn));
+        PaperLib.teleportAsync(player, PositionFactory.convert(spawn));
     }
 
     @Override
