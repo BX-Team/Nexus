@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.bukkit.Server;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import space.bxteam.commons.scheduler.Scheduler;
 import space.bxteam.nexus.core.multification.MultificationManager;
 
 @Command(name = "sudo")
@@ -18,19 +19,26 @@ import space.bxteam.nexus.core.multification.MultificationManager;
 public class SudoCommand {
     private final Server server;
     private final MultificationManager multificationManager;
+    private final Scheduler scheduler;
 
     @Execute(name = "-console")
     @Permission("nexus.sudo.console")
     void console(@Context CommandSender sender, @Join String command) {
-        this.server.dispatchCommand(this.server.getConsoleSender(), command);
-        this.sendResultMessage(sender, this.server.getConsoleSender(), command);
+        this.scheduler.runTask(() -> {
+            this.server.dispatchCommand(this.server.getConsoleSender(), command);
+
+            this.sendResultMessage(sender, this.server.getConsoleSender(), command);
+        });
     }
 
     @Execute
     @Permission("nexus.sudo.player")
     void player(@Context CommandSender sender, @Arg Player target, @Join String command) {
-        this.server.dispatchCommand(target, command);
-        this.sendResultMessage(sender, target, command);
+        this.scheduler.runTask(target, () -> {
+            this.server.dispatchCommand(target, command);
+
+            this.sendResultMessage(sender, target, command);
+        });
     }
 
     private void sendResultMessage(CommandSender sender, CommandSender target, String command) {

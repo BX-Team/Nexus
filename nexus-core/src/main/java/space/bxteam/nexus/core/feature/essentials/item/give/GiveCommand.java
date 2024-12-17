@@ -81,7 +81,7 @@ public class GiveCommand {
                 .amount(amount)
                 .build();
 
-        ItemUtil.giveItem(player, item); // TODO: Fix 99 stack size
+        ItemUtil.giveItem(player, item);
     }
 
     private void giveItem(Player player, Material material, int amount) {
@@ -97,6 +97,6 @@ public class GiveCommand {
                 .amount(amount)
                 .build();
 
-        ItemUtil.giveItem(player, item); // TODO: Fix 99 stack size
+        ItemUtil.giveItem(player, item);
     }
 }
