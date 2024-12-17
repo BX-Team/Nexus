@@ -7,6 +7,7 @@ import me.clip.placeholderapi.PlaceholderAPI;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.PluginManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import space.bxteam.nexus.core.utils.meta.PluginVersionMeta;
@@ -22,11 +23,12 @@ import java.util.Optional;
 public class PlaceholderAPIIntegration extends PlaceholderExpansion implements Integration, PlaceholderReplacer {
     private final PlaceholderRegistry placeholderRegistry;
     private final Plugin plugin;
+    private final PluginManager pluginManager;
     private final PluginVersionMeta versionMeta;
 
     @Override
     public boolean available() {
-        return this.plugin.getServer().getPluginManager().getPlugin("PlaceholderAPI") != null; // TODO: why this is not working?
+        return this.pluginManager.getPlugin("PlaceholderAPI") != null;
     }
 
     @Override

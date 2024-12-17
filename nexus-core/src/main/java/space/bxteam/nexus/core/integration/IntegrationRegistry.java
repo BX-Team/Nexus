@@ -20,7 +20,9 @@ public class IntegrationRegistry {
     private final PluginManager pluginManager;
 
     public void init() {
-        this.tryEnable(PlaceholderAPIIntegration.class, () -> this.pluginManager.getPlugin("PlaceholderAPI") != null);
+        if (this.pluginManager.getPlugin("PlaceholderAPI") != null) {
+            this.tryEnable(PlaceholderAPIIntegration.class, () -> true);
+        }
     }
 
     private void tryEnable(Class<? extends Integration> integrationClass, Supplier<Boolean> availablePredicate) {
