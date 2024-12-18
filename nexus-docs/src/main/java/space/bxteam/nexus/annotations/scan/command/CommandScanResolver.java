@@ -16,14 +16,13 @@ public class CommandScanResolver implements ScanResolver<CommandResult> {
     @Override
     public List<CommandResult> resolve(ScanRecord record) {
         Class<?> type = record.clazz();
-        Command annotation = type.getAnnotation(Command.class);
 
-        List<CommandResult> results = new ArrayList<>();
-        if (annotation != null) {
-            results.addAll(this.handleCommand(record, annotation));
+        Command command = type.getAnnotation(Command.class);
+        if (command != null) {
+            return this.handleCommand(record, command);
         }
 
-        return results;
+        return List.of();
     }
 
     private List<CommandResult> handleCommand(ScanRecord record, Command command) {
