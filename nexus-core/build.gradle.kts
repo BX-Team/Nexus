@@ -17,14 +17,14 @@ repositories {
 
 dependencies {
     implementation(project(":nexus-api"))
+    api(project(":nexus-docs"))
 
     // Libraries
     compileOnly(libs.paper)
     compileOnly(libs.paperlib)
     compileOnly(libs.hikaricp)
     compileOnly(libs.mariadb)
-    compileOnly(libs.litecommands)
-    compileOnly(libs.litecommandsadventure)
+    compileOnly(libs.bundles.litecommands)
     compileOnly(libs.guice)
     compileOnly(libs.classgraph)
     compileOnly(libs.triumphgui)

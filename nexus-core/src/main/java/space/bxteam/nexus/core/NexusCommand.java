@@ -10,6 +10,7 @@ import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.command.CommandSender;
 import space.bxteam.commons.scheduler.Scheduler;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.configuration.ConfigurationManager;
 import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import space.bxteam.nexus.core.multification.MultificationManager;
@@ -30,6 +31,7 @@ public class NexusCommand {
     private static final Notice RELOADED = Notice.chat("<green>Nexus configuration files has been reloaded in <white>{TIME}ms<green>.");
 
     @Execute(name = "reload")
+    @CommandDocs(description = "Reloads the configuration files.")
     void reload(@Context CommandSender sender) {
         this.scheduler.runTask(() -> {
             Stopwatch stopwatch = Stopwatch.createStarted();
@@ -46,6 +48,7 @@ public class NexusCommand {
     }
 
     @Execute(name = "version")
+    @CommandDocs(description = "Shows the current version of the plugin and checks for updates.")
     void version() {
         // Send current version and start update checker
     }

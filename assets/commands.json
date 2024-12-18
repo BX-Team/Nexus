@@ -1,0 +1,873 @@
+[
+  {
+    "name": "adminchat ",
+    "aliases": [],
+    "permissions": [
+      "nexus.adminchat"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "anvil ",
+    "aliases": [],
+    "permissions": [
+      "nexus.anvil.other"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "anvil ",
+    "aliases": [],
+    "permissions": [
+      "nexus.anvil"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "back ",
+    "aliases": [],
+    "permissions": [
+      "nexus.teleport.back"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "back ",
+    "aliases": [],
+    "permissions": [
+      "nexus.teleport.back.other"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "broadcast ",
+    "aliases": [],
+    "permissions": [
+      "nexus.broadcast"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "cartography ",
+    "aliases": [],
+    "permissions": [
+      "nexus.cartography"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "cartography ",
+    "aliases": [],
+    "permissions": [
+      "nexus.cartography.other"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "chat clear",
+    "aliases": [
+      "chat, cc"
+    ],
+    "permissions": [
+      "nexus.chat"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "chat off",
+    "aliases": [],
+    "permissions": [
+      "nexus.chat"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "chat on",
+    "aliases": [],
+    "permissions": [
+      "nexus.chat"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "clear ",
+    "aliases": [],
+    "permissions": [
+      "nexus.clear.other"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "clear ",
+    "aliases": [],
+    "permissions": [
+      "nexus.clear"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "delhome ",
+    "aliases": [],
+    "permissions": [
+      "nexus.delhome"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "delwarp ",
+    "aliases": [],
+    "permissions": [
+      "nexus.delwarp"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "enchant ",
+    "aliases": [],
+    "permissions": [
+      "nexus.enchant.other"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "enchant ",
+    "aliases": [],
+    "permissions": [
+      "nexus.enchant"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "enderchest ",
+    "aliases": [],
+    "permissions": [
+      "nexus.enderchest.other"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "enderchest ",
+    "aliases": [],
+    "permissions": [
+      "nexus.enderchest"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "feed ",
+    "aliases": [],
+    "permissions": [
+      "nexus.feed.other"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "feed ",
+    "aliases": [],
+    "permissions": [
+      "nexus.feed"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "fly ",
+    "aliases": [],
+    "permissions": [
+      "nexus.fly"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "fly ",
+    "aliases": [],
+    "permissions": [
+      "nexus.fly.other"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "gamemode ",
+    "aliases": [],
+    "permissions": [
+      "nexus.gamemode"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "gamemode ",
+    "aliases": [],
+    "permissions": [
+      "nexus.gamemode.other"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "give ",
+    "aliases": [],
+    "permissions": [
+      "nexus.give"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "god ",
+    "aliases": [],
+    "permissions": [
+      "nexus.god"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "god ",
+    "aliases": [],
+    "permissions": [
+      "nexus.god.other"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "grindstone ",
+    "aliases": [],
+    "permissions": [
+      "nexus.grindstone"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "grindstone ",
+    "aliases": [],
+    "permissions": [
+      "nexus.grindstone.other"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "hat ",
+    "aliases": [],
+    "permissions": [
+      "nexus.hat"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "heal ",
+    "aliases": [],
+    "permissions": [
+      "nexus.heal"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "heal ",
+    "aliases": [],
+    "permissions": [
+      "nexus.heal.other"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "home ",
+    "aliases": [],
+    "permissions": [
+      "nexus.home"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "itemlore ",
+    "aliases": [],
+    "permissions": [
+      "nexus.itemlore"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "itemlore clear",
+    "aliases": [],
+    "permissions": [
+      "nexus.itemlore"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "itemname ",
+    "aliases": [],
+    "permissions": [
+      "nexus.itemname"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "itemname clear",
+    "aliases": [],
+    "permissions": [
+      "nexus.itemname"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "jail ",
+    "aliases": [],
+    "permissions": [
+      "nexus.jail"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "jail list",
+    "aliases": [],
+    "permissions": [
+      "nexus.jail.list"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "jail release",
+    "aliases": [],
+    "permissions": [
+      "nexus.jail.release"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "jail release -all",
+    "aliases": [
+      "jail, release *"
+    ],
+    "permissions": [
+      "nexus.jail.release"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "jail remove",
+    "aliases": [],
+    "permissions": [
+      "nexus.jail.remove"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "jail setup",
+    "aliases": [],
+    "permissions": [
+      "nexus.jail.setup"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "kill ",
+    "aliases": [],
+    "permissions": [
+      "nexus.kill.other"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "kill ",
+    "aliases": [],
+    "permissions": [
+      "nexus.kill"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "list ",
+    "aliases": [],
+    "permissions": [
+      "nexus.list"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "loom ",
+    "aliases": [],
+    "permissions": [
+      "nexus.loom"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "loom ",
+    "aliases": [],
+    "permissions": [
+      "nexus.loom.other"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "nexus reload",
+    "aliases": [],
+    "permissions": [
+      "nexus.nexus"
+    ],
+    "descriptions": [
+      "Reloads the configuration files."
+    ],
+    "arguments": [
+      ""
+    ]
+  },
+  {
+    "name": "nexus version",
+    "aliases": [],
+    "permissions": [
+      "nexus.nexus"
+    ],
+    "descriptions": [
+      "Shows the current version of the plugin and checks for updates."
+    ],
+    "arguments": [
+      ""
+    ]
+  },
+  {
+    "name": "online ",
+    "aliases": [],
+    "permissions": [
+      "nexus.online"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "ping ",
+    "aliases": [],
+    "permissions": [
+      "nexus.ping.other"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "ping ",
+    "aliases": [],
+    "permissions": [
+      "nexus.ping"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "rain ",
+    "aliases": [],
+    "permissions": [
+      "nexus.rain"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "randomteleport ",
+    "aliases": [],
+    "permissions": [
+      "nexus.randomteleport.other"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "randomteleport ",
+    "aliases": [],
+    "permissions": [
+      "nexus.randomteleport"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "repair ",
+    "aliases": [],
+    "permissions": [
+      "nexus.repair"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "repair all",
+    "aliases": [],
+    "permissions": [
+      "nexus.repair.all"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "sethome ",
+    "aliases": [],
+    "permissions": [
+      "nexus.sethome"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "setspawn ",
+    "aliases": [],
+    "permissions": [
+      "nexus.setspawn"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "setwarp ",
+    "aliases": [],
+    "permissions": [
+      "nexus.setwarp"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "smithingtable ",
+    "aliases": [],
+    "permissions": [
+      "nexus.smithingtable.other"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "smithingtable ",
+    "aliases": [],
+    "permissions": [
+      "nexus.smithingtable"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "spawn ",
+    "aliases": [],
+    "permissions": [
+      "nexus.spawn.other"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "spawn ",
+    "aliases": [],
+    "permissions": [
+      "nexus.spawn"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "speed ",
+    "aliases": [],
+    "permissions": [
+      "nexus.speed.other"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "speed ",
+    "aliases": [],
+    "permissions": [
+      "nexus.speed"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "spit ",
+    "aliases": [],
+    "permissions": [
+      "nexus.spit"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "stonecutter ",
+    "aliases": [],
+    "permissions": [
+      "nexus.stonecutter"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "stonecutter ",
+    "aliases": [],
+    "permissions": [
+      "nexus.stonecutter.other"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "sudo ",
+    "aliases": [],
+    "permissions": [
+      "nexus.sudo.player"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "sudo -console",
+    "aliases": [],
+    "permissions": [
+      "nexus.sudo.console"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "sun ",
+    "aliases": [],
+    "permissions": [
+      "nexus.sun"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "teleport ",
+    "aliases": [],
+    "permissions": [
+      "nexus.teleport"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "thunder ",
+    "aliases": [],
+    "permissions": [
+      "nexus.thunder"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "time add",
+    "aliases": [],
+    "permissions": [
+      "nexus.time"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "time set",
+    "aliases": [],
+    "permissions": [
+      "nexus.time"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "time set day",
+    "aliases": [],
+    "permissions": [
+      "nexus.time"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "time set midnight",
+    "aliases": [],
+    "permissions": [
+      "nexus.time"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "time set night",
+    "aliases": [],
+    "permissions": [
+      "nexus.time"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "time set noon",
+    "aliases": [],
+    "permissions": [
+      "nexus.time"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "tpa ",
+    "aliases": [],
+    "permissions": [
+      "nexus.tpa"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "tpaaccept ",
+    "aliases": [],
+    "permissions": [
+      "nexus.tpaaccept"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "tpaaccept -all",
+    "aliases": [
+      "tpaaccept, *"
+    ],
+    "permissions": [
+      "nexus.tpaaccept"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "tpadeny ",
+    "aliases": [],
+    "permissions": [
+      "nexus.tpadeny"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "tpadeny -all",
+    "aliases": [
+      "tpadeny, *"
+    ],
+    "permissions": [
+      "nexus.tpadeny"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "tphere ",
+    "aliases": [],
+    "permissions": [
+      "nexus.tphere"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "tppos ",
+    "aliases": [],
+    "permissions": [
+      "nexus.tppos"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "tpup ",
+    "aliases": [],
+    "permissions": [
+      "nexus.tpup"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "warp ",
+    "aliases": [],
+    "permissions": [
+      "nexus.warp.other"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "warp ",
+    "aliases": [],
+    "permissions": [
+      "nexus.warp"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "whois ",
+    "aliases": [],
+    "permissions": [
+      "nexus.whois"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "workbench ",
+    "aliases": [],
+    "permissions": [
+      "nexus.workbench"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
+    "name": "workbench ",
+    "aliases": [],
+    "permissions": [
+      "nexus.workbench.other"
+    ],
+    "descriptions": [],
+    "arguments": []
+  }
+]
