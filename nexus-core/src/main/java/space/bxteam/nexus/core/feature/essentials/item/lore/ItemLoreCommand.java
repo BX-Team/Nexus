@@ -15,6 +15,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import space.bxteam.commons.adventure.AdventureUtil;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.multification.MultificationManager;
 
 import java.util.ArrayList;
@@ -29,6 +30,7 @@ public class ItemLoreCommand {
     private final MiniMessage miniMessage;
 
     @Execute
+    @CommandDocs(description = "Change the lore of an item.", arguments = "<line> <text>")
     void execute(@Context Player player, @Arg(ItemLoreArgument.KEY) int line, @Join String text) {
         ItemStack itemStack = this.checkItem(player);
 
@@ -66,6 +68,7 @@ public class ItemLoreCommand {
     }
 
     @Execute(name = "clear")
+    @CommandDocs(description = "Clear the lore of an item.")
     void clear(@Context Player player) {
         ItemStack itemStack = this.checkItem(player);
 

@@ -9,6 +9,7 @@ import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.multification.MultificationManager;
 
 @Command(name = "ping")
@@ -18,6 +19,7 @@ public class PingCommand {
 
     @Execute
     @Permission("nexus.ping")
+    @CommandDocs(description = "Check your ping.")
     void execute(@Context Player player) {
         this.multificationManager.create()
                 .player(player.getUniqueId())
@@ -28,6 +30,7 @@ public class PingCommand {
 
     @Execute
     @Permission("nexus.ping.other")
+    @CommandDocs(description = "Check the ping of another player.", arguments = "<player>")
     void execute(@Context CommandSender sender, @Arg Player target) {
         this.multificationManager.create()
                 .viewer(sender)

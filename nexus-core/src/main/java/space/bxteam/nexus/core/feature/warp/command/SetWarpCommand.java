@@ -8,6 +8,7 @@ import dev.rollczi.litecommands.annotations.execute.Execute;
 import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.entity.Player;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.feature.warp.WarpService;
 
@@ -19,6 +20,7 @@ public class SetWarpCommand {
     private final WarpService warpService;
 
     @Execute
+    @CommandDocs(description = "Set a warp.", arguments = "<name>")
     void executeSetWarp(@Context Player player, @Arg String name) {
         if (this.warpService.warpExists(name)) {
             this.multificationManager.create()

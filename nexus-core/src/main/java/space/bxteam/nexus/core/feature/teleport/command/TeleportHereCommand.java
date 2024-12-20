@@ -8,6 +8,7 @@ import dev.rollczi.litecommands.annotations.execute.Execute;
 import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.entity.Player;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.feature.teleport.TeleportService;
 
@@ -19,6 +20,7 @@ public class TeleportHereCommand {
     private final MultificationManager multificationManager;
 
     @Execute
+    @CommandDocs(description = "Teleport a player to you.", arguments = "<player>")
     void execute(@Context Player sender, @Arg Player target) {
         this.teleportService.teleport(target, sender.getLocation());
         this.multificationManager.create()

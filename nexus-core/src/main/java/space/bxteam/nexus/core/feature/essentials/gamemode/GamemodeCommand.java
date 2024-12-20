@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.bukkit.GameMode;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.multification.MultificationManager;
 
 @Command(name = "gamemode", aliases = "gm")
@@ -19,6 +20,7 @@ public class GamemodeCommand {
 
     @Execute
     @Permission("nexus.gamemode")
+    @CommandDocs(description = "Change your gamemode.", arguments = "<gamemode>")
     void execute(@Context Player sender, @Arg GameMode gameMode) {
         sender.setGameMode(gameMode);
 
@@ -31,6 +33,7 @@ public class GamemodeCommand {
 
     @Execute
     @Permission("nexus.gamemode.other")
+    @CommandDocs(description = "Change the gamemode of another player.", arguments = "<gamemode> <player>")
     void execute(@Context CommandSender sender, @Arg GameMode gameMode, @Arg Player target) {
         target.setGameMode(gameMode);
 

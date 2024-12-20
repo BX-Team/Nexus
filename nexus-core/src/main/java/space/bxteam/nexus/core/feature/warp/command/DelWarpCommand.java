@@ -8,6 +8,7 @@ import dev.rollczi.litecommands.annotations.execute.Execute;
 import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.entity.Player;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.feature.warp.Warp;
 import space.bxteam.nexus.feature.warp.WarpService;
@@ -20,6 +21,7 @@ public class DelWarpCommand {
     private final WarpService warpService;
 
     @Execute
+    @CommandDocs(description = "Delete a warp.", arguments = "<warp>")
     void executeDelWarp(@Context Player player, @Arg Warp warp) {
         String name = warp.name();
 

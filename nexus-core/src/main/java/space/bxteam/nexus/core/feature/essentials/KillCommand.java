@@ -9,6 +9,7 @@ import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.multification.MultificationManager;
 
 @Command(name = "kill")
@@ -18,6 +19,7 @@ public class KillCommand {
 
     @Execute
     @Permission("nexus.kill")
+    @CommandDocs(description = "Kills you.")
     void execute(@Context Player player) {
         player.setHealth(0);
 
@@ -30,6 +32,7 @@ public class KillCommand {
 
     @Execute
     @Permission("nexus.kill.other")
+    @CommandDocs(description = "Kills another player.", arguments = "<player>")
     void execute(@Context CommandSender sender, @Arg Player target) {
         target.setHealth(0);
 

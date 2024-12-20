@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.bukkit.Location;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.feature.teleport.TeleportService;
 
@@ -21,11 +22,13 @@ public class TeleportPosCommand {
     private final MultificationManager multificationManager;
 
     @Execute
+    @CommandDocs(description = "Teleport to the specified coordinates.", arguments = "<location>")
     void execute(@Context Player player, @Arg Location location) {
         this.teleport(player, location);
     }
 
     @Execute
+    @CommandDocs(description = "Teleport the specified player to the specified coordinates.", arguments = "<location> <player>")
     void execute(@Context CommandSender sender, @Arg Location location, @Arg Player target) {
         this.teleport(target, location);
 

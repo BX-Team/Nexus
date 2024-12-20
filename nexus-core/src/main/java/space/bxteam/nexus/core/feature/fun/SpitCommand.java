@@ -10,6 +10,7 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.LlamaSpit;
 import org.bukkit.entity.Player;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.multification.MultificationManager;
 
 @Command(name = "spit")
@@ -19,6 +20,7 @@ public class SpitCommand {
     private final MultificationManager multificationManager;
 
     @Execute
+    @CommandDocs(description = "Just spit.")
     void execute(@Context Player player) {
         Location location = player.getEyeLocation();
         World world = location.getWorld();

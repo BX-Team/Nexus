@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.multification.MultificationManager;
 
 @Command(name = "clear")
@@ -19,6 +20,7 @@ public class ClearCommand {
 
     @Execute
     @Permission("nexus.clear")
+    @CommandDocs(description = "Clears your inventory.")
     void execute(@Context Player player) {
         this.clear(player);
 
@@ -30,6 +32,7 @@ public class ClearCommand {
 
     @Execute
     @Permission("nexus.clear.other")
+    @CommandDocs(description = "Clears the inventory of another player.", arguments = "<player>")
     void execute(@Context CommandSender sender, @Arg Player target) {
         this.clear(target);
 

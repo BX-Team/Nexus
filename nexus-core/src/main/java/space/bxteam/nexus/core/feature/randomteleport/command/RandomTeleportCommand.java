@@ -9,6 +9,7 @@ import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.core.multification.MultificationFormatter;
 import space.bxteam.nexus.feature.randomteleport.RandomTeleportService;
@@ -29,6 +30,7 @@ public class RandomTeleportCommand {
 
     @Execute
     @Permission("nexus.randomteleport")
+    @CommandDocs(description = "Teleport to a random location.")
     void execute(@Context Player player) {
         this.multificationManager.create()
                 .player(player.getUniqueId())
@@ -47,6 +49,7 @@ public class RandomTeleportCommand {
 
     @Execute
     @Permission("nexus.randomteleport.other")
+    @CommandDocs(description = "Teleport another player to a random location.", arguments = "<player>")
     void execute(@Context CommandSender sender, @Arg Player player) {
         this.multificationManager.create()
                 .player(player.getUniqueId())

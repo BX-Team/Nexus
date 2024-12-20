@@ -9,6 +9,7 @@ import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.multification.MultificationManager;
 
 @Command(name = "speed")
@@ -18,6 +19,7 @@ public class SpeedCommand {
 
     @Execute
     @Permission("nexus.speed")
+    @CommandDocs(description = "Change your speed.", arguments = "<speed>")
     void execute(@Context Player player, @Arg(SpeedCommandArgument.KEY) Integer speed) {
         this.setSpeed(player, speed);
 
@@ -30,6 +32,7 @@ public class SpeedCommand {
 
     @Execute
     @Permission("nexus.speed.other")
+    @CommandDocs(description = "Change the speed of another player.", arguments = "<speed> <player>")
     void execute(@Context CommandSender sender, @Arg(SpeedCommandArgument.KEY) Integer speed, @Arg Player target) {
         this.setSpeed(target, speed);
 
@@ -49,6 +52,7 @@ public class SpeedCommand {
 
     @Execute
     @Permission("nexus.speed")
+    @CommandDocs(description = "Set speed of walking or flying to specified amount", arguments = "<type> <speed>")
     void execute(@Context Player player, @Arg SpeedType speedType, @Arg(SpeedCommandArgument.KEY) Integer speed) {
         this.setSpeed(player, speedType, speed);
 
@@ -61,6 +65,7 @@ public class SpeedCommand {
 
     @Execute
     @Permission("nexus.speed.other")
+    @CommandDocs(description = "Set speed of walking or flying to specified amount for another player", arguments = "<type> <speed> <player>")
     void execute(@Context CommandSender sender, @Arg SpeedType speedType, @Arg(SpeedCommandArgument.KEY) Integer speed, @Arg Player target) {
         this.setSpeed(target, speedType, speed);
 

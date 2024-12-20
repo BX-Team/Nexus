@@ -8,6 +8,7 @@ import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.Server;
 import org.bukkit.command.CommandSender;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.multification.MultificationManager;
 
 @Command(name = "online")
@@ -18,6 +19,7 @@ public class OnlinePlayerCountCommand {
     private final Server server;
 
     @Execute
+    @CommandDocs(description = "Check how many players are online.")
     void execute(@Context CommandSender sender) {
         long visiblePlayerCount = this.server.getOnlinePlayers().stream().count();
 

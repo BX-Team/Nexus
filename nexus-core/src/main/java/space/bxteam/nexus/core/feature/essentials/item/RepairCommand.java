@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.Repairable;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.multification.MultificationManager;
 
 import java.util.Arrays;
@@ -21,6 +22,7 @@ public class RepairCommand {
 
     @Execute
     @Permission("nexus.repair")
+    @CommandDocs(description = "Repair the item in your hand.")
     void repair(@Context Player player) {
         ItemStack handItem = player.getInventory().getItemInMainHand();
 
@@ -50,6 +52,7 @@ public class RepairCommand {
 
     @Execute(name = "all")
     @Permission("nexus.repair.all")
+    @CommandDocs(description = "Repair all items in your inventory.")
     void repairAll(@Context Player player) {
         ItemStack[] damagedItems = Arrays.stream(player.getInventory().getContents())
                 .filter(this::isRepairable)

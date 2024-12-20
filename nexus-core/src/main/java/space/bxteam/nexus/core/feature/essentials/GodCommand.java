@@ -9,6 +9,7 @@ import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.multification.MultificationManager;
 
 @Command(name = "god", aliases = "godmode")
@@ -18,6 +19,7 @@ public class GodCommand {
 
     @Execute
     @Permission("nexus.god")
+    @CommandDocs(description = "Enable or disable god mode.")
     void execute(@Context Player player) {
         player.setInvulnerable(!player.isInvulnerable());
 
@@ -34,6 +36,7 @@ public class GodCommand {
 
     @Execute
     @Permission("nexus.god.other")
+    @CommandDocs(description = "Enable or disable god mode for another player.", arguments = "<player>")
     void execute(@Context CommandSender sender, @Arg Player target) {
         target.setInvulnerable(!target.isInvulnerable());
 

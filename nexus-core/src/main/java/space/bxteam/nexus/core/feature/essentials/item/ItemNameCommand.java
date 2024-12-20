@@ -14,6 +14,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import space.bxteam.commons.adventure.AdventureUtil;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.multification.MultificationManager;
 
 @Command(name = "itemname", aliases = {"iname", "itemrename"})
@@ -25,6 +26,7 @@ public class ItemNameCommand {
     private final MiniMessage miniMessage;
 
     @Execute
+    @CommandDocs(description = "Change the name of an item.", arguments = "<name>")
     void execute(@Context Player player, @Join String name) {
         ItemStack itemStack = this.checkItem(player);
 
@@ -49,6 +51,7 @@ public class ItemNameCommand {
     }
 
     @Execute(name = "clear")
+    @CommandDocs(description = "Clear the name of an item.")
     void clear(@Context Player player) {
         ItemStack itemStack = this.checkItem(player);
 

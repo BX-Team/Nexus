@@ -9,6 +9,7 @@ import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.multification.MultificationManager;
 
 @Command(name = "whois")
@@ -18,6 +19,7 @@ public class WhoisCommand {
     private final MultificationManager multificationManager;
 
     @Execute
+    @CommandDocs(description = "Check information about a player.", arguments = "<player>")
     void execute(@Context CommandSender sender, @Arg Player player) {
         this.multificationManager.create()
                 .viewer(sender)

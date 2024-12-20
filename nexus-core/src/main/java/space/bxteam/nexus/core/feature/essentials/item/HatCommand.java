@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import space.bxteam.commons.bukkit.inventory.ItemUtil;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.multification.MultificationManager;
 
 @Command(name = "hat")
@@ -19,6 +20,7 @@ public class HatCommand {
     private final MultificationManager multificationManager;
 
     @Execute
+    @CommandDocs(description = "Put an item on your head.")
     void execute(@Context Player player) {
         PlayerInventory playerInventory = player.getInventory();
 

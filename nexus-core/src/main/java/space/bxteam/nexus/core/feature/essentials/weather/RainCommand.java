@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import space.bxteam.commons.scheduler.Scheduler;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.multification.MultificationManager;
 
 @Command(name = "rain")
@@ -20,11 +21,13 @@ public class RainCommand {
     private final Scheduler scheduler;
 
     @Execute
+    @CommandDocs(description = "Set rain in the world.")
     void rain(@Context CommandSender sender, @Context World world) {
         this.setRain(sender, world);
     }
 
     @Execute
+    @CommandDocs(description = "Set rain in the specified world.", arguments = "<world>")
     void rainWorld(@Context CommandSender sender, @Arg World world) {
         this.setRain(sender, world);
     }

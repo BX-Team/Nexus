@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.multification.MultificationManager;
 
 @Command(name = "heal")
@@ -19,6 +20,7 @@ public class HealCommand {
 
     @Execute
     @Permission("nexus.heal")
+    @CommandDocs(description = "Heal yourself.")
     void execute(@Context Player player) {
         this.heal(player);
 
@@ -30,6 +32,7 @@ public class HealCommand {
 
     @Execute
     @Permission("nexus.heal.other")
+    @CommandDocs(description = "Heal another player.", arguments = "<player>")
     void execute(@Context CommandSender sender, @Arg Player target) {
         this.heal(target);
 

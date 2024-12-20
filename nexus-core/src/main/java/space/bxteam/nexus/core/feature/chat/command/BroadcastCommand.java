@@ -8,6 +8,7 @@ import dev.rollczi.litecommands.annotations.join.Join;
 import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.command.CommandSender;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.multification.MultificationManager;
 
 @Command(name = "broadcast", aliases = {"bc"})
@@ -17,6 +18,7 @@ public class BroadcastCommand {
     private final MultificationManager multificationManager;
 
     @Execute
+    @CommandDocs(description = "Send a message to all players.", arguments = "<message>")
     void execute(@Context CommandSender sender, @Join String message) {
         this.multificationManager.create()
                 .all()

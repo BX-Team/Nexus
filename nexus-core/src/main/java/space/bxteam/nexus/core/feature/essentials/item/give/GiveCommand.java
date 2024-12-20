@@ -14,6 +14,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import space.bxteam.commons.bukkit.inventory.ItemUtil;
 import space.bxteam.commons.bukkit.inventory.MaterialUtil;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import space.bxteam.nexus.core.multification.MultificationManager;
 
@@ -25,6 +26,7 @@ public class GiveCommand {
     private final PluginConfigurationProvider configurationProvider;
 
     @Execute
+    @CommandDocs(description = "Give an item to a player.", arguments = "<player> <item>")
     void execute(@Context CommandSender sender, @Arg Player target, @Arg Material material) {
         String formattedMaterial = MaterialUtil.format(material);
 
@@ -46,6 +48,7 @@ public class GiveCommand {
     }
 
     @Execute
+    @CommandDocs(description = "Give an item to a player with specified amount", arguments = "<player> <item> <amount>")
     void execute(@Context CommandSender sender, @Arg Player target, @Arg Material material, @Arg(GiveAmountArgument.KEY) int amount) {
         String formattedMaterial = MaterialUtil.format(material);
 
