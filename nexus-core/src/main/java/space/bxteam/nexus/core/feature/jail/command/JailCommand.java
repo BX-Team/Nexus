@@ -2,7 +2,6 @@ package space.bxteam.nexus.core.feature.jail.command;
 
 import com.google.inject.Inject;
 import dev.rollczi.litecommands.annotations.argument.Arg;
-import dev.rollczi.litecommands.annotations.async.Async;
 import dev.rollczi.litecommands.annotations.command.Command;
 import dev.rollczi.litecommands.annotations.context.Context;
 import dev.rollczi.litecommands.annotations.execute.Execute;
@@ -23,7 +22,7 @@ import java.time.Duration;
 
 @Command(name = "jail")
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
-public class JailCommand {
+public class JailCommand { // TODO: Split commands into separate classes
     private final JailService jailService;
     private final MultificationManager multificationManager;
     private final PluginConfigurationProvider configurationProvider;
@@ -144,7 +143,6 @@ public class JailCommand {
                 .send();
     }
 
-    @Async
     @Execute(name = "setup")
     @Permission("nexus.jail.setup")
     @CommandDocs(description = "Set up a jail location with specified name.", arguments = "<name>")
@@ -168,7 +166,6 @@ public class JailCommand {
                 .send();
     }
 
-    @Async
     @Execute(name = "setup")
     @Permission("nexus.jail.setup")
     @CommandDocs(description = "Set up a jail location with specified name and location.", arguments = "<name> <location>")
@@ -192,7 +189,6 @@ public class JailCommand {
                 .send();
     }
 
-    @Async
     @Execute(name = "remove")
     @Permission("nexus.jail.remove")
     @CommandDocs(description = "Remove a jail location with specified name.", arguments = "<name>")
