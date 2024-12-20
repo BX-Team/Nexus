@@ -11,6 +11,7 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import space.bxteam.nexus.core.multification.MultificationManager;
 
@@ -22,6 +23,7 @@ public class EnchantCommand {
 
     @Execute
     @Permission("nexus.enchant")
+    @CommandDocs(description = "Enchant an item in your hand.", arguments = "<enchantment> <level>")
     void execute(@Context Player player, @Arg Enchantment enchantment, @Arg(EnchantCommandArgument.KEY) int level) {
         PlayerInventory playerInventory = player.getInventory();
         ItemStack handItem = playerInventory.getItem(playerInventory.getHeldItemSlot());
@@ -44,6 +46,7 @@ public class EnchantCommand {
 
     @Execute
     @Permission("nexus.enchant.other")
+    @CommandDocs(description = "Enchant an item in the hand of another player.", arguments = "<enchantment> <level> <player>")
     void execute(@Context Player sender, @Arg Enchantment enchantment, @Arg(EnchantCommandArgument.KEY) int level, @Arg Player target) {
         PlayerInventory targetInventory = target.getInventory();
         ItemStack handItem = targetInventory.getItem(targetInventory.getHeldItemSlot());

@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.bukkit.Location;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.feature.teleport.TeleportService;
 
@@ -23,6 +24,7 @@ public class TeleportBackCommand {
 
     @Execute
     @Permission("nexus.teleport.back")
+    @CommandDocs(description = "Teleport to the last location.")
     public void execute(@Context Player player) {
         Optional<Location> location = this.teleportService.getLastLocation(player.getUniqueId());
 
@@ -43,6 +45,7 @@ public class TeleportBackCommand {
 
     @Execute
     @Permission("nexus.teleport.back.other")
+    @CommandDocs(description = "Teleport another player to the last location.", arguments = "<player>")
     public void execute(@Context CommandSender sender, @Arg Player target) {
         Optional<Location> location = this.teleportService.getLastLocation(target.getUniqueId());
 

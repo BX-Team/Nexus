@@ -9,6 +9,7 @@ import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.Server;
 import org.bukkit.entity.Player;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.feature.teleport.TeleportService;
 import space.bxteam.nexus.feature.teleportrequest.TeleportRequestService;
@@ -26,6 +27,7 @@ public class TpaAcceptCommand {
     private final TeleportService teleportService;
 
     @Execute
+    @CommandDocs(description = "Accept teleport request.", arguments = "<player>")
     void execute(@Context Player player, @Arg(RequesterArgument.KEY) Player target) {
         this.teleportService.teleport(target, player.getLocation());
         this.requestService.removeRequest(target.getUniqueId());
@@ -44,6 +46,7 @@ public class TpaAcceptCommand {
     }
 
     @Execute(name = "-all", aliases = {"*"})
+    @CommandDocs(description = "Accept all teleport requests.")
     void executeAll(@Context Player player) {
         List<UUID> requests = this.requestService.findRequests(player.getUniqueId());
 

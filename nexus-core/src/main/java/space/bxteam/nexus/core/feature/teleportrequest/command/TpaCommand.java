@@ -8,6 +8,7 @@ import dev.rollczi.litecommands.annotations.execute.Execute;
 import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.entity.Player;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.feature.teleportrequest.TeleportRequestService;
 
@@ -19,6 +20,7 @@ public class TpaCommand {
     private final TeleportRequestService requestService;
 
     @Execute
+    @CommandDocs(description = "Request teleportation to another player.", arguments = "<player>")
     public void execute(@Context Player player, @Arg Player target) {
         if (player.equals(target)) {
             this.multificationManager.create()

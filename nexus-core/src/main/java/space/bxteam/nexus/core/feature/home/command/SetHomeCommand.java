@@ -8,6 +8,7 @@ import dev.rollczi.litecommands.annotations.execute.Execute;
 import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.entity.Player;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.feature.home.HomeService;
@@ -23,11 +24,13 @@ public class SetHomeCommand {
     private final PluginConfigurationProvider pluginConfiguration;
 
     @Execute
+    @CommandDocs(description = "Set your home.")
     void sethome(@Context Player player) {
         this.createHome(player, this.pluginConfiguration.configuration().homes().defaultHomeName());
     }
 
     @Execute
+    @CommandDocs(description = "Set your home.", arguments = "<name>")
     void sethome(@Context Player player, @Arg String name) {
         this.createHome(player, name);
     }

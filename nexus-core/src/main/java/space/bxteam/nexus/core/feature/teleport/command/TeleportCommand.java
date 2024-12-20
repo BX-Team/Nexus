@@ -12,6 +12,7 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.multification.MultificationFormatter;
 import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.feature.teleport.TeleportService;
@@ -35,6 +36,7 @@ public class TeleportCommand {
             .build();
 
     @Execute
+    @CommandDocs(description = "Teleport to another player.", arguments = "<player>")
     void execute(@Context Player sender, @Arg Player target) {
         this.teleportService.teleport(sender, target.getLocation());
 
@@ -47,6 +49,7 @@ public class TeleportCommand {
     }
 
     @Execute
+    @CommandDocs(description = "Teleport other player to another player.", arguments = "<player> <target>")
     void execute(@Context CommandSender sender, @Arg Player player, @Arg Player target) {
         this.teleportService.teleport(player, target.getLocation());
 
@@ -60,6 +63,7 @@ public class TeleportCommand {
     }
 
     @Execute
+    @CommandDocs(description = "Teleport to coordinates.", arguments = "<location>")
     void location(@Context Player sender, @Arg Location location) {
         location.setWorld(sender.getWorld());
         this.teleportService.teleport(sender, location);
@@ -73,6 +77,7 @@ public class TeleportCommand {
     }
 
     @Execute
+    @CommandDocs(description = "Teleport to coordinates.", arguments = "<location> <world>")
     void location(@Context Player sender, @Arg Location location, @Arg World world) {
         location.setWorld(world);
         this.teleportService.teleport(sender, location);
@@ -86,6 +91,7 @@ public class TeleportCommand {
     }
 
     @Execute
+    @CommandDocs(description = "Teleport another player to coordinates.", arguments = "<player> <location>")
     void locationOther(@Context CommandSender sender, @Arg Player target, @Arg Location location) {
         location.setWorld(target.getWorld());
         this.teleportService.teleport(target, location);
@@ -99,6 +105,7 @@ public class TeleportCommand {
     }
 
     @Execute
+    @CommandDocs(description = "Teleport another player to coordinates.", arguments = "<player> <location> <world>")
     void locationOther(@Context CommandSender sender, @Arg Player target, @Arg Location location, @Arg World world) {
         location.setWorld(world);
         this.teleportService.teleport(target, location);

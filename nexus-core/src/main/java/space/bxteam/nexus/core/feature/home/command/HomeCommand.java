@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.bukkit.entity.Player;
 import space.bxteam.commons.bukkit.position.Position;
 import space.bxteam.commons.bukkit.position.PositionFactory;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import space.bxteam.nexus.core.event.EventCaller;
 import space.bxteam.nexus.core.feature.teleport.Teleport;
@@ -35,6 +36,7 @@ public class HomeCommand {
     private final TeleportTaskService teleportTaskService;
 
     @Execute
+    @CommandDocs(description = "Teleports to your first home.")
     void home(@Context Player player) {
         Collection<Home> playerHomes = this.homeService.getHomes(player.getUniqueId());
 
@@ -76,6 +78,7 @@ public class HomeCommand {
     }
 
     @Execute
+    @CommandDocs(description = "Teleports to a specific home.", arguments = "<home>")
     void home(@Context Player player, @Arg Home home) {
         this.teleport(player, home);
     }

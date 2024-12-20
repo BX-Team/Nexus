@@ -9,6 +9,7 @@ import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.multification.MultificationManager;
 
 @Command(name = "feed")
@@ -18,6 +19,7 @@ public class FeedCommand {
 
     @Execute
     @Permission("nexus.feed")
+    @CommandDocs(description = "Feed yourself.")
     void execute(@Context Player player) {
         this.feed(player);
 
@@ -29,6 +31,7 @@ public class FeedCommand {
 
     @Execute
     @Permission("nexus.feed.other")
+    @CommandDocs(description = "Feed another player.", arguments = "<player>")
     void execute(@Context CommandSender sender, @Arg Player target) {
         this.feed(target);
 

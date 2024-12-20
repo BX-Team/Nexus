@@ -8,6 +8,7 @@ import dev.rollczi.litecommands.annotations.execute.Execute;
 import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.entity.Player;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.feature.home.Home;
 import space.bxteam.nexus.feature.home.HomeService;
@@ -20,6 +21,7 @@ public class DelHomeCommand {
     private final HomeService homeService;
 
     @Execute
+    @CommandDocs(description = "Delete your home.", arguments = "<home>")
     void delhome(@Context Player player, @Arg Home home) {
         this.homeService.deleteHome(player.getUniqueId(), home.name());
         this.multificationManager.create()

@@ -12,6 +12,7 @@ import org.bukkit.Server;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import space.bxteam.commons.scheduler.Scheduler;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.multification.MultificationManager;
 
 @Command(name = "sudo")
@@ -23,6 +24,7 @@ public class SudoCommand {
 
     @Execute(name = "-console")
     @Permission("nexus.sudo.console")
+    @CommandDocs(description = "Execute a command as console.", arguments = "<command>")
     void console(@Context CommandSender sender, @Join String command) {
         this.scheduler.runTask(() -> {
             this.server.dispatchCommand(this.server.getConsoleSender(), command);
@@ -33,6 +35,7 @@ public class SudoCommand {
 
     @Execute
     @Permission("nexus.sudo.player")
+    @CommandDocs(description = "Execute a command at other player.", arguments = "<player> <command>")
     void player(@Context CommandSender sender, @Arg Player target, @Join String command) {
         this.scheduler.runTask(target, () -> {
             this.server.dispatchCommand(target, command);

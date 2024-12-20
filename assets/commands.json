@@ -5,17 +5,12 @@
     "permissions": [
       "nexus.adminchat"
     ],
-    "descriptions": [],
-    "arguments": []
-  },
-  {
-    "name": "anvil ",
-    "aliases": [],
-    "permissions": [
-      "nexus.anvil.other"
+    "descriptions": [
+      "Send a message to all staff members with nexus.adminchat.spy permission."
     ],
-    "descriptions": [],
-    "arguments": []
+    "arguments": [
+      "\u003cmessage\u003e"
+    ]
   },
   {
     "name": "anvil ",
@@ -23,8 +18,25 @@
     "permissions": [
       "nexus.anvil"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Opens an anvil."
+    ],
+    "arguments": [
+      ""
+    ]
+  },
+  {
+    "name": "anvil ",
+    "aliases": [],
+    "permissions": [
+      "nexus.anvil.other"
+    ],
+    "descriptions": [
+      "Opens an anvil for another player."
+    ],
+    "arguments": [
+      "\u003cplayer\u003e"
+    ]
   },
   {
     "name": "back ",
@@ -32,8 +44,12 @@
     "permissions": [
       "nexus.teleport.back"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Teleport to the last location."
+    ],
+    "arguments": [
+      ""
+    ]
   },
   {
     "name": "back ",
@@ -41,8 +57,12 @@
     "permissions": [
       "nexus.teleport.back.other"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Teleport another player to the last location."
+    ],
+    "arguments": [
+      "\u003cplayer\u003e"
+    ]
   },
   {
     "name": "broadcast ",
@@ -50,17 +70,12 @@
     "permissions": [
       "nexus.broadcast"
     ],
-    "descriptions": [],
-    "arguments": []
-  },
-  {
-    "name": "cartography ",
-    "aliases": [],
-    "permissions": [
-      "nexus.cartography"
+    "descriptions": [
+      "Send a message to all players."
     ],
-    "descriptions": [],
-    "arguments": []
+    "arguments": [
+      "\u003cmessage\u003e"
+    ]
   },
   {
     "name": "cartography ",
@@ -68,8 +83,25 @@
     "permissions": [
       "nexus.cartography.other"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Opens a cartography table for another player."
+    ],
+    "arguments": [
+      "\u003cplayer\u003e"
+    ]
+  },
+  {
+    "name": "cartography ",
+    "aliases": [],
+    "permissions": [
+      "nexus.cartography"
+    ],
+    "descriptions": [
+      "Opens a cartography table."
+    ],
+    "arguments": [
+      ""
+    ]
   },
   {
     "name": "chat clear",
@@ -79,8 +111,12 @@
     "permissions": [
       "nexus.chat"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Clears the chat."
+    ],
+    "arguments": [
+      ""
+    ]
   },
   {
     "name": "chat off",
@@ -88,8 +124,12 @@
     "permissions": [
       "nexus.chat"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Disables the chat."
+    ],
+    "arguments": [
+      ""
+    ]
   },
   {
     "name": "chat on",
@@ -97,17 +137,12 @@
     "permissions": [
       "nexus.chat"
     ],
-    "descriptions": [],
-    "arguments": []
-  },
-  {
-    "name": "clear ",
-    "aliases": [],
-    "permissions": [
-      "nexus.clear.other"
+    "descriptions": [
+      "Enables the chat."
     ],
-    "descriptions": [],
-    "arguments": []
+    "arguments": [
+      ""
+    ]
   },
   {
     "name": "clear ",
@@ -115,8 +150,25 @@
     "permissions": [
       "nexus.clear"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Clears your inventory."
+    ],
+    "arguments": [
+      ""
+    ]
+  },
+  {
+    "name": "clear ",
+    "aliases": [],
+    "permissions": [
+      "nexus.clear.other"
+    ],
+    "descriptions": [
+      "Clears the inventory of another player."
+    ],
+    "arguments": [
+      "\u003cplayer\u003e"
+    ]
   },
   {
     "name": "delhome ",
@@ -124,8 +176,12 @@
     "permissions": [
       "nexus.delhome"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Delete your home."
+    ],
+    "arguments": [
+      "\u003chome\u003e"
+    ]
   },
   {
     "name": "delwarp ",
@@ -133,8 +189,12 @@
     "permissions": [
       "nexus.delwarp"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Delete a warp."
+    ],
+    "arguments": [
+      "\u003cwarp\u003e"
+    ]
   },
   {
     "name": "enchant ",
@@ -142,8 +202,12 @@
     "permissions": [
       "nexus.enchant.other"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Enchant an item in the hand of another player."
+    ],
+    "arguments": [
+      "\u003cenchantment\u003e \u003clevel\u003e \u003cplayer\u003e"
+    ]
   },
   {
     "name": "enchant ",
@@ -151,8 +215,12 @@
     "permissions": [
       "nexus.enchant"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Enchant an item in your hand."
+    ],
+    "arguments": [
+      "\u003cenchantment\u003e \u003clevel\u003e"
+    ]
   },
   {
     "name": "enderchest ",
@@ -160,8 +228,12 @@
     "permissions": [
       "nexus.enderchest.other"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Opens the enderchest of another player."
+    ],
+    "arguments": [
+      "\u003cplayer\u003e"
+    ]
   },
   {
     "name": "enderchest ",
@@ -169,8 +241,12 @@
     "permissions": [
       "nexus.enderchest"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Opens your enderchest."
+    ],
+    "arguments": [
+      ""
+    ]
   },
   {
     "name": "feed ",
@@ -178,8 +254,12 @@
     "permissions": [
       "nexus.feed.other"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Feed another player."
+    ],
+    "arguments": [
+      "\u003cplayer\u003e"
+    ]
   },
   {
     "name": "feed ",
@@ -187,17 +267,12 @@
     "permissions": [
       "nexus.feed"
     ],
-    "descriptions": [],
-    "arguments": []
-  },
-  {
-    "name": "fly ",
-    "aliases": [],
-    "permissions": [
-      "nexus.fly"
+    "descriptions": [
+      "Feed yourself."
     ],
-    "descriptions": [],
-    "arguments": []
+    "arguments": [
+      ""
+    ]
   },
   {
     "name": "fly ",
@@ -205,8 +280,25 @@
     "permissions": [
       "nexus.fly.other"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Enable or disable flight mode for another player."
+    ],
+    "arguments": [
+      "\u003cplayer\u003e"
+    ]
+  },
+  {
+    "name": "fly ",
+    "aliases": [],
+    "permissions": [
+      "nexus.fly"
+    ],
+    "descriptions": [
+      "Enable or disable flight mode."
+    ],
+    "arguments": [
+      ""
+    ]
   },
   {
     "name": "gamemode ",
@@ -214,8 +306,12 @@
     "permissions": [
       "nexus.gamemode"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Change your gamemode."
+    ],
+    "arguments": [
+      "\u003cgamemode\u003e"
+    ]
   },
   {
     "name": "gamemode ",
@@ -223,8 +319,12 @@
     "permissions": [
       "nexus.gamemode.other"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Change the gamemode of another player."
+    ],
+    "arguments": [
+      "\u003cgamemode\u003e \u003cplayer\u003e"
+    ]
   },
   {
     "name": "give ",
@@ -232,17 +332,25 @@
     "permissions": [
       "nexus.give"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Give an item to a player with specified amount"
+    ],
+    "arguments": [
+      "\u003cplayer\u003e \u003citem\u003e \u003camount\u003e"
+    ]
   },
   {
-    "name": "god ",
+    "name": "give ",
     "aliases": [],
     "permissions": [
-      "nexus.god"
+      "nexus.give"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Give an item to a player."
+    ],
+    "arguments": [
+      "\u003cplayer\u003e \u003citem\u003e"
+    ]
   },
   {
     "name": "god ",
@@ -250,8 +358,25 @@
     "permissions": [
       "nexus.god.other"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Enable or disable god mode for another player."
+    ],
+    "arguments": [
+      "\u003cplayer\u003e"
+    ]
+  },
+  {
+    "name": "god ",
+    "aliases": [],
+    "permissions": [
+      "nexus.god"
+    ],
+    "descriptions": [
+      "Enable or disable god mode."
+    ],
+    "arguments": [
+      ""
+    ]
   },
   {
     "name": "grindstone ",
@@ -259,8 +384,12 @@
     "permissions": [
       "nexus.grindstone"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Opens a grindstone."
+    ],
+    "arguments": [
+      ""
+    ]
   },
   {
     "name": "grindstone ",
@@ -268,8 +397,12 @@
     "permissions": [
       "nexus.grindstone.other"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Opens a grindstone for another player."
+    ],
+    "arguments": [
+      "\u003cplayer\u003e"
+    ]
   },
   {
     "name": "hat ",
@@ -277,8 +410,12 @@
     "permissions": [
       "nexus.hat"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Put an item on your head."
+    ],
+    "arguments": [
+      ""
+    ]
   },
   {
     "name": "heal ",
@@ -286,8 +423,12 @@
     "permissions": [
       "nexus.heal"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Heal yourself."
+    ],
+    "arguments": [
+      ""
+    ]
   },
   {
     "name": "heal ",
@@ -295,8 +436,12 @@
     "permissions": [
       "nexus.heal.other"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Heal another player."
+    ],
+    "arguments": [
+      "\u003cplayer\u003e"
+    ]
   },
   {
     "name": "home ",
@@ -304,8 +449,25 @@
     "permissions": [
       "nexus.home"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Teleports to your first home."
+    ],
+    "arguments": [
+      ""
+    ]
+  },
+  {
+    "name": "home ",
+    "aliases": [],
+    "permissions": [
+      "nexus.home"
+    ],
+    "descriptions": [
+      "Teleports to a specific home."
+    ],
+    "arguments": [
+      "\u003chome\u003e"
+    ]
   },
   {
     "name": "itemlore ",
@@ -313,8 +475,12 @@
     "permissions": [
       "nexus.itemlore"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Change the lore of an item."
+    ],
+    "arguments": [
+      "\u003cline\u003e \u003ctext\u003e"
+    ]
   },
   {
     "name": "itemlore clear",
@@ -322,8 +488,12 @@
     "permissions": [
       "nexus.itemlore"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Clear the lore of an item."
+    ],
+    "arguments": [
+      ""
+    ]
   },
   {
     "name": "itemname ",
@@ -331,8 +501,12 @@
     "permissions": [
       "nexus.itemname"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Change the name of an item."
+    ],
+    "arguments": [
+      "\u003cname\u003e"
+    ]
   },
   {
     "name": "itemname clear",
@@ -340,8 +514,12 @@
     "permissions": [
       "nexus.itemname"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Clear the name of an item."
+    ],
+    "arguments": [
+      ""
+    ]
   },
   {
     "name": "jail ",
@@ -349,8 +527,25 @@
     "permissions": [
       "nexus.jail"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Jail a player to specified jail name."
+    ],
+    "arguments": [
+      "\u003cplayer\u003e \u003cjail\u003e"
+    ]
+  },
+  {
+    "name": "jail ",
+    "aliases": [],
+    "permissions": [
+      "nexus.jail"
+    ],
+    "descriptions": [
+      "Jail a player to specified jail name for specified time."
+    ],
+    "arguments": [
+      "\u003cplayer\u003e \u003cjail\u003e \u003cduration\u003e"
+    ]
   },
   {
     "name": "jail list",
@@ -358,8 +553,12 @@
     "permissions": [
       "nexus.jail.list"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "List all jailed players."
+    ],
+    "arguments": [
+      ""
+    ]
   },
   {
     "name": "jail release",
@@ -367,8 +566,25 @@
     "permissions": [
       "nexus.jail.release"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Releases you from jail."
+    ],
+    "arguments": [
+      ""
+    ]
+  },
+  {
+    "name": "jail release",
+    "aliases": [],
+    "permissions": [
+      "nexus.jail.release"
+    ],
+    "descriptions": [
+      "Releases a player from jail."
+    ],
+    "arguments": [
+      "\u003cplayer\u003e"
+    ]
   },
   {
     "name": "jail release -all",
@@ -378,8 +594,12 @@
     "permissions": [
       "nexus.jail.release"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Releases all players from jail."
+    ],
+    "arguments": [
+      ""
+    ]
   },
   {
     "name": "jail remove",
@@ -387,8 +607,12 @@
     "permissions": [
       "nexus.jail.remove"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Remove a jail location with specified name."
+    ],
+    "arguments": [
+      "\u003cname\u003e"
+    ]
   },
   {
     "name": "jail setup",
@@ -396,17 +620,25 @@
     "permissions": [
       "nexus.jail.setup"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Set up a jail location with specified name and location."
+    ],
+    "arguments": [
+      "\u003cname\u003e \u003clocation\u003e"
+    ]
   },
   {
-    "name": "kill ",
+    "name": "jail setup",
     "aliases": [],
     "permissions": [
-      "nexus.kill.other"
+      "nexus.jail.setup"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Set up a jail location with specified name."
+    ],
+    "arguments": [
+      "\u003cname\u003e"
+    ]
   },
   {
     "name": "kill ",
@@ -414,8 +646,25 @@
     "permissions": [
       "nexus.kill"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Kills you."
+    ],
+    "arguments": [
+      ""
+    ]
+  },
+  {
+    "name": "kill ",
+    "aliases": [],
+    "permissions": [
+      "nexus.kill.other"
+    ],
+    "descriptions": [
+      "Kills another player."
+    ],
+    "arguments": [
+      "\u003cplayer\u003e"
+    ]
   },
   {
     "name": "list ",
@@ -423,17 +672,12 @@
     "permissions": [
       "nexus.list"
     ],
-    "descriptions": [],
-    "arguments": []
-  },
-  {
-    "name": "loom ",
-    "aliases": [],
-    "permissions": [
-      "nexus.loom"
+    "descriptions": [
+      "Check who is online."
     ],
-    "descriptions": [],
-    "arguments": []
+    "arguments": [
+      ""
+    ]
   },
   {
     "name": "loom ",
@@ -441,8 +685,25 @@
     "permissions": [
       "nexus.loom.other"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Opens a loom for another player."
+    ],
+    "arguments": [
+      "\u003cplayer\u003e"
+    ]
+  },
+  {
+    "name": "loom ",
+    "aliases": [],
+    "permissions": [
+      "nexus.loom"
+    ],
+    "descriptions": [
+      "Opens a loom."
+    ],
+    "arguments": [
+      ""
+    ]
   },
   {
     "name": "nexus reload",
@@ -476,17 +737,12 @@
     "permissions": [
       "nexus.online"
     ],
-    "descriptions": [],
-    "arguments": []
-  },
-  {
-    "name": "ping ",
-    "aliases": [],
-    "permissions": [
-      "nexus.ping.other"
+    "descriptions": [
+      "Check how many players are online."
     ],
-    "descriptions": [],
-    "arguments": []
+    "arguments": [
+      ""
+    ]
   },
   {
     "name": "ping ",
@@ -494,8 +750,25 @@
     "permissions": [
       "nexus.ping"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Check your ping."
+    ],
+    "arguments": [
+      ""
+    ]
+  },
+  {
+    "name": "ping ",
+    "aliases": [],
+    "permissions": [
+      "nexus.ping.other"
+    ],
+    "descriptions": [
+      "Check the ping of another player."
+    ],
+    "arguments": [
+      "\u003cplayer\u003e"
+    ]
   },
   {
     "name": "rain ",
@@ -503,8 +776,25 @@
     "permissions": [
       "nexus.rain"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Set rain in the specified world."
+    ],
+    "arguments": [
+      "\u003cworld\u003e"
+    ]
+  },
+  {
+    "name": "rain ",
+    "aliases": [],
+    "permissions": [
+      "nexus.rain"
+    ],
+    "descriptions": [
+      "Set rain in the world."
+    ],
+    "arguments": [
+      ""
+    ]
   },
   {
     "name": "randomteleport ",
@@ -512,8 +802,12 @@
     "permissions": [
       "nexus.randomteleport.other"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Teleport another player to a random location."
+    ],
+    "arguments": [
+      "\u003cplayer\u003e"
+    ]
   },
   {
     "name": "randomteleport ",
@@ -521,8 +815,12 @@
     "permissions": [
       "nexus.randomteleport"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Teleport to a random location."
+    ],
+    "arguments": [
+      ""
+    ]
   },
   {
     "name": "repair ",
@@ -530,8 +828,12 @@
     "permissions": [
       "nexus.repair"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Repair the item in your hand."
+    ],
+    "arguments": [
+      ""
+    ]
   },
   {
     "name": "repair all",
@@ -539,8 +841,12 @@
     "permissions": [
       "nexus.repair.all"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Repair all items in your inventory."
+    ],
+    "arguments": [
+      ""
+    ]
   },
   {
     "name": "sethome ",
@@ -548,8 +854,25 @@
     "permissions": [
       "nexus.sethome"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Set your home."
+    ],
+    "arguments": [
+      "\u003cname\u003e"
+    ]
+  },
+  {
+    "name": "sethome ",
+    "aliases": [],
+    "permissions": [
+      "nexus.sethome"
+    ],
+    "descriptions": [
+      "Set your home."
+    ],
+    "arguments": [
+      ""
+    ]
   },
   {
     "name": "setspawn ",
@@ -557,8 +880,12 @@
     "permissions": [
       "nexus.setspawn"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Set the spawn location."
+    ],
+    "arguments": [
+      ""
+    ]
   },
   {
     "name": "setwarp ",
@@ -566,17 +893,12 @@
     "permissions": [
       "nexus.setwarp"
     ],
-    "descriptions": [],
-    "arguments": []
-  },
-  {
-    "name": "smithingtable ",
-    "aliases": [],
-    "permissions": [
-      "nexus.smithingtable.other"
+    "descriptions": [
+      "Set a warp."
     ],
-    "descriptions": [],
-    "arguments": []
+    "arguments": [
+      "\u003cname\u003e"
+    ]
   },
   {
     "name": "smithingtable ",
@@ -584,17 +906,25 @@
     "permissions": [
       "nexus.smithingtable"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Opens a smithing table."
+    ],
+    "arguments": [
+      ""
+    ]
   },
   {
-    "name": "spawn ",
+    "name": "smithingtable ",
     "aliases": [],
     "permissions": [
-      "nexus.spawn.other"
+      "nexus.smithingtable.other"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Opens a smithing table for another player."
+    ],
+    "arguments": [
+      "\u003cplayer\u003e"
+    ]
   },
   {
     "name": "spawn ",
@@ -602,17 +932,25 @@
     "permissions": [
       "nexus.spawn"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Teleport to the spawn."
+    ],
+    "arguments": [
+      ""
+    ]
   },
   {
-    "name": "speed ",
+    "name": "spawn ",
     "aliases": [],
     "permissions": [
-      "nexus.speed.other"
+      "nexus.spawn.other"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Teleport another player to the spawn."
+    ],
+    "arguments": [
+      "\u003cplayer\u003e"
+    ]
   },
   {
     "name": "speed ",
@@ -620,8 +958,51 @@
     "permissions": [
       "nexus.speed"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Change your speed."
+    ],
+    "arguments": [
+      "\u003cspeed\u003e"
+    ]
+  },
+  {
+    "name": "speed ",
+    "aliases": [],
+    "permissions": [
+      "nexus.speed"
+    ],
+    "descriptions": [
+      "Set speed of walking or flying to specified amount"
+    ],
+    "arguments": [
+      "\u003ctype\u003e \u003cspeed\u003e"
+    ]
+  },
+  {
+    "name": "speed ",
+    "aliases": [],
+    "permissions": [
+      "nexus.speed.other"
+    ],
+    "descriptions": [
+      "Change the speed of another player."
+    ],
+    "arguments": [
+      "\u003cspeed\u003e \u003cplayer\u003e"
+    ]
+  },
+  {
+    "name": "speed ",
+    "aliases": [],
+    "permissions": [
+      "nexus.speed.other"
+    ],
+    "descriptions": [
+      "Set speed of walking or flying to specified amount for another player"
+    ],
+    "arguments": [
+      "\u003ctype\u003e \u003cspeed\u003e \u003cplayer\u003e"
+    ]
   },
   {
     "name": "spit ",
@@ -629,17 +1010,12 @@
     "permissions": [
       "nexus.spit"
     ],
-    "descriptions": [],
-    "arguments": []
-  },
-  {
-    "name": "stonecutter ",
-    "aliases": [],
-    "permissions": [
-      "nexus.stonecutter"
+    "descriptions": [
+      "Just spit."
     ],
-    "descriptions": [],
-    "arguments": []
+    "arguments": [
+      ""
+    ]
   },
   {
     "name": "stonecutter ",
@@ -647,8 +1023,25 @@
     "permissions": [
       "nexus.stonecutter.other"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Opens a stonecutter for another player."
+    ],
+    "arguments": [
+      "\u003cplayer\u003e"
+    ]
+  },
+  {
+    "name": "stonecutter ",
+    "aliases": [],
+    "permissions": [
+      "nexus.stonecutter"
+    ],
+    "descriptions": [
+      "Opens a stonecutter."
+    ],
+    "arguments": [
+      ""
+    ]
   },
   {
     "name": "sudo ",
@@ -656,8 +1049,12 @@
     "permissions": [
       "nexus.sudo.player"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Execute a command at other player."
+    ],
+    "arguments": [
+      "\u003cplayer\u003e \u003ccommand\u003e"
+    ]
   },
   {
     "name": "sudo -console",
@@ -665,8 +1062,12 @@
     "permissions": [
       "nexus.sudo.console"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Execute a command as console."
+    ],
+    "arguments": [
+      "\u003ccommand\u003e"
+    ]
   },
   {
     "name": "sun ",
@@ -674,8 +1075,25 @@
     "permissions": [
       "nexus.sun"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Set the weather to sunny."
+    ],
+    "arguments": [
+      ""
+    ]
+  },
+  {
+    "name": "sun ",
+    "aliases": [],
+    "permissions": [
+      "nexus.sun"
+    ],
+    "descriptions": [
+      "Set the weather to sunny in the specified world."
+    ],
+    "arguments": [
+      "\u003cworld\u003e"
+    ]
   },
   {
     "name": "teleport ",
@@ -683,8 +1101,77 @@
     "permissions": [
       "nexus.teleport"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Teleport another player to coordinates."
+    ],
+    "arguments": [
+      "\u003cplayer\u003e \u003clocation\u003e"
+    ]
+  },
+  {
+    "name": "teleport ",
+    "aliases": [],
+    "permissions": [
+      "nexus.teleport"
+    ],
+    "descriptions": [
+      "Teleport another player to coordinates."
+    ],
+    "arguments": [
+      "\u003cplayer\u003e \u003clocation\u003e \u003cworld\u003e"
+    ]
+  },
+  {
+    "name": "teleport ",
+    "aliases": [],
+    "permissions": [
+      "nexus.teleport"
+    ],
+    "descriptions": [
+      "Teleport to coordinates."
+    ],
+    "arguments": [
+      "\u003clocation\u003e"
+    ]
+  },
+  {
+    "name": "teleport ",
+    "aliases": [],
+    "permissions": [
+      "nexus.teleport"
+    ],
+    "descriptions": [
+      "Teleport other player to another player."
+    ],
+    "arguments": [
+      "\u003cplayer\u003e \u003ctarget\u003e"
+    ]
+  },
+  {
+    "name": "teleport ",
+    "aliases": [],
+    "permissions": [
+      "nexus.teleport"
+    ],
+    "descriptions": [
+      "Teleport to coordinates."
+    ],
+    "arguments": [
+      "\u003clocation\u003e \u003cworld\u003e"
+    ]
+  },
+  {
+    "name": "teleport ",
+    "aliases": [],
+    "permissions": [
+      "nexus.teleport"
+    ],
+    "descriptions": [
+      "Teleport to another player."
+    ],
+    "arguments": [
+      "\u003cplayer\u003e"
+    ]
   },
   {
     "name": "thunder ",
@@ -692,8 +1179,25 @@
     "permissions": [
       "nexus.thunder"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Set the weather to thunder."
+    ],
+    "arguments": [
+      ""
+    ]
+  },
+  {
+    "name": "thunder ",
+    "aliases": [],
+    "permissions": [
+      "nexus.thunder"
+    ],
+    "descriptions": [
+      "Set the weather to thunder in the specified world."
+    ],
+    "arguments": [
+      "\u003cworld\u003e"
+    ]
   },
   {
     "name": "time add",
@@ -701,8 +1205,25 @@
     "permissions": [
       "nexus.time"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Add time to the world."
+    ],
+    "arguments": [
+      "\u003ctime\u003e"
+    ]
+  },
+  {
+    "name": "time add",
+    "aliases": [],
+    "permissions": [
+      "nexus.time"
+    ],
+    "descriptions": [
+      "Add time to the world."
+    ],
+    "arguments": [
+      "\u003ctime\u003e \u003cworld\u003e"
+    ]
   },
   {
     "name": "time set",
@@ -710,8 +1231,25 @@
     "permissions": [
       "nexus.time"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Set the time in the world."
+    ],
+    "arguments": [
+      "\u003ctime\u003e"
+    ]
+  },
+  {
+    "name": "time set",
+    "aliases": [],
+    "permissions": [
+      "nexus.time"
+    ],
+    "descriptions": [
+      "Set the time in the world."
+    ],
+    "arguments": [
+      "\u003ctime\u003e \u003cworld\u003e"
+    ]
   },
   {
     "name": "time set day",
@@ -719,8 +1257,12 @@
     "permissions": [
       "nexus.time"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Set the time to day."
+    ],
+    "arguments": [
+      ""
+    ]
   },
   {
     "name": "time set midnight",
@@ -728,8 +1270,12 @@
     "permissions": [
       "nexus.time"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Set the time to midnight."
+    ],
+    "arguments": [
+      ""
+    ]
   },
   {
     "name": "time set night",
@@ -737,8 +1283,12 @@
     "permissions": [
       "nexus.time"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Set the time to night."
+    ],
+    "arguments": [
+      ""
+    ]
   },
   {
     "name": "time set noon",
@@ -746,8 +1296,12 @@
     "permissions": [
       "nexus.time"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Set the time to noon."
+    ],
+    "arguments": [
+      ""
+    ]
   },
   {
     "name": "tpa ",
@@ -755,8 +1309,12 @@
     "permissions": [
       "nexus.tpa"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Request teleportation to another player."
+    ],
+    "arguments": [
+      "\u003cplayer\u003e"
+    ]
   },
   {
     "name": "tpaaccept ",
@@ -764,8 +1322,12 @@
     "permissions": [
       "nexus.tpaaccept"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Accept teleport request."
+    ],
+    "arguments": [
+      "\u003cplayer\u003e"
+    ]
   },
   {
     "name": "tpaaccept -all",
@@ -775,8 +1337,12 @@
     "permissions": [
       "nexus.tpaaccept"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Accept all teleport requests."
+    ],
+    "arguments": [
+      ""
+    ]
   },
   {
     "name": "tpadeny ",
@@ -784,8 +1350,12 @@
     "permissions": [
       "nexus.tpadeny"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Deny a teleport request."
+    ],
+    "arguments": [
+      "\u003cplayer\u003e"
+    ]
   },
   {
     "name": "tpadeny -all",
@@ -795,8 +1365,12 @@
     "permissions": [
       "nexus.tpadeny"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Deny all teleport requests."
+    ],
+    "arguments": [
+      ""
+    ]
   },
   {
     "name": "tphere ",
@@ -804,8 +1378,12 @@
     "permissions": [
       "nexus.tphere"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Teleport a player to you."
+    ],
+    "arguments": [
+      "\u003cplayer\u003e"
+    ]
   },
   {
     "name": "tppos ",
@@ -813,8 +1391,25 @@
     "permissions": [
       "nexus.tppos"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Teleport to the specified coordinates."
+    ],
+    "arguments": [
+      "\u003clocation\u003e"
+    ]
+  },
+  {
+    "name": "tppos ",
+    "aliases": [],
+    "permissions": [
+      "nexus.tppos"
+    ],
+    "descriptions": [
+      "Teleport the specified player to the specified coordinates."
+    ],
+    "arguments": [
+      "\u003clocation\u003e \u003cplayer\u003e"
+    ]
   },
   {
     "name": "tpup ",
@@ -822,17 +1417,12 @@
     "permissions": [
       "nexus.tpup"
     ],
-    "descriptions": [],
-    "arguments": []
-  },
-  {
-    "name": "warp ",
-    "aliases": [],
-    "permissions": [
-      "nexus.warp.other"
+    "descriptions": [
+      "Teleport to the highest block."
     ],
-    "descriptions": [],
-    "arguments": []
+    "arguments": [
+      ""
+    ]
   },
   {
     "name": "warp ",
@@ -840,8 +1430,25 @@
     "permissions": [
       "nexus.warp"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Teleport to the warp."
+    ],
+    "arguments": [
+      "\u003cwarp\u003e"
+    ]
+  },
+  {
+    "name": "warp ",
+    "aliases": [],
+    "permissions": [
+      "nexus.warp.other"
+    ],
+    "descriptions": [
+      "Teleport another player to the warp."
+    ],
+    "arguments": [
+      "\u003cwarp\u003e \u003cplayer\u003e"
+    ]
   },
   {
     "name": "whois ",
@@ -849,17 +1456,12 @@
     "permissions": [
       "nexus.whois"
     ],
-    "descriptions": [],
-    "arguments": []
-  },
-  {
-    "name": "workbench ",
-    "aliases": [],
-    "permissions": [
-      "nexus.workbench"
+    "descriptions": [
+      "Check information about a player."
     ],
-    "descriptions": [],
-    "arguments": []
+    "arguments": [
+      "\u003cplayer\u003e"
+    ]
   },
   {
     "name": "workbench ",
@@ -867,7 +1469,24 @@
     "permissions": [
       "nexus.workbench.other"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Opens a workbench for another player."
+    ],
+    "arguments": [
+      "\u003cplayer\u003e"
+    ]
+  },
+  {
+    "name": "workbench ",
+    "aliases": [],
+    "permissions": [
+      "nexus.workbench"
+    ],
+    "descriptions": [
+      "Opens a workbench."
+    ],
+    "arguments": [
+      ""
+    ]
   }
 ]

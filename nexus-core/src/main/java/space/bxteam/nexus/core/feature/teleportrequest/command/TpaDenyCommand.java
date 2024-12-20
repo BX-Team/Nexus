@@ -9,6 +9,7 @@ import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.Server;
 import org.bukkit.entity.Player;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.feature.teleportrequest.TeleportRequestService;
 
@@ -24,6 +25,7 @@ public class TpaDenyCommand {
     private final TeleportRequestService requestService;
 
     @Execute
+    @CommandDocs(description = "Deny a teleport request.", arguments = "<player>")
     void execute(@Context Player player, @Arg(RequesterArgument.KEY) Player target) {
         this.requestService.removeRequest(target.getUniqueId());
 
@@ -41,6 +43,7 @@ public class TpaDenyCommand {
     }
 
     @Execute(name = "-all", aliases = {"*"})
+    @CommandDocs(description = "Deny all teleport requests.")
     void executeAll(@Context Player player) {
         List<UUID> requests = this.requestService.findRequests(player.getUniqueId());
 

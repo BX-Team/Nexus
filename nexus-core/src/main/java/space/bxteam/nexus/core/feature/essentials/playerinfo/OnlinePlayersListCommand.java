@@ -10,6 +10,7 @@ import org.bukkit.Server;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.multification.MultificationManager;
 
 import java.util.Collection;
@@ -22,6 +23,7 @@ public class OnlinePlayersListCommand {
     private final Server server;
 
     @Execute
+    @CommandDocs(description = "Check who is online.")
     void execute(@Context CommandSender sender) {
         Collection<? extends Player> online = this.server.getOnlinePlayers()
                 .stream()

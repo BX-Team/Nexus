@@ -7,6 +7,7 @@ import dev.rollczi.litecommands.annotations.execute.Execute;
 import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.entity.Player;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.feature.spawn.SpawnService;
 
@@ -18,6 +19,7 @@ public class SetSpawnCommand {
     private final MultificationManager multificationManager;
 
     @Execute
+    @CommandDocs(description = "Set the spawn location.")
     void execute(@Context Player player) {
         this.spawnService.setSpawnLocation(player.getLocation());
 

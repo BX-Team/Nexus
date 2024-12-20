@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.bukkit.entity.Player;
 import space.bxteam.commons.bukkit.position.Position;
 import space.bxteam.commons.bukkit.position.PositionFactory;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import space.bxteam.nexus.core.event.EventCaller;
 import space.bxteam.nexus.core.feature.teleport.Teleport;
@@ -33,6 +34,7 @@ public class WarpCommand {
 
     @Execute
     @Permission("nexus.warp")
+    @CommandDocs(description = "Teleport to the warp.", arguments = "<warp>")
     void executeWarp(@Context Player player, @Arg Warp warp) {
         String name = warp.name();
 
@@ -50,6 +52,7 @@ public class WarpCommand {
 
     @Execute
     @Permission("nexus.warp.other")
+    @CommandDocs(description = "Teleport another player to the warp.", arguments = "<warp> <player>")
     void executeWarpOther(@Context Player player, @Arg Warp warp, @Arg Player target) {
         String name = warp.name();
 

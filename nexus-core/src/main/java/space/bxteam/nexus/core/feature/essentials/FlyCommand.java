@@ -9,6 +9,7 @@ import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.multification.MultificationManager;
 
 @Command(name = "fly")
@@ -18,6 +19,7 @@ public class FlyCommand {
 
     @Execute
     @Permission("nexus.fly")
+    @CommandDocs(description = "Enable or disable flight mode.")
     void execute(@Context Player player) {
         player.setAllowFlight(!player.getAllowFlight());
 
@@ -30,6 +32,7 @@ public class FlyCommand {
 
     @Execute
     @Permission("nexus.fly.other")
+    @CommandDocs(description = "Enable or disable flight mode for another player.", arguments = "<player>")
     void execute(@Context CommandSender sender, @Arg Player target) {
         target.setAllowFlight(!target.getAllowFlight());
 

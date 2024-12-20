@@ -12,6 +12,7 @@ import org.bukkit.Location;
 import org.bukkit.Server;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.core.utils.DurationUtil;
@@ -30,12 +31,14 @@ public class JailCommand {
 
     @Execute
     @Permission("nexus.jail")
+    @CommandDocs(description = "Jail a player to specified jail name.", arguments = "<player> <jail>")
     void executeJail(@Context Player player, @Arg Player target, @Arg(JailCommandArgument.KEY) String name) {
         this.executeJailForTime(player, target, name, this.configurationProvider.configuration().jail().jailTime());
     }
 
     @Execute
     @Permission("nexus.jail")
+    @CommandDocs(description = "Jail a player to specified jail name for specified time.", arguments = "<player> <jail> <duration>")
     void executeJailForTime(@Context Player player, @Arg Player target, @Arg(JailCommandArgument.KEY) String name, @Arg Duration duration) {
         if (target.hasPermission("nexus.jail.bypass")) {
             this.multificationManager.create()
@@ -78,6 +81,7 @@ public class JailCommand {
 
     @Execute(name = "release")
     @Permission("nexus.jail.release")
+    @CommandDocs(description = "Releases you from jail.")
     void executeRelease(@Context Player player) {
         if (!this.jailService.isPlayerJailed(player.getUniqueId())) {
             this.multificationManager.create()
@@ -97,6 +101,7 @@ public class JailCommand {
 
     @Execute(name = "release")
     @Permission("nexus.jail.release")
+    @CommandDocs(description = "Releases a player from jail.", arguments = "<player>")
     void executeRelease(@Context Player player, @Arg Player target) {
         if (!this.jailService.isPlayerJailed(target.getUniqueId())) {
             this.multificationManager.create()
@@ -122,6 +127,7 @@ public class JailCommand {
 
     @Execute(name = "release -all", aliases = {"release *"})
     @Permission("nexus.jail.release")
+    @CommandDocs(description = "Releases all players from jail.")
     void executeReleaseAll(@Context Player player) {
         if (this.jailService.getJailedPlayers().isEmpty()) {
             this.multificationManager.create()
@@ -141,6 +147,7 @@ public class JailCommand {
     @Async
     @Execute(name = "setup")
     @Permission("nexus.jail.setup")
+    @CommandDocs(description = "Set up a jail location with specified name.", arguments = "<name>")
     void executeSetup(@Context Player player, @Arg String name) {
         if (this.jailService.jailExists(name)) {
             this.multificationManager.create()
@@ -164,6 +171,7 @@ public class JailCommand {
     @Async
     @Execute(name = "setup")
     @Permission("nexus.jail.setup")
+    @CommandDocs(description = "Set up a jail location with specified name and location.", arguments = "<name> <location>")
     void executeSetup(@Context Player player, @Arg String name, @Arg Location location) {
         if (this.jailService.jailExists(name)) {
             this.multificationManager.create()
@@ -187,6 +195,7 @@ public class JailCommand {
     @Async
     @Execute(name = "remove")
     @Permission("nexus.jail.remove")
+    @CommandDocs(description = "Remove a jail location with specified name.", arguments = "<name>")
     void executeRemove(@Context CommandSender sender, @Arg(JailCommandArgument.KEY) String name) {
         if (!this.jailService.jailExists(name)) {
             this.multificationManager.create()
@@ -207,6 +216,7 @@ public class JailCommand {
 
     @Execute(name = "list")
     @Permission("nexus.jail.list")
+    @CommandDocs(description = "List all jailed players.")
     void executeList(@Context Player player) {
         if (this.jailService.getJailedPlayers().isEmpty()) {
             this.multificationManager.create()

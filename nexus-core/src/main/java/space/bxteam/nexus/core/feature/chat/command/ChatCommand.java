@@ -7,6 +7,7 @@ import dev.rollczi.litecommands.annotations.context.Context;
 import dev.rollczi.litecommands.annotations.execute.Execute;
 import dev.rollczi.litecommands.annotations.permission.Permission;
 import org.bukkit.command.CommandSender;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.feature.chat.ChatService;
@@ -29,6 +30,7 @@ public class ChatCommand {
     }
 
     @Execute(name = "clear", aliases = {"cc"})
+    @CommandDocs(description = "Clears the chat.")
     void clear(@Context CommandSender sender) {
         this.multificationManager.create()
                 .notice(this.clear.get())
@@ -39,6 +41,7 @@ public class ChatCommand {
     }
 
     @Execute(name = "on")
+    @CommandDocs(description = "Enables the chat.")
     void on(@Context CommandSender sender) {
         if (this.chatService.isChatEnabled()) {
             this.multificationManager.create()
@@ -57,6 +60,7 @@ public class ChatCommand {
     }
 
     @Execute(name = "off")
+    @CommandDocs(description = "Disables the chat.")
     void off(@Context CommandSender sender) {
         if (!this.chatService.isChatEnabled()) {
             this.multificationManager.create()

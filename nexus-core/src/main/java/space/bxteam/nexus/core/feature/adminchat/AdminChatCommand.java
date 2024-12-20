@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.bukkit.Server;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.multification.MultificationManager;
 
 @Command(name = "adminchat", aliases = {"ac", "achat"})
@@ -21,6 +22,7 @@ public class AdminChatCommand {
     private final MultificationManager multificationManager;
 
     @Execute
+    @CommandDocs(description = "Send a message to all staff members with nexus.adminchat.spy permission.", arguments = "<message>")
     void execute(@Context CommandSender sender, @Join String message) {
         NoticeBroadcast notice = this.multificationManager.create()
                 .console()
