@@ -82,6 +82,11 @@ public class PluginConfiguration extends OkaeriConfig {
     public class Spawn extends OkaeriConfig {
         @Comment({"The spawn location", "WE DO NOT RECOMMEND CHANGING THIS VALUE MANUALLY"})
         private Position location = EMPTY_POSITION;
+
+        @Comment({"", "Should the player be teleported to the spawn on first join?"})
+        private boolean teleportOnFirstJoin = true;
+        @Comment("Should the player be teleported to the spawn on join?")
+        private boolean teleportOnJoin = false;
     }
 
     @Comment("")
