@@ -38,6 +38,12 @@ public class MultificationBroadcast<CommandSender, Translation, B extends Multif
         return this.console();
     }
 
+    public B messages(List<String> messages) {
+        this.notifications.add(translation -> Notice.chat(messages));
+
+        return this.getThis();
+    }
+
     public B messages(Function<Translation, List<String>> messages) {
         this.notifications.add(translation -> {
             List<String> list = messages.apply(translation);

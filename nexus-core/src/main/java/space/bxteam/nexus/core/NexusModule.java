@@ -22,8 +22,7 @@ import space.bxteam.nexus.core.feature.randomteleport.RandomTeleportServiceImpl;
 import space.bxteam.nexus.core.feature.spawn.SpawnServiceImpl;
 import space.bxteam.nexus.core.feature.teleport.TeleportTaskService;
 import space.bxteam.nexus.core.feature.teleportrequest.TeleportRequestServiceImpl;
-import space.bxteam.nexus.core.utils.meta.PluginVersionMeta;
-import space.bxteam.nexus.core.utils.meta.PluginVersionMetaFactory;
+import space.bxteam.nexus.core.updater.UpdateService;
 import space.bxteam.nexus.core.feature.home.HomeServiceImpl;
 import space.bxteam.nexus.core.feature.teleport.TeleportServiceImpl;
 import space.bxteam.nexus.core.feature.warp.WarpServiceImpl;
@@ -60,8 +59,8 @@ public class NexusModule extends AbstractModule {
                 .annotatedWith(Names.named("dataFolder"))
                 .toInstance(this.plugin.getDataFolder().toPath());
         this.bind(AudienceProvider.class).toInstance(BukkitAudiences.create(this.plugin));
-        this.bind(PluginVersionMeta.class).toInstance(PluginVersionMetaFactory.create(this.plugin));
         this.bind(PlaceholderRegistry.class).to(PlaceholderRegistryImpl.class).in(Singleton.class);
+        this.bind(UpdateService.class).asEagerSingleton();
 
         this.bind(MiniMessage.class).toInstance(MiniMessage.miniMessage());
         this.bind(MiniMessage.class)

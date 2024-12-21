@@ -10,7 +10,6 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import space.bxteam.nexus.core.utils.meta.PluginVersionMeta;
 import space.bxteam.nexus.core.integration.Integration;
 import space.bxteam.nexus.core.integration.placeholderapi.resolver.PlaceholderRaw;
 import space.bxteam.nexus.core.integration.placeholderapi.resolver.PlaceholderRegistry;
@@ -24,7 +23,6 @@ public class PlaceholderAPIIntegration extends PlaceholderExpansion implements I
     private final PlaceholderRegistry placeholderRegistry;
     private final Plugin plugin;
     private final PluginManager pluginManager;
-    private final PluginVersionMeta versionMeta;
 
     @Override
     public boolean available() {
@@ -54,7 +52,7 @@ public class PlaceholderAPIIntegration extends PlaceholderExpansion implements I
 
     @Override
     public @NotNull String getVersion() {
-        return this.versionMeta.version();
+        return this.plugin.getPluginMeta().getVersion();
     }
 
     @Override
