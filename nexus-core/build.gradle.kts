@@ -1,23 +1,15 @@
 plugins {
-    `java-library`
-    alias(libs.plugins.lombok)
-}
-
-repositories {
-    mavenCentral()
-    maven("https://repo.papermc.io/repository/maven-public/")
-    maven("https://oss.sonatype.org/content/groups/public/")
-    maven("https://repo.extendedclip.com/content/repositories/placeholderapi/")
-    maven("https://repo.panda-lang.org/releases")
-    maven("https://repo.eternalcode.pl/releases")
-    maven("https://s01.oss.sonatype.org/content/repositories/snapshots/")
-    maven("https://storehouse.okaeri.eu/repository/maven-public/")
-    maven("https://repo.bx-team.space/releases")
+    `nexus-java`
+    `nexus-repositories`
 }
 
 dependencies {
     implementation(project(":nexus-api"))
     api(project(":nexus-docs"))
+
+    // Lombok
+    compileOnly(libs.lombok)
+    annotationProcessor(libs.lombok)
 
     // Libraries
     compileOnly(libs.paper)
@@ -35,12 +27,5 @@ dependencies {
 
     // Plugin dependencies
     compileOnly(libs.placeholderapi)
-
     compileOnly(libs.bstats)
-}
-
-tasks.withType<JavaCompile> {
-    options.encoding = "UTF-8"
-    options.release = 17
-    options.compilerArgs = listOf("-Xlint:deprecation", "-parameters")
 }
