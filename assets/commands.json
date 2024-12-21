@@ -719,19 +719,6 @@
     ]
   },
   {
-    "name": "nexus version",
-    "aliases": [],
-    "permissions": [
-      "nexus.nexus"
-    ],
-    "descriptions": [
-      "Shows the current version of the plugin and checks for updates."
-    ],
-    "arguments": [
-      ""
-    ]
-  },
-  {
     "name": "online ",
     "aliases": [],
     "permissions": [

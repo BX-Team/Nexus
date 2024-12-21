@@ -46,10 +46,4 @@ public class NexusCommand {
                     .send();
         });
     }
-
-    @Execute(name = "version")
-    @CommandDocs(description = "Shows the current version of the plugin and checks for updates.")
-    void version() {
-        // Send current version and start update checker
-    }
 }
