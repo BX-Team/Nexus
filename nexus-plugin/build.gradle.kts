@@ -18,6 +18,7 @@ dependencies {
     library(libs.bundles.ormlite)
     library(libs.hikaricp)
     library(libs.mariadb)
+    library(libs.postgresql)
     library(libs.bundles.litecommands)
     library(libs.guice)
     library(libs.classgraph)

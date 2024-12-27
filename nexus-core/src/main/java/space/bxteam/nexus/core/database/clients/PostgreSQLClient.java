@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Singleton
-public class MariaDBClient implements DatabaseClient {
+public class PostgreSQLClient implements DatabaseClient {
     private final PluginConfigurationProvider configurationProvider;
     private final Map<Class<?>, Dao<?, ?>> cachedDao = new ConcurrentHashMap<>();
 
@@ -23,7 +23,7 @@ public class MariaDBClient implements DatabaseClient {
     private ConnectionSource connectionSource;
 
     @Inject
-    public MariaDBClient(PluginConfigurationProvider configurationProvider) {
+    public PostgreSQLClient(PluginConfigurationProvider configurationProvider) {
         this.configurationProvider = configurationProvider;
     }
 
@@ -36,10 +36,10 @@ public class MariaDBClient implements DatabaseClient {
         this.dataSource.addDataSourceProperty("useServerPrepStmts", true);
         this.dataSource.setMaximumPoolSize(5);
         this.dataSource.setPoolName("Nexus");
-        this.dataSource.setDriverClassName("org.mariadb.jdbc.Driver");
-        this.dataSource.setJdbcUrl(this.configurationProvider.configuration().database().mariadb().jdbc());
-        this.dataSource.setUsername(this.configurationProvider.configuration().database().mariadb().username());
-        this.dataSource.setPassword(this.configurationProvider.configuration().database().mariadb().password());
+        this.dataSource.setDriverClassName("org.postgresql.Driver");
+        this.dataSource.setJdbcUrl(this.configurationProvider.configuration().database().postgresql().jdbc());
+        this.dataSource.setUsername(this.configurationProvider.configuration().database().postgresql().username());
+        this.dataSource.setPassword(this.configurationProvider.configuration().database().postgresql().password());
 
         this.connectionSource = new DataSourceConnectionSource(this.dataSource, this.dataSource.getJdbcUrl());
     }

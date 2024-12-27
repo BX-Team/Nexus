@@ -3,6 +3,7 @@ package space.bxteam.nexus.core.database;
 import com.google.inject.AbstractModule;
 import lombok.RequiredArgsConstructor;
 import space.bxteam.nexus.core.database.clients.MariaDBClient;
+import space.bxteam.nexus.core.database.clients.PostgreSQLClient;
 import space.bxteam.nexus.core.database.clients.SQLiteClient;
 import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import space.bxteam.nexus.core.feature.home.database.HomeRepository;
@@ -18,10 +19,12 @@ public class DatabaseModule extends AbstractModule {
 
     @Override
     protected void configure() {
-        if (this.configurationProvider.configuration().database().type() == DatabaseType.MARIADB) {
-            this.bind(DatabaseClient.class).to(MariaDBClient.class);
-        } else {
-            this.bind(DatabaseClient.class).to(SQLiteClient.class);
+        DatabaseType type = this.configurationProvider.configuration().database().type();
+
+        switch (DatabaseType.valueOf(type.toString().toUpperCase())) {
+            case SQLITE -> this.bind(DatabaseClient.class).to(SQLiteClient.class);
+            case MARIADB -> this.bind(DatabaseClient.class).to(MariaDBClient.class);
+            case POSTGRESQL -> this.bind(DatabaseClient.class).to(PostgreSQLClient.class);
         }
 
         this.bind(HomeRepository.class).to(HomeRepositoryOrmLite.class);
