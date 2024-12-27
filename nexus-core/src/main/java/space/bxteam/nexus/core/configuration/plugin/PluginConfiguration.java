@@ -50,7 +50,8 @@ public class PluginConfiguration extends OkaeriConfig {
                 "Select here the database you want to use",
                 "The following databases are supported:",
                 " - SQLITE - (default) stores all data in a local file",
-                " - MARIADB - allows using a remote database"
+                " - MARIADB - stores data in a remote MariaDB database",
+                " - POSTGRESQL - stores data in a remote PostgreSQL database"
         })
         private DatabaseType type = DatabaseType.SQLITE;
 
@@ -68,6 +69,16 @@ public class PluginConfiguration extends OkaeriConfig {
         @Getter
         public class MariaDBConfig extends OkaeriConfig {
             private String jdbc = "jdbc:mariadb://localhost:3306/nexus";
+            private String username = "root";
+            private String password = "password";
+        }
+
+        @Comment({"", "PostgreSQL configuration"})
+        private PostgreSQLConfig postgresql = new PostgreSQLConfig();
+
+        @Getter
+        public class PostgreSQLConfig extends OkaeriConfig {
+            private String jdbc = "jdbc:postgresql://localhost:5432/";
             private String username = "root";
             private String password = "password";
         }

@@ -10,8 +10,8 @@ import org.jetbrains.annotations.Nullable;
 import space.bxteam.commons.bukkit.position.Position;
 import space.bxteam.commons.bukkit.position.PositionFactory;
 import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
-import space.bxteam.nexus.core.database.DatabaseClient;
 import space.bxteam.nexus.core.event.EventCaller;
+import space.bxteam.nexus.core.feature.jail.database.JailRepository;
 import space.bxteam.nexus.feature.jail.JailPlayer;
 import space.bxteam.nexus.feature.jail.JailService;
 import space.bxteam.nexus.feature.jail.event.PlayerJailedEvent;
@@ -28,16 +28,16 @@ public class JailServiceImpl implements JailService {
     private final Map<UUID, JailPlayer> jailedPlayers = new HashMap<>();
 
     private final PluginConfigurationProvider configurationProvider;
-    private final DatabaseClient client;
+    private final JailRepository repository;
     private final TeleportService teleportService;
     private final SpawnService spawnService;
     private final EventCaller eventCaller;
     private final Server server;
 
     @Inject
-    public JailServiceImpl(PluginConfigurationProvider configurationProvider, DatabaseClient client, TeleportService teleportService, SpawnService spawnService, EventCaller eventCaller, Server server) {
+    public JailServiceImpl(PluginConfigurationProvider configurationProvider, JailRepository repository, TeleportService teleportService, SpawnService spawnService, EventCaller eventCaller, Server server) {
         this.configurationProvider = configurationProvider;
-        this.client = client;
+        this.repository = repository;
         this.teleportService = teleportService;
         this.spawnService = spawnService;
         this.eventCaller = eventCaller;
@@ -68,7 +68,7 @@ public class JailServiceImpl implements JailService {
 
         JailPlayer jailPlayer = new JailPlayer(player.getUniqueId(), Instant.now(), duration, detainedBy.getName());
 
-        this.saveJailPlayerDatabase(jailPlayer);
+        this.repository.savePrisoner(jailPlayer);
         this.jailedPlayers.put(player.getUniqueId(), jailPlayer);
         this.teleportService.teleport(player, jailLocation);
     }
@@ -82,7 +82,7 @@ public class JailServiceImpl implements JailService {
             return;
         }
 
-        this.deleteJailPlayerDatabase(player.getUniqueId());
+        this.repository.deletePrisoner(player.getUniqueId());
         this.jailedPlayers.remove(player.getUniqueId());
         this.spawnService.teleportToSpawn(player);
     }
@@ -104,7 +104,7 @@ public class JailServiceImpl implements JailService {
         });
 
         this.jailedPlayers.clear();
-        this.deleteAllJailPlayersDatabase();
+        this.repository.deleteAllPrisoners();
     }
 
     @Override
@@ -141,47 +141,11 @@ public class JailServiceImpl implements JailService {
         return this.configurationProvider.configuration().jail().jailArea().keySet();
     }
 
-    private void saveJailPlayerDatabase(JailPlayer jailPlayer) {
-        String query = "INSERT INTO jailed_players (id, jailedAt, duration, jailedBy) VALUES (?, ?, ?, ?)";
-        this.client.newBuilder(query)
-                .appends(
-                        jailPlayer.getPlayerUniqueId(),
-                        jailPlayer.getJailedAt(),
-                        jailPlayer.getPrisonTime(),
-                        jailPlayer.getJailedBy()
-                )
-                .execute();
-    }
-
-    private void deleteJailPlayerDatabase(UUID player) {
-        String query = "DELETE FROM jailed_players WHERE id = ?";
-        this.client.newBuilder(query)
-                .appends(player)
-                .execute();
-    }
-
-    private void deleteAllJailPlayersDatabase() {
-        String query = "DELETE FROM jailed_players";
-        this.client.newBuilder(query)
-                .execute();
-    }
-
     private void loadFromDatabase() {
-        String query = "SELECT * FROM jailed_players";
-        this.client.newBuilder(query)
-                .queryAll(resultSet -> {
-                    try {
-                        UUID player = UUID.fromString(resultSet.getString("id"));
-                        Instant detainedAt = Instant.parse(resultSet.getString("jailedAt"));
-                        Duration prisonTime = Duration.parse(resultSet.getString("duration"));
-                        String detainedBy = resultSet.getString("jailedBy");
-
-                        JailPlayer jailPlayer = new JailPlayer(player, detainedAt, prisonTime, detainedBy);
-                        this.jailedPlayers.put(player, jailPlayer);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    return null;
-                });
+        this.repository.getPrisoners().thenAccept(prisoners -> {
+            for (JailPlayer jailPlayer : prisoners) {
+                this.jailedPlayers.put(jailPlayer.getPlayerUniqueId(), jailPlayer);
+            }
+        });
     }
 }

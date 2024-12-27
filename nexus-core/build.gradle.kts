@@ -14,6 +14,7 @@ dependencies {
     // Libraries
     compileOnly(libs.paper)
     compileOnly(libs.paperlib)
+    compileOnly(libs.bundles.ormlite)
     compileOnly(libs.hikaricp)
     compileOnly(libs.mariadb)
     compileOnly(libs.bundles.litecommands)
