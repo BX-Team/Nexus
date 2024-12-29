@@ -12,13 +12,13 @@ import java.util.*;
 @Singleton
 public class WarpServiceImpl implements WarpService {
     private final Map<String, Warp> warpMap = new HashMap<>();
-    private final WarpRepository repository;
+    private final WarpRepository warpRepository;
 
     @Inject
-    public WarpServiceImpl(WarpRepository repository) {
-        this.repository = repository;
+    public WarpServiceImpl(WarpRepository warpRepository) {
+        this.warpRepository = warpRepository;
 
-        repository.getWarps().thenAcceptAsync(warps -> {
+        warpRepository.getWarps().thenAcceptAsync(warps -> {
             for (Warp warp : warps) {
                 this.warpMap.put(warp.name(), warp);
             }
@@ -30,7 +30,7 @@ public class WarpServiceImpl implements WarpService {
         Warp warp = new WarpImpl(name, location);
 
         this.warpMap.put(name, warp);
-        this.repository.addWarp(warp);
+        this.warpRepository.addWarp(warp);
     }
 
     @Override
@@ -41,7 +41,7 @@ public class WarpServiceImpl implements WarpService {
             return;
         }
 
-        this.repository.removeWarp(remove);
+        this.warpRepository.removeWarp(remove);
     }
 
     @Override

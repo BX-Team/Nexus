@@ -28,22 +28,26 @@ public class JailServiceImpl implements JailService {
     private final Map<UUID, JailPlayer> jailedPlayers = new HashMap<>();
 
     private final PluginConfigurationProvider configurationProvider;
-    private final JailRepository repository;
+    private final JailRepository jailRepository;
     private final TeleportService teleportService;
     private final SpawnService spawnService;
     private final EventCaller eventCaller;
     private final Server server;
 
     @Inject
-    public JailServiceImpl(PluginConfigurationProvider configurationProvider, JailRepository repository, TeleportService teleportService, SpawnService spawnService, EventCaller eventCaller, Server server) {
+    public JailServiceImpl(PluginConfigurationProvider configurationProvider, JailRepository jailRepository, TeleportService teleportService, SpawnService spawnService, EventCaller eventCaller, Server server) {
         this.configurationProvider = configurationProvider;
-        this.repository = repository;
+        this.jailRepository = jailRepository;
         this.teleportService = teleportService;
         this.spawnService = spawnService;
         this.eventCaller = eventCaller;
         this.server = server;
 
-        this.loadFromDatabase();
+        jailRepository.getPrisoners().thenAccept(prisoners -> {
+            for (JailPlayer jailPlayer : prisoners) {
+                this.jailedPlayers.put(jailPlayer.getPlayerUniqueId(), jailPlayer);
+            }
+        });
     }
 
     @Override
@@ -68,7 +72,7 @@ public class JailServiceImpl implements JailService {
 
         JailPlayer jailPlayer = new JailPlayer(player.getUniqueId(), Instant.now(), duration, detainedBy.getName());
 
-        this.repository.savePrisoner(jailPlayer);
+        this.jailRepository.savePrisoner(jailPlayer);
         this.jailedPlayers.put(player.getUniqueId(), jailPlayer);
         this.teleportService.teleport(player, jailLocation);
     }
@@ -82,7 +86,7 @@ public class JailServiceImpl implements JailService {
             return;
         }
 
-        this.repository.deletePrisoner(player.getUniqueId());
+        this.jailRepository.deletePrisoner(player.getUniqueId());
         this.jailedPlayers.remove(player.getUniqueId());
         this.spawnService.teleportToSpawn(player);
     }
@@ -104,7 +108,7 @@ public class JailServiceImpl implements JailService {
         });
 
         this.jailedPlayers.clear();
-        this.repository.deleteAllPrisoners();
+        this.jailRepository.deleteAllPrisoners();
     }
 
     @Override
@@ -139,13 +143,5 @@ public class JailServiceImpl implements JailService {
     @Override
     public Collection<String> getAllJailNames() {
         return this.configurationProvider.configuration().jail().jailArea().keySet();
-    }
-
-    private void loadFromDatabase() {
-        this.repository.getPrisoners().thenAccept(prisoners -> {
-            for (JailPlayer jailPlayer : prisoners) {
-                this.jailedPlayers.put(jailPlayer.getPlayerUniqueId(), jailPlayer);
-            }
-        });
     }
 }

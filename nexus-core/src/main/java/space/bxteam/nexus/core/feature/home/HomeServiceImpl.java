@@ -19,16 +19,16 @@ import java.util.stream.Stream;
 public class HomeServiceImpl implements HomeService {
     private final Map<UUID, Map<String, Home>> userHomes = new HashMap<>();
     private final EventCaller eventCaller;
-    private final HomeRepository repository;
+    private final HomeRepository homeRepository;
     private final PluginConfigurationProvider pluginConfiguration;
 
     @Inject
-    public HomeServiceImpl(EventCaller eventCaller, HomeRepository repository, PluginConfigurationProvider pluginConfiguration) {
+    public HomeServiceImpl(EventCaller eventCaller, HomeRepository homeRepository, PluginConfigurationProvider pluginConfiguration) {
         this.eventCaller = eventCaller;
-        this.repository = repository;
+        this.homeRepository = homeRepository;
         this.pluginConfiguration = pluginConfiguration;
 
-        repository.getHomes().thenAccept(homes -> {
+        homeRepository.getHomes().thenAccept(homes -> {
             for (Home home : homes) {
                 Map<String, Home> homesByUuid = this.userHomes.computeIfAbsent(home.owner(), k -> new HashMap<>());
 
@@ -50,7 +50,7 @@ public class HomeServiceImpl implements HomeService {
 
         Home newHome = new HomeImpl(player, event.name(), event.location());
         homes.put(event.name(), newHome);
-        this.repository.saveHome(newHome);
+        this.homeRepository.saveHome(newHome);
     }
 
     @Override
@@ -75,7 +75,7 @@ public class HomeServiceImpl implements HomeService {
         }
 
         homes.remove(name);
-        this.repository.deleteHome(player, name);
+        this.homeRepository.deleteHome(player, name);
     }
 
     @Override
