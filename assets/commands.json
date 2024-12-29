@@ -184,6 +184,19 @@
     ]
   },
   {
+    "name": "deljail ",
+    "aliases": [],
+    "permissions": [
+      "nexus.jail.delete"
+    ],
+    "descriptions": [
+      "Remove a jail location with specified name."
+    ],
+    "arguments": [
+      "\u003cname\u003e"
+    ]
+  },
+  {
     "name": "delwarp ",
     "aliases": [],
     "permissions": [
@@ -561,86 +574,6 @@
     ]
   },
   {
-    "name": "jail release",
-    "aliases": [],
-    "permissions": [
-      "nexus.jail.release"
-    ],
-    "descriptions": [
-      "Releases you from jail."
-    ],
-    "arguments": [
-      ""
-    ]
-  },
-  {
-    "name": "jail release",
-    "aliases": [],
-    "permissions": [
-      "nexus.jail.release"
-    ],
-    "descriptions": [
-      "Releases a player from jail."
-    ],
-    "arguments": [
-      "\u003cplayer\u003e"
-    ]
-  },
-  {
-    "name": "jail release -all",
-    "aliases": [
-      "jail, release *"
-    ],
-    "permissions": [
-      "nexus.jail.release"
-    ],
-    "descriptions": [
-      "Releases all players from jail."
-    ],
-    "arguments": [
-      ""
-    ]
-  },
-  {
-    "name": "jail remove",
-    "aliases": [],
-    "permissions": [
-      "nexus.jail.remove"
-    ],
-    "descriptions": [
-      "Remove a jail location with specified name."
-    ],
-    "arguments": [
-      "\u003cname\u003e"
-    ]
-  },
-  {
-    "name": "jail setup",
-    "aliases": [],
-    "permissions": [
-      "nexus.jail.setup"
-    ],
-    "descriptions": [
-      "Set up a jail location with specified name and location."
-    ],
-    "arguments": [
-      "\u003cname\u003e \u003clocation\u003e"
-    ]
-  },
-  {
-    "name": "jail setup",
-    "aliases": [],
-    "permissions": [
-      "nexus.jail.setup"
-    ],
-    "descriptions": [
-      "Set up a jail location with specified name."
-    ],
-    "arguments": [
-      "\u003cname\u003e"
-    ]
-  },
-  {
     "name": "kill ",
     "aliases": [],
     "permissions": [
@@ -859,6 +792,32 @@
     ],
     "arguments": [
       ""
+    ]
+  },
+  {
+    "name": "setjail ",
+    "aliases": [],
+    "permissions": [
+      "nexus.jail.set"
+    ],
+    "descriptions": [
+      "Set up a jail location with specified name."
+    ],
+    "arguments": [
+      "\u003cname\u003e"
+    ]
+  },
+  {
+    "name": "setjail ",
+    "aliases": [],
+    "permissions": [
+      "nexus.jail.set"
+    ],
+    "descriptions": [
+      "Set up a jail location with specified name and location."
+    ],
+    "arguments": [
+      "\u003cname\u003e \u003clocation\u003e"
     ]
   },
   {
@@ -1406,6 +1365,47 @@
     ],
     "descriptions": [
       "Teleport to the highest block."
+    ],
+    "arguments": [
+      ""
+    ]
+  },
+  {
+    "name": "unjail ",
+    "aliases": [],
+    "permissions": [
+      "nexus.jail.release"
+    ],
+    "descriptions": [
+      "Releases a player from jail."
+    ],
+    "arguments": [
+      "\u003cplayer\u003e"
+    ]
+  },
+  {
+    "name": "unjail ",
+    "aliases": [],
+    "permissions": [
+      "nexus.jail.release"
+    ],
+    "descriptions": [
+      "Releases you from jail."
+    ],
+    "arguments": [
+      ""
+    ]
+  },
+  {
+    "name": "unjail -all",
+    "aliases": [
+      "unjail, *"
+    ],
+    "permissions": [
+      "nexus.jail.release"
+    ],
+    "descriptions": [
+      "Releases all players from jail."
     ],
     "arguments": [
       ""

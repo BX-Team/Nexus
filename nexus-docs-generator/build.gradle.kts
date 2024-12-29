@@ -28,8 +28,10 @@ dependencies {
 
     runtimeOnly(libs.paper)
     runtimeOnly(libs.paperlib)
+    runtimeOnly(libs.bundles.ormlite)
     runtimeOnly(libs.hikaricp)
     runtimeOnly(libs.mariadb)
+    runtimeOnly(libs.postgresql)
     runtimeOnly(libs.bundles.litecommands)
     runtimeOnly(libs.guice)
     runtimeOnly(libs.classgraph)

@@ -2,9 +2,16 @@ package space.bxteam.nexus.core.database;
 
 import com.google.inject.AbstractModule;
 import lombok.RequiredArgsConstructor;
-import space.bxteam.nexus.core.database.mariadb.MariaDBClient;
-import space.bxteam.nexus.core.database.sqlite.SQLiteClient;
+import space.bxteam.nexus.core.database.clients.MariaDBClient;
+import space.bxteam.nexus.core.database.clients.PostgreSQLClient;
+import space.bxteam.nexus.core.database.clients.SQLiteClient;
 import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
+import space.bxteam.nexus.core.feature.home.database.HomeRepository;
+import space.bxteam.nexus.core.feature.home.database.HomeRepositoryOrmLite;
+import space.bxteam.nexus.core.feature.jail.database.JailRepository;
+import space.bxteam.nexus.core.feature.jail.database.JailRepositoryOrmLite;
+import space.bxteam.nexus.core.feature.warp.database.WarpRepository;
+import space.bxteam.nexus.core.feature.warp.database.WarpRepositoryOrmLite;
 
 @RequiredArgsConstructor
 public class DatabaseModule extends AbstractModule {
@@ -12,10 +19,16 @@ public class DatabaseModule extends AbstractModule {
 
     @Override
     protected void configure() {
-        if (this.configurationProvider.configuration().database().type() == DatabaseType.MARIADB) {
-            this.bind(DatabaseClient.class).to(MariaDBClient.class);
-        } else {
-            this.bind(DatabaseClient.class).to(SQLiteClient.class);
+        DatabaseType type = this.configurationProvider.configuration().database().type();
+
+        switch (DatabaseType.valueOf(type.toString().toUpperCase())) {
+            case SQLITE -> this.bind(DatabaseClient.class).to(SQLiteClient.class);
+            case MARIADB -> this.bind(DatabaseClient.class).to(MariaDBClient.class);
+            case POSTGRESQL -> this.bind(DatabaseClient.class).to(PostgreSQLClient.class);
         }
+
+        this.bind(HomeRepository.class).to(HomeRepositoryOrmLite.class);
+        this.bind(JailRepository.class).to(JailRepositoryOrmLite.class);
+        this.bind(WarpRepository.class).to(WarpRepositoryOrmLite.class);
     }
 }

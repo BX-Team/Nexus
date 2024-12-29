@@ -7,9 +7,7 @@ import dev.rollczi.litecommands.annotations.context.Context;
 import dev.rollczi.litecommands.annotations.execute.Execute;
 import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
-import org.bukkit.Location;
 import org.bukkit.Server;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
@@ -22,7 +20,7 @@ import java.time.Duration;
 
 @Command(name = "jail")
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
-public class JailCommand { // TODO: Split commands into separate classes
+public class JailCommand {
     private final JailService jailService;
     private final MultificationManager multificationManager;
     private final PluginConfigurationProvider configurationProvider;
@@ -75,138 +73,6 @@ public class JailCommand { // TODO: Split commands into separate classes
                 .player(player.getUniqueId())
                 .notice(translation -> translation.jail().jailJailedExecutor())
                 .placeholder("{PLAYER}", player.getName())
-                .send();
-    }
-
-    @Execute(name = "release")
-    @Permission("nexus.jail.release")
-    @CommandDocs(description = "Releases you from jail.")
-    void executeRelease(@Context Player player) {
-        if (!this.jailService.isPlayerJailed(player.getUniqueId())) {
-            this.multificationManager.create()
-                    .player(player.getUniqueId())
-                    .notice(translation -> translation.jail().jailNotJailed())
-                    .placeholder("{PLAYER}", player.getName())
-                    .send();
-            return;
-        }
-
-        this.jailService.releasePlayer(player);
-        this.multificationManager.create()
-                .player(player.getUniqueId())
-                .notice(translation -> translation.jail().jailReleasePrivate())
-                .send();
-    }
-
-    @Execute(name = "release")
-    @Permission("nexus.jail.release")
-    @CommandDocs(description = "Releases a player from jail.", arguments = "<player>")
-    void executeRelease(@Context Player player, @Arg Player target) {
-        if (!this.jailService.isPlayerJailed(target.getUniqueId())) {
-            this.multificationManager.create()
-                    .player(player.getUniqueId())
-                    .notice(translation -> translation.jail().jailNotJailed())
-                    .placeholder("{PLAYER}", target.getName())
-                    .send();
-            return;
-        }
-
-        this.jailService.releasePlayer(target);
-        this.multificationManager.create()
-                .player(target.getUniqueId())
-                .notice(translation -> translation.jail().jailReleasePrivate())
-                .send();
-
-        this.multificationManager.create()
-                .player(player.getUniqueId())
-                .notice(translation -> translation.jail().jailReleaseExecutor())
-                .placeholder("{PLAYER}", target.getName())
-                .send();
-    }
-
-    @Execute(name = "release -all", aliases = {"release *"})
-    @Permission("nexus.jail.release")
-    @CommandDocs(description = "Releases all players from jail.")
-    void executeReleaseAll(@Context Player player) {
-        if (this.jailService.getJailedPlayers().isEmpty()) {
-            this.multificationManager.create()
-                    .notice(translation -> translation.jail().jailReleaseNoPlayers())
-                    .player(player.getUniqueId())
-                    .send();
-            return;
-        }
-
-        this.jailService.releaseAllPlayers();
-        this.multificationManager.create()
-                .notice(translation -> translation.jail().jailReleaseAll())
-                .player(player.getUniqueId())
-                .send();
-    }
-
-    @Execute(name = "setup")
-    @Permission("nexus.jail.setup")
-    @CommandDocs(description = "Set up a jail location with specified name.", arguments = "<name>")
-    void executeSetup(@Context Player player, @Arg String name) {
-        if (this.jailService.jailExists(name)) {
-            this.multificationManager.create()
-                    .player(player.getUniqueId())
-                    .notice(translation -> translation.jail().jailLocationExists())
-                    .placeholder("{JAIL}", name)
-                    .send();
-            return;
-        }
-
-        Location location = player.getLocation();
-
-        this.jailService.createJailLocation(name, location);
-        this.multificationManager.create()
-                .player(player.getUniqueId())
-                .notice(translation -> translation.jail().jailLocationSet())
-                .placeholder("{JAIL}", name)
-                .send();
-    }
-
-    @Execute(name = "setup")
-    @Permission("nexus.jail.setup")
-    @CommandDocs(description = "Set up a jail location with specified name and location.", arguments = "<name> <location>")
-    void executeSetup(@Context Player player, @Arg String name, @Arg Location location) {
-        if (this.jailService.jailExists(name)) {
-            this.multificationManager.create()
-                    .player(player.getUniqueId())
-                    .notice(translation -> translation.jail().jailLocationExists())
-                    .placeholder("{JAIL}", name)
-                    .send();
-            return;
-        }
-
-        location.setWorld(player.getWorld());
-
-        this.jailService.createJailLocation(name, location);
-        this.multificationManager.create()
-                .player(player.getUniqueId())
-                .notice(translation -> translation.jail().jailLocationSet())
-                .placeholder("{JAIL}", name)
-                .send();
-    }
-
-    @Execute(name = "remove")
-    @Permission("nexus.jail.remove")
-    @CommandDocs(description = "Remove a jail location with specified name.", arguments = "<name>")
-    void executeRemove(@Context CommandSender sender, @Arg(JailCommandArgument.KEY) String name) {
-        if (!this.jailService.jailExists(name)) {
-            this.multificationManager.create()
-                    .viewer(sender)
-                    .notice(translation -> translation.jail().jailLocationNotExists())
-                    .placeholder("{JAIL}", name)
-                    .send();
-            return;
-        }
-
-        this.jailService.removeJailArea(name);
-        this.multificationManager.create()
-                .viewer(sender)
-                .notice(translation -> translation.jail().jailLocationRemove())
-                .placeholder("{JAIL}", name)
                 .send();
     }
 

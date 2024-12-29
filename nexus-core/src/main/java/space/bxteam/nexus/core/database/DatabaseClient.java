@@ -1,9 +1,10 @@
 package space.bxteam.nexus.core.database;
 
-import space.bxteam.nexus.core.database.statement.StatementBuilder;
+import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.support.ConnectionSource;
 
 public interface DatabaseClient extends Connector {
-    StatementBuilder newBuilder(String statement);
+    ConnectionSource getConnectionSource();
 
-    DatabaseQueries queries();
+    <T, ID> Dao<T, ID> getDao(Class<T> type);
 }

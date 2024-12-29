@@ -4,11 +4,9 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
-import space.bxteam.commons.bukkit.position.Position;
-import space.bxteam.commons.bukkit.position.PositionFactory;
 import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
-import space.bxteam.nexus.core.database.DatabaseClient;
 import space.bxteam.nexus.core.event.EventCaller;
+import space.bxteam.nexus.core.feature.home.database.HomeRepository;
 import space.bxteam.nexus.feature.home.Home;
 import space.bxteam.nexus.feature.home.HomeService;
 import space.bxteam.nexus.feature.home.event.HomeCreateEvent;
@@ -21,16 +19,22 @@ import java.util.stream.Stream;
 public class HomeServiceImpl implements HomeService {
     private final Map<UUID, Map<String, Home>> userHomes = new HashMap<>();
     private final EventCaller eventCaller;
-    private final DatabaseClient client;
+    private final HomeRepository homeRepository;
     private final PluginConfigurationProvider pluginConfiguration;
 
     @Inject
-    public HomeServiceImpl(EventCaller eventCaller, DatabaseClient client, PluginConfigurationProvider pluginConfiguration) {
+    public HomeServiceImpl(EventCaller eventCaller, HomeRepository homeRepository, PluginConfigurationProvider pluginConfiguration) {
         this.eventCaller = eventCaller;
-        this.client = client;
+        this.homeRepository = homeRepository;
         this.pluginConfiguration = pluginConfiguration;
 
-        this.loadHomes();
+        homeRepository.getHomes().thenAccept(homes -> {
+            for (Home home : homes) {
+                Map<String, Home> homesByUuid = this.userHomes.computeIfAbsent(home.owner(), k -> new HashMap<>());
+
+                homesByUuid.put(home.name(), home);
+            }
+        });
     }
 
     @Override
@@ -46,7 +50,7 @@ public class HomeServiceImpl implements HomeService {
 
         Home newHome = new HomeImpl(player, event.name(), event.location());
         homes.put(event.name(), newHome);
-        this.createHome(newHome);
+        this.homeRepository.saveHome(newHome);
     }
 
     @Override
@@ -71,7 +75,7 @@ public class HomeServiceImpl implements HomeService {
         }
 
         homes.remove(name);
-        this.deleteHome(name);
+        this.homeRepository.deleteHome(player, name);
     }
 
     @Override
@@ -137,41 +141,5 @@ public class HomeServiceImpl implements HomeService {
                 })
                 .max(Integer::compareTo)
                 .orElse(0);
-    }
-
-    private void createHome(Home home) {
-        String query = "INSERT INTO homes (owner, name, position) VALUES (?, ?, ?)";
-        client.newBuilder(query)
-                .appends(
-                        home.owner(),
-                        home.name(),
-                        PositionFactory.convert(home.location()).toString()
-                )
-                .execute();
-    }
-
-    private void deleteHome(String name) {
-        String query = "DELETE FROM homes WHERE name = ?";
-        client.newBuilder(query)
-                .appends(name)
-                .execute();
-    }
-
-    private void loadHomes() {
-        String query = "SELECT * FROM homes";
-        client.newBuilder(query)
-                .queryAll(resultSet -> {
-                    try {
-                        UUID owner = UUID.fromString(resultSet.getString("owner"));
-                        String name = resultSet.getString("name");
-                        Location location = PositionFactory.convert(Position.parse(resultSet.getString("position")));
-
-                        Home home = new HomeImpl(owner, name, location);
-                        this.userHomes.computeIfAbsent(owner, k -> new HashMap<>()).put(name, home);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    return null;
-                });
     }
 }
