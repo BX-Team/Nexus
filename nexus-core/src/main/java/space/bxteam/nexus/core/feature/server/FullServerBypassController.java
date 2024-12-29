@@ -1,4 +1,4 @@
-package space.bxteam.nexus.core.feature.fullserverbypass;
+package space.bxteam.nexus.core.feature.server;
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;

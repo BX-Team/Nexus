@@ -457,6 +457,19 @@
     ]
   },
   {
+    "name": "help ",
+    "aliases": [],
+    "permissions": [
+      "nexus.help"
+    ],
+    "descriptions": [
+      "Sends a help message to all online staff members with nexus.help.spy permission."
+    ],
+    "arguments": [
+      "\u003cmessage\u003e"
+    ]
+  },
+  {
     "name": "home ",
     "aliases": [],
     "permissions": [

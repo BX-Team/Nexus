@@ -413,6 +413,17 @@ public class RUTranslation extends OkaeriConfig implements Translation {
         public Notice message = Notice.chat("<dark_red>[Админ чат] <white>{PLAYER} <dark_gray>» <white>{MESSAGE}");
     }
 
+    @Comment({"", "Этот раздел отвечает за сообщения, связанные с командой help."})
+    public RUHelpSection help = new RUHelpSection();
+
+    @Getter
+    public class RUHelpSection extends OkaeriConfig implements HelpSection {
+        @Comment("{PLAYER} - Игрок использовавший команду, {MESSAGE} - Сообщение которое оставил игрок")
+        public Notice helpMessageSpy = Notice.chat("<gray>[<dark_red>РЕПОРТ<gray>] <yellow>{PLAYER}<dark_gray>: <white>{MESSAGE}");
+        @Comment("")
+        public Notice helpMessageSend = Notice.chat("<green>Ваш запрос на помощь был отправлен всем администраторам которые находятся на сервере!");
+    }
+
     @Comment({"", "Этот раздел отвечает за веселые команды :)"})
     public RUFunSection fun = new RUFunSection();
 

@@ -253,6 +253,13 @@ public interface Translation {
         Notice message();
     }
 
+    HelpSection help();
+
+    interface HelpSection {
+        Notice helpMessageSpy();
+        Notice helpMessageSend();
+    }
+
     FunSection fun();
 
     interface FunSection {

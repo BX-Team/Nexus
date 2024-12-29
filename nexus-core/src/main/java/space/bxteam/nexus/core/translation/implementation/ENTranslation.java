@@ -413,6 +413,17 @@ public class ENTranslation extends OkaeriConfig implements Translation {
         public Notice message = Notice.chat("<dark_red>[AdminChat] <white>{PLAYER} <dark_gray>» <white>{MESSAGE}");
     }
 
+    @Comment({"", "This section is responsible for the help/report command messages."})
+    public ENHelpSection help = new ENHelpSection();
+
+    @Getter
+    public class ENHelpSection extends OkaeriConfig implements HelpSection {
+        @Comment("{PLAYER} - Player who executed the command, {MESSAGE} - Help message")
+        public Notice helpMessageSpy = Notice.chat("<gray>[<dark_red>REPORT<gray>] <yellow>{PLAYER}<dark_gray>: <white>{MESSAGE}");
+        @Comment("")
+        public Notice helpMessageSend = Notice.chat("<green>Your help message has been sent to all online staff members!");
+    }
+
     @Comment({"", "This section is responsible for the fun-related messages."})
     public ENFunSection fun = new ENFunSection();
 
