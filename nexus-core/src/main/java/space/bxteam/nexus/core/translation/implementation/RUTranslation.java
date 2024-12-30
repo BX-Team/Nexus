@@ -404,6 +404,26 @@ public class RUTranslation extends OkaeriConfig implements Translation {
         public Notice broadcastMessage = Notice.chat("<red>[Объявление] <white>{MESSAGE}");
     }
 
+    @Comment({"", "Этот раздел отвечает за игнорирование."})
+    public RUIgnoreSection ignore = new RUIgnoreSection();
+
+    @Getter
+    public class RUIgnoreSection extends OkaeriConfig implements IgnoreSection {
+        @Comment("{PLAYER} - Игрок, который был проигнорирован")
+        public Notice ignoredPlayer = Notice.chat("<green>Вы теперь игнорируете игрока <white>{PLAYER}");
+        public Notice ignoreAll = Notice.chat("<green>Вы теперь игнорируете всех игроков!");
+
+        @Comment({"", "{PLAYER} - Игрок, который был проигнорирован"})
+        public Notice unIgnoredPlayer = Notice.chat("<green>Вы больше не игнорируете игрока <white>{PLAYER}");
+        public Notice unIgnoreAll = Notice.chat("<green>Вы больше не игнорируете всех игроков!");
+
+        @Comment("")
+        public Notice alreadyIgnored = Notice.chat("<dark_red>Вы уже игнорируете этого игрока!");
+        public Notice notIgnored = Notice.chat("<dark_red>Вы не игнорируете этого игрока!");
+        public Notice ignoreSelf = Notice.chat("<dark_red>Вы не можете игнорировать самого себя!");
+        public Notice unIgnoreSelf = Notice.chat("<dark_red>Вы не можете перестать игнорировать самого себя!");
+    }
+
     @Comment({"", "Этот раздел отвечает за сообщения, связанные с административным чатом."})
     public RUAdminChatSection adminChat = new RUAdminChatSection();
 

@@ -247,6 +247,21 @@ public interface Translation {
         Notice broadcastMessage();
     }
 
+    IgnoreSection ignore();
+
+    interface IgnoreSection {
+        Notice ignoredPlayer();
+        Notice ignoreAll();
+
+        Notice unIgnoredPlayer();
+        Notice unIgnoreAll();
+
+        Notice alreadyIgnored();
+        Notice notIgnored();
+        Notice ignoreSelf();
+        Notice unIgnoreSelf();
+    }
+
     AdminChatSection adminChat();
 
     interface AdminChatSection {

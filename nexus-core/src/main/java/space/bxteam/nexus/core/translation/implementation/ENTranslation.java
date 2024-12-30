@@ -404,6 +404,26 @@ public class ENTranslation extends OkaeriConfig implements Translation {
         public Notice broadcastMessage = Notice.chat("<red>[Broadcast] <white>{MESSAGE}");
     }
 
+    @Comment({"", "This section is responsible for the ignore-related messages."})
+    public ENIgnoreSection ignore = new ENIgnoreSection();
+
+    @Getter
+    public class ENIgnoreSection extends OkaeriConfig implements IgnoreSection {
+        @Comment("{PLAYER} - Player who is ignored")
+        public Notice ignoredPlayer = Notice.chat("<green>You are now ignoring the player <white>{PLAYER}");
+        public Notice ignoreAll = Notice.chat("<green>You are now ignoring all players!");
+
+        @Comment({"", "{PLAYER} - Player who is unignored"})
+        public Notice unIgnoredPlayer = Notice.chat("<green>You are no longer ignoring the player <white>{PLAYER}");
+        public Notice unIgnoreAll = Notice.chat("<green>You are no longer ignoring all players!");
+
+        @Comment("")
+        public Notice alreadyIgnored = Notice.chat("<dark_red>You have already ignored this player!");
+        public Notice notIgnored = Notice.chat("<dark_red>You are not ignoring this player!");
+        public Notice ignoreSelf = Notice.chat("<dark_red>You can't ignore yourself!");
+        public Notice unIgnoreSelf = Notice.chat("<dark_red>You can't unignore yourself!");
+    }
+
     @Comment({"", "This section is responsible for the admin chat feature"})
     public ENAdminChatSection adminChat = new ENAdminChatSection();
 

@@ -17,6 +17,7 @@ import space.bxteam.commons.adventure.processor.AdventureLegacyColorPreProcessor
 import space.bxteam.commons.adventure.processor.AdventureUrlPostProcessor;
 import space.bxteam.nexus.core.configuration.ConfigurationManager;
 import space.bxteam.nexus.core.feature.chat.ChatServiceImpl;
+import space.bxteam.nexus.core.feature.ignore.IgnoreServiceImpl;
 import space.bxteam.nexus.core.feature.jail.JailServiceImpl;
 import space.bxteam.nexus.core.feature.randomteleport.RandomTeleportServiceImpl;
 import space.bxteam.nexus.core.feature.spawn.SpawnServiceImpl;
@@ -31,6 +32,7 @@ import space.bxteam.nexus.core.integration.placeholderapi.resolver.PlaceholderRe
 import space.bxteam.nexus.core.integration.placeholderapi.resolver.PlaceholderRegistryImpl;
 import space.bxteam.nexus.feature.chat.ChatService;
 import space.bxteam.nexus.feature.home.HomeService;
+import space.bxteam.nexus.feature.ignore.IgnoreService;
 import space.bxteam.nexus.feature.jail.JailService;
 import space.bxteam.nexus.feature.randomteleport.RandomTeleportService;
 import space.bxteam.nexus.feature.spawn.SpawnService;
@@ -74,6 +76,7 @@ public class NexusModule extends AbstractModule {
         this.bind(ChatService.class).to(ChatServiceImpl.class);
         this.bind(WarpService.class).to(WarpServiceImpl.class);
         this.bind(HomeService.class).to(HomeServiceImpl.class);
+        this.bind(IgnoreService.class).to(IgnoreServiceImpl.class);
         this.bind(JailService.class).to(JailServiceImpl.class);
         this.bind(RandomTeleportService.class).to(RandomTeleportServiceImpl.class);
         this.bind(SpawnService.class).to(SpawnServiceImpl.class);

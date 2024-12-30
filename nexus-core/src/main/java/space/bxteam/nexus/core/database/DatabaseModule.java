@@ -8,6 +8,8 @@ import space.bxteam.nexus.core.database.clients.SQLiteClient;
 import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import space.bxteam.nexus.core.feature.home.database.HomeRepository;
 import space.bxteam.nexus.core.feature.home.database.HomeRepositoryOrmLite;
+import space.bxteam.nexus.core.feature.ignore.database.IgnoreRepository;
+import space.bxteam.nexus.core.feature.ignore.database.IgnoreRepositoryOrmLite;
 import space.bxteam.nexus.core.feature.jail.database.JailRepository;
 import space.bxteam.nexus.core.feature.jail.database.JailRepositoryOrmLite;
 import space.bxteam.nexus.core.feature.warp.database.WarpRepository;
@@ -28,6 +30,7 @@ public class DatabaseModule extends AbstractModule {
         }
 
         this.bind(HomeRepository.class).to(HomeRepositoryOrmLite.class);
+        this.bind(IgnoreRepository.class).to(IgnoreRepositoryOrmLite.class);
         this.bind(JailRepository.class).to(JailRepositoryOrmLite.class);
         this.bind(WarpRepository.class).to(WarpRepositoryOrmLite.class);
     }

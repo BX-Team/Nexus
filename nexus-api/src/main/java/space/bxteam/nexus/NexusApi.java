@@ -2,6 +2,7 @@ package space.bxteam.nexus;
 
 import space.bxteam.nexus.feature.chat.ChatService;
 import space.bxteam.nexus.feature.home.HomeService;
+import space.bxteam.nexus.feature.ignore.IgnoreService;
 import space.bxteam.nexus.feature.jail.JailService;
 import space.bxteam.nexus.feature.randomteleport.RandomTeleportService;
 import space.bxteam.nexus.feature.spawn.SpawnService;
@@ -16,6 +17,8 @@ public interface NexusApi {
     ChatService getChatService();
 
     HomeService getHomeService();
+
+    IgnoreService getIgnoreService();
 
     JailService getJailService();
 
