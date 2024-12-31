@@ -359,6 +359,7 @@ public class RUTranslation extends OkaeriConfig implements Translation {
         public Notice tpaAlreadySentMessage = Notice.chat("<dark_red>Вы уже отправили запрос на телепортацию этому игроку!");
         @Comment("{PLAYER} - Игрок, которому отправлен запрос на телепортацию")
         public Notice tpaSentMessage = Notice.chat("<green>Вы отправили запрос на телепортацию игроку <white>{PLAYER}");
+        public Notice tpaIgnoredMessage = Notice.chat("<dark_red>Этот игрок игнорирует ваши запросы на телепортацию!");
 
         @Comment({"", "{PLAYER} - Игрок, отправивший запрос на телепортацию"})
         public Notice tpaReceivedMessage = Notice.builder()

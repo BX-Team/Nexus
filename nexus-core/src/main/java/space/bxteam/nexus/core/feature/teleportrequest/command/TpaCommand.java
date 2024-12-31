@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.bukkit.entity.Player;
 import space.bxteam.nexus.annotations.scan.command.CommandDocs;
 import space.bxteam.nexus.core.multification.MultificationManager;
+import space.bxteam.nexus.feature.ignore.IgnoreService;
 import space.bxteam.nexus.feature.teleportrequest.TeleportRequestService;
 
 @Command(name = "tpa")
@@ -18,10 +19,11 @@ import space.bxteam.nexus.feature.teleportrequest.TeleportRequestService;
 public class TpaCommand {
     private final MultificationManager multificationManager;
     private final TeleportRequestService requestService;
+    private final IgnoreService ignoreService;
 
     @Execute
     @CommandDocs(description = "Request teleportation to another player.", arguments = "<player>")
-    public void execute(@Context Player player, @Arg Player target) {
+    void execute(@Context Player player, @Arg Player target) {
         if (player.equals(target)) {
             this.multificationManager.create()
                     .player(player.getUniqueId())
@@ -38,18 +40,27 @@ public class TpaCommand {
             return;
         }
 
-        this.multificationManager.create()
-                .player(player.getUniqueId())
-                .notice(translation -> translation.teleportRequest().tpaSentMessage())
-                .placeholder("{PLAYER}", target.getName())
-                .send();
+        this.ignoreService.isIgnored(target.getUniqueId(), player.getUniqueId()).thenAccept(ignored -> {
+            if (ignored) {
+                this.multificationManager.create()
+                        .player(player.getUniqueId())
+                        .notice(translation -> translation.teleportRequest().tpaIgnoredMessage())
+                        .send();
+                return;
+            }
 
-        this.multificationManager.create()
-                .player(target.getUniqueId())
-                .notice(translation -> translation.teleportRequest().tpaReceivedMessage())
-                .placeholder("{PLAYER}", player.getName())
-                .send();
+            this.multificationManager.create()
+                    .player(player.getUniqueId())
+                    .notice(translation -> translation.teleportRequest().tpaSentMessage())
+                    .placeholder("{PLAYER}", target.getName())
+                    .send();
+            this.multificationManager.create()
+                    .player(target.getUniqueId())
+                    .notice(translation -> translation.teleportRequest().tpaReceivedMessage())
+                    .placeholder("{PLAYER}", player.getName())
+                    .send();
 
-        this.requestService.createRequest(player.getUniqueId(), target.getUniqueId());
+            this.requestService.createRequest(player.getUniqueId(), target.getUniqueId());
+        });
     }
 }

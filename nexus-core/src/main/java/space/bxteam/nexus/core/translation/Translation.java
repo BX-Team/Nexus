@@ -218,6 +218,7 @@ public interface Translation {
         Notice tpaAlreadySentMessage();
         Notice tpaSentMessage();
         Notice tpaReceivedMessage();
+        Notice tpaIgnoredMessage();
 
         Notice tpaAcceptMessage();
         Notice tpaAcceptNoRequestMessage();

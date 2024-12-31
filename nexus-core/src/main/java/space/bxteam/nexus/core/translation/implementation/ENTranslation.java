@@ -359,6 +359,7 @@ public class ENTranslation extends OkaeriConfig implements Translation {
         public Notice tpaAlreadySentMessage = Notice.chat("<dark_red>You have already sent a teleport request to this player!");
         @Comment("{PLAYER} - Player who will receive the teleport request")
         public Notice tpaSentMessage = Notice.chat("<green>You have sent a teleport request to the player <white>{PLAYER}");
+        public Notice tpaIgnoredMessage = Notice.chat("<dark_red>This player is ignoring your teleport requests!");
 
         @Comment({"", "{PLAYER} - Player who sent the teleport request"})
         public Notice tpaReceivedMessage = Notice.builder()
