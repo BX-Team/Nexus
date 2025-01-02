@@ -7,10 +7,12 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.entity.Player;
+import space.bxteam.nexus.core.event.EventCaller;
 import space.bxteam.nexus.core.multification.MultificationFormatter;
 import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.feature.ignore.IgnoreService;
 import space.bxteam.nexus.feature.privatechat.PrivateChatService;
+import space.bxteam.nexus.feature.privatechat.event.PrivateChatEvent;
 
 import java.time.Duration;
 import java.util.*;
@@ -20,6 +22,7 @@ import java.util.*;
 public class PrivateChatServiceImpl implements PrivateChatService {
     private final MultificationManager multificationManager;
     private final IgnoreService ignoreService;
+    private final EventCaller eventCaller;
 
     private final Cache<UUID, UUID> replies = CacheBuilder.newBuilder()
             .expireAfterWrite(Duration.ofHours(1))
@@ -46,7 +49,9 @@ public class PrivateChatServiceImpl implements PrivateChatService {
                 this.replies.put(receiver.getUniqueId(), sender.getUniqueId());
             }
 
-            this.sendPrivateMessage(new MessageContent(sender, receiver, message, this.socialSpy, ignored));
+            PrivateChatEvent event = new PrivateChatEvent(sender.getUniqueId(), receiver.getUniqueId(), message);
+            this.eventCaller.callEvent(event);
+            this.sendPrivateMessage(new MessageContent(sender, receiver, event.getContent(), this.socialSpy, ignored));
         });
     }
 
