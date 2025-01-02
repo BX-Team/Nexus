@@ -20,6 +20,7 @@ public interface Translation {
         Notice noEnchantment();
         Notice noValidEnchantmentLevel();
         Notice noValidItem();
+        Notice offlinePlayer();
     }
 
     Format format();
@@ -229,6 +230,18 @@ public interface Translation {
         Notice tpaDenyMessage();
         Notice tpaDenyReceivedMessage();
         Notice tpaDenyAllDenied();
+    }
+
+    PrivateChatSection privateChat();
+
+    interface PrivateChatSection {
+        Notice youToTargetMessage();
+        Notice targetToYouMessage();
+        Notice socialSpyMessage();
+
+        Notice socialSpyStatus();
+
+        Notice noReply();
     }
 
     ChatSection chat();

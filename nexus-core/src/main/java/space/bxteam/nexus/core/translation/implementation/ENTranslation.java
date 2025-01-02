@@ -49,6 +49,7 @@ public class ENTranslation extends OkaeriConfig implements Translation {
         public Notice noEnchantment = Notice.chat("<dark_red>This enchantment doesn't exist!");
         public Notice noValidEnchantmentLevel = Notice.chat("<dark_red>Not a valid enchantment level!");
         public Notice noValidItem = Notice.chat("<dark_red>This is not a valid item!");
+        public Notice offlinePlayer = Notice.chat("<dark_red>This player is offline!");
     }
 
     @Comment({"", "This answer is responsible for the general formatting of some values"})
@@ -379,6 +380,25 @@ public class ENTranslation extends OkaeriConfig implements Translation {
         public Notice tpaDenyMessage = Notice.chat("<green>You have denied the teleport request from the player <white>{PLAYER}");
         public Notice tpaDenyReceivedMessage = Notice.chat("<green>The player <white>{PLAYER} <green>has denied your teleport request!");
         public Notice tpaDenyAllDenied = Notice.chat("<green>All teleport requests have been denied!");
+    }
+
+    @Comment({"", "This section is responsible for the private chat-related messages."})
+    public ENPrivateChatSection privateChat = new ENPrivateChatSection();
+
+    @Getter
+    public class ENPrivateChatSection extends OkaeriConfig implements PrivateChatSection {
+        @Comment("{TARGET} - Player that you want to send messages, {MESSAGE} - Message content")
+        public Notice youToTargetMessage = Notice.chat("<gray>[<white>You <gray>-> <white>{TARGET}<gray>]<gray>: <white>{MESSAGE}");
+        @Comment("{SENDER} - Player who sent the message, {MESSAGE} - Message content")
+        public Notice targetToYouMessage = Notice.chat("<gray>[<white>{SENDER} <gray>-> <white>You<gray>]<gray>: <white>{MESSAGE}");
+        @Comment("{SENDER} - Player who sent the message, {TARGET} - Player who received the message, {MESSAGE} - Message content")
+        public Notice socialSpyMessage = Notice.chat("<gray>[<gold>SocialSpy</gold>]</gray> <gray>[<white>{SENDER} <gray>-> <white>{TARGET}<gray>]<gray>: <white>{MESSAGE}");
+
+        @Comment({"", "{STATE} - SocialSpy status (enabled or disabled)"})
+        public Notice socialSpyStatus = Notice.chat("<green>SocialSpy has been {STATE}!");
+
+        @Comment("")
+        public Notice noReply = Notice.chat("<dark_red>You don't have any messages to reply to!");
     }
 
     @Comment({"", "This section is responsible for the chat-related messages."})
