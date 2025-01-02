@@ -9,8 +9,11 @@ import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.entity.Player;
 import space.bxteam.nexus.annotations.scan.command.CommandDocs;
+import space.bxteam.nexus.core.event.EventCaller;
 import space.bxteam.nexus.core.multification.MultificationManager;
 import space.bxteam.nexus.feature.ignore.IgnoreService;
+import space.bxteam.nexus.feature.ignore.event.IgnoreAllEvent;
+import space.bxteam.nexus.feature.ignore.event.IgnoreEvent;
 
 import java.util.UUID;
 
@@ -20,6 +23,7 @@ import java.util.UUID;
 public class IgnoreCommand {
     private final IgnoreService ignoreService;
     private final MultificationManager multificationManager;
+    private final EventCaller eventCaller;
 
     @Execute
     @CommandDocs(description = "Ignore specified player.", arguments = "<player>")
@@ -45,6 +49,13 @@ public class IgnoreCommand {
             }
 
             this.ignoreService.ignore(senderUuid, targetUuid).thenRun(() -> {
+                IgnoreEvent event = new IgnoreEvent(senderUuid, targetUuid);
+                this.eventCaller.callEvent(event);
+
+                if (event.isCancelled()) {
+                    return;
+                }
+
                 this.multificationManager.create()
                         .player(sender.getUniqueId())
                         .notice(translation -> translation.ignore().ignoredPlayer())
@@ -60,6 +71,13 @@ public class IgnoreCommand {
         UUID senderUuid = sender.getUniqueId();
 
         this.ignoreService.ignoreAll(senderUuid).thenRun(() -> {
+            IgnoreAllEvent event = new IgnoreAllEvent(senderUuid);
+            this.eventCaller.callEvent(event);
+
+            if (event.isCancelled()) {
+                return;
+            }
+
             this.multificationManager.create()
                     .player(senderUuid)
                     .notice(translation -> translation.ignore().ignoreAll())
