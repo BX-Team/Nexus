@@ -7,6 +7,7 @@ import space.bxteam.nexus.feature.chat.ChatService;
 import space.bxteam.nexus.feature.home.HomeService;
 import space.bxteam.nexus.feature.ignore.IgnoreService;
 import space.bxteam.nexus.feature.jail.JailService;
+import space.bxteam.nexus.feature.privatechat.PrivateChatService;
 import space.bxteam.nexus.feature.randomteleport.RandomTeleportService;
 import space.bxteam.nexus.feature.spawn.SpawnService;
 import space.bxteam.nexus.feature.teleport.TeleportService;
@@ -35,6 +36,11 @@ public class NexusApiImpl implements NexusApi {
     @Override
     public JailService getJailService() {
         return this.injector.getInstance(JailService.class);
+    }
+
+    @Override
+    public PrivateChatService getPrivateChatService() {
+        return this.injector.getInstance(PrivateChatService.class);
     }
 
     @Override
