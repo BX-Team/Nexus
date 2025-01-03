@@ -48,8 +48,8 @@ public class HomeServiceImpl implements HomeService {
             return;
         }
 
-        Home newHome = new HomeImpl(player, event.name(), event.location());
-        homes.put(event.name(), newHome);
+        Home newHome = new HomeImpl(player, event.getName(), event.getLocation());
+        homes.put(event.getName(), newHome);
         this.homeRepository.saveHome(newHome);
     }
 
