@@ -1,5 +1,7 @@
 package space.bxteam.nexus.feature.home.event;
 
+import lombok.Getter;
+import lombok.experimental.Accessors;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import space.bxteam.nexus.feature.home.Home;
@@ -9,6 +11,8 @@ import java.util.UUID;
 /**
  * Event that is called when a player is teleported to their home.
  */
+@Getter
+@Accessors(fluent = false)
 public class HomeTeleportEvent extends Event {
     private static final HandlerList HANDLER_LIST = new HandlerList();
 
@@ -20,14 +24,6 @@ public class HomeTeleportEvent extends Event {
 
         this.playerUniqueId = playerUniqueId;
         this.home = home;
-    }
-
-    public Home getHome() {
-        return this.home;
-    }
-
-    public UUID getPlayerUniqueId() {
-        return this.playerUniqueId;
     }
 
     public static HandlerList getHandlerList() {

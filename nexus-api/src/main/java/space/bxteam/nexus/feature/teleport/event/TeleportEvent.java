@@ -1,5 +1,8 @@
 package space.bxteam.nexus.feature.teleport.event;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.Accessors;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
@@ -8,32 +11,18 @@ import org.bukkit.event.player.PlayerEvent;
 
 /**
  * Event called when a player is teleported.
- * <p>
- * Some notes:
- * <p>
- * 1) This event is called when the {@link space.bxteam.nexus.feature.teleport.TeleportService} teleports the player.
- * <p>
- * 2) Not working with vanilla teleportation.
- * <p>
- * 3) The event is cancellable and not async.
  */
+@Accessors(fluent = false)
 public class TeleportEvent extends PlayerEvent implements Cancellable {
     private static final HandlerList HANDLER_LIST = new HandlerList();
 
-    private boolean cancelled;
+    @Setter
+    @Getter
     private Location location;
+    private boolean cancelled;
 
     public TeleportEvent(Player player, Location location) {
         super(player);
-
-        this.location = location;
-    }
-
-    public Location getLocation() {
-        return this.location;
-    }
-
-    public void setLocation(Location location) {
         this.location = location;
     }
 

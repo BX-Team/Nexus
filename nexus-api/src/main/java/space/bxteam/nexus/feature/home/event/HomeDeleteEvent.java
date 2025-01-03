@@ -1,6 +1,7 @@
 package space.bxteam.nexus.feature.home.event;
 
 import lombok.Getter;
+import lombok.experimental.Accessors;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
@@ -11,6 +12,7 @@ import java.util.UUID;
 /**
  * Event that is called when a home is deleted.
  */
+@Accessors(fluent = false)
 public class HomeDeleteEvent extends Event implements Cancellable {
     private static final HandlerList HANDLER_LIST = new HandlerList();
 
