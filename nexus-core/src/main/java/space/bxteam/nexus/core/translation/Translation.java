@@ -20,6 +20,7 @@ public interface Translation {
         Notice noEnchantment();
         Notice noValidEnchantmentLevel();
         Notice noValidItem();
+        Notice offlinePlayer();
     }
 
     Format format();
@@ -218,6 +219,7 @@ public interface Translation {
         Notice tpaAlreadySentMessage();
         Notice tpaSentMessage();
         Notice tpaReceivedMessage();
+        Notice tpaIgnoredMessage();
 
         Notice tpaAcceptMessage();
         Notice tpaAcceptNoRequestMessage();
@@ -228,6 +230,18 @@ public interface Translation {
         Notice tpaDenyMessage();
         Notice tpaDenyReceivedMessage();
         Notice tpaDenyAllDenied();
+    }
+
+    PrivateChatSection privateChat();
+
+    interface PrivateChatSection {
+        Notice youToTargetMessage();
+        Notice targetToYouMessage();
+        Notice socialSpyMessage();
+
+        Notice socialSpyStatus();
+
+        Notice noReply();
     }
 
     ChatSection chat();
@@ -245,6 +259,21 @@ public interface Translation {
         Notice slowMode();
 
         Notice broadcastMessage();
+    }
+
+    IgnoreSection ignore();
+
+    interface IgnoreSection {
+        Notice ignoredPlayer();
+        Notice ignoreAll();
+
+        Notice unIgnoredPlayer();
+        Notice unIgnoreAll();
+
+        Notice alreadyIgnored();
+        Notice notIgnored();
+        Notice ignoreSelf();
+        Notice unIgnoreSelf();
     }
 
     AdminChatSection adminChat();

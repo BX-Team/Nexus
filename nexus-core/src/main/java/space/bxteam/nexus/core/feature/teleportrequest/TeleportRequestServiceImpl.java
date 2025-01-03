@@ -1,7 +1,7 @@
 package space.bxteam.nexus.core.feature.teleportrequest;
 
-import com.github.benmanes.caffeine.cache.Cache;
-import com.github.benmanes.caffeine.cache.Caffeine;
+import com.google.common.cache.Cache;
+import com.google.common.cache.CacheBuilder;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
@@ -18,7 +18,7 @@ public class TeleportRequestServiceImpl implements TeleportRequestService {
 
     @Inject
     public TeleportRequestServiceImpl(PluginConfigurationProvider configurationProvider) {
-        this.requests = Caffeine.newBuilder()
+        this.requests = CacheBuilder.newBuilder()
                 .expireAfterWrite(configurationProvider.configuration().teleportRequest().requestTimeout())
                 .build();
     }

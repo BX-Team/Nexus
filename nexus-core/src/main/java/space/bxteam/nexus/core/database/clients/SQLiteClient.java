@@ -51,15 +51,18 @@ public class SQLiteClient implements DatabaseClient {
         try {
             this.dataSource.close();
             this.connectionSource.close();
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
     @Override
     public boolean available() {
-        throw new UnsupportedOperationException("Not supported.");
+        try (var connection = this.dataSource.getConnection()) {
+            return connection.isValid(2);
+        } catch (SQLException e) {
+            return false;
+        }
     }
 
     @Override

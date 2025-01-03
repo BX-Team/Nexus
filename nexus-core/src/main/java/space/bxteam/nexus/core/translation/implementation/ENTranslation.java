@@ -49,6 +49,7 @@ public class ENTranslation extends OkaeriConfig implements Translation {
         public Notice noEnchantment = Notice.chat("<dark_red>This enchantment doesn't exist!");
         public Notice noValidEnchantmentLevel = Notice.chat("<dark_red>Not a valid enchantment level!");
         public Notice noValidItem = Notice.chat("<dark_red>This is not a valid item!");
+        public Notice offlinePlayer = Notice.chat("<dark_red>This player is offline!");
     }
 
     @Comment({"", "This answer is responsible for the general formatting of some values"})
@@ -359,6 +360,7 @@ public class ENTranslation extends OkaeriConfig implements Translation {
         public Notice tpaAlreadySentMessage = Notice.chat("<dark_red>You have already sent a teleport request to this player!");
         @Comment("{PLAYER} - Player who will receive the teleport request")
         public Notice tpaSentMessage = Notice.chat("<green>You have sent a teleport request to the player <white>{PLAYER}");
+        public Notice tpaIgnoredMessage = Notice.chat("<dark_red>This player is ignoring your teleport requests!");
 
         @Comment({"", "{PLAYER} - Player who sent the teleport request"})
         public Notice tpaReceivedMessage = Notice.builder()
@@ -378,6 +380,25 @@ public class ENTranslation extends OkaeriConfig implements Translation {
         public Notice tpaDenyMessage = Notice.chat("<green>You have denied the teleport request from the player <white>{PLAYER}");
         public Notice tpaDenyReceivedMessage = Notice.chat("<green>The player <white>{PLAYER} <green>has denied your teleport request!");
         public Notice tpaDenyAllDenied = Notice.chat("<green>All teleport requests have been denied!");
+    }
+
+    @Comment({"", "This section is responsible for the private chat-related messages."})
+    public ENPrivateChatSection privateChat = new ENPrivateChatSection();
+
+    @Getter
+    public class ENPrivateChatSection extends OkaeriConfig implements PrivateChatSection {
+        @Comment("{TARGET} - Player that you want to send messages, {MESSAGE} - Message content")
+        public Notice youToTargetMessage = Notice.chat("<gray>[<white>You <gray>-> <white>{TARGET}<gray>]<gray>: <white>{MESSAGE}");
+        @Comment("{SENDER} - Player who sent the message, {MESSAGE} - Message content")
+        public Notice targetToYouMessage = Notice.chat("<gray>[<white>{SENDER} <gray>-> <white>You<gray>]<gray>: <white>{MESSAGE}");
+        @Comment("{SENDER} - Player who sent the message, {TARGET} - Player who received the message, {MESSAGE} - Message content")
+        public Notice socialSpyMessage = Notice.chat("<gray>[<gold>SocialSpy</gold>]</gray> <gray>[<white>{SENDER} <gray>-> <white>{TARGET}<gray>]<gray>: <white>{MESSAGE}");
+
+        @Comment({"", "{STATE} - SocialSpy status (enabled or disabled)"})
+        public Notice socialSpyStatus = Notice.chat("<green>SocialSpy has been {STATE}!");
+
+        @Comment("")
+        public Notice noReply = Notice.chat("<dark_red>You don't have any messages to reply to!");
     }
 
     @Comment({"", "This section is responsible for the chat-related messages."})
@@ -402,6 +423,26 @@ public class ENTranslation extends OkaeriConfig implements Translation {
 
         @Comment({"", "{MESSAGE} - Broadcast content"})
         public Notice broadcastMessage = Notice.chat("<red>[Broadcast] <white>{MESSAGE}");
+    }
+
+    @Comment({"", "This section is responsible for the ignore-related messages."})
+    public ENIgnoreSection ignore = new ENIgnoreSection();
+
+    @Getter
+    public class ENIgnoreSection extends OkaeriConfig implements IgnoreSection {
+        @Comment("{PLAYER} - Player who is ignored")
+        public Notice ignoredPlayer = Notice.chat("<green>You are now ignoring the player <white>{PLAYER}");
+        public Notice ignoreAll = Notice.chat("<green>You are now ignoring all players!");
+
+        @Comment({"", "{PLAYER} - Player who is unignored"})
+        public Notice unIgnoredPlayer = Notice.chat("<green>You are no longer ignoring the player <white>{PLAYER}");
+        public Notice unIgnoreAll = Notice.chat("<green>You are no longer ignoring all players!");
+
+        @Comment("")
+        public Notice alreadyIgnored = Notice.chat("<dark_red>You have already ignored this player!");
+        public Notice notIgnored = Notice.chat("<dark_red>You are not ignoring this player!");
+        public Notice ignoreSelf = Notice.chat("<dark_red>You can't ignore yourself!");
+        public Notice unIgnoreSelf = Notice.chat("<dark_red>You can't unignore yourself!");
     }
 
     @Comment({"", "This section is responsible for the admin chat feature"})

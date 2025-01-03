@@ -49,6 +49,7 @@ public class RUTranslation extends OkaeriConfig implements Translation {
         public Notice noEnchantment = Notice.chat("<dark_red>Такого зачарования не существует!");
         public Notice noValidEnchantmentLevel = Notice.chat("<dark_red>Недопустимый уровень зачарования!");
         public Notice noValidItem = Notice.chat("<dark_red>Этот предмет недопустим!");
+        public Notice offlinePlayer = Notice.chat("<dark_red>Этот игрок не в сети!");
     }
 
     @Comment({"", "Этот ответ отвечает за общее форматирование некоторых значений"})
@@ -359,6 +360,7 @@ public class RUTranslation extends OkaeriConfig implements Translation {
         public Notice tpaAlreadySentMessage = Notice.chat("<dark_red>Вы уже отправили запрос на телепортацию этому игроку!");
         @Comment("{PLAYER} - Игрок, которому отправлен запрос на телепортацию")
         public Notice tpaSentMessage = Notice.chat("<green>Вы отправили запрос на телепортацию игроку <white>{PLAYER}");
+        public Notice tpaIgnoredMessage = Notice.chat("<dark_red>Этот игрок игнорирует ваши запросы на телепортацию!");
 
         @Comment({"", "{PLAYER} - Игрок, отправивший запрос на телепортацию"})
         public Notice tpaReceivedMessage = Notice.builder()
@@ -378,6 +380,25 @@ public class RUTranslation extends OkaeriConfig implements Translation {
         public Notice tpaDenyMessage = Notice.chat("<green>Вы отклонили запрос на телепортацию от игрока <white>{PLAYER}");
         public Notice tpaDenyReceivedMessage = Notice.chat("<green>Игрок <white>{PLAYER} <green>отклонил ваш запрос на телепортацию!");
         public Notice tpaDenyAllDenied = Notice.chat("<green>Все запросы на телепортацию были отклонены!");
+    }
+
+    @Comment({"", "This section is responsible for the private chat-related messages."})
+    public RUPrivateChatSection privateChat = new RUPrivateChatSection();
+
+    @Getter
+    public class RUPrivateChatSection extends OkaeriConfig implements PrivateChatSection {
+        @Comment("{TARGET} - Игрок, которому отправлено сообщение, {MESSAGE} - Содержание сообщения")
+        public Notice youToTargetMessage = Notice.chat("<gray>[<white>Ты <gray>-> <white>{TARGET}<gray>]<gray>: <white>{MESSAGE}");
+        @Comment("{SENDER} - Игрок, отправивший сообщение, {MESSAGE} - Содержание сообщения")
+        public Notice targetToYouMessage = Notice.chat("<gray>[<white>{SENDER} <gray>-> <white>Ты<gray>]<gray>: <white>{MESSAGE}");
+        @Comment("{SENDER} - Игрок, отправивший сообщение, {TARGET} - Целевой игрок, {MESSAGE} - Содержание сообщения")
+        public Notice socialSpyMessage = Notice.chat("<gray>[<gold>SocialSpy</gold>]</gray> <gray>[<white>{SENDER} <gray>-> <white>{TARGET}<gray>]<gray>: <white>{MESSAGE}");
+
+        @Comment({"", "{STATE} - Статус отслеживания (включено или выключено)"})
+        public Notice socialSpyStatus = Notice.chat("<green>Отслеживание приватного чата было {STATE}!");
+
+        @Comment("")
+        public Notice noReply = Notice.chat("<dark_red>У вас нет сообщений для ответа!");
     }
 
     @Comment({"", "Этот раздел отвечает за сообщения, связанные с чатом."})
@@ -402,6 +423,26 @@ public class RUTranslation extends OkaeriConfig implements Translation {
 
         @Comment({"", "{MESSAGE} - Broadcast content"})
         public Notice broadcastMessage = Notice.chat("<red>[Объявление] <white>{MESSAGE}");
+    }
+
+    @Comment({"", "Этот раздел отвечает за игнорирование."})
+    public RUIgnoreSection ignore = new RUIgnoreSection();
+
+    @Getter
+    public class RUIgnoreSection extends OkaeriConfig implements IgnoreSection {
+        @Comment("{PLAYER} - Игрок, который был проигнорирован")
+        public Notice ignoredPlayer = Notice.chat("<green>Вы теперь игнорируете игрока <white>{PLAYER}");
+        public Notice ignoreAll = Notice.chat("<green>Вы теперь игнорируете всех игроков!");
+
+        @Comment({"", "{PLAYER} - Игрок, который был проигнорирован"})
+        public Notice unIgnoredPlayer = Notice.chat("<green>Вы больше не игнорируете игрока <white>{PLAYER}");
+        public Notice unIgnoreAll = Notice.chat("<green>Вы больше не игнорируете всех игроков!");
+
+        @Comment("")
+        public Notice alreadyIgnored = Notice.chat("<dark_red>Вы уже игнорируете этого игрока!");
+        public Notice notIgnored = Notice.chat("<dark_red>Вы не игнорируете этого игрока!");
+        public Notice ignoreSelf = Notice.chat("<dark_red>Вы не можете игнорировать самого себя!");
+        public Notice unIgnoreSelf = Notice.chat("<dark_red>Вы не можете перестать игнорировать самого себя!");
     }
 
     @Comment({"", "Этот раздел отвечает за сообщения, связанные с административным чатом."})

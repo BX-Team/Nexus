@@ -496,6 +496,34 @@
     ]
   },
   {
+    "name": "ignore ",
+    "aliases": [],
+    "permissions": [
+      "nexus.ignore"
+    ],
+    "descriptions": [
+      "Ignore specified player."
+    ],
+    "arguments": [
+      "\u003cplayer\u003e"
+    ]
+  },
+  {
+    "name": "ignore -all",
+    "aliases": [
+      "ignore, *"
+    ],
+    "permissions": [
+      "nexus.ignore"
+    ],
+    "descriptions": [
+      "Ignore all players."
+    ],
+    "arguments": [
+      ""
+    ]
+  },
+  {
     "name": "itemlore ",
     "aliases": [],
     "permissions": [
@@ -652,6 +680,19 @@
     ]
   },
   {
+    "name": "message ",
+    "aliases": [],
+    "permissions": [
+      "nexus.message"
+    ],
+    "descriptions": [
+      "Send a private message to a player"
+    ],
+    "arguments": [
+      "\u003cplayer\u003e \u003cmessage\u003e"
+    ]
+  },
+  {
     "name": "nexus reload",
     "aliases": [],
     "permissions": [
@@ -782,6 +823,19 @@
     ]
   },
   {
+    "name": "reply ",
+    "aliases": [],
+    "permissions": [
+      "nexus.reply"
+    ],
+    "descriptions": [
+      "Reply to a last received message"
+    ],
+    "arguments": [
+      "\u003cmessage\u003e"
+    ]
+  },
+  {
     "name": "sethome ",
     "aliases": [],
     "permissions": [
@@ -883,6 +937,19 @@
     ],
     "arguments": [
       "\u003cplayer\u003e"
+    ]
+  },
+  {
+    "name": "socialspy ",
+    "aliases": [],
+    "permissions": [
+      "nexus.socialspy"
+    ],
+    "descriptions": [
+      "Enables or disables social spy"
+    ],
+    "arguments": [
+      ""
     ]
   },
   {
@@ -1378,6 +1445,34 @@
     ],
     "descriptions": [
       "Teleport to the highest block."
+    ],
+    "arguments": [
+      ""
+    ]
+  },
+  {
+    "name": "unignore ",
+    "aliases": [],
+    "permissions": [
+      "nexus.unignore"
+    ],
+    "descriptions": [
+      "Unignore specified player."
+    ],
+    "arguments": [
+      "\u003cplayer\u003e"
+    ]
+  },
+  {
+    "name": "unignore -all",
+    "aliases": [
+      "unignore, *"
+    ],
+    "permissions": [
+      "nexus.unignore"
+    ],
+    "descriptions": [
+      "Unignore all players."
     ],
     "arguments": [
       ""

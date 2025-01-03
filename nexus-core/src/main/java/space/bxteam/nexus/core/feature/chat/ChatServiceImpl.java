@@ -1,7 +1,7 @@
 package space.bxteam.nexus.core.feature.chat;
 
-import com.github.benmanes.caffeine.cache.Cache;
-import com.github.benmanes.caffeine.cache.Caffeine;
+import com.google.common.cache.Cache;
+import com.google.common.cache.CacheBuilder;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
@@ -20,7 +20,7 @@ public class ChatServiceImpl implements ChatService {
     @Inject
     public ChatServiceImpl(PluginConfigurationProvider configurationProvider) {
         this.configurationProvider = configurationProvider;
-        this.slowModeCache = Caffeine.newBuilder()
+        this.slowModeCache = CacheBuilder.newBuilder()
                 .expireAfterWrite(configurationProvider.configuration().chat().slowMode().plus(Duration.ofSeconds(10)))
                 .build();
     }
