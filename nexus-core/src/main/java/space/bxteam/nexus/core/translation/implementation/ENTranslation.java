@@ -150,6 +150,22 @@ public class ENTranslation extends OkaeriConfig implements Translation {
         );
     }
 
+    @Comment({"", "This section is responsible for the AFK-related messages."})
+    public ENAfkSection afk = new ENAfkSection();
+
+    @Getter
+    public class ENAfkSection extends OkaeriConfig implements AfkSection {
+        public Notice afkOn = Notice.chat("<green>You are now AFK!");
+        public Notice afkOff = Notice.chat("<green>You are no longer AFK!");
+
+        @Comment("")
+        public String afkKickReason = "<dark_red>You have been kicked for being AFK!";
+
+        @Comment({"", "This strings will be displayed in afk placeholders to indicate the AFK status."})
+        public String afkEnabledPlaceholder = "<gray>AFK";
+        public String afkDisabledPlaceholder = "";
+    }
+
     @Comment({"", "This section is responsible for the inventory-related messages."})
     public ENInventorySection inventory = new ENInventorySection();
 

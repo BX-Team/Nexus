@@ -85,6 +85,22 @@ public class PluginConfiguration extends OkaeriConfig {
     }
 
     @Comment("")
+    private Afk afk = new Afk();
+
+    @Getter
+    public class Afk extends OkaeriConfig {
+        @Comment("Amount of interactions required to unmark the player as AFK")
+        private int interactionsRequired = 20;
+
+        @Comment("Should the player be marked as AFK after a certain time of inactivity?")
+        private boolean autoMark = true;
+        @Comment("Amount of time after which the player will be marked as AFK")
+        private Duration autoMarkTime = Duration.ofMinutes(10);
+        @Comment("Should the player be kicked from the server when marked as AFK?")
+        private boolean kickOnAfk = false;
+    }
+
+    @Comment("")
     private Spawn spawn = new Spawn();
     @Exclude
     private static final Position EMPTY_POSITION = new Position(0, 0, 0, 0.0f, 0.0f, Position.NONE_WORLD);

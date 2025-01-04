@@ -3,6 +3,7 @@ package space.bxteam.nexus.core;
 import com.google.inject.Injector;
 import lombok.RequiredArgsConstructor;
 import space.bxteam.nexus.NexusApi;
+import space.bxteam.nexus.feature.afk.AfkService;
 import space.bxteam.nexus.feature.chat.ChatService;
 import space.bxteam.nexus.feature.home.HomeService;
 import space.bxteam.nexus.feature.ignore.IgnoreService;
@@ -17,6 +18,11 @@ import space.bxteam.nexus.feature.warp.WarpService;
 @RequiredArgsConstructor
 public class NexusApiImpl implements NexusApi {
     private final Injector injector;
+
+    @Override
+    public AfkService getAfkService() {
+        return this.injector.getInstance(AfkService.class);
+    }
 
     @Override
     public ChatService getChatService() {
