@@ -1,5 +1,6 @@
 package space.bxteam.nexus;
 
+import space.bxteam.nexus.feature.afk.AfkService;
 import space.bxteam.nexus.feature.chat.ChatService;
 import space.bxteam.nexus.feature.home.HomeService;
 import space.bxteam.nexus.feature.ignore.IgnoreService;
@@ -15,6 +16,8 @@ import space.bxteam.nexus.feature.warp.WarpService;
  * Main API for the Nexus plugin. Provides access to all services.
  */
 public interface NexusApi {
+    AfkService getAfkService();
+
     ChatService getChatService();
 
     HomeService getHomeService();
