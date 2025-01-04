@@ -22,6 +22,7 @@ Nexus gives you ability to personalize your Minecraft server with useful command
   - Chat clear
   - Social commands (`/msg`, `/r`, `/ignore`, `/unignore` and `/socialspy`)
   - Help command for calling staff members (`/help`, `/report`)
+- 💤 AFK System
 - ❌ Feature that allows to bypass slots limit in the server (`nexus.fullserverbypass`)
 - 🔨 Commands for opening utility GUIs (`/workbench`, `/anvil`, `/enderchest`, and more)
 - ❤️ Player management commands (`/heal`, `/feed`, `/fly`, `/god`, and more)
@@ -32,7 +33,7 @@ Nexus gives you ability to personalize your Minecraft server with useful command
 - 🌐 Multi-language support and customizable messages
 - 📇 Database Integration (SQLite, MariaDB, PostgreSQL)
 - 🌈 [MiniMessage](https://docs.advntr.dev/minimessage/format.html) integration with [legacy color](https://minecraft.tools/en/color-code.php) processing (e.g., `&7`, `&e`)
-- ...and much more!
+- [...and much more!](https://docs.bx-team.space/documentation/nexus/reference/features)
 
 ## Installation
 
