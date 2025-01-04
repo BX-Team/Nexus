@@ -19,6 +19,7 @@ import space.bxteam.nexus.core.scanner.annotations.component.Controller;
 import space.bxteam.nexus.core.translation.Translation;
 import space.bxteam.nexus.core.translation.TranslationProvider;
 import space.bxteam.nexus.event.NexusInitializeEvent;
+import space.bxteam.nexus.feature.afk.AfkReason;
 import space.bxteam.nexus.feature.afk.AfkService;
 import space.bxteam.nexus.feature.afk.event.AfkSwitchEvent;
 
@@ -68,7 +69,9 @@ public class AfkController implements Listener {
             return;
         }
 
-        Translation translation = this.translationProvider.getCurrentTranslation();
-        player.kickPlayer(AdventureUtil.SECTION_SERIALIZER.serialize(this.miniMessage.deserialize(translation.afk().afkKickReason())));
+        if (event.getAfkReason() == AfkReason.INACTIVITY) {
+            Translation translation = this.translationProvider.getCurrentTranslation();
+            player.kickPlayer(AdventureUtil.SECTION_SERIALIZER.serialize(this.miniMessage.deserialize(translation.afk().afkKickReason())));
+        }
     }
 }

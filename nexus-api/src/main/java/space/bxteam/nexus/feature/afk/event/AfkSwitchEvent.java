@@ -6,6 +6,7 @@ import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import space.bxteam.nexus.feature.afk.AfkPlayer;
+import space.bxteam.nexus.feature.afk.AfkReason;
 
 /**
  * This event is called when a player switches their AFK status.
@@ -17,12 +18,15 @@ public class AfkSwitchEvent extends Event implements Cancellable {
     @Getter
     private final AfkPlayer afkPlayer;
     @Getter
+    private final AfkReason afkReason;
+    @Getter
     private final boolean isAfk;
     private boolean cancelled;
 
-    public AfkSwitchEvent(AfkPlayer afkPlayer, boolean isAfk) {
+    public AfkSwitchEvent(AfkPlayer afkPlayer, AfkReason afkReason, boolean isAfk) {
         super(false);
         this.afkPlayer = afkPlayer;
+        this.afkReason = afkReason;
         this.isAfk = isAfk;
     }
 
