@@ -13,6 +13,19 @@
     ]
   },
   {
+    "name": "afk ",
+    "aliases": [],
+    "permissions": [
+      "nexus.afk"
+    ],
+    "descriptions": [
+      "Mark yourself as AFK"
+    ],
+    "arguments": [
+      ""
+    ]
+  },
+  {
     "name": "anvil ",
     "aliases": [],
     "permissions": [

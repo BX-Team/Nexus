@@ -16,6 +16,7 @@ import space.bxteam.commons.adventure.processor.AdventureLegacyColorPostProcesso
 import space.bxteam.commons.adventure.processor.AdventureLegacyColorPreProcessor;
 import space.bxteam.commons.adventure.processor.AdventureUrlPostProcessor;
 import space.bxteam.nexus.core.configuration.ConfigurationManager;
+import space.bxteam.nexus.core.feature.afk.AfkServiceImpl;
 import space.bxteam.nexus.core.feature.chat.ChatServiceImpl;
 import space.bxteam.nexus.core.feature.ignore.IgnoreServiceImpl;
 import space.bxteam.nexus.core.feature.jail.JailServiceImpl;
@@ -31,6 +32,7 @@ import space.bxteam.nexus.core.feature.warp.WarpServiceImpl;
 import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import space.bxteam.nexus.core.integration.placeholderapi.resolver.PlaceholderRegistry;
 import space.bxteam.nexus.core.integration.placeholderapi.resolver.PlaceholderRegistryImpl;
+import space.bxteam.nexus.feature.afk.AfkService;
 import space.bxteam.nexus.feature.chat.ChatService;
 import space.bxteam.nexus.feature.home.HomeService;
 import space.bxteam.nexus.feature.ignore.IgnoreService;
@@ -75,6 +77,7 @@ public class NexusModule extends AbstractModule {
                         .preProcessor(new AdventureLegacyColorPreProcessor())
                         .build());
 
+        this.bind(AfkService.class).to(AfkServiceImpl.class);
         this.bind(ChatService.class).to(ChatServiceImpl.class);
         this.bind(WarpService.class).to(WarpServiceImpl.class);
         this.bind(HomeService.class).to(HomeServiceImpl.class);

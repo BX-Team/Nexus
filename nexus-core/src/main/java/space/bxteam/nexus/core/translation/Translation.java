@@ -75,6 +75,18 @@ public interface Translation {
         List<String> fullServerSlots();
     }
 
+    AfkSection afk();
+
+    interface AfkSection {
+        Notice afkOn();
+        Notice afkOff();
+
+        String afkKickReason();
+
+        String afkEnabledPlaceholder();
+        String afkDisabledPlaceholder();
+    }
+
     InventorySection inventory();
 
     interface InventorySection {

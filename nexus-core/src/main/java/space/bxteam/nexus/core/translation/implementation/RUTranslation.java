@@ -150,6 +150,22 @@ public class RUTranslation extends OkaeriConfig implements Translation {
         );
     }
 
+    @Comment({"", "Эта секция отвечает за сообщения, связанные с AFK."})
+    public RUAfkSection afk = new RUAfkSection();
+
+    @Getter
+    public class RUAfkSection extends OkaeriConfig implements AfkSection {
+        public Notice afkOn = Notice.chat("<green>Вы теперь AFK!");
+        public Notice afkOff = Notice.chat("<green>Вы больше не AFK!");
+
+        @Comment("")
+        public String afkKickReason = "<dark_red>Вы были кикнуты за AFK!";
+
+        @Comment({"", "Эти сообщения используются для плейсхолдеров"})
+        public String afkEnabledPlaceholder = "<gray>AFK";
+        public String afkDisabledPlaceholder = "";
+    }
+
     @Comment({"", "Этот раздел отвечает за сообщения, связанные с инвентарем."})
     public RUInventorySection inventory = new RUInventorySection();
 
