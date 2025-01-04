@@ -96,9 +96,9 @@ public class JailCommand {
         for (JailPlayer jailPlayer : this.jailService.getJailedPlayers()) {
             this.multificationManager.create()
                     .notice(translation -> translation.jail().jailListEntry())
-                    .placeholder("{PLAYER}", this.server.getOfflinePlayer(jailPlayer.getPlayerUniqueId()).getName())
+                    .placeholder("{PLAYER}", this.server.getOfflinePlayer(jailPlayer.playerUuid()).getName())
                     .placeholder("{REMAINING_TIME}", DurationUtil.format(jailPlayer.getRemainingTime()))
-                    .placeholder("{JAILED_BY}", jailPlayer.getJailedBy())
+                    .placeholder("{JAILED_BY}", jailPlayer.jailedBy())
                     .player(player.getUniqueId())
                     .send();
         }

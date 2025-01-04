@@ -7,35 +7,7 @@ import java.util.UUID;
 /**
  * Represents a player that is jailed.
  */
-public class JailPlayer {
-    private final UUID player;
-    private final Instant jailedAt;
-    private final Duration prisonTime;
-    private final String jailedBy;
-
-    public JailPlayer(UUID player, Instant detainedAt, Duration prisonTime, String lockedUpBy) {
-        this.player = player;
-        this.jailedAt = detainedAt;
-        this.prisonTime = prisonTime;
-        this.jailedBy = lockedUpBy;
-    }
-
-    public UUID getPlayerUniqueId() {
-        return this.player;
-    }
-
-    public Instant getJailedAt() {
-        return this.jailedAt;
-    }
-
-    public Duration getPrisonTime() {
-        return this.prisonTime;
-    }
-
-    public String getJailedBy() {
-        return this.jailedBy;
-    }
-
+public record JailPlayer(UUID playerUuid, Instant jailedAt, Duration prisonTime, String jailedBy) {
     public boolean isPrisonExpired() {
         return this.jailedAt.plus(this.prisonTime).isBefore(Instant.now());
     }

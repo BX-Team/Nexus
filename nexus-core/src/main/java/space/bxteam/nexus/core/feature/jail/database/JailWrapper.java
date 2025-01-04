@@ -38,10 +38,10 @@ public class JailWrapper {
 
     static JailWrapper from(JailPlayer jailedPlayer) {
         return new JailWrapper(
-                jailedPlayer.getPlayerUniqueId(),
-                jailedPlayer.getJailedAt(),
-                jailedPlayer.getPrisonTime(),
-                jailedPlayer.getJailedBy()
+                jailedPlayer.playerUuid(),
+                jailedPlayer.jailedAt(),
+                jailedPlayer.prisonTime(),
+                jailedPlayer.jailedBy()
         );
     }
 }

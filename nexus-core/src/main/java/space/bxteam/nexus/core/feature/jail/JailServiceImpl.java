@@ -45,7 +45,7 @@ public class JailServiceImpl implements JailService {
 
         jailRepository.getPrisoners().thenAccept(prisoners -> {
             for (JailPlayer jailPlayer : prisoners) {
-                this.jailedPlayers.put(jailPlayer.getPlayerUniqueId(), jailPlayer);
+                this.jailedPlayers.put(jailPlayer.playerUuid(), jailPlayer);
             }
         });
     }

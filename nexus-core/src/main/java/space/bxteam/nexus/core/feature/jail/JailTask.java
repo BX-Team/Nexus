@@ -20,21 +20,21 @@ public class JailTask implements Runnable {
     @Override
     public void run() {
         for (JailPlayer jailPlayer : this.jailService.getJailedPlayers()) {
-            Player player = this.server.getPlayer(jailPlayer.getPlayerUniqueId());
+            Player player = this.server.getPlayer(jailPlayer.playerUuid());
 
             if (player == null) {
                 continue;
             }
 
             this.multificationManager.create()
-                    .player(jailPlayer.getPlayerUniqueId())
+                    .player(jailPlayer.playerUuid())
                     .notice(translation -> translation.jail().jailCountdown())
                     .placeholder("{TIME}", DurationUtil.format(jailPlayer.getRemainingTime()))
                     .send();
 
             if (jailPlayer.isPrisonExpired()) {
                 this.multificationManager.create()
-                        .player(jailPlayer.getPlayerUniqueId())
+                        .player(jailPlayer.playerUuid())
                         .notice(translation -> translation.jail().jailReleasePrivate())
                         .send();
 
