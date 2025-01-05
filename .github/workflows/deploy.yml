@@ -39,3 +39,4 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           title: Nexus ${{ steps.vars.outputs.tag }}
+          files: 'nexus-plugin/build/libs/*.jar'
