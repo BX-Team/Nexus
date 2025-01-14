@@ -1,10 +1,10 @@
 [versions]
 minecraft = "1.19.4-R0.1-SNAPSHOT"
 ormlite = "6.1"
-litecommands = "3.9.6"
+litecommands = "3.9.7"
 adventure = "4.3.4"
 minimessage = "4.18.0"
-multification = "1.1.4"
+multification = "1.2.1"
 okaeri = "5.0.5"
 commons = "1.3.1"
 
@@ -32,7 +32,7 @@ ormlite = { module = "com.j256.ormlite:ormlite-core", version.ref = "ormlite" }
 ormlite-jdbc = { module = "com.j256.ormlite:ormlite-jdbc", version.ref = "ormlite" }
 hikaricp = { module = "com.zaxxer:HikariCP", version = "6.2.1" }
 mariadb = { module = "org.mariadb.jdbc:mariadb-java-client", version = "3.5.1"}
-postgresql = { module = "org.postgresql:postgresql", version = "42.7.4" }
+postgresql = { module = "org.postgresql:postgresql", version = "42.7.5" }
 
 litecommands-framework = { module = "dev.rollczi:litecommands-framework", version.ref = "litecommands" }
 litecommands-bukkit = { module = "dev.rollczi:litecommands-bukkit", version.ref = "litecommands" }
