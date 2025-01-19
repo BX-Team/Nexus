@@ -434,8 +434,8 @@ public class ENTranslation extends OkaeriConfig implements Translation {
         @Comment("")
         public Notice chatDisabled = Notice.chat("<dark_red>Chat is disabled!");
 
-        @Comment("{TIME} - Remaining time in seconds")
-        public Notice slowMode = Notice.chat("<dark_red>You can write next message in <white>{TIME} <dark_red>seconds!");
+        @Comment("{TIME} - Remaining time (can be 5s, 10s, 1m, etc.)")
+        public Notice slowMode = Notice.chat("<dark_red>You can write next message in <white>{TIME}</white>!");
 
         @Comment({"", "{MESSAGE} - Broadcast content"})
         public Notice broadcastMessage = Notice.chat("<red>[Broadcast] <white>{MESSAGE}");

@@ -29,7 +29,7 @@ public class JailTask implements Runnable {
             this.multificationManager.create()
                     .player(jailPlayer.playerUuid())
                     .notice(translation -> translation.jail().jailCountdown())
-                    .placeholder("{TIME}", DurationUtil.format(jailPlayer.getRemainingTime()))
+                    .placeholder("{TIME}", DurationUtil.format(jailPlayer.getRemainingTime(), true))
                     .send();
 
             if (jailPlayer.isPrisonExpired()) {

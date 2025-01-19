@@ -38,9 +38,10 @@ public final class DurationUtil {
      * @return the formatted duration string
      */
     public static String format(Duration duration, boolean removeMillis) {
-        if (removeMillis && duration.toMillis() < ONE_SECOND.toMillis()) {
-            return "0s";
+        if (duration.toMillis() < ONE_SECOND.toMillis()) {
+            return removeMillis ? "0s" : STANDARD_FORMAT.format(duration);
         }
+
         return removeMillis ? WITHOUT_MILLIS_FORMAT.format(duration) : STANDARD_FORMAT.format(duration);
     }
 
@@ -51,6 +52,6 @@ public final class DurationUtil {
      * @return the formatted duration string
      */
     public static String format(Duration duration) {
-        return format(duration, true);
+        return format(duration, false);
     }
 }

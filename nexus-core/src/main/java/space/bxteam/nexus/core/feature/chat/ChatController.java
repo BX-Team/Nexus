@@ -44,7 +44,7 @@ public class ChatController implements Listener {
             this.multificationManager.create()
                     .player(uniqueId)
                     .notice(translation -> translation.chat().slowMode())
-                    .placeholder("{TIME}", DurationUtil.format(remainingDuration))
+                    .placeholder("{TIME}", DurationUtil.format(remainingDuration, true))
                     .send();
 
             event.setCancelled(true);

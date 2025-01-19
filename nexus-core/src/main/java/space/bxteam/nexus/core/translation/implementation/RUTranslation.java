@@ -434,8 +434,8 @@ public class RUTranslation extends OkaeriConfig implements Translation {
         @Comment("")
         public Notice chatDisabled = Notice.chat("<dark_red>Чат отключен!");
 
-        @Comment("{TIME} - Оствшиеся время в секундах")
-        public Notice slowMode = Notice.chat("<dark_red>Вы сможете написать следующее сообщение через <white>{TIME} секунд");
+        @Comment("{TIME} - Оставшееся время до следующего сообщения (форматируется как 5s, 10s, 1m и т.д.)")
+        public Notice slowMode = Notice.chat("<dark_red>Вы сможете написать следующее сообщение через <white>{TIME}</white>!");
 
         @Comment({"", "{MESSAGE} - Broadcast content"})
         public Notice broadcastMessage = Notice.chat("<red>[Объявление] <white>{MESSAGE}");

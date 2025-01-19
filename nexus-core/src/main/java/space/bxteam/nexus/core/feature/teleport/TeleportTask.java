@@ -63,7 +63,7 @@ public class TeleportTask implements Runnable {
 
                 this.multificationManager.create()
                         .notice(translation -> translation.teleport().teleporting())
-                        .placeholder("{TIME}", DurationUtil.format(duration.plusSeconds(SECONDS_OFFSET)))
+                        .placeholder("{TIME}", DurationUtil.format(duration.plusSeconds(SECONDS_OFFSET), true))
                         .player(player.getUniqueId())
                         .send();
                 continue;
