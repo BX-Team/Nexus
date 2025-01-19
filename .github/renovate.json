@@ -2,7 +2,7 @@
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "dependencyDashboard": true,
     "extends": [
-        "config:base"
+        "config:recommended"
     ],
     "groupName": "all dependencies",
     "groupSlug": "all",
@@ -15,38 +15,44 @@
     "packageRules": [
         {
             "groupName": "patch",
-            "matchPackagePatterns": [
-                "*"
+            "matchUpdateTypes": [
+                "patch"
             ],
-            "excludePackagePatterns": ["io.papermc.paper*"],
-            "updateTypes": ["patch"],
-            "automerge": true
+            "automerge": true,
+            "matchPackageNames": [
+                "*",
+                "!/io.papermc.paper*/"
+            ]
         },
         {
             "groupName": "minor",
-            "matchPackagePatterns": [
-                "*"
+            "matchUpdateTypes": [
+                "minor"
             ],
-            "excludePackagePatterns": ["io.papermc.paper*"],
-            "updateTypes": ["minor"],
-            "automerge": true
+            "automerge": true,
+            "matchPackageNames": [
+                "*",
+                "!/io.papermc.paper*/"
+            ]
         },
         {
             "groupName": "all-major",
-            "matchPackagePatterns": [
-                "*"
+            "matchUpdateTypes": [
+                "major"
             ],
-            "updateTypes": ["major"],
-            "excludePackagePatterns": ["io.papermc.paper*"],
-            "automerge": false
+            "automerge": false,
+            "matchPackageNames": [
+                "*",
+                "!/io.papermc.paper*/"
+            ]
         },
         {
             "groupName": "paper",
-            "matchPackagePatterns": [
-                "io.papermc.paper*"
-            ],
             "allowedVersions": "/^\\d+\\.\\d+(\\.\\d+)?-R\\d+\\.\\d+-SNAPSHOT$/",
-            "automerge": false
+            "automerge": false,
+            "matchPackageNames": [
+                "/io.papermc.paper*/"
+            ]
         }
     ]
 }
