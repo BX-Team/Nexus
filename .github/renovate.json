@@ -12,6 +12,9 @@
     "separateMajorMinor": true,
     "pruneStaleBranches": true,
     "commitMessagePrefix": "dependency:",
+    "labels": [
+        "\uD83D\uDD04 dependencies"
+    ],
     "packageRules": [
         {
             "groupName": "patch",
