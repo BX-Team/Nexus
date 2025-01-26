@@ -1,7 +1,6 @@
 package space.bxteam.nexus.core.integration;
 
+@FunctionalInterface
 public interface Integration {
-    boolean available();
-
-    default void enable() {}
+    void enable();
 }

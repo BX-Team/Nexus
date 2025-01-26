@@ -1,46 +1,38 @@
 package space.bxteam.nexus.core.integration;
 
 import com.google.inject.Inject;
-import com.google.inject.Injector;
 import com.google.inject.Singleton;
 import lombok.RequiredArgsConstructor;
+import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import space.bxteam.nexus.core.integration.placeholderapi.PlaceholderAPIIntegration;
+import space.bxteam.nexus.core.integration.placeholderapi.PlaceholderAPIReplacer;
+import space.bxteam.nexus.core.placeholder.PlaceholderRegistry;
 import space.bxteam.nexus.core.utils.Logger;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Supplier;
 
 @Singleton
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
 public class IntegrationRegistry {
-    private final Injector injector;
-    private final List<Integration> integrations = new ArrayList<>();
     private final PluginManager pluginManager;
+    private final PluginDescriptionFile pluginDescriptionFile;
+    private final PlaceholderRegistry placeholderRegistry;
 
     public void init() {
-        if (this.pluginManager.getPlugin("PlaceholderAPI") != null) {
-            this.tryEnable(PlaceholderAPIIntegration.class, () -> true);
-        }
+        this.tryEnable("PlaceholderAPI", () -> {
+            this.placeholderRegistry.registerPlaceholder(new PlaceholderAPIReplacer());
+            new PlaceholderAPIIntegration(this.placeholderRegistry, this.pluginDescriptionFile).enable();
+        });
     }
 
-    private void tryEnable(Class<? extends Integration> integrationClass, Supplier<Boolean> availablePredicate) {
-        if (!availablePredicate.get()) {
-            return;
-        }
-
-        String integrationName = integrationClass.getSimpleName().replace("Integration", "");
-        try {
-            Integration integration = this.injector.getInstance(integrationClass);
-            if (integration.available()) {
+    private void tryEnable(String pluginName, Integration integration) {
+        if (pluginManager.isPluginEnabled(pluginName)) {
+            try {
                 integration.enable();
-                this.integrations.add(integration);
-                Logger.log("Enabled integration " + integrationName, Logger.LogLevel.INFO);
+                Logger.log("Enabled integration " + pluginName, Logger.LogLevel.INFO);
+            } catch (Exception e) {
+                Logger.log("Failed to enable integration " + pluginName, Logger.LogLevel.ERROR);
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            Logger.log("Failed to enable integration " + integrationName, Logger.LogLevel.ERROR);
-            e.printStackTrace();
         }
     }
 }

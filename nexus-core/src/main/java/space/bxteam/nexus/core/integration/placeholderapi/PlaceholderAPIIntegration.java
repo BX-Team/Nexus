@@ -3,41 +3,26 @@ package space.bxteam.nexus.core.integration.placeholderapi;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import lombok.RequiredArgsConstructor;
-import me.clip.placeholderapi.PlaceholderAPI;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginManager;
+import org.bukkit.plugin.PluginDescriptionFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import space.bxteam.nexus.core.integration.Integration;
-import space.bxteam.nexus.core.integration.placeholderapi.resolver.PlaceholderRaw;
-import space.bxteam.nexus.core.integration.placeholderapi.resolver.PlaceholderRegistry;
-import space.bxteam.nexus.core.integration.placeholderapi.resolver.PlaceholderReplacer;
+import space.bxteam.nexus.core.placeholder.PlaceholderRaw;
+import space.bxteam.nexus.core.placeholder.PlaceholderRegistry;
 
 import java.util.Optional;
 
 @Singleton
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
-public class PlaceholderAPIIntegration extends PlaceholderExpansion implements Integration, PlaceholderReplacer {
+public class PlaceholderAPIIntegration extends PlaceholderExpansion implements Integration {
     private final PlaceholderRegistry placeholderRegistry;
-    private final Plugin plugin;
-    private final PluginManager pluginManager;
-
-    @Override
-    public boolean available() {
-        return this.pluginManager.getPlugin("PlaceholderAPI") != null;
-    }
+    private final PluginDescriptionFile pluginDescriptionFile;
 
     @Override
     public void enable() {
-        this.placeholderRegistry.registerPlaceholder(this);
         this.register();
-    }
-
-    @Override
-    public String apply(String text, Player targetPlayer) {
-        return PlaceholderAPI.setPlaceholders(targetPlayer, text);
     }
 
     @Override
@@ -47,12 +32,12 @@ public class PlaceholderAPIIntegration extends PlaceholderExpansion implements I
 
     @Override
     public @NotNull String getAuthor() {
-        return String.join(", ", plugin.getPluginMeta().getAuthors());
+        return String.join(", ", pluginDescriptionFile.getAuthors());
     }
 
     @Override
     public @NotNull String getVersion() {
-        return this.plugin.getPluginMeta().getVersion();
+        return this.pluginDescriptionFile.getVersion();
     }
 
     @Override

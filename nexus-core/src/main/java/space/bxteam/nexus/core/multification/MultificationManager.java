@@ -19,7 +19,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import space.bxteam.commons.scheduler.Scheduler;
-import space.bxteam.nexus.core.integration.placeholderapi.resolver.PlaceholderRegistry;
+import space.bxteam.nexus.core.placeholder.PlaceholderRegistry;
 import space.bxteam.nexus.core.multification.bukkit.BukkitViewerProvider;
 import space.bxteam.nexus.core.translation.Translation;
 

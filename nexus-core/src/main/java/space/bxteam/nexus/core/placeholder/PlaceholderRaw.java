@@ -1,4 +1,4 @@
-package space.bxteam.nexus.core.integration.placeholderapi.resolver;
+package space.bxteam.nexus.core.placeholder;
 
 import lombok.RequiredArgsConstructor;
 import org.bukkit.entity.Player;

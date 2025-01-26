@@ -1,7 +1,6 @@
-package space.bxteam.nexus.core.integration.placeholderapi.resolver;
+package space.bxteam.nexus.core.placeholder;
 
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 import java.util.Optional;
 
