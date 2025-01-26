@@ -27,6 +27,7 @@ public class PluginConfigurationProvider {
         File configFile = this.dataFolder.resolve("config.yml").toFile();
 
         try {
+            Logger.log("Loading confuguration...");
             this.configuration = configurationManager.create(PluginConfiguration.class, configFile);
         } catch (Exception e) {
             Logger.log("Could not create config.yml file", Logger.LogLevel.ERROR);
