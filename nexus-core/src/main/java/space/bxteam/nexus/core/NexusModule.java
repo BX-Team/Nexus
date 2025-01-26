@@ -54,29 +54,26 @@ public class NexusModule extends AbstractModule {
 
     @Override
     protected void configure() {
-        this.bind(Plugin.class).toInstance(this.plugin);
-        this.bind(PluginConfigurationProvider.class).toInstance(this.configurationProvider);
-        this.bind(ConfigurationManager.class).toInstance(this.configurationManager);
-        this.bind(Server.class).toInstance(this.plugin.getServer());
-        this.bind(PluginManager.class).toInstance(this.plugin.getServer().getPluginManager());
-        this.bind(PluginDescriptionFile.class).toInstance(this.plugin.getDescription());
-        this.bind(ServicesManager.class).toInstance(this.plugin.getServer().getServicesManager());
-        this.bind(Path.class)
-                .annotatedWith(Names.named("dataFolder"))
-                .toInstance(this.plugin.getDataFolder().toPath());
-        this.bind(AudienceProvider.class).toInstance(BukkitAudiences.create(this.plugin));
+        bindCoreComponents();
+        bindServices();
+        bindMiniMessage();
+    }
+
+    private void bindCoreComponents() {
+        this.bind(Plugin.class).toInstance(plugin);
+        this.bind(PluginConfigurationProvider.class).toInstance(configurationProvider);
+        this.bind(ConfigurationManager.class).toInstance(configurationManager);
+        this.bind(Server.class).toInstance(plugin.getServer());
+        this.bind(PluginManager.class).toInstance(plugin.getServer().getPluginManager());
+        this.bind(PluginDescriptionFile.class).toInstance(plugin.getDescription());
+        this.bind(ServicesManager.class).toInstance(plugin.getServer().getServicesManager());
+        this.bind(Path.class).annotatedWith(Names.named("dataFolder")).toInstance(plugin.getDataFolder().toPath());
+        this.bind(AudienceProvider.class).toInstance(BukkitAudiences.create(plugin));
         this.bind(PlaceholderRegistry.class).to(PlaceholderRegistryImpl.class).in(Singleton.class);
         this.bind(UpdateService.class).asEagerSingleton();
+    }
 
-        this.bind(MiniMessage.class).toInstance(MiniMessage.miniMessage());
-        this.bind(MiniMessage.class)
-                .annotatedWith(Names.named("colorMiniMessage"))
-                .toInstance(MiniMessage.builder()
-                        .postProcessor(new AdventureUrlPostProcessor())
-                        .postProcessor(new AdventureLegacyColorPostProcessor())
-                        .preProcessor(new AdventureLegacyColorPreProcessor())
-                        .build());
-
+    private void bindServices() {
         this.bind(AfkService.class).to(AfkServiceImpl.class);
         this.bind(ChatService.class).to(ChatServiceImpl.class);
         this.bind(WarpService.class).to(WarpServiceImpl.class);
@@ -89,5 +86,16 @@ public class NexusModule extends AbstractModule {
         this.bind(TeleportService.class).to(TeleportServiceImpl.class);
         this.bind(TeleportTaskService.class).asEagerSingleton();
         this.bind(TeleportRequestService.class).to(TeleportRequestServiceImpl.class);
+    }
+
+    private void bindMiniMessage() {
+        this.bind(MiniMessage.class).toInstance(MiniMessage.miniMessage());
+        this.bind(MiniMessage.class)
+                .annotatedWith(Names.named("colorMiniMessage"))
+                .toInstance(MiniMessage.builder()
+                        .postProcessor(new AdventureUrlPostProcessor())
+                        .postProcessor(new AdventureLegacyColorPostProcessor())
+                        .preProcessor(new AdventureLegacyColorPreProcessor())
+                        .build());
     }
 }

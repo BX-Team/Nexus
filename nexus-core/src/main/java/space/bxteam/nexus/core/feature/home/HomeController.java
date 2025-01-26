@@ -7,7 +7,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import space.bxteam.nexus.core.placeholder.PlaceholderRegistry;
 import space.bxteam.nexus.core.placeholder.PlaceholderReplacer;
-import space.bxteam.nexus.core.scanner.annotations.component.Controller;
+import space.bxteam.nexus.core.registration.annotations.component.Controller;
 import space.bxteam.nexus.core.translation.Translation;
 import space.bxteam.nexus.core.translation.TranslationProvider;
 import space.bxteam.nexus.event.NexusInitializeEvent;

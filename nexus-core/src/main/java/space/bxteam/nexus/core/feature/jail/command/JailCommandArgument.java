@@ -9,7 +9,7 @@ import dev.rollczi.litecommands.suggestion.SuggestionResult;
 import org.bukkit.command.CommandSender;
 import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import space.bxteam.nexus.core.multification.MultificationLiteArgument;
-import space.bxteam.nexus.core.scanner.annotations.litecommands.LiteArgument;
+import space.bxteam.nexus.core.registration.annotations.litecommands.LiteArgument;
 import space.bxteam.nexus.core.translation.Translation;
 import space.bxteam.nexus.core.translation.TranslationProvider;
 import space.bxteam.nexus.feature.jail.JailService;

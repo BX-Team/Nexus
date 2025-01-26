@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.bukkit.Server;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import space.bxteam.nexus.core.scanner.annotations.component.Controller;
+import space.bxteam.nexus.core.registration.annotations.component.Controller;
 import space.bxteam.nexus.event.NexusInitializeEvent;
 
 @Controller

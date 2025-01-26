@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.bukkit.Server;
 import org.bukkit.entity.Player;
 import space.bxteam.nexus.core.multification.MultificationManager;
-import space.bxteam.nexus.core.scanner.annotations.component.Task;
+import space.bxteam.nexus.core.registration.annotations.component.Task;
 import space.bxteam.nexus.core.utils.DurationUtil;
 import space.bxteam.nexus.feature.jail.JailPlayer;
 import space.bxteam.nexus.feature.jail.JailService;

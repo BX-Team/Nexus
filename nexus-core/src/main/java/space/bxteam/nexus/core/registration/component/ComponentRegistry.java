@@ -1,4 +1,4 @@
-package space.bxteam.nexus.core.scanner.register;
+package space.bxteam.nexus.core.registration.component;
 
 import com.google.inject.Inject;
 import com.google.inject.Injector;
@@ -6,18 +6,18 @@ import org.bukkit.Server;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import space.bxteam.commons.scheduler.Scheduler;
-import space.bxteam.nexus.core.scanner.ClassgraphScanner;
-import space.bxteam.nexus.core.scanner.annotations.component.Controller;
-import space.bxteam.nexus.core.scanner.annotations.component.Task;
+import space.bxteam.nexus.core.utils.ClassgraphUtil;
+import space.bxteam.nexus.core.registration.annotations.component.Controller;
+import space.bxteam.nexus.core.registration.annotations.component.Task;
 import space.bxteam.nexus.core.utils.Logger;
 
-public class ComponentRegister {
+public class ComponentRegistry {
     private final Injector injector;
     private final Server server;
     private final Plugin plugin;
 
     @Inject
-    public ComponentRegister(Injector injector, Server server, Plugin plugin) {
+    public ComponentRegistry(Injector injector, Server server, Plugin plugin) {
         this.injector = injector;
         this.server = server;
         this.plugin = plugin;
@@ -27,7 +27,7 @@ public class ComponentRegister {
     }
 
     private void registerControllers() {
-        ClassgraphScanner.scanClassesWithAnnotation("space.bxteam.nexus.core", Controller.class, classInfo -> {
+        ClassgraphUtil.scanClassesWithAnnotation("space.bxteam.nexus.core", Controller.class, classInfo -> {
             try {
                 Class<?> listenerClass = classInfo.loadClass();
 
@@ -44,7 +44,7 @@ public class ComponentRegister {
     }
 
     private void registerTasks() {
-        ClassgraphScanner.scanClassesWithAnnotation("space.bxteam.nexus.core", Task.class, classInfo -> {
+        ClassgraphUtil.scanClassesWithAnnotation("space.bxteam.nexus.core", Task.class, classInfo -> {
             try {
                 Class<?> taskClass = classInfo.loadClass();
                 Scheduler scheduler = injector.getInstance(Scheduler.class);

@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.bukkit.Server;
 import org.bukkit.entity.Player;
 import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
-import space.bxteam.nexus.core.scanner.annotations.component.Task;
+import space.bxteam.nexus.core.registration.annotations.component.Task;
 import space.bxteam.nexus.feature.afk.AfkReason;
 import space.bxteam.nexus.feature.afk.AfkService;
 

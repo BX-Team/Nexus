@@ -28,12 +28,12 @@ public class SchedulerSetup extends AbstractModule {
         }
     }
 
+    // This was taken from Paper docs
     private static boolean isFolia() {
         try {
             Class.forName(FOLIA);
             return true;
-        }
-        catch (ClassNotFoundException exception) {
+        } catch (ClassNotFoundException e) {
             return false;
         }
     }

@@ -1,4 +1,4 @@
-package space.bxteam.nexus.core.scanner.annotations.component;
+package space.bxteam.nexus.core.registration.annotations.component;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

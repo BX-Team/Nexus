@@ -1,4 +1,4 @@
-package space.bxteam.nexus.core.integration.litecommands.handler;
+package space.bxteam.nexus.core.registration.litecommands.handler;
 
 import com.google.inject.Inject;
 import dev.rollczi.litecommands.handler.result.ResultHandlerChain;
@@ -8,7 +8,7 @@ import dev.rollczi.litecommands.permission.MissingPermissionsHandler;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.command.CommandSender;
 import space.bxteam.nexus.core.multification.MultificationManager;
-import space.bxteam.nexus.core.scanner.annotations.litecommands.LiteHandler;
+import space.bxteam.nexus.core.registration.annotations.litecommands.LiteHandler;
 
 @LiteHandler(MissingPermissions.class)
 @RequiredArgsConstructor(onConstructor = @__(@Inject))

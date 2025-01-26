@@ -10,7 +10,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerLoginEvent;
 import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
-import space.bxteam.nexus.core.scanner.annotations.component.Controller;
+import space.bxteam.nexus.core.registration.annotations.component.Controller;
 import space.bxteam.nexus.core.translation.TranslationProvider;
 
 @Controller

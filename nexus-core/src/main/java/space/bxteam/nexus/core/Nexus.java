@@ -11,9 +11,9 @@ import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import space.bxteam.nexus.core.database.DatabaseClient;
 import space.bxteam.nexus.core.database.DatabaseModule;
 import space.bxteam.nexus.core.integration.IntegrationRegistry;
-import space.bxteam.nexus.core.integration.litecommands.LiteCommandsRegister;
+import space.bxteam.nexus.core.registration.litecommands.LiteCommandsRegistry;
 import space.bxteam.nexus.core.multification.module.MultificationModule;
-import space.bxteam.nexus.core.scanner.register.ComponentRegister;
+import space.bxteam.nexus.core.registration.component.ComponentRegistry;
 import space.bxteam.nexus.core.scheduler.SchedulerSetup;
 import space.bxteam.nexus.core.translation.TranslationProvider;
 import space.bxteam.nexus.event.NexusInitializeEvent;
@@ -46,8 +46,8 @@ public class Nexus {
         this.injector.getInstance(TranslationProvider.class);
         this.injector.getInstance(IntegrationRegistry.class).init();
         this.injector.getInstance(CommandsConfigProvider.class);
-        this.injector.getInstance(LiteCommandsRegister.class).onEnable();
-        this.injector.getInstance(ComponentRegister.class);
+        this.injector.getInstance(LiteCommandsRegistry.class).onEnable();
+        this.injector.getInstance(ComponentRegistry.class);
 
         NexusApiProvider.initialize(new NexusApiImpl(this.injector));
         environment.finalizeLoading();
@@ -55,7 +55,7 @@ public class Nexus {
     }
 
     public void disable() {
-        this.injector.getInstance(LiteCommandsRegister.class).onDisable();
+        this.injector.getInstance(LiteCommandsRegistry.class).onDisable();
         this.injector.getInstance(DatabaseClient.class).close();
 
         NexusApiProvider.shutdown();

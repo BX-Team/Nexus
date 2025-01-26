@@ -9,7 +9,7 @@ import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import space.bxteam.nexus.core.multification.MultificationManager;
-import space.bxteam.nexus.core.scanner.annotations.component.Controller;
+import space.bxteam.nexus.core.registration.annotations.component.Controller;
 import space.bxteam.nexus.feature.jail.JailService;
 
 import java.util.Set;

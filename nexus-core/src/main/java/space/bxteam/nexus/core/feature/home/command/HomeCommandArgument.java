@@ -12,7 +12,7 @@ import org.bukkit.entity.Player;
 import space.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import space.bxteam.nexus.core.multification.MultificationLiteArgument;
 import space.bxteam.nexus.core.multification.MultificationManager;
-import space.bxteam.nexus.core.scanner.annotations.litecommands.LiteArgument;
+import space.bxteam.nexus.core.registration.annotations.litecommands.LiteArgument;
 import space.bxteam.nexus.core.translation.Translation;
 import space.bxteam.nexus.core.translation.TranslationProvider;
 import space.bxteam.nexus.feature.home.Home;

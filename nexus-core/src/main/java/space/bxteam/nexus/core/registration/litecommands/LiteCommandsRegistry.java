@@ -1,4 +1,4 @@
-package space.bxteam.nexus.core.integration.litecommands;
+package space.bxteam.nexus.core.registration.litecommands;
 
 import com.google.inject.Inject;
 import com.google.inject.Injector;
@@ -21,27 +21,27 @@ import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Server;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.Plugin;
-import space.bxteam.nexus.core.integration.litecommands.commands.CommandCooldownMessage;
+import space.bxteam.nexus.core.registration.litecommands.commands.CommandCooldownMessage;
 import space.bxteam.nexus.core.configuration.commands.CommandsConfigProvider;
 import space.bxteam.nexus.core.multification.MultificationManager;
-import space.bxteam.nexus.core.scanner.annotations.litecommands.LiteArgument;
-import space.bxteam.nexus.core.scanner.annotations.litecommands.LiteEditor;
-import space.bxteam.nexus.core.scanner.annotations.litecommands.LiteHandler;
-import space.bxteam.nexus.core.scanner.ClassgraphScanner;
+import space.bxteam.nexus.core.registration.annotations.litecommands.LiteArgument;
+import space.bxteam.nexus.core.registration.annotations.litecommands.LiteEditor;
+import space.bxteam.nexus.core.registration.annotations.litecommands.LiteHandler;
+import space.bxteam.nexus.core.utils.ClassgraphUtil;
 import space.bxteam.nexus.core.utils.Logger;
 
 import java.lang.annotation.Annotation;
 import java.util.function.Consumer;
 
 @Singleton
-public class LiteCommandsRegister {
+public class LiteCommandsRegistry {
     private final Injector injector;
     private final LiteCommandsAnnotations<CommandSender> annotations;
     private final LiteCommandsBuilder<CommandSender, ?, ?> liteCommandsBuilder;
     private LiteCommands<CommandSender> liteCommands;
 
     @Inject
-    public LiteCommandsRegister(Injector injector, Plugin plugin, Server server, AudienceProvider audiencesProvider, @Named("colorMiniMessage") MiniMessage miniMessage) {
+    public LiteCommandsRegistry(Injector injector, Plugin plugin, Server server, AudienceProvider audiencesProvider, @Named("colorMiniMessage") MiniMessage miniMessage) {
         this.injector = injector;
         this.annotations = LiteCommandsAnnotations.create();
         registerAnnotatedClasses(annotations, Command.class, annotations::load);
@@ -64,7 +64,7 @@ public class LiteCommandsRegister {
     }
 
     private <A extends Annotation> void registerAnnotatedClasses(LiteCommandsAnnotations<CommandSender> annotations, Class<A> annotation, Consumer<Object> consumer) {
-        ClassgraphScanner.scanClassesWithAnnotation("space.bxteam.nexus.core", annotation, classInfo -> {
+        ClassgraphUtil.scanClassesWithAnnotation("space.bxteam.nexus.core", annotation, classInfo -> {
             try {
                 Object instance = injector.getInstance(classInfo.loadClass());
                 consumer.accept(instance);
@@ -76,7 +76,7 @@ public class LiteCommandsRegister {
 
     @SuppressWarnings("unchecked")
     private void registerHandlersAndArguments() {
-        ClassgraphScanner.scanClassesWithAnnotation("space.bxteam.nexus.core.feature", LiteArgument.class, classInfo -> {
+        ClassgraphUtil.scanClassesWithAnnotation("space.bxteam.nexus.core.feature", LiteArgument.class, classInfo -> {
             try {
                 Class<?> argumentClass = classInfo.loadClass();
                 LiteArgument liteArgument = argumentClass.getAnnotation(LiteArgument.class);
@@ -87,7 +87,7 @@ public class LiteCommandsRegister {
             }
         });
 
-        ClassgraphScanner.scanClassesWithAnnotation("space.bxteam.nexus.core.integration.litecommands.handler", LiteHandler.class, classInfo -> {
+        ClassgraphUtil.scanClassesWithAnnotation("space.bxteam.nexus.core.integration.litecommands.handler", LiteHandler.class, classInfo -> {
             try {
                 Class<?> handlerClass = classInfo.loadClass();
                 LiteHandler liteHandler = handlerClass.getAnnotation(LiteHandler.class);
@@ -101,7 +101,7 @@ public class LiteCommandsRegister {
 
     @SuppressWarnings("unchecked")
     private void registerEditor() {
-        ClassgraphScanner.scanClassesWithAnnotation("space.bxteam.nexus.core.integration.litecommands", LiteEditor.class, classInfo -> {
+        ClassgraphUtil.scanClassesWithAnnotation("space.bxteam.nexus.core.integration.litecommands", LiteEditor.class, classInfo -> {
             Class<?> handlerClass = classInfo.loadClass();
             LiteEditor liteEditor = handlerClass.getAnnotation(LiteEditor.class);
 
