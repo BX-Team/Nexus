@@ -30,9 +30,6 @@ public class PluginConfiguration extends OkaeriConfig {
     @Comment("Should the plugin check for updates?")
     private boolean checkForUpdates = true;
 
-    @Comment("Plugin prefix")
-    private String prefix = "&7[&6Nexus&7] ";
-
     @Comment({
             "Select the language of the plugin",
             "The following languages are supported:",
@@ -98,6 +95,25 @@ public class PluginConfiguration extends OkaeriConfig {
         private Duration autoMarkTime = Duration.ofMinutes(10);
         @Comment("Should the player be kicked from the server when marked as AFK?")
         private boolean kickOnAfk = false;
+    }
+
+    @Comment("")
+    private Server server = new Server();
+
+    @Getter
+    public class Server extends OkaeriConfig {
+        @Comment("This value will be shown in the server list as fake value, not actually used for player limit")
+        private int maxPlayers = 100;
+
+        @Comment({
+                "",
+                "If you want to use a custom MOTD, set this value to true and edit the motd values below",
+                "The MOTD (Message of the Day) will be displayed to players when they join the server",
+                "You can specify multiple MOTDs, and one will be chosen at random each time a player joins",
+                "It supports MiniMessage formatting"
+        })
+        private boolean useRandomMotd = false;
+        private Set<String> motd = Set.of("<green>Welcome to the server!<newline><gold>We hope you enjoy your stay", "<blue>Hello <red>world!");
     }
 
     @Comment("")
