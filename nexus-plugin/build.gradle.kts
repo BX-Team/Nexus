@@ -42,7 +42,7 @@ tasks {
     }
     shadowJar {
         archiveFileName.set("Nexus-${project.version}.jar")
-        relocate("org.bstats", "space.bxteam.nexus.dependencies.bstats")
+        relocate("org.bstats", "org.bxteam.nexus.dependencies.bstats")
         from(file("../LICENSE"))
 
         dependencies {
@@ -69,10 +69,10 @@ paper {
     name = "Nexus"
     prefix = "Nexus"
     authors = listOf("NONPLAYT", "XEN0LIT")
-    website = "https://github.com/BX-Team/Nexus"
+    website = "https://bxteam.org"
 
-    main = "space.bxteam.nexus.core.loader.NexusPlugin"
-    loader = "space.bxteam.nexus.core.loader.NexusLoader"
+    main = "org.bxteam.nexus.core.loader.NexusPlugin"
+    loader = "org.bxteam.nexus.core.loader.NexusLoader"
 
     apiVersion = "1.19"
     foliaSupported = true

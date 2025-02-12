@@ -23,10 +23,10 @@ publishing {
     repositories {
         maven {
             name = "nexus"
-            url = uri("https://repo.bx-team.space/releases/")
+            url = uri("https://repo.bxteam.org/releases/")
 
             if (version.toString().endsWith("-SNAPSHOT")) {
-                url = uri("https://repo.bx-team.space/snapshots/")
+                url = uri("https://repo.bxteam.org/snapshots/")
             }
 
             credentials(PasswordCredentials::class)

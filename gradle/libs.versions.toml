@@ -6,7 +6,7 @@ adventure = "4.3.4"
 minimessage = "4.18.0"
 multification = "1.2.1"
 okaeri = "5.0.6"
-commons = "1.3.1"
+commons = "1.3.2"
 
 [plugins]
 shadow = { id = "com.github.johnrengelman.shadow", version = "8.1.1" }
@@ -51,9 +51,9 @@ okaeri-yaml = { module = "eu.okaeri:okaeri-configs-yaml-bukkit", version.ref = "
 multification = { module = "com.eternalcode:multification-core", version.ref = "multification" }
 multification-okaeri = { module = "com.eternalcode:multification-okaeri", version.ref = "multification" }
 
-commons-adventure = { module = "space.bxteam:commons-adventure", version.ref = "commons" }
-commons-folia = { module = "space.bxteam:commons-folia", version.ref = "commons" }
-commons-bukkit = { module = "space.bxteam:commons-bukkit", version.ref = "commons" }
+commons-adventure = { module = "org.bxteam:commons-adventure", version.ref = "commons" }
+commons-folia = { module = "org.bxteam:commons-folia", version.ref = "commons" }
+commons-bukkit = { module = "org.bxteam:commons-bukkit", version.ref = "commons" }
 
 [bundles]
 ormlite = [

@@ -7,7 +7,7 @@ Powerful plugin that gives you ability to personalize your Minecraft server with
 [![Available on Modrinth](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/modrinth_vector.svg)](https://modrinth.com/plugin/nexuss)
 
 [![Chat on Discord](https://raw.githubusercontent.com/vLuckyyy/badges/main//chat-with-us-on-discord.svg)](https://discord.gg/p7cxhw7E2M)
-[![Read the Docs](https://raw.githubusercontent.com/vLuckyyy/badges/main/read-the-documentation.svg)](https://docs.bx-team.space/documentation/nexus/about)
+[![Read the Docs](https://raw.githubusercontent.com/vLuckyyy/badges/main/read-the-documentation.svg)](https://docs.bxteam.org/documentation/nexus/about)
 [![Available on BStats](https://raw.githubusercontent.com/vLuckyyy/badges/main/available-on-bstats.svg)](https://bstats.org/plugin/bukkit/Nexus%20Essentials/19684)
 </div>
 
@@ -33,7 +33,7 @@ Nexus gives you ability to personalize your Minecraft server with useful command
 - 🌐 Multi-language support and customizable messages
 - 📇 Database Integration (SQLite, MariaDB, PostgreSQL)
 - 🌈 [MiniMessage](https://docs.advntr.dev/minimessage/format.html) integration with [legacy color](https://minecraft.tools/en/color-code.php) processing (e.g., `&7`, `&e`)
-- [...and much more!](https://docs.bx-team.space/documentation/nexus/reference/features)
+- [...and much more!](https://docs.bxteam.org/documentation/nexus/reference/features)
 
 ## Installation
 
