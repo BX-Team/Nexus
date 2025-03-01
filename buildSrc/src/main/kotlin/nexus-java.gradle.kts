@@ -9,7 +9,7 @@ java {
     toolchain.languageVersion.set(JavaLanguageVersion.of(21))
 }
 
-tasks.withType<JavaCompile>() {
+tasks.withType<JavaCompile> {
     options.compilerArgs = listOf("-Xlint:deprecation", "-parameters")
     options.encoding = "UTF-8"
     options.release = 17
