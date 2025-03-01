@@ -42,6 +42,7 @@ public class UpdateController implements Listener {
             return;
         }
 
+        /* TODO: Rewrite this to use the new version checker from commons 2.0.0
         if (!this.updateService.isUpToDate()) {
             String releaseTag = this.updateService.getReleaseTag();
             String releasePageLink = this.updateService.getReleasePageLink();
@@ -54,6 +55,7 @@ public class UpdateController implements Listener {
                     .placeholder("{URL}", releasePageLink)
                     .send();
         }
+         */
     }
 
     @EventHandler
@@ -62,6 +64,7 @@ public class UpdateController implements Listener {
             return;
         }
 
+        /* TODO: Rewrite this to use the new version checker from commons 2.0.0
         if (!this.updateService.isUpToDate()) {
             String releaseTag = this.updateService.getReleaseTag();
             String releasePageLink = this.updateService.getReleasePageLink();
@@ -69,5 +72,6 @@ public class UpdateController implements Listener {
             Logger.log("&aA new update &e" + releaseTag + " &afor Nexus is available.", Logger.LogLevel.INFO);
             Logger.log("&eDownload it from &e" + releasePageLink, Logger.LogLevel.INFO);
         }
+         */
     }
 }

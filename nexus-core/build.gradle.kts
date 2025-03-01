@@ -14,6 +14,7 @@ dependencies {
     // Libraries
     compileOnly(libs.paper)
     compileOnly(libs.paperlib)
+    compileOnly(libs.commons)
     compileOnly(libs.bundles.ormlite)
     compileOnly(libs.hikaricp)
     compileOnly(libs.mariadb)
@@ -25,7 +26,6 @@ dependencies {
     compileOnly(libs.bundles.adventure)
     compileOnly(libs.bundles.okaeri)
     compileOnly(libs.bundles.multification)
-    compileOnly(libs.bundles.commons)
 
     // Plugin dependencies
     compileOnly(libs.placeholderapi)

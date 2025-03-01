@@ -15,6 +15,7 @@ dependencies {
     annotationProcessor(libs.lombok)
 
     library(libs.paperlib)
+    library(libs.commons)
     library(libs.bundles.ormlite)
     library(libs.hikaricp)
     library(libs.mariadb)
@@ -26,7 +27,6 @@ dependencies {
     library(libs.bundles.adventure)
     library(libs.bundles.okaeri)
     library(libs.bundles.multification)
-    library(libs.bundles.commons)
 
     // Plugin dependencies
     compileOnly(libs.placeholderapi)

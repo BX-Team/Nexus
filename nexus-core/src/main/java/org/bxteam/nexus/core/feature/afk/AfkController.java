@@ -11,7 +11,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.bxteam.commons.adventure.AdventureUtil;
+import org.bxteam.commons.adventure.util.AdventureUtil;
 import org.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import org.bxteam.nexus.core.placeholder.PlaceholderRegistry;
 import org.bxteam.nexus.core.placeholder.PlaceholderReplacer;

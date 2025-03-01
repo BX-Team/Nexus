@@ -28,6 +28,7 @@ dependencies {
 
     runtimeOnly(libs.paper)
     runtimeOnly(libs.paperlib)
+    runtimeOnly(libs.commons)
     runtimeOnly(libs.bundles.ormlite)
     runtimeOnly(libs.hikaricp)
     runtimeOnly(libs.mariadb)
@@ -39,7 +40,6 @@ dependencies {
     runtimeOnly(libs.bundles.adventure)
     runtimeOnly(libs.bundles.okaeri)
     runtimeOnly(libs.bundles.multification)
-    runtimeOnly(libs.bundles.commons)
     runtimeOnly(libs.placeholderapi)
     runtimeOnly(libs.bstats)
 }
