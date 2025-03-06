@@ -16,6 +16,8 @@ import org.bxteam.commons.adventure.processor.AdventureLegacyColorPostProcessor;
 import org.bxteam.commons.adventure.processor.AdventureLegacyColorPreProcessor;
 import org.bxteam.commons.adventure.processor.AdventureUrlPostProcessor;
 import org.bxteam.commons.logger.ExtendedLogger;
+import org.bxteam.commons.updater.ModrinthVersionFetcher;
+import org.bxteam.commons.updater.VersionFetcher;
 import org.bxteam.nexus.core.configuration.ConfigurationManager;
 import org.bxteam.nexus.core.feature.afk.AfkServiceImpl;
 import org.bxteam.nexus.core.feature.chat.ChatServiceImpl;
@@ -26,7 +28,6 @@ import org.bxteam.nexus.core.feature.randomteleport.RandomTeleportServiceImpl;
 import org.bxteam.nexus.core.feature.spawn.SpawnServiceImpl;
 import org.bxteam.nexus.core.feature.teleport.TeleportTaskService;
 import org.bxteam.nexus.core.feature.teleportrequest.TeleportRequestServiceImpl;
-import org.bxteam.nexus.core.updater.UpdateService;
 import org.bxteam.nexus.core.feature.home.HomeServiceImpl;
 import org.bxteam.nexus.core.feature.teleport.TeleportServiceImpl;
 import org.bxteam.nexus.core.feature.warp.WarpServiceImpl;
@@ -66,6 +67,7 @@ public class NexusModule extends AbstractModule {
         this.bind(PluginConfigurationProvider.class).toInstance(configurationProvider);
         this.bind(ConfigurationManager.class).toInstance(configurationManager);
         this.bind(ExtendedLogger.class).toInstance(logger);
+        this.bind(VersionFetcher.class).toInstance(new ModrinthVersionFetcher("nexuss"));
         this.bind(Server.class).toInstance(plugin.getServer());
         this.bind(PluginManager.class).toInstance(plugin.getServer().getPluginManager());
         this.bind(PluginDescriptionFile.class).toInstance(plugin.getDescription());
@@ -73,7 +75,6 @@ public class NexusModule extends AbstractModule {
         this.bind(Path.class).annotatedWith(Names.named("dataFolder")).toInstance(plugin.getDataFolder().toPath());
         this.bind(AudienceProvider.class).toInstance(BukkitAudiences.create(plugin));
         this.bind(PlaceholderRegistry.class).to(PlaceholderRegistryImpl.class).in(Singleton.class);
-        this.bind(UpdateService.class).asEagerSingleton();
     }
 
     private void bindServices() {
