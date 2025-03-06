@@ -2,8 +2,8 @@ package org.bxteam.nexus.core.integration;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import io.papermc.paper.plugin.configuration.PluginMeta;
 import lombok.RequiredArgsConstructor;
-import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bxteam.commons.logger.ExtendedLogger;
 import org.bxteam.nexus.core.integration.placeholderapi.PlaceholderAPIIntegration;
@@ -14,14 +14,14 @@ import org.bxteam.nexus.core.placeholder.PlaceholderRegistry;
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
 public class IntegrationRegistry {
     private final PluginManager pluginManager;
-    private final PluginDescriptionFile pluginDescriptionFile;
+    private final PluginMeta pluginMeta;
     private final PlaceholderRegistry placeholderRegistry;
     private final ExtendedLogger logger;
 
     public void init() {
         this.tryEnable("PlaceholderAPI", () -> {
             this.placeholderRegistry.registerPlaceholder(new PlaceholderAPIReplacer());
-            new PlaceholderAPIIntegration(this.placeholderRegistry, this.pluginDescriptionFile).enable();
+            new PlaceholderAPIIntegration(this.placeholderRegistry, this.pluginMeta).enable();
         });
     }
 

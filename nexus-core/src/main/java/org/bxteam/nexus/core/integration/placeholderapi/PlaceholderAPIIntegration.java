@@ -2,10 +2,10 @@ package org.bxteam.nexus.core.integration.placeholderapi;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import io.papermc.paper.plugin.configuration.PluginMeta;
 import lombok.RequiredArgsConstructor;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.PluginDescriptionFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.bxteam.nexus.core.integration.Integration;
@@ -18,7 +18,7 @@ import java.util.Optional;
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
 public class PlaceholderAPIIntegration extends PlaceholderExpansion implements Integration {
     private final PlaceholderRegistry placeholderRegistry;
-    private final PluginDescriptionFile pluginDescriptionFile;
+    private final PluginMeta pluginMeta;
 
     @Override
     public void enable() {
@@ -32,12 +32,12 @@ public class PlaceholderAPIIntegration extends PlaceholderExpansion implements I
 
     @Override
     public @NotNull String getAuthor() {
-        return String.join(", ", pluginDescriptionFile.getAuthors());
+        return String.join(", ", pluginMeta.getAuthors());
     }
 
     @Override
     public @NotNull String getVersion() {
-        return this.pluginDescriptionFile.getVersion();
+        return this.pluginMeta.getVersion();
     }
 
     @Override

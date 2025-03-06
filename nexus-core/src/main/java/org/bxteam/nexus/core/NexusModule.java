@@ -3,13 +3,13 @@ package org.bxteam.nexus.core;
 import com.google.inject.AbstractModule;
 import com.google.inject.Singleton;
 import com.google.inject.name.Names;
+import io.papermc.paper.plugin.configuration.PluginMeta;
 import lombok.RequiredArgsConstructor;
 import net.kyori.adventure.platform.AudienceProvider;
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Server;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.ServicesManager;
 import org.bxteam.commons.adventure.processor.AdventureLegacyColorPostProcessor;
@@ -48,6 +48,7 @@ import org.bxteam.nexus.feature.warp.WarpService;
 
 import java.nio.file.Path;
 
+@SuppressWarnings("UnstableApiUsage")
 @RequiredArgsConstructor
 public class NexusModule extends AbstractModule {
     private final PluginConfigurationProvider configurationProvider;
@@ -70,7 +71,7 @@ public class NexusModule extends AbstractModule {
         this.bind(VersionFetcher.class).toInstance(new ModrinthVersionFetcher("nexuss"));
         this.bind(Server.class).toInstance(plugin.getServer());
         this.bind(PluginManager.class).toInstance(plugin.getServer().getPluginManager());
-        this.bind(PluginDescriptionFile.class).toInstance(plugin.getDescription());
+        this.bind(PluginMeta.class).toInstance(plugin.getPluginMeta());
         this.bind(ServicesManager.class).toInstance(plugin.getServer().getServicesManager());
         this.bind(Path.class).annotatedWith(Names.named("dataFolder")).toInstance(plugin.getDataFolder().toPath());
         this.bind(AudienceProvider.class).toInstance(BukkitAudiences.create(plugin));
