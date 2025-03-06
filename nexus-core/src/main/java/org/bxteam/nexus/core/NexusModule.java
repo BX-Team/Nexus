@@ -15,6 +15,7 @@ import org.bukkit.plugin.ServicesManager;
 import org.bxteam.commons.adventure.processor.AdventureLegacyColorPostProcessor;
 import org.bxteam.commons.adventure.processor.AdventureLegacyColorPreProcessor;
 import org.bxteam.commons.adventure.processor.AdventureUrlPostProcessor;
+import org.bxteam.commons.logger.ExtendedLogger;
 import org.bxteam.nexus.core.configuration.ConfigurationManager;
 import org.bxteam.nexus.core.feature.afk.AfkServiceImpl;
 import org.bxteam.nexus.core.feature.chat.ChatServiceImpl;
@@ -51,6 +52,7 @@ public class NexusModule extends AbstractModule {
     private final PluginConfigurationProvider configurationProvider;
     private final Plugin plugin;
     private final ConfigurationManager configurationManager;
+    private final ExtendedLogger logger;
 
     @Override
     protected void configure() {
@@ -63,6 +65,7 @@ public class NexusModule extends AbstractModule {
         this.bind(Plugin.class).toInstance(plugin);
         this.bind(PluginConfigurationProvider.class).toInstance(configurationProvider);
         this.bind(ConfigurationManager.class).toInstance(configurationManager);
+        this.bind(ExtendedLogger.class).toInstance(logger);
         this.bind(Server.class).toInstance(plugin.getServer());
         this.bind(PluginManager.class).toInstance(plugin.getServer().getPluginManager());
         this.bind(PluginDescriptionFile.class).toInstance(plugin.getDescription());

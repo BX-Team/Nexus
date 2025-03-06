@@ -10,7 +10,6 @@ import org.bukkit.plugin.Plugin;
 import org.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import org.bxteam.nexus.core.multification.MultificationManager;
 import org.bxteam.nexus.core.registration.annotations.component.Controller;
-import org.bxteam.nexus.core.utils.Logger;
 import org.bxteam.nexus.event.NexusInitializeEvent;
 
 import java.util.List;

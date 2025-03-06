@@ -3,6 +3,11 @@ package org.bxteam.nexus.core;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import org.bukkit.plugin.Plugin;
+import org.bxteam.commons.logger.ExtendedLogger;
+import org.bxteam.commons.logger.LogLevel;
+import org.bxteam.commons.logger.appender.Appender;
+import org.bxteam.commons.logger.appender.ConsoleAppender;
+import org.bxteam.commons.logger.appender.JsonAppender;
 import org.bxteam.nexus.NexusApiProvider;
 import org.bxteam.nexus.core.configuration.ConfigurationManager;
 import org.bxteam.nexus.core.configuration.commands.CommandsConfigProvider;
@@ -18,20 +23,40 @@ import org.bxteam.nexus.core.scheduler.SchedulerSetup;
 import org.bxteam.nexus.core.translation.TranslationProvider;
 import org.bxteam.nexus.event.NexusInitializeEvent;
 
+import java.io.File;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class Nexus {
     private final PluginConfigurationProvider configurationProvider;
     private final Injector injector;
+    private final ExtendedLogger logger;
 
     public Nexus(Plugin plugin) {
-        NexusEnvironment environment = new NexusEnvironment(plugin);
+        Appender consoleAppender = new ConsoleAppender("[{loggerName}] {logLevel}: {message}");
+        String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date(System.currentTimeMillis()));
+        File logsFile = new File("plugins/Nexus/logs/nexus-logs-" + date + ".txt");
+        if (!logsFile.exists()) {
+            try {
+                logsFile.getParentFile().mkdirs();
+                logsFile.createNewFile();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        JsonAppender jsonAppender = new JsonAppender(false, false, true, logsFile.getPath());
+        this.logger = new ExtendedLogger("Nexus", LogLevel.INFO, List.of(consoleAppender, jsonAppender), new ArrayList<>());
+
+        NexusEnvironment environment = new NexusEnvironment(plugin, logger);
 
         ConfigurationManager configurationManager = new ConfigurationManager();
-        this.configurationProvider = new PluginConfigurationProvider(plugin.getDataFolder().toPath(), configurationManager);
+        this.configurationProvider = new PluginConfigurationProvider(plugin.getDataFolder().toPath(), configurationManager, logger);
 
         this.injector = Guice.createInjector(
-                        new NexusModule(this.configurationProvider, plugin, configurationManager),
+                        new NexusModule(this.configurationProvider, plugin, configurationManager, logger),
                         new ConfigModule(),
                         new MultificationModule(),
                         new DatabaseModule(this.configurationProvider),

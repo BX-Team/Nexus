@@ -21,6 +21,7 @@ import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Server;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.Plugin;
+import org.bxteam.commons.logger.ExtendedLogger;
 import org.bxteam.nexus.core.registration.litecommands.commands.CommandCooldownMessage;
 import org.bxteam.nexus.core.configuration.commands.CommandsConfigProvider;
 import org.bxteam.nexus.core.multification.MultificationManager;
@@ -28,7 +29,6 @@ import org.bxteam.nexus.core.registration.annotations.litecommands.LiteArgument;
 import org.bxteam.nexus.core.registration.annotations.litecommands.LiteEditor;
 import org.bxteam.nexus.core.registration.annotations.litecommands.LiteHandler;
 import org.bxteam.nexus.core.utils.ClassgraphUtil;
-import org.bxteam.nexus.core.utils.Logger;
 
 import java.lang.annotation.Annotation;
 import java.util.function.Consumer;
@@ -36,13 +36,15 @@ import java.util.function.Consumer;
 @Singleton
 public class LiteCommandsRegistry {
     private final Injector injector;
+    private final ExtendedLogger logger;
     private final LiteCommandsAnnotations<CommandSender> annotations;
     private final LiteCommandsBuilder<CommandSender, ?, ?> liteCommandsBuilder;
     private LiteCommands<CommandSender> liteCommands;
 
     @Inject
-    public LiteCommandsRegistry(Injector injector, Plugin plugin, Server server, AudienceProvider audiencesProvider, @Named("colorMiniMessage") MiniMessage miniMessage) {
+    public LiteCommandsRegistry(Injector injector, ExtendedLogger extendedLogger, Plugin plugin, Server server, AudienceProvider audiencesProvider, @Named("colorMiniMessage") MiniMessage miniMessage) {
         this.injector = injector;
+        this.logger = extendedLogger;
         this.annotations = LiteCommandsAnnotations.create();
         registerAnnotatedClasses(annotations, Command.class, annotations::load);
 
@@ -69,7 +71,7 @@ public class LiteCommandsRegistry {
                 Object instance = injector.getInstance(classInfo.loadClass());
                 consumer.accept(instance);
             } catch (Exception e) {
-                Logger.log("Failed to load instance: " + e.getMessage(), Logger.LogLevel.ERROR);
+                logger.error("Failed to load instance: " + e.getMessage());
             }
         });
     }
@@ -83,7 +85,7 @@ public class LiteCommandsRegistry {
                 ArgumentResolverBase<CommandSender, Object> argumentResolver = (ArgumentResolverBase<CommandSender, Object>) injector.getInstance(argumentClass);
                 registerArgument((Class<Object>) liteArgument.type(), ArgumentKey.of(liteArgument.name()), argumentResolver);
             } catch (Exception e) {
-                Logger.log("Failed to load argument instance: " + e.getMessage(), Logger.LogLevel.ERROR);
+                logger.error("Failed to load argument instance: " + e.getMessage());
             }
         });
 
@@ -94,7 +96,7 @@ public class LiteCommandsRegistry {
                 ResultHandler<CommandSender, Object> resultHandler = (ResultHandler<CommandSender, Object>) injector.getInstance(handlerClass);
                 registerResultHandler((Class<Object>) liteHandler.value(), resultHandler);
             } catch (Exception e) {
-                Logger.log("Failed to load handler instance: " + e.getMessage(), Logger.LogLevel.ERROR);
+                logger.error("Failed to load handler instance: " + e.getMessage());
             }
         });
     }

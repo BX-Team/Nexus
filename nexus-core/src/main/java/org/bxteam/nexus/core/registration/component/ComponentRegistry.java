@@ -5,22 +5,24 @@ import com.google.inject.Injector;
 import org.bukkit.Server;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
+import org.bxteam.commons.logger.ExtendedLogger;
 import org.bxteam.commons.scheduler.Scheduler;
 import org.bxteam.nexus.core.utils.ClassgraphUtil;
 import org.bxteam.nexus.core.registration.annotations.component.Controller;
 import org.bxteam.nexus.core.registration.annotations.component.Task;
-import org.bxteam.nexus.core.utils.Logger;
 
 public class ComponentRegistry {
     private final Injector injector;
     private final Server server;
     private final Plugin plugin;
+    private final ExtendedLogger logger;
 
     @Inject
-    public ComponentRegistry(Injector injector, Server server, Plugin plugin) {
+    public ComponentRegistry(Injector injector, Server server, Plugin plugin, ExtendedLogger logger) {
         this.injector = injector;
         this.server = server;
         this.plugin = plugin;
+        this.logger = logger;
 
         registerControllers();
         registerTasks();
@@ -37,7 +39,7 @@ public class ComponentRegistry {
                     server.getPluginManager().registerEvents(listenerInstance, plugin);
                 }
             } catch (Exception e) {
-                Logger.log("Failed to register listener: " + e.getMessage(), Logger.LogLevel.ERROR);
+                logger.error("Failed to register listener: " + e.getMessage());
                 e.printStackTrace();
             }
         });
@@ -62,7 +64,7 @@ public class ComponentRegistry {
                     }
                 }
             } catch (Exception e) {
-                Logger.log("Failed to register task: " + e.getMessage(), Logger.LogLevel.ERROR);
+                logger.error("Failed to register task: " + e.getMessage());
                 e.printStackTrace();
             }
         });

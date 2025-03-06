@@ -2,8 +2,8 @@ package org.bxteam.nexus.core.configuration.plugin;
 
 import com.google.inject.Singleton;
 import lombok.Getter;
+import org.bxteam.commons.logger.ExtendedLogger;
 import org.bxteam.nexus.core.configuration.ConfigurationManager;
-import org.bxteam.nexus.core.utils.Logger;
 
 import java.io.File;
 import java.nio.file.Path;
@@ -15,10 +15,12 @@ public class PluginConfigurationProvider {
 
     private final Path dataFolder;
     private final ConfigurationManager configurationManager;
+    private final ExtendedLogger logger;
 
-    public PluginConfigurationProvider(Path dataFolder, ConfigurationManager configurationManager) {
+    public PluginConfigurationProvider(Path dataFolder, ConfigurationManager configurationManager, ExtendedLogger logger) {
         this.dataFolder = dataFolder;
         this.configurationManager = configurationManager;
+        this.logger = logger;
 
         this.createConfig();
     }
@@ -27,10 +29,10 @@ public class PluginConfigurationProvider {
         File configFile = this.dataFolder.resolve("config.yml").toFile();
 
         try {
-            Logger.log("Loading confuguration...");
+            logger.info("Loading confuguration...");
             this.configuration = configurationManager.create(PluginConfiguration.class, configFile);
         } catch (Exception e) {
-            Logger.log("Could not create config.yml file", Logger.LogLevel.ERROR);
+            logger.error("Could not create config.yml file");
             e.printStackTrace();
         }
     }

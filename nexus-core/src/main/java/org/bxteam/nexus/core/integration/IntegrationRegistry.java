@@ -5,10 +5,10 @@ import com.google.inject.Singleton;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
+import org.bxteam.commons.logger.ExtendedLogger;
 import org.bxteam.nexus.core.integration.placeholderapi.PlaceholderAPIIntegration;
 import org.bxteam.nexus.core.integration.placeholderapi.PlaceholderAPIReplacer;
 import org.bxteam.nexus.core.placeholder.PlaceholderRegistry;
-import org.bxteam.nexus.core.utils.Logger;
 
 @Singleton
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
@@ -16,6 +16,7 @@ public class IntegrationRegistry {
     private final PluginManager pluginManager;
     private final PluginDescriptionFile pluginDescriptionFile;
     private final PlaceholderRegistry placeholderRegistry;
+    private final ExtendedLogger logger;
 
     public void init() {
         this.tryEnable("PlaceholderAPI", () -> {
@@ -28,9 +29,9 @@ public class IntegrationRegistry {
         if (pluginManager.isPluginEnabled(pluginName)) {
             try {
                 integration.enable();
-                Logger.log("Enabled integration " + pluginName, Logger.LogLevel.INFO);
+                logger.info("Enabled integration " + pluginName);
             } catch (Exception e) {
-                Logger.log("Failed to enable integration " + pluginName, Logger.LogLevel.ERROR);
+                logger.error("Failed to enable integration " + pluginName);
                 e.printStackTrace();
             }
         }

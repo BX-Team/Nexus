@@ -4,9 +4,9 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.google.inject.name.Named;
 import lombok.Getter;
+import org.bxteam.commons.logger.ExtendedLogger;
 import org.bxteam.nexus.core.configuration.ConfigurationManager;
 import org.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
-import org.bxteam.nexus.core.utils.Logger;
 
 import java.io.File;
 import java.nio.file.Path;
@@ -21,11 +21,13 @@ public class TranslationProvider {
 
     private final Path dataFolder;
     private final ConfigurationManager configurationManager;
+    private final ExtendedLogger logger;
 
     @Inject
-    public TranslationProvider(@Named("dataFolder") Path dataFolder, PluginConfigurationProvider configurationProvider, ConfigurationManager configurationManager) {
+    public TranslationProvider(@Named("dataFolder") Path dataFolder, PluginConfigurationProvider configurationProvider, ConfigurationManager configurationManager, ExtendedLogger logger) {
         this.dataFolder = dataFolder;
         this.configurationManager = configurationManager;
+        this.logger = logger;
 
         this.createTranslationFiles();
         this.setTranslation(configurationProvider.configuration().language());
@@ -42,7 +44,7 @@ public class TranslationProvider {
                     translations.put(language, translation);
                 }
             } catch (Exception e) {
-                Logger.log("Could not create translation file for " + language.lang() + ".yml", Logger.LogLevel.ERROR);
+                logger.error("Could not create translation file for " + language.lang() + ".yml");
                 e.printStackTrace();
             }
         }
