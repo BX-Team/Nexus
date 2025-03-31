@@ -26,7 +26,7 @@ triumphgui = { module = "dev.triumphteam:triumph-gui", version = "3.1.11" }
 
 guava = { module = "com.google.guava:guava", version = "33.4.6-jre" }
 gson = { module = "com.google.code.gson:gson", version = "2.12.1" }
-lombok = { module = "org.projectlombok:lombok", version = "1.18.36" }
+lombok = { module = "org.projectlombok:lombok", version = "1.18.38" }
 
 ormlite = { module = "com.j256.ormlite:ormlite-core", version.ref = "ormlite" }
 ormlite-jdbc = { module = "com.j256.ormlite:ormlite-jdbc", version.ref = "ormlite" }
