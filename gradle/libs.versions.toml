@@ -5,7 +5,7 @@ litecommands = "3.9.7"
 adventure = "4.3.4"
 minimessage = "4.19.0"
 multification = "1.2.1"
-okaeri = "5.0.6"
+okaeri = "5.0.8"
 
 [plugins]
 shadow = { id = "com.github.johnrengelman.shadow", version = "8.1.1" }
