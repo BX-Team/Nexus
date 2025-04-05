@@ -3,7 +3,7 @@ minecraft = "1.19.4-R0.1-SNAPSHOT"
 ormlite = "6.1"
 litecommands = "3.9.7"
 adventure = "4.3.4"
-minimessage = "4.19.0"
+minimessage = "4.20.0"
 multification = "1.2.1"
 okaeri = "5.0.8"
 
