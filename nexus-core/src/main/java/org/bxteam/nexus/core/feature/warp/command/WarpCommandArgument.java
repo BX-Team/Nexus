@@ -10,7 +10,7 @@ import org.bukkit.command.CommandSender;
 import org.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import org.bxteam.nexus.core.multification.MultificationLiteArgument;
 import org.bxteam.nexus.core.multification.MultificationManager;
-import org.bxteam.nexus.core.registration.annotations.litecommands.LiteArgument;
+import org.bxteam.nexus.core.annotations.litecommands.LiteArgument;
 import org.bxteam.nexus.core.translation.Translation;
 import org.bxteam.nexus.core.translation.TranslationProvider;
 import org.bxteam.nexus.feature.warp.Warp;

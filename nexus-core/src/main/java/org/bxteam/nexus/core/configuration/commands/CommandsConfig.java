@@ -3,7 +3,7 @@ package org.bxteam.nexus.core.configuration.commands;
 import eu.okaeri.configs.OkaeriConfig;
 import eu.okaeri.configs.annotation.Comment;
 import lombok.Getter;
-import org.bxteam.nexus.core.registration.litecommands.commands.config.CommandConfiguration;
+import org.bxteam.nexus.core.integration.litecommands.commands.config.CommandConfiguration;
 
 import java.util.Map;
 

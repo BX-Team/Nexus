@@ -9,7 +9,7 @@ import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.Server;
 import org.bukkit.entity.Player;
-import org.bxteam.nexus.annotations.scan.command.CommandDocs;
+import org.bxteam.nexus.docs.scan.command.CommandDocs;
 import org.bxteam.nexus.core.multification.MultificationManager;
 import org.bxteam.nexus.feature.teleport.TeleportService;
 import org.bxteam.nexus.feature.teleportrequest.TeleportRequestService;

@@ -10,7 +10,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.bxteam.nexus.core.registration.annotations.component.Controller;
+import org.bxteam.nexus.core.annotations.component.Controller;
 import org.bxteam.nexus.feature.teleport.TeleportService;
 
 import java.util.UUID;

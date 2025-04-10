@@ -10,7 +10,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.server.ServerListPingEvent;
 import org.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
-import org.bxteam.nexus.core.registration.annotations.component.Controller;
+import org.bxteam.nexus.core.annotations.component.Controller;
 import org.bxteam.nexus.core.utils.RandomElementUtil;
 
 import java.util.Optional;

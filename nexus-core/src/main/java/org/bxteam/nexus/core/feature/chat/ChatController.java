@@ -9,7 +9,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import org.bxteam.nexus.core.multification.MultificationManager;
-import org.bxteam.nexus.core.registration.annotations.component.Controller;
+import org.bxteam.nexus.core.annotations.component.Controller;
 import org.bxteam.nexus.core.utils.DurationUtil;
 import org.bxteam.nexus.feature.chat.ChatService;
 
