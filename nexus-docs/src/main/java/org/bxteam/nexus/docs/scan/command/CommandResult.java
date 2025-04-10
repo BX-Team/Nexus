@@ -1,4 +1,4 @@
-package org.bxteam.nexus.annotations.scan.command;
+package org.bxteam.nexus.docs.scan.command;
 
 import java.util.List;
 

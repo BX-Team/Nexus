@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bxteam.commons.scheduler.Scheduler;
-import org.bxteam.nexus.annotations.scan.command.CommandDocs;
+import org.bxteam.nexus.docs.scan.command.CommandDocs;
 import org.bxteam.nexus.core.multification.MultificationManager;
 
 @Command(name = "rain")

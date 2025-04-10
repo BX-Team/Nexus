@@ -14,7 +14,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bxteam.commons.adventure.util.AdventureUtil;
-import org.bxteam.nexus.annotations.scan.command.CommandDocs;
+import org.bxteam.nexus.docs.scan.command.CommandDocs;
 import org.bxteam.nexus.core.multification.MultificationManager;
 
 @Command(name = "itemname", aliases = {"iname", "itemrename"})

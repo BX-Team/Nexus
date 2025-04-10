@@ -1,4 +1,4 @@
-package org.bxteam.nexus.annotations.scan.command;
+package org.bxteam.nexus.docs.scan.command;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

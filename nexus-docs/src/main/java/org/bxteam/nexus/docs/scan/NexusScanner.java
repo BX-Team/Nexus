@@ -1,4 +1,4 @@
-package org.bxteam.nexus.annotations.scan;
+package org.bxteam.nexus.docs.scan;
 
 import io.github.classgraph.ClassGraph;
 import io.github.classgraph.ClassInfo;

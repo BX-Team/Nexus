@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bxteam.commons.bukkit.position.Position;
-import org.bxteam.nexus.annotations.scan.command.CommandDocs;
+import org.bxteam.nexus.docs.scan.command.CommandDocs;
 import org.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import org.bxteam.nexus.core.multification.MultificationManager;
 import org.bxteam.nexus.feature.spawn.SpawnService;

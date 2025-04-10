@@ -10,7 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bxteam.commons.bukkit.inventory.ItemUtil;
-import org.bxteam.nexus.annotations.scan.command.CommandDocs;
+import org.bxteam.nexus.docs.scan.command.CommandDocs;
 import org.bxteam.nexus.core.multification.MultificationManager;
 
 @Command(name = "hat")

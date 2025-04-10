@@ -1,9 +1,10 @@
-package org.bxteam.nexus.annotations.scan;
+package org.bxteam.nexus.docs;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.bxteam.nexus.annotations.scan.command.CommandResult;
-import org.bxteam.nexus.annotations.scan.command.CommandScanResolver;
+import org.bxteam.nexus.docs.scan.NexusScanner;
+import org.bxteam.nexus.docs.scan.command.CommandResult;
+import org.bxteam.nexus.docs.scan.command.CommandScanResolver;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -22,9 +23,7 @@ public class DocsGenerator {
                 .distinct()
                 .toList();
 
-        Gson gson = new GsonBuilder()
-                .setPrettyPrinting()
-                .create();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
         try (FileWriter writer = new FileWriter("assets" + File.separator + "commands.json")) {
             gson.toJson(results, writer);

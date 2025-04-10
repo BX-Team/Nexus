@@ -10,7 +10,7 @@ import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.command.CommandSender;
 import org.bxteam.commons.scheduler.Scheduler;
-import org.bxteam.nexus.annotations.scan.command.CommandDocs;
+import org.bxteam.nexus.docs.scan.command.CommandDocs;
 import org.bxteam.nexus.core.configuration.ConfigurationManager;
 import org.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import org.bxteam.nexus.core.multification.MultificationManager;

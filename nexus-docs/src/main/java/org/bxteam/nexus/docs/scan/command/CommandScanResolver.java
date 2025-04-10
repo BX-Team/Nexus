@@ -1,11 +1,11 @@
-package org.bxteam.nexus.annotations.scan.command;
+package org.bxteam.nexus.docs.scan.command;
 
 import dev.rollczi.litecommands.annotations.command.Command;
 import dev.rollczi.litecommands.annotations.execute.Execute;
 import dev.rollczi.litecommands.annotations.permission.Permission;
 import dev.rollczi.litecommands.annotations.permission.Permissions;
-import org.bxteam.nexus.annotations.scan.ScanRecord;
-import org.bxteam.nexus.annotations.scan.ScanResolver;
+import org.bxteam.nexus.docs.scan.ScanRecord;
+import org.bxteam.nexus.docs.scan.ScanResolver;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;

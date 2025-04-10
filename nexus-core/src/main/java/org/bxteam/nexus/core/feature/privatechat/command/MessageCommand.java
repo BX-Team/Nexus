@@ -9,7 +9,7 @@ import dev.rollczi.litecommands.annotations.join.Join;
 import dev.rollczi.litecommands.annotations.permission.Permission;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.entity.Player;
-import org.bxteam.nexus.annotations.scan.command.CommandDocs;
+import org.bxteam.nexus.docs.scan.command.CommandDocs;
 import org.bxteam.nexus.feature.privatechat.PrivateChatService;
 
 @Command(name = "message", aliases = {"msg", "m", "whisper", "w", "tell", "t"})

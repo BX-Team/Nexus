@@ -1,4 +1,4 @@
-package org.bxteam.nexus.annotations.scan;
+package org.bxteam.nexus.docs.scan;
 
 import java.lang.reflect.Method;
 import java.util.List;
