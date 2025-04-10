@@ -15,7 +15,7 @@ import org.bxteam.commons.adventure.util.AdventureUtil;
 import org.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import org.bxteam.nexus.core.placeholder.PlaceholderRegistry;
 import org.bxteam.nexus.core.placeholder.PlaceholderReplacer;
-import org.bxteam.nexus.core.registration.annotations.component.Controller;
+import org.bxteam.nexus.core.annotations.component.Controller;
 import org.bxteam.nexus.core.translation.Translation;
 import org.bxteam.nexus.core.translation.TranslationProvider;
 import org.bxteam.nexus.event.NexusInitializeEvent;

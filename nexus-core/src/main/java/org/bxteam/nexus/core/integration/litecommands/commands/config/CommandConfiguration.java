@@ -1,4 +1,4 @@
-package org.bxteam.nexus.core.registration.litecommands.commands.config;
+package org.bxteam.nexus.core.integration.litecommands.commands.config;
 
 import com.eternalcode.multification.notice.Notice;
 import eu.okaeri.configs.OkaeriConfig;

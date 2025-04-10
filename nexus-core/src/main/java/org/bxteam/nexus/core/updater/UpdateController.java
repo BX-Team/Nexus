@@ -12,7 +12,7 @@ import org.bxteam.commons.logger.ExtendedLogger;
 import org.bxteam.commons.updater.VersionFetcher;
 import org.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
 import org.bxteam.nexus.core.multification.MultificationManager;
-import org.bxteam.nexus.core.registration.annotations.component.Controller;
+import org.bxteam.nexus.core.annotations.component.Controller;
 import org.bxteam.nexus.event.NexusInitializeEvent;
 
 import java.util.List;

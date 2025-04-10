@@ -1,4 +1,4 @@
-package org.bxteam.nexus.core.registration.litecommands.handler;
+package org.bxteam.nexus.core.integration.litecommands.handler;
 
 import com.eternalcode.multification.notice.Notice;
 import com.google.inject.Inject;
@@ -8,7 +8,7 @@ import dev.rollczi.litecommands.invocation.Invocation;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.command.CommandSender;
 import org.bxteam.nexus.core.multification.MultificationManager;
-import org.bxteam.nexus.core.registration.annotations.litecommands.LiteHandler;
+import org.bxteam.nexus.core.annotations.litecommands.LiteHandler;
 
 @LiteHandler(Notice.class)
 @RequiredArgsConstructor(onConstructor = @__(@Inject))

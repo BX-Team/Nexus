@@ -1,4 +1,4 @@
-package org.bxteam.nexus.core.registration.litecommands;
+package org.bxteam.nexus.core.integration.litecommands;
 
 import com.google.inject.Inject;
 import com.google.inject.Injector;
@@ -22,19 +22,19 @@ import org.bukkit.Server;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.Plugin;
 import org.bxteam.commons.logger.ExtendedLogger;
-import org.bxteam.nexus.core.registration.litecommands.commands.CommandCooldownMessage;
+import org.bxteam.nexus.core.integration.litecommands.commands.CommandCooldownMessage;
 import org.bxteam.nexus.core.configuration.commands.CommandsConfigProvider;
 import org.bxteam.nexus.core.multification.MultificationManager;
-import org.bxteam.nexus.core.registration.annotations.litecommands.LiteArgument;
-import org.bxteam.nexus.core.registration.annotations.litecommands.LiteEditor;
-import org.bxteam.nexus.core.registration.annotations.litecommands.LiteHandler;
+import org.bxteam.nexus.core.annotations.litecommands.LiteArgument;
+import org.bxteam.nexus.core.annotations.litecommands.LiteEditor;
+import org.bxteam.nexus.core.annotations.litecommands.LiteHandler;
 import org.bxteam.nexus.core.utils.ClassgraphUtil;
 
 import java.lang.annotation.Annotation;
 import java.util.function.Consumer;
 
 @Singleton
-public class LiteCommandsRegistry {
+public class LiteCommandsSetup {
     private final Injector injector;
     private final ExtendedLogger logger;
     private final LiteCommandsAnnotations<CommandSender> annotations;
@@ -42,7 +42,7 @@ public class LiteCommandsRegistry {
     private LiteCommands<CommandSender> liteCommands;
 
     @Inject
-    public LiteCommandsRegistry(Injector injector, ExtendedLogger extendedLogger, Plugin plugin, Server server, AudienceProvider audiencesProvider, @Named("colorMiniMessage") MiniMessage miniMessage) {
+    public LiteCommandsSetup(Injector injector, ExtendedLogger extendedLogger, Plugin plugin, Server server, AudienceProvider audiencesProvider, @Named("colorMiniMessage") MiniMessage miniMessage) {
         this.injector = injector;
         this.logger = extendedLogger;
         this.annotations = LiteCommandsAnnotations.create();

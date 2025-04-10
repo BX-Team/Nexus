@@ -11,7 +11,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bxteam.commons.bukkit.position.Position;
 import org.bxteam.commons.bukkit.position.PositionFactory;
 import org.bxteam.nexus.core.configuration.plugin.PluginConfigurationProvider;
-import org.bxteam.nexus.core.registration.annotations.component.Controller;
+import org.bxteam.nexus.core.annotations.component.Controller;
 
 @Controller
 @RequiredArgsConstructor(onConstructor = @__(@Inject))

@@ -1,4 +1,4 @@
-package org.bxteam.nexus.core.registration.annotations.component;
+package org.bxteam.nexus.core.annotations.component;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

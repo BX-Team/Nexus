@@ -1,4 +1,4 @@
-package org.bxteam.nexus.core.registration.litecommands.commands;
+package org.bxteam.nexus.core.integration.litecommands.commands;
 
 import com.eternalcode.multification.notice.Notice;
 import com.google.inject.Inject;
@@ -9,7 +9,7 @@ import dev.rollczi.litecommands.time.DurationParser;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.command.CommandSender;
 import org.bxteam.nexus.core.configuration.commands.CommandsConfigProvider;
-import org.bxteam.nexus.core.registration.litecommands.commands.config.CommandConfiguration;
+import org.bxteam.nexus.core.integration.litecommands.commands.config.CommandConfiguration;
 import org.bxteam.nexus.core.multification.MultificationManager;
 
 import java.time.Duration;

@@ -1,4 +1,4 @@
-package org.bxteam.nexus.core.registration.annotations.litecommands;
+package org.bxteam.nexus.core.annotations.litecommands;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

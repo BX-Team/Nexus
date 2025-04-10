@@ -1,4 +1,4 @@
-package org.bxteam.nexus.core.registration.component;
+package org.bxteam.nexus.core.annotations;
 
 import com.google.inject.Inject;
 import com.google.inject.Injector;
@@ -8,17 +8,17 @@ import org.bukkit.plugin.Plugin;
 import org.bxteam.commons.logger.ExtendedLogger;
 import org.bxteam.commons.scheduler.Scheduler;
 import org.bxteam.nexus.core.utils.ClassgraphUtil;
-import org.bxteam.nexus.core.registration.annotations.component.Controller;
-import org.bxteam.nexus.core.registration.annotations.component.Task;
+import org.bxteam.nexus.core.annotations.component.Controller;
+import org.bxteam.nexus.core.annotations.component.Task;
 
-public class ComponentRegistry {
+public class AnnotationSetup {
     private final Injector injector;
     private final Server server;
     private final Plugin plugin;
     private final ExtendedLogger logger;
 
     @Inject
-    public ComponentRegistry(Injector injector, Server server, Plugin plugin, ExtendedLogger logger) {
+    public AnnotationSetup(Injector injector, Server server, Plugin plugin, ExtendedLogger logger) {
         this.injector = injector;
         this.server = server;
         this.plugin = plugin;

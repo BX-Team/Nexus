@@ -1,4 +1,4 @@
-package org.bxteam.nexus.core.registration.annotations.litecommands;
+package org.bxteam.nexus.core.annotations.litecommands;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -6,10 +6,12 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Used to register handlers for LiteCommands.
+ * Used to register an argument for LiteCommands.
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface LiteHandler {
-    Class<?> value();
+public @interface LiteArgument {
+    Class<?> type();
+
+    String name() default "";
 }

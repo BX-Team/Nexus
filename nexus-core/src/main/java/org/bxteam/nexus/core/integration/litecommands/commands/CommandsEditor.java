@@ -1,4 +1,4 @@
-package org.bxteam.nexus.core.registration.litecommands.commands;
+package org.bxteam.nexus.core.integration.litecommands.commands;
 
 import com.google.inject.Inject;
 import dev.rollczi.litecommands.command.builder.CommandBuilder;
@@ -8,8 +8,8 @@ import dev.rollczi.litecommands.meta.Meta;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.command.CommandSender;
 import org.bxteam.nexus.core.configuration.commands.CommandsConfigProvider;
-import org.bxteam.nexus.core.registration.litecommands.commands.config.CommandConfiguration;
-import org.bxteam.nexus.core.registration.annotations.litecommands.LiteEditor;
+import org.bxteam.nexus.core.integration.litecommands.commands.config.CommandConfiguration;
+import org.bxteam.nexus.core.annotations.litecommands.LiteEditor;
 
 import java.util.Map;
 
