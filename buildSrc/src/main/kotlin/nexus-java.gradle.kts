@@ -12,5 +12,5 @@ java {
 tasks.withType<JavaCompile> {
     options.compilerArgs = listOf("-Xlint:deprecation", "-parameters")
     options.encoding = "UTF-8"
-    options.release = 17
+    options.release = 21
 }

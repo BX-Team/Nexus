@@ -10,7 +10,7 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.LlamaSpit;
 import org.bukkit.entity.Player;
-import org.bxteam.nexus.annotations.scan.command.CommandDocs;
+import org.bxteam.nexus.docs.scan.command.CommandDocs;
 import org.bxteam.nexus.core.multification.MultificationManager;
 
 @Command(name = "spit")
