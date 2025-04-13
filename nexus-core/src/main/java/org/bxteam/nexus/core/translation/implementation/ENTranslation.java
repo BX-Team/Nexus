@@ -481,6 +481,17 @@ public class ENTranslation extends OkaeriConfig implements Translation {
         public Notice helpMessageSend = Notice.chat("<green>Your help message has been sent to all online staff members!");
     }
 
+    @Comment({"", "This section is responsible for the sign-editor command messages."})
+    public ENSignEditorSection signEditor = new ENSignEditorSection();
+
+    @Getter
+    public class ENSignEditorSection extends OkaeriConfig implements SignEditorSection {
+        public Notice noSignFound = Notice.chat("<dark_red>No sign found! Look at the sign and execute the command again.");
+        public Notice invalidIndex = Notice.chat("<dark_red>This value is not a valid line index! Must be 1-4");
+        @Comment("{LINE} - Line number, {TEXT} - Text to set")
+        public Notice lineSet = Notice.chat("<green>Line <white>{LINE} <green>has been set to <white>{TEXT}");
+    }
+
     @Comment({"", "This section is responsible for the fun-related messages."})
     public ENFunSection fun = new ENFunSection();
 

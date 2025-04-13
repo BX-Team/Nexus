@@ -481,6 +481,17 @@ public class RUTranslation extends OkaeriConfig implements Translation {
         public Notice helpMessageSend = Notice.chat("<green>Ваш запрос на помощь был отправлен всем администраторам которые находятся на сервере!");
     }
 
+    @Comment({"", "This section is responsible for the sign-editor command messages."})
+    public RUSignEditorSection signEditor = new RUSignEditorSection();
+
+    @Getter
+    public class RUSignEditorSection extends OkaeriConfig implements SignEditorSection {
+        public Notice noSignFound = Notice.chat("<dark_red>Не найдено таблички! Посмотрите на нее и запустите эту команду заново.");
+        public Notice invalidIndex = Notice.chat("<dark_red>Линии с таким номером не существует! Должно быть от 1 до 4");
+        @Comment("{LINE} - Номер линии, {TEXT} - Установленный текст")
+        public Notice lineSet = Notice.chat("<green>Линия {LINE} была установлена на <white>{TEXT}");
+    }
+
     @Comment({"", "Этот раздел отвечает за веселые команды :)"})
     public RUFunSection fun = new RUFunSection();
 

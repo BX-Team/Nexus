@@ -301,6 +301,14 @@ public interface Translation {
         Notice helpMessageSend();
     }
 
+    SignEditorSection signEditor();
+
+    interface SignEditorSection {
+        Notice noSignFound();
+        Notice invalidIndex();
+        Notice lineSet();
+    }
+
     FunSection fun();
 
     interface FunSection {
