@@ -22,7 +22,7 @@ placeholderapi = { module = "me.clip:placeholderapi", version = "2.11.6" }
 bstats = { module = "org.bstats:bstats-bukkit", version = "3.1.0" }
 guice = { module = "com.google.inject:guice", version = "7.0.0" }
 classgraph = { module = "io.github.classgraph:classgraph", version = "4.8.179" }
-triumphgui = { module = "dev.triumphteam:triumph-gui", version = "3.1.11" }
+triumphgui = { module = "dev.triumphteam:triumph-gui", version = "3.1.12" }
 
 guava = { module = "com.google.guava:guava", version = "33.4.8-jre" }
 gson = { module = "com.google.code.gson:gson", version = "2.13.0" }
