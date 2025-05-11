@@ -21,7 +21,7 @@ public class RUTranslation extends OkaeriConfig implements Translation {
             "присоединяйтесь к нам на нашем сервере Discord или откройте issue на GitHub.",
             "",
             "Issues: https://github.com/BX-Team/Nexus/issues",
-            "Discord: https://discord.gg/p7cxhw7E2M",
+            "Discord: https://discord.gg/qNyybSSPm5",
             "",
             "Вы можете использовать форматирование MiniMessage или стандартные цветовые коды &7, &c.",
             "Для получения дополнительной информации о MiniMessage, посетите https://docs.adventure.kyori.net/minimessage/format.html",

@@ -24,7 +24,7 @@ import java.util.Set;
 @Header("██║░╚███║███████╗██╔╝╚██╗╚██████╔╝██████╔╝")
 @Header("╚═╝░░╚══╝╚══════╝╚═╝░░╚═╝░╚═════╝░╚═════╝░")
 @Header("")
-@Header("Discord server: https://discord.gg/p7cxhw7E2M")
+@Header("Discord server: https://discord.gg/qNyybSSPm5")
 @Header("Modrinth: https://modrinth.com/plugin/nexuss")
 public class PluginConfiguration extends OkaeriConfig {
     @Comment("Should the plugin check for updates?")

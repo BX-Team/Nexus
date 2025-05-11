@@ -21,7 +21,7 @@ public class ENTranslation extends OkaeriConfig implements Translation {
             "join us in our Discord server or open an issue on GitHub.",
             "",
             "Issues: https://github.com/BX-Team/Nexus/issues",
-            "Discord: https://discord.gg/p7cxhw7E2M",
+            "Discord: https://discord.gg/qNyybSSPm5",
             "",
             "You can use MiniMessages formatting everywhere, or standard &7, &c color codes.",
             "For more information about MiniMessage, visit https://docs.adventure.kyori.net/minimessage/format.html",
