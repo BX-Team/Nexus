@@ -1,8 +1,10 @@
+import org.bxteam.runserver.ServerType
+
 plugins {
     `nexus-java`
     `nexus-repositories`
     alias(libs.plugins.shadow)
-    alias(libs.plugins.runpaper)
+    alias(libs.plugins.run.server)
     alias(libs.plugins.paperyml)
 }
 
@@ -53,16 +55,17 @@ tasks {
         }
     }
     runServer {
+        serverType(ServerType.PAPER)
         minecraftVersion("1.21.4")
-    }
-}
+        noGui(true)
+        acceptMojangEula()
 
-tasks.withType(xyz.jpenilla.runtask.task.AbstractRun::class) {
-    javaLauncher = javaToolchains.launcherFor {
-        vendor = JvmVendorSpec.JETBRAINS
-        languageVersion = JavaLanguageVersion.of(21)
+        downloadPlugins {
+            modrinth("fancyholograms", "2.5.0")
+            modrinth("luckperms", "v5.4.145-bukkit")
+            hangar("PlaceholderAPI", "2.11.6")
+        }
     }
-    jvmArgs("-XX:+AllowEnhancedClassRedefinition")
 }
 
 paper {

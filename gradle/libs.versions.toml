@@ -10,8 +10,8 @@ okaeri = "5.0.8"
 [plugins]
 shadow = { id = "com.gradleup.shadow", version = "8.3.6" }
 userdev = { id = "io.papermc.paperweight.userdev", version = "1.7.7" }
-runpaper = { id = "xyz.jpenilla.run-paper", version = "2.3.1" }
 paperyml = { id = "net.minecrell.plugin-yml.paper", version = "0.6.0" }
+run-server = { id = "org.bxteam.runserver", version = "1.0.0" }
 
 [libraries]
 paper = { module = "io.papermc.paper:paper-api", version = "1.21.1-R0.1-SNAPSHOT" }
