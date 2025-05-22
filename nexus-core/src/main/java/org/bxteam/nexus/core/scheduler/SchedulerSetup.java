@@ -5,10 +5,10 @@ import io.papermc.lib.PaperLib;
 import io.papermc.lib.environments.Environment;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.plugin.Plugin;
+import org.bxteam.commons.bukkit.scheduler.BukkitScheduler;
+import org.bxteam.commons.folia.scheduler.FoliaScheduler;
+import org.bxteam.commons.paper.scheduler.PaperScheduler;
 import org.bxteam.commons.scheduler.Scheduler;
-import org.bxteam.commons.scheduler.bukkit.BukkitScheduler;
-import org.bxteam.commons.scheduler.folia.FoliaScheduler;
-import org.bxteam.commons.scheduler.paper.PaperScheduler;
 
 @RequiredArgsConstructor
 public class SchedulerSetup extends AbstractModule {

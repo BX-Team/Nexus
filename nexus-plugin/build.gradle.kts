@@ -17,8 +17,8 @@ dependencies {
     annotationProcessor(libs.lombok)
 
     library(libs.paperlib)
-    library(libs.commons)
     library(libs.bundles.ormlite)
+    library(libs.bundles.commons)
     library(libs.hikaricp)
     library(libs.mariadb)
     library(libs.postgresql)

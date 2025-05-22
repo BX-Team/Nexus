@@ -1,5 +1,6 @@
 [versions]
 minecraft = "1.21.1-R0.1-SNAPSHOT"
+commons = "2.1.0"
 ormlite = "6.1"
 litecommands = "3.9.7"
 adventure = "4.4.0"
@@ -16,7 +17,6 @@ run-server = { id = "org.bxteam.runserver", version = "1.0.0" }
 [libraries]
 paper = { module = "io.papermc.paper:paper-api", version = "1.21.1-R0.1-SNAPSHOT" }
 paperlib = { module = "io.papermc:paperlib", version = "1.0.8" }
-commons = { module = "org.bxteam:commons", version = "2.0.0" }
 
 placeholderapi = { module = "me.clip:placeholderapi", version = "2.11.6" }
 bstats = { module = "org.bstats:bstats-bukkit", version = "3.1.0" }
@@ -33,6 +33,10 @@ ormlite-jdbc = { module = "com.j256.ormlite:ormlite-jdbc", version.ref = "ormlit
 hikaricp = { module = "com.zaxxer:HikariCP", version = "6.3.0" }
 mariadb = { module = "org.mariadb.jdbc:mariadb-java-client", version = "3.5.3"}
 postgresql = { module = "org.postgresql:postgresql", version = "42.7.5" }
+
+commons-adventure = { module = "org.bxteam:commons-adventure", version.ref = "commons"}
+commons-bukkit = { module = "org.bxteam:commons-bukkit", version.ref = "commons"}
+commons-folia = { module = "org.bxteam:commons-folia", version.ref = "commons"}
 
 litecommands-framework = { module = "dev.rollczi:litecommands-framework", version.ref = "litecommands" }
 litecommands-bukkit = { module = "dev.rollczi:litecommands-bukkit", version.ref = "litecommands" }
@@ -55,6 +59,12 @@ multification-okaeri = { module = "com.eternalcode:multification-okaeri", versio
 ormlite = [
     "ormlite",
     "ormlite-jdbc"
+]
+
+commons = [
+    "commons-adventure",
+    "commons-bukkit",
+    "commons-folia"
 ]
 
 litecommands = [
