@@ -11,6 +11,11 @@ Powerful plugin that gives you ability to personalize your Minecraft server with
 [![Available on BStats](https://raw.githubusercontent.com/vLuckyyy/badges/main/available-on-bstats.svg)](https://bstats.org/plugin/bukkit/Nexus%20Essentials/19684)
 </div>
 
+## ⚠️ Warning
+Nexus is under heavy development right now. A lot of features are not fully ready yet. You can follow the development [here](https://github.com/orgs/BX-Team/projects/9).
+
+Following our plans, the stable version is scheduled to be released in **June-July 2025**.
+
 ## About
 Nexus gives you ability to personalize your Minecraft server with useful commands. Our plugin offers a wide range of features, including:
 
@@ -33,7 +38,7 @@ Nexus gives you ability to personalize your Minecraft server with useful command
 - 🌐 Multi-language support and customizable messages
 - 📇 Database Integration (SQLite, MariaDB, PostgreSQL)
 - 🌈 [MiniMessage](https://docs.advntr.dev/minimessage/format.html) integration with [legacy color](https://minecraft.tools/en/color-code.php) processing (e.g., `&7`, `&e`)
-- [...and much more!](https://docs.bxteam.org/documentation/nexus/reference/features)
+- [...and much more!](https://bxteam.org/docs/nexus/reference/features)
 
 ## Installation
 
