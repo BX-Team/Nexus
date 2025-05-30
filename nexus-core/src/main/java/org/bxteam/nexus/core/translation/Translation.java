@@ -1,8 +1,10 @@
 package org.bxteam.nexus.core.translation;
 
 import com.eternalcode.multification.notice.Notice;
+import org.bukkit.event.entity.EntityDamageEvent;
 
 import java.util.List;
+import java.util.Map;
 
 public interface Translation {
     ArgumentSection argument();
@@ -73,6 +75,20 @@ public interface Translation {
         Notice gameModeSetMessage();
 
         List<String> fullServerSlots();
+    }
+
+    EventSection event();
+
+    interface EventSection {
+        Notice welcome();
+
+        List<Notice> firstJoinMessage();
+        List<Notice> joinMessage();
+        List<Notice> quitMessage();
+
+        List<Notice> deathMessage();
+        List<Notice> unknownDeathCause();
+        Map<EntityDamageEvent.DamageCause, List<Notice>> deathMessageByDamageCause();
     }
 
     AfkSection afk();

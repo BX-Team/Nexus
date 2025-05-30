@@ -6,9 +6,13 @@ import eu.okaeri.configs.annotation.Comment;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 import net.kyori.adventure.key.Key;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bxteam.nexus.core.translation.Translation;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @Getter
 @Accessors(fluent = true)
@@ -147,6 +151,59 @@ public class RUTranslation extends OkaeriConfig implements Translation {
         private List<String> fullServerSlots = List.of(
                 "<dark_red>Сервер полон!",
                 "<dark_red>Попробуйте позже!"
+        );
+    }
+
+    @Comment({"", "Этот раздел отвечает за сообщения, связанные с событиями."})
+    public RUEventSection event = new RUEventSection();
+
+    @Getter
+    public class RUEventSection extends OkaeriConfig implements EventSection {
+        public Notice welcome = Notice.chat("<green>Добро пожаловать на сервер, <white>{PLAYER}!");
+
+        @Comment({"", "{PLAYER} - Игрок, который впервые зашел на сервер"})
+        public List<Notice> firstJoinMessage = List.of(
+                Notice.chat("<white>{PLAYER} <green>впервые зашел на сервер!"),
+                Notice.chat("<white>{PLAYER} <green>добро пожаловать на сервер в первый раз!")
+        );
+
+        @Comment({"", "{PLAYER} - Игрок, который зашел на сервер"})
+        public List<Notice> joinMessage = List.of(
+                Notice.chat("<white>{PLAYER} <green>зашел на сервер!"),
+                Notice.chat("<white>{PLAYER} <green>с возвращением на сервер!")
+        );
+
+        @Comment({"", "{PLAYER} - Игрок, который вышел с сервера"})
+        public List<Notice> quitMessage = List.of(
+                Notice.chat("<white>{PLAYER} <red>вышел с сервера!"),
+                Notice.chat("<white>{PLAYER} <red>до свидания!")
+        );
+
+        @Comment({"", "{PLAYER} - Игрок, который умер, {KILLER} - Игрок, который убил игрока"})
+        public List<Notice> deathMessage = List.of(
+                Notice.chat("<dark_red>{PLAYER} <red>умер!"),
+                Notice.chat("<dark_red>{PLAYER} <red>был убит игроком <dark_red>{KILLER}!")
+        );
+
+        @Comment({"", "{PLAYER} - Игрок, который умер по неизвестной причине"})
+        public List<Notice> unknownDeathCause = List.of(
+                Notice.chat("<dark_red>{PLAYER} <red>умер при загадочных обстоятельствах!")
+        );
+
+        @Comment({"",
+                "Этот список содержит сообщения о смерти по типу урона.",
+                "{PLAYER} - Игрок, который умер",
+                "{CAUSE} - Название причины смерти (например, FALL, VOID)",
+                "Все причины смерти можно найти здесь: https://jd.papermc.io/paper/1.21.5/org/bukkit/event/entity/EntityDamageEvent.DamageCause.html"
+        })
+        public Map<EntityDamageEvent.DamageCause, List<Notice>> deathMessageByDamageCause = Map.of(
+                EntityDamageEvent.DamageCause.VOID, Collections.singletonList(
+                        Notice.chat("<dark_red>{PLAYER} <red>упал в пустоту!")
+                ),
+                EntityDamageEvent.DamageCause.FALL, Arrays.asList(
+                        Notice.chat("<dark_red>{PLAYER} <red>упал с большой высоты!"),
+                        Notice.chat("<dark_red>{PLAYER} <red>упал со смертельного обрыва!")
+                )
         );
     }
 

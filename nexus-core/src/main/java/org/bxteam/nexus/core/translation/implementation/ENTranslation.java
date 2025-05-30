@@ -6,9 +6,13 @@ import eu.okaeri.configs.annotation.Comment;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 import net.kyori.adventure.key.Key;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bxteam.nexus.core.translation.Translation;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @Getter
 @Accessors(fluent = true)
@@ -147,6 +151,59 @@ public class ENTranslation extends OkaeriConfig implements Translation {
         private List<String> fullServerSlots = List.of(
                 "<dark_red>Server is full!",
                 "<dark_red>Try again later!"
+        );
+    }
+
+    @Comment({"", "This section is responsible for the event-related messages."})
+    public ENEventSection event = new ENEventSection();
+
+    @Getter
+    public class ENEventSection extends OkaeriConfig implements EventSection {
+        public Notice welcome = Notice.chat("<green>Welcome to the server, <white>{PLAYER}!");
+
+        @Comment({"", "{PLAYER} - Player who joined the server"})
+        public List<Notice> firstJoinMessage = List.of(
+                Notice.chat("<white>{PLAYER} <green>has joined the server for the first time!"),
+                Notice.chat("<white>{PLAYER} <green>welcome to the server for the first time!")
+        );
+
+        @Comment({"", "{PLAYER} - Player who joined the server"})
+        public List<Notice> joinMessage = List.of(
+                Notice.chat("<white>{PLAYER} <green>has joined the server!"),
+                Notice.chat("<white>{PLAYER} <green>welcome back to the server!")
+        );
+
+        @Comment({"", "{PLAYER} - Player who left the server"})
+        public List<Notice> quitMessage = List.of(
+                Notice.chat("<white>{PLAYER} <red>has left the server!"),
+                Notice.chat("<white>{PLAYER} <red>goodbye!")
+        );
+
+        @Comment({"", "{PLAYER} - Player who died, {KILLER} - Player who killed the player"})
+        public List<Notice> deathMessage = List.of(
+                Notice.chat("<dark_red>{PLAYER} <red>died!"),
+                Notice.chat("<dark_red>{PLAYER} <red>was killed by <dark_red>{KILLER}!")
+        );
+
+        @Comment({"", "{PLAYER} - Player who died by unknown cause"})
+        public List<Notice> unknownDeathCause = List.of(
+                Notice.chat("<dark_red>{PLAYER} <red>died under mysterious circumstances!")
+        );
+
+        @Comment({"",
+                "This map contains death messages by damage cause.",
+                "{PLAYER} - Player who died",
+                "{CAUSE} - Death cause name (e.g. FALL, VOID)",
+                "All death causes can be found here: https://jd.papermc.io/paper/1.21.5/org/bukkit/event/entity/EntityDamageEvent.DamageCause.html"
+        })
+        public Map<EntityDamageEvent.DamageCause, List<Notice>> deathMessageByDamageCause = Map.of(
+                EntityDamageEvent.DamageCause.VOID, Collections.singletonList(
+                        Notice.chat("<dark_red>{PLAYER} <red>fell into the void!")
+                ),
+                EntityDamageEvent.DamageCause.FALL, Arrays.asList(
+                        Notice.chat("<dark_red>{PLAYER} <red>fell from a high place!"),
+                        Notice.chat("<dark_red>{PLAYER} <red>fell off a deadly cliff!")
+                )
         );
     }
 
