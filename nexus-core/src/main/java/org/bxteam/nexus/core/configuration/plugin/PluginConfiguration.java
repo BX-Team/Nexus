@@ -34,6 +34,7 @@ public class PluginConfiguration extends OkaeriConfig {
     private boolean checkForUpdates = true;
 
     @Comment({
+            "",
             "Select the language of the plugin",
             "The following languages are supported:",
             "- EN - English",
