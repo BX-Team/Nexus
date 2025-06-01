@@ -932,8 +932,25 @@
     "permissions": [
       "nexus.signeditor"
     ],
-    "descriptions": [],
-    "arguments": []
+    "descriptions": [
+      "Edit a specific line on the sign you are looking at."
+    ],
+    "arguments": [
+      "\u003cline\u003e \u003ctext...\u003e"
+    ]
+  },
+  {
+    "name": "signeditor setline",
+    "aliases": [],
+    "permissions": [
+      "nexus.signeditor"
+    ],
+    "descriptions": [
+      "Set the text of a specific line on a chosen side of the sign you are targeting."
+    ],
+    "arguments": [
+      "\u003cside\u003e \u003cline\u003e \u003ctext...\u003e"
+    ]
   },
   {
     "name": "smithingtable ",

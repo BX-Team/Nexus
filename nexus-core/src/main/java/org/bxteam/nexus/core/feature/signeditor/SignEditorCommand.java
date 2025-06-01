@@ -17,6 +17,7 @@ import org.bxteam.commons.adventure.util.AdventureUtil;
 import org.bxteam.nexus.core.annotations.compatibility.Compatibility;
 import org.bxteam.nexus.core.annotations.compatibility.Version;
 import org.bxteam.nexus.core.multification.MultificationManager;
+import org.bxteam.nexus.docs.scan.command.CommandDocs;
 
 @Command(name = "signeditor")
 @Permission("nexus.signeditor")
@@ -29,6 +30,7 @@ public class SignEditorCommand {
 
     @SuppressWarnings("DuplicatedCode")
     @Execute(name = "setline")
+    @CommandDocs(description = "Edit a specific line on the sign you are looking at.", arguments = "<line> <text...>")
     void execute(@Context Player player, @Arg(SignEditorArgument.KEY) int line, @Join String text) {
         Block targetBlock = player.getTargetBlockExact(5);
 

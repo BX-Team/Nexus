@@ -19,6 +19,7 @@ import org.bxteam.commons.adventure.util.AdventureUtil;
 import org.bxteam.nexus.core.annotations.compatibility.Compatibility;
 import org.bxteam.nexus.core.annotations.compatibility.Version;
 import org.bxteam.nexus.core.multification.MultificationManager;
+import org.bxteam.nexus.docs.scan.command.CommandDocs;
 
 @Command(name = "signeditor")
 @Permission("nexus.signeditor")
@@ -31,6 +32,7 @@ public class SignSideEditorCommand {
 
     @SuppressWarnings("DuplicatedCode")
     @Execute(name = "setline")
+    @CommandDocs(description = "Set the text of a specific line on a chosen side of the sign you are targeting.", arguments = "<side> <line> <text...>")
     void execute(@Context Player player, @Arg Side side, @Arg(SignEditorArgument.KEY) int line, @Join String text) {
         Block targetBlock = player.getTargetBlockExact(5);
 
