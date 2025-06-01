@@ -44,7 +44,7 @@ public class RUTranslation extends OkaeriConfig implements Translation {
         @Comment({"", "{USAGE} - Правильное использование команды"})
         public Notice usageMessage = Notice.chat("<green>► Правильное использование: <white>{USAGE}");
         public Notice usageMessageHead = Notice.chat("<green>► Правильное использование:");
-        public Notice usageMessageEntry = Notice.chat("<gray>▷ <white>{USAGE}");
+        public Notice usageMessageEntry = Notice.chat("<gray>- <white>{USAGE}");
         public Notice numberBiggerThanOrEqualZero = Notice.chat("<dark_red>✘ Число должно быть больше или равно 0!");
         public Notice noDamaged = Notice.chat("<dark_red>✘ Этот предмет нельзя починить!");
         public Notice noDamagedItems = Notice.chat("<dark_red>✘ В вашем инвентаре нет поврежденных предметов!");
@@ -59,8 +59,8 @@ public class RUTranslation extends OkaeriConfig implements Translation {
 
     @Getter
     public class RUFormatSection extends OkaeriConfig implements Format {
-        public String enable = "✔ <green>включено";
-        public String disable = "✘ <red>отключено";
+        public String enable = "<green>включено";
+        public String disable = "<red>отключено";
     }
 
     @Comment({"", "Этот раздел отвечает за взаимодействие с игроками."})
@@ -157,24 +157,24 @@ public class RUTranslation extends OkaeriConfig implements Translation {
 
     @Getter
     public class RUEventSection extends OkaeriConfig implements EventSection {
-        public Notice welcome = Notice.chat("<green>► Добро пожаловать на сервер, <white>{PLAYER}!");
+        public Notice welcome = Notice.chat("<green>Добро пожаловать на сервер, <white>{PLAYER}!");
 
         @Comment({"", "{PLAYER} - Игрок, который впервые зашел на сервер"})
         public List<Notice> firstJoinMessage = List.of(
-                Notice.chat("<green>► <white>{PLAYER} <green>впервые зашел на сервер!"),
-                Notice.chat("<green>► <white>{PLAYER} <green>добро пожаловать на сервер в первый раз!")
+                Notice.chat("<white>{PLAYER} <green>впервые зашел на сервер!"),
+                Notice.chat("<white>{PLAYER} <green>добро пожаловать на сервер в первый раз!")
         );
 
         @Comment({"", "{PLAYER} - Игрок, который зашел на сервер"})
         public List<Notice> joinMessage = List.of(
-                Notice.chat("<green>► <white>{PLAYER} <green>зашел на сервер!"),
-                Notice.chat("<green>► <white>{PLAYER} <green>с возвращением на сервер!")
+                Notice.chat("<white>{PLAYER} <green>зашел на сервер!"),
+                Notice.chat("<white>{PLAYER} <green>с возвращением на сервер!")
         );
 
         @Comment({"", "{PLAYER} - Игрок, который вышел с сервера"})
         public List<Notice> quitMessage = List.of(
-                Notice.chat("<gold>► <white>{PLAYER} <red>вышел с сервера!"),
-                Notice.chat("<gold>► <white>{PLAYER} <red>до свидания!")
+                Notice.chat("<white>{PLAYER} <red>вышел с сервера!"),
+                Notice.chat("<white>{PLAYER} <red>до свидания!")
         );
 
         @Comment({"", "{PLAYER} - Игрок, который умер, {KILLER} - Игрок, который убил игрока"})
@@ -236,7 +236,7 @@ public class RUTranslation extends OkaeriConfig implements Translation {
     @Getter
     public class RUSudoSection extends OkaeriConfig implements SudoSection {
         @Comment("{PLAYER} - Игрок, выполнивший команду, {TARGET} - Целевой игрок, {COMMAND} - Команда, которая была выполнена")
-        public Notice sudoMessageSpy = Notice.chat("<gray>► [SUDO] <white>{PLAYER} <gray>-> <white>{TARGET} <gray>: <white>{COMMAND}");
+        public Notice sudoMessageSpy = Notice.chat("<gray>[SUDO] <white>{PLAYER} <gray>-> <white>{TARGET} <gray>: <white>{COMMAND}");
     }
 
     @Comment({"", "Этот раздел отвечает за сообщения, связанные с временем и погодой."})
@@ -459,11 +459,11 @@ public class RUTranslation extends OkaeriConfig implements Translation {
     @Getter
     public class RUPrivateChatSection extends OkaeriConfig implements PrivateChatSection {
         @Comment("{TARGET} - Игрок, которому отправлено сообщение, {MESSAGE} - Содержание сообщения")
-        public Notice youToTargetMessage = Notice.chat("<gray>► [<white>Ты <gray>-> <white>{TARGET}<gray>]<gray>: <white>{MESSAGE}");
+        public Notice youToTargetMessage = Notice.chat("<gray>[<white>Ты <gray>-> <white>{TARGET}<gray>]<gray>: <white>{MESSAGE}");
         @Comment("{SENDER} - Игрок, отправивший сообщение, {MESSAGE} - Содержание сообщения")
-        public Notice targetToYouMessage = Notice.chat("<gray>► [<white>{SENDER} <gray>-> <white>Ты<gray>]<gray>: <white>{MESSAGE}");
+        public Notice targetToYouMessage = Notice.chat("<gray>[<white>{SENDER} <gray>-> <white>Ты<gray>]<gray>: <white>{MESSAGE}");
         @Comment("{SENDER} - Игрок, отправивший сообщение, {TARGET} - Целевой игрок, {MESSAGE} - Содержание сообщения")
-        public Notice socialSpyMessage = Notice.chat("<gray>► [<gold>SocialSpy</gold>]</gray> <gray>[<white>{SENDER} <gray>-> <white>{TARGET}<gray>]<gray>: <white>{MESSAGE}");
+        public Notice socialSpyMessage = Notice.chat("<gray>[<gold>SocialSpy</gold>]</gray> <gray>[<white>{SENDER} <gray>-> <white>{TARGET}<gray>]<gray>: <white>{MESSAGE}");
 
         @Comment({"", "{STATE} - Статус отслеживания (включено или выключено)"})
         public Notice socialSpyStatus = Notice.chat("<green>► Отслеживание приватного чата было {STATE}!");
@@ -531,7 +531,7 @@ public class RUTranslation extends OkaeriConfig implements Translation {
     @Getter
     public class RUHelpSection extends OkaeriConfig implements HelpSection {
         @Comment("{PLAYER} - Игрок использовавший команду, {MESSAGE} - Сообщение которое оставил игрок")
-        public Notice helpMessageSpy = Notice.chat("<gray>► [<dark_red>РЕПОРТ<gray>] <yellow>{PLAYER}<dark_gray>: <white>{MESSAGE}");
+        public Notice helpMessageSpy = Notice.chat("<gray>[<dark_red>РЕПОРТ<gray>] <yellow>{PLAYER}<dark_gray>: <white>{MESSAGE}");
         @Comment("")
         public Notice helpMessageSend = Notice.chat("<green>✔ Ваш запрос на помощь был отправлен всем администраторам которые находятся на сервере!");
     }
