@@ -1,10 +1,6 @@
-import org.gradle.api.artifacts.repositories.PasswordCredentials
 import org.gradle.api.publish.maven.MavenPublication
-import org.gradle.authentication.http.BasicAuthentication
 import org.gradle.kotlin.dsl.create
-import org.gradle.kotlin.dsl.credentials
 import org.gradle.kotlin.dsl.get
-import org.gradle.kotlin.dsl.repositories
 
 plugins {
     `java-library`
@@ -29,10 +25,8 @@ publishing {
                 url = uri("https://repo.bxteam.org/snapshots/")
             }
 
-            credentials(PasswordCredentials::class)
-            authentication {
-                create<BasicAuthentication>("basic")
-            }
+            credentials.username = System.getenv("REPO_USERNAME")
+            credentials.password = System.getenv("REPO_PASSWORD")
         }
     }
     publications {

@@ -16,19 +16,25 @@ jobs:
     runs-on: ubuntu-latest
     if: "!contains(github.event.commits[0].message, '[ci-skip]')"
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
           cache: gradle
+
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
+
       - name: Make Gradlew executable
         run: chmod +x ./gradlew
+
       - name: Build with Gradle
         run: './gradlew nexus-plugin:shadowJar'
+
       - name: Upload Nexus
         uses: actions/upload-artifact@v4.6.2
         with:
