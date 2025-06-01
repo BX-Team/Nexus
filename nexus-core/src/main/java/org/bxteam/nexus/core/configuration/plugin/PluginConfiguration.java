@@ -5,13 +5,16 @@ import eu.okaeri.configs.annotation.Comment;
 import eu.okaeri.configs.annotation.Exclude;
 import eu.okaeri.configs.annotation.Header;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.bxteam.commons.bukkit.position.Position;
 import org.bxteam.nexus.core.database.DatabaseType;
 import org.bxteam.nexus.core.feature.randomteleport.RandomTeleportType;
 import org.bxteam.nexus.core.translation.Language;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -114,6 +117,62 @@ public class PluginConfiguration extends OkaeriConfig {
         })
         private boolean useRandomMotd = false;
         private Set<String> motd = Set.of("<green>Welcome to the server!<newline><gold>We hope you enjoy your stay", "<blue>Hello <red>world!");
+    }
+
+    @Comment("")
+    private ServerLinks serverLinks = new ServerLinks();
+
+    @Getter
+    @SuppressWarnings("UnstableApiUsage")
+    public class ServerLinks extends OkaeriConfig {
+        @Comment({
+                "Configuration of server links displayed in the ESC/pause menu",
+                "Links will be visible in the game's pause menu under server information",
+                "Note: This feature requires Minecraft 1.21 or newer to work properly",
+        })
+        private boolean sendServerLinksOnJoin = true;
+
+        @Comment({
+                "",
+                "Default Minecraft link types: https://jd.papermc.io/paper/1.21.5/org/bukkit/ServerLinks.Type.html#enum-constant-summary",
+                "The text displayed depends on the player's localization"
+        })
+        private List<TypeLink> typeLinks = new ArrayList<>() {
+            {
+                add(new TypeLink(org.bukkit.ServerLinks.Type.WEBSITE, "https://example.com"));
+            }
+        };
+
+        @Comment({"", "Custom links that will be displayed in the server links section"})
+        private List<CustomLink> customLinks = new ArrayList<>() {
+            {
+                add(new CustomLink("<blue>Discord", "https://discord.gg/qNyybSSPm5"));
+            }
+        };
+
+        @Getter
+        @NoArgsConstructor
+        public class TypeLink extends OkaeriConfig {
+            private org.bukkit.ServerLinks.Type type;
+            private String url;
+
+            public TypeLink(org.bukkit.ServerLinks.Type type, String url) {
+                this.type = type;
+                this.url = url;
+            }
+        }
+
+        @Getter
+        @NoArgsConstructor
+        public class CustomLink extends OkaeriConfig {
+            private String name;
+            private String url;
+
+            public CustomLink(String name, String url) {
+                this.name = name;
+                this.url = url;
+            }
+        }
     }
 
     @Comment("")
