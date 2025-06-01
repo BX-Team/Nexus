@@ -25,6 +25,7 @@ Nexus gives you ability to personalize your Minecraft server with useful command
   - Chat on/off
   - Chat slow mode
   - Chat clear
+  - Custom join, quit and death messages
   - Social commands (`/msg`, `/r`, `/ignore`, `/unignore` and `/socialspy`)
   - Help command for calling staff members (`/help`, `/report`)
 - 💤 AFK System
@@ -32,6 +33,7 @@ Nexus gives you ability to personalize your Minecraft server with useful command
 - 🔨 Commands for opening utility GUIs (`/workbench`, `/anvil`, `/enderchest`, and more)
 - ❤️ Player management commands (`/heal`, `/feed`, `/fly`, `/god`, and more)
 - 🏓 Ping Command to check client-server connectivity
+- 🔗 Server Links support, that was introduced in Minecraft 1.21
 - 🏠 Home, Warp, Spawn and Jail system
 - 👤 Player Information Command (`/whois`)
 - 📄 PlaceholderAPI Support
