@@ -10,12 +10,11 @@ okaeri = "5.0.8"
 
 [plugins]
 shadow = { id = "com.gradleup.shadow", version = "8.3.6" }
-userdev = { id = "io.papermc.paperweight.userdev", version = "1.7.7" }
-paperyml = { id = "net.minecrell.plugin-yml.paper", version = "0.6.0" }
+paperyml = { id = "de.eldoria.plugin-yml.paper", version = "0.7.1" }
 run-server = { id = "org.bxteam.runserver", version = "1.0.0" }
 
 [libraries]
-paper = { module = "io.papermc.paper:paper-api", version = "1.21.1-R0.1-SNAPSHOT" }
+paper = { module = "io.papermc.paper:paper-api", version.ref = "minecraft" }
 paperlib = { module = "io.papermc:paperlib", version = "1.0.8" }
 
 placeholderapi = { module = "me.clip:placeholderapi", version = "2.11.6" }

@@ -1,14 +1,10 @@
 plugins {
     `java-library`
+    `nexus-repositories`
 }
 
 group = project.group
 version = project.version
-
-repositories {
-    mavenCentral()
-    maven("https://repo.panda-lang.org/releases")
-}
 
 dependencies {
     compileOnly(libs.guava)
