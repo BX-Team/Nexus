@@ -927,6 +927,15 @@
     ]
   },
   {
+    "name": "signeditor setline",
+    "aliases": [],
+    "permissions": [
+      "nexus.signeditor"
+    ],
+    "descriptions": [],
+    "arguments": []
+  },
+  {
     "name": "smithingtable ",
     "aliases": [],
     "permissions": [
@@ -1180,10 +1189,10 @@
       "nexus.teleport"
     ],
     "descriptions": [
-      "Teleport other player to another player."
+      "Teleport to coordinates."
     ],
     "arguments": [
-      "\u003cplayer\u003e \u003ctarget\u003e"
+      "\u003clocation\u003e \u003cworld\u003e"
     ]
   },
   {
@@ -1193,10 +1202,10 @@
       "nexus.teleport"
     ],
     "descriptions": [
-      "Teleport to coordinates."
+      "Teleport other player to another player."
     ],
     "arguments": [
-      "\u003clocation\u003e \u003cworld\u003e"
+      "\u003cplayer\u003e \u003ctarget\u003e"
     ]
   },
   {
