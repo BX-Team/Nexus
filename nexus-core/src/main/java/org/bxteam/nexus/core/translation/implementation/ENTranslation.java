@@ -44,7 +44,7 @@ public class ENTranslation extends OkaeriConfig implements Translation {
         @Comment({"", "{USAGE} - Correct usage of the command"})
         public Notice usageMessage = Notice.chat("<green>► Correct usage: <white>{USAGE}");
         public Notice usageMessageHead = Notice.chat("<green>► Correct usage:");
-        public Notice usageMessageEntry = Notice.chat("<gray>▷ <white>{USAGE}");
+        public Notice usageMessageEntry = Notice.chat("<gray>- <white>{USAGE}");
         public Notice numberBiggerThanOrEqualZero = Notice.chat("<dark_red>✘ Number must be bigger than or equal to 0!");
         public Notice noDamaged = Notice.chat("<dark_red>✘ This item can't be repaired!");
         public Notice noDamagedItems = Notice.chat("<dark_red>✘ There are no damaged items in your inventory!");
@@ -59,8 +59,8 @@ public class ENTranslation extends OkaeriConfig implements Translation {
 
     @Getter
     public class ENFormatSection extends OkaeriConfig implements Format {
-        public String enable = "✔ <green>enabled";
-        public String disable = "✘ <red>disabled";
+        public String enable = "<green>enabled";
+        public String disable = "<red>disabled";
     }
 
     @Comment({"", "This section is responsible for player-related stuff and interactions with them."})
@@ -157,24 +157,24 @@ public class ENTranslation extends OkaeriConfig implements Translation {
 
     @Getter
     public class ENEventSection extends OkaeriConfig implements EventSection {
-        public Notice welcome = Notice.chat("<green>► Welcome to the server, <white>{PLAYER}!");
+        public Notice welcome = Notice.chat("<green>Welcome to the server, <white>{PLAYER}!");
 
         @Comment({"", "{PLAYER} - Player who joined the server"})
         public List<Notice> firstJoinMessage = List.of(
-                Notice.chat("<green>► <white>{PLAYER} <green>has joined the server for the first time!"),
-                Notice.chat("<green>► <white>{PLAYER} <green>welcome to the server for the first time!")
+                Notice.chat("<white>{PLAYER} <green>has joined the server for the first time!"),
+                Notice.chat("<white>{PLAYER} <green>welcome to the server for the first time!")
         );
 
         @Comment({"", "{PLAYER} - Player who joined the server"})
         public List<Notice> joinMessage = List.of(
-                Notice.chat("<green>► <white>{PLAYER} <green>has joined the server!"),
-                Notice.chat("<green>► <white>{PLAYER} <green>welcome back to the server!")
+                Notice.chat("<white>{PLAYER} <green>has joined the server!"),
+                Notice.chat("<white>{PLAYER} <green>welcome back to the server!")
         );
 
         @Comment({"", "{PLAYER} - Player who left the server"})
         public List<Notice> quitMessage = List.of(
-                Notice.chat("<gold>► <white>{PLAYER} <red>has left the server!"),
-                Notice.chat("<gold>► <white>{PLAYER} <red>goodbye!")
+                Notice.chat("<white>{PLAYER} <red>has left the server!"),
+                Notice.chat("<white>{PLAYER} <red>goodbye!")
         );
 
         @Comment({"", "{PLAYER} - Player who died, {KILLER} - Player who killed the player"})
@@ -236,7 +236,7 @@ public class ENTranslation extends OkaeriConfig implements Translation {
     @Getter
     public class ENSudoSection extends OkaeriConfig implements SudoSection {
         @Comment("{PLAYER} - Player who executed the command, {TARGET} - Target player, {COMMAND} - Command that the player executed")
-        public Notice sudoMessageSpy = Notice.chat("<gray>► [SUDO] <white>{PLAYER} <gray>-> <white>{TARGET} <gray>: <white>{COMMAND}");
+        public Notice sudoMessageSpy = Notice.chat("<gray>[SUDO] <white>{PLAYER} <gray>-> <white>{TARGET} <gray>: <white>{COMMAND}");
     }
 
     @Comment({"", "This section is responsible for the time and weather-related messages."})
@@ -459,11 +459,11 @@ public class ENTranslation extends OkaeriConfig implements Translation {
     @Getter
     public class ENPrivateChatSection extends OkaeriConfig implements PrivateChatSection {
         @Comment("{TARGET} - Player that you want to send messages, {MESSAGE} - Message content")
-        public Notice youToTargetMessage = Notice.chat("<gray>► [<white>You <gray>-> <white>{TARGET}<gray>]<gray>: <white>{MESSAGE}");
+        public Notice youToTargetMessage = Notice.chat("<gray>[<white>You <gray>-> <white>{TARGET}<gray>]<gray>: <white>{MESSAGE}");
         @Comment("{SENDER} - Player who sent the message, {MESSAGE} - Message content")
-        public Notice targetToYouMessage = Notice.chat("<gray>► [<white>{SENDER} <gray>-> <white>You<gray>]<gray>: <white>{MESSAGE}");
+        public Notice targetToYouMessage = Notice.chat("<gray>[<white>{SENDER} <gray>-> <white>You<gray>]<gray>: <white>{MESSAGE}");
         @Comment("{SENDER} - Player who sent the message, {TARGET} - Player who received the message, {MESSAGE} - Message content")
-        public Notice socialSpyMessage = Notice.chat("<gray>► [<gold>SocialSpy</gold>]</gray> <gray>[<white>{SENDER} <gray>-> <white>{TARGET}<gray>]<gray>: <white>{MESSAGE}");
+        public Notice socialSpyMessage = Notice.chat("<gray>[<gold>SocialSpy</gold>]</gray> <gray>[<white>{SENDER} <gray>-> <white>{TARGET}<gray>]<gray>: <white>{MESSAGE}");
 
         @Comment({"", "{STATE} - SocialSpy status (enabled or disabled)"})
         public Notice socialSpyStatus = Notice.chat("<green>▶ SocialSpy has been {STATE}!");
@@ -531,7 +531,7 @@ public class ENTranslation extends OkaeriConfig implements Translation {
     @Getter
     public class ENHelpSection extends OkaeriConfig implements HelpSection {
         @Comment("{PLAYER} - Player who executed the command, {MESSAGE} - Help message")
-        public Notice helpMessageSpy = Notice.chat("<gray>► [<dark_red>REPORT<gray>] <yellow>{PLAYER}<dark_gray>: <white>{MESSAGE}");
+        public Notice helpMessageSpy = Notice.chat("<gray>[<dark_red>REPORT<gray>] <yellow>{PLAYER}<dark_gray>: <white>{MESSAGE}");
         @Comment("")
         public Notice helpMessageSend = Notice.chat("<green>✔ Your help message has been sent to all online staff members!");
     }
