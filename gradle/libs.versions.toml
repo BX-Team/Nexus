@@ -6,7 +6,7 @@ litecommands = "3.9.7"
 adventure = "4.4.0"
 minimessage = "4.21.0"
 multification = "1.2.1"
-okaeri = "5.0.8"
+okaeri = "5.0.9"
 
 [plugins]
 shadow = { id = "com.gradleup.shadow", version = "8.3.6" }
