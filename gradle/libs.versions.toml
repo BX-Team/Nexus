@@ -9,7 +9,7 @@ multification = "1.2.1"
 okaeri = "5.0.9"
 
 [plugins]
-shadow = { id = "com.gradleup.shadow", version = "8.3.6" }
+shadow = { id = "com.gradleup.shadow", version = "8.3.7" }
 paperyml = { id = "de.eldoria.plugin-yml.paper", version = "0.7.1" }
 run-server = { id = "org.bxteam.runserver", version = "1.0.0" }
 
@@ -20,7 +20,7 @@ paperlib = { module = "io.papermc:paperlib", version = "1.0.8" }
 placeholderapi = { module = "me.clip:placeholderapi", version = "2.11.6" }
 bstats = { module = "org.bstats:bstats-bukkit", version = "3.1.0" }
 guice = { module = "com.google.inject:guice", version = "7.0.0" }
-classgraph = { module = "io.github.classgraph:classgraph", version = "4.8.179" }
+classgraph = { module = "io.github.classgraph:classgraph", version = "4.8.180" }
 triumphgui = { module = "dev.triumphteam:triumph-gui", version = "3.1.12" }
 
 guava = { module = "com.google.guava:guava", version = "33.4.8-jre" }
