@@ -14,7 +14,7 @@ Powerful plugin that gives you ability to personalize your Minecraft server with
 ## ⚠️ Warning
 Nexus is under heavy development right now. A lot of features are not fully ready yet. You can follow the development [here](https://github.com/orgs/BX-Team/projects/9).
 
-Following our plans, the stable version is scheduled to be released in **June-July 2025**.
+Following our plans, the stable version is scheduled to be released in the **fall of 2025**.
 
 ## About
 Nexus gives you ability to personalize your Minecraft server with useful commands. Our plugin offers a wide range of features, including:
@@ -61,3 +61,35 @@ To build Nexus, follow these steps (Make sure you have **JDK 17 or higher**):
 ```
 
 The compiled JAR file will be located in `nexus-plugin/build/libs`.
+
+## Contributing
+
+Create a public fork of this repository, make your changes, and submit a pull request. We welcome contributions of all kinds, including code, documentation, and translations.
+See [CONTRIBUTING.md](.github/CONTRIBUTING.md) for more details.
+
+## Credits
+
+During development of Nexus we use many other libraries as dependencies, including:
+
+| Library                                                                   | Description                                            |
+|---------------------------------------------------------------------------|--------------------------------------------------------|
+| [Paper API](https://github.com/PaperMC/Paper)                             | Just a basic API for Minecraft plugin development      |
+| [PaperLib](https://github.com/PaperMC/PaperLib)                           | Plugin library for interfacing into specific Paper API |
+| [PlaceholderAPI](https://github.com/PlaceholderAPI/PlaceholderAPI)        | Plugin hook for creating placeholders                  |
+| [bStats](https://github.com/Bastian/bStats)                               | Plugin metrics collection                              |
+| [Guice](https://github.com/google/guice)                                  | Lightweight dependency injection framework             |
+| [ClassGraph](https://github.com/classgraph/classgraph)                    | Java classpath scanner and module scanner              |
+| [TriumphGUI](https://github.com/TriumphTeam/triumph-gui)                  | Simple inventory GUI library                           |
+| [Google Guava](https://github.com/google/guava)                           | Core Java libraries by Google                          |
+| [Gson](https://github.com/google/gson)                                    | JSON serialization/deserialization library             |
+| [Lombok](https://github.com/projectlombok/lombok)                         | Java annotation processor to reduce boilerplate code   |
+| [ORMLite](https://github.com/j256/ormlite-core)                           | Object Relational Mapping library                      |
+| [HikariCP](https://github.com/brettwooldridge/HikariCP)                   | High-performance JDBC connection pool                  |
+| [LiteCommands](https://github.com/Rollczi/LiteCommands)                   | Command framework for Minecraft servers                |
+| [Adventure API](https://github.com/KyoriPowered/adventure)                | User interface library for Minecraft                   |
+| [MiniMessage](https://github.com/KyoriPowered/adventure-text-minimessage) | Text formatting library for Adventure                  |
+| [Okaeri Configs](https://github.com/OkaeriPoland/okaeri-configs)          | Configuration library with serialization support       |
+| [Multification](https://github.com/EternalCodeTeam/multification)         | Notification system library                            |
+
+Special thanks to the [EternalCore](https://github.com/EternalCodeTeam/EternalCore) project and their team for providing an excellent reference and inspiration for the development of our project.
+Their approach to plugin architecture and features has been incredibly valuable in guiding our own development process.
