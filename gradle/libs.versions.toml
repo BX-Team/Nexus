@@ -2,7 +2,7 @@
 minecraft = "1.21.1-R0.1-SNAPSHOT"
 commons = "2.1.0"
 ormlite = "6.1"
-litecommands = "3.9.7"
+litecommands = "3.10.2"
 adventure = "4.4.0"
 minimessage = "4.21.0"
 multification = "1.2.1"
