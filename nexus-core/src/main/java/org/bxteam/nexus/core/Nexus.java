@@ -30,10 +30,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@SuppressWarnings("unused")
 public class Nexus {
-    private final PluginConfigurationProvider configurationProvider;
     private final Injector injector;
-    private final ExtendedLogger logger;
 
     public Nexus(Plugin plugin) {
         Appender consoleAppender = new ConsoleAppender("[{loggerName}] {logLevel}: {message}");
@@ -48,18 +47,18 @@ public class Nexus {
             }
         }
         JsonAppender jsonAppender = new JsonAppender(false, false, true, logsFile.getPath());
-        this.logger = new ExtendedLogger("Nexus", LogLevel.INFO, List.of(consoleAppender, jsonAppender), new ArrayList<>());
+        ExtendedLogger logger = new ExtendedLogger("Nexus", LogLevel.INFO, List.of(consoleAppender, jsonAppender), new ArrayList<>());
 
-        NexusEnvironment environment = new NexusEnvironment(plugin, logger);
+        NexusEnvironment environment = new NexusEnvironment(logger);
 
         ConfigurationManager configurationManager = new ConfigurationManager();
-        this.configurationProvider = new PluginConfigurationProvider(plugin.getDataFolder().toPath(), configurationManager, logger);
+        PluginConfigurationProvider configurationProvider = new PluginConfigurationProvider(plugin.getDataFolder().toPath(), configurationManager, logger);
 
         this.injector = Guice.createInjector(
-                        new NexusModule(this.configurationProvider, plugin, configurationManager, logger),
+                        new NexusModule(configurationProvider, plugin, configurationManager, logger),
                         new ConfigModule(),
                         new MultificationModule(),
-                        new DatabaseModule(this.configurationProvider),
+                        new DatabaseModule(configurationProvider),
                         new SchedulerSetup(plugin)
         );
 
