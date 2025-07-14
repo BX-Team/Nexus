@@ -5,7 +5,7 @@ ormlite = "6.1"
 litecommands = "3.10.2"
 adventure = "4.4.0"
 minimessage = "4.23.0"
-multification = "1.2.1"
+multification = "1.2.2"
 okaeri = "5.0.9"
 
 [plugins]
