@@ -56,13 +56,13 @@ tasks {
     }
     runServer {
         serverType(ServerType.PAPER)
-        minecraftVersion("1.21.4")
+        serverVersion("1.21.7")
         noGui(true)
         acceptMojangEula()
 
         downloadPlugins {
-            modrinth("fancyholograms", "2.5.0")
-            modrinth("luckperms", "v5.4.145-bukkit")
+            modrinth("fancyholograms", "2.6.0.145")
+            modrinth("luckperms", "v5.5.0-bukkit")
             hangar("PlaceholderAPI", "2.11.6")
         }
     }

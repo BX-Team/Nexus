@@ -4,14 +4,14 @@ commons = "2.1.0"
 ormlite = "6.1"
 litecommands = "3.10.2"
 adventure = "4.4.0"
-minimessage = "4.21.0"
+minimessage = "4.23.0"
 multification = "1.2.1"
 okaeri = "5.0.9"
 
 [plugins]
 shadow = { id = "com.gradleup.shadow", version = "8.3.8" }
 paperyml = { id = "de.eldoria.plugin-yml.paper", version = "0.7.1" }
-run-server = { id = "org.bxteam.runserver", version = "1.0.0" }
+run-server = { id = "org.bxteam.runserver", version = "1.2.0" }
 
 [libraries]
 paper = { module = "io.papermc.paper:paper-api", version.ref = "minecraft" }
