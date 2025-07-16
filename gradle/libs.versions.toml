@@ -20,7 +20,7 @@ paperlib = { module = "io.papermc:paperlib", version = "1.0.8" }
 placeholderapi = { module = "me.clip:placeholderapi", version = "2.11.6" }
 bstats = { module = "org.bstats:bstats-bukkit", version = "3.1.0" }
 guice = { module = "com.google.inject:guice", version = "7.0.0" }
-classgraph = { module = "io.github.classgraph:classgraph", version = "4.8.180" }
+classgraph = { module = "io.github.classgraph:classgraph", version = "4.8.181" }
 triumphgui = { module = "dev.triumphteam:triumph-gui", version = "3.1.12" }
 
 guava = { module = "com.google.guava:guava", version = "33.4.8-jre" }
