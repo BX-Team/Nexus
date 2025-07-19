@@ -56,7 +56,7 @@ tasks {
     }
     runServer {
         serverType(ServerType.PAPER)
-        serverVersion("1.21.7")
+        serverVersion("1.21.8")
         noGui(true)
         acceptMojangEula()
 
